@@ -1,0 +1,1349 @@
+<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ include file="/WEB-INF/views/include/taglib.jsp"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>复合表头</title>
+	<style type="text/css">
+			html,
+			body {
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				padding: 0;
+				text-align: center;
+				color: #000000;
+				overflow: hidden;
+				font-weight:500;				        
+		      	-webkit-perspective: 1500;
+						perspective: 1500;
+			}
+
+			#overall-border {
+				width: 1019.19px;
+				height: 370.39px;
+				border: 4px solid #442F1F;
+				padding: 8px;
+				background: rgba(133, 111, 79, .5);
+				/* background: hsla(0,0%,100%,.3); */
+				border-radius: 10px;						        	
+				position: relative;
+				overflow: hidden;
+				margin-top: 10% !important;
+				margin: 0 auto;						
+				-webkit-transition: box-shadow 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+				transition: box-shadow 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+				transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+				transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;						
+				box-shadow: 5px 5px 24px 0px rgba(0, 0, 0, 0.2);
+				
+			}
+			.details #overall-border {
+				-webkit-transform: rotateX(35deg) translateY(0px);
+						transform: rotateX(35deg) translateY(0px);
+				box-shadow: 0px 20px 30px 0px rgba(0, 0, 0, 0.75);
+				z-index: 10;
+			
+			}
+			#overall-border::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				filter: blur(20px);
+				/*background: rgba(225,228,237,.5); */
+			}
+			
+			#overall {
+				margin: 0 auto;
+							-webkit-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+			-webkit-transform: translateZ(2px);
+			transform: translateZ(2px);
+			-webkit-transition: -webkit-transform 0.5s ease-in-out;
+			transition: -webkit-transform 0.5s ease-in-out;
+			transition: transform 0.5s ease-in-out;
+			transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+			}
+			
+			#left-area {
+				float: left;
+				width: 47.5%;
+				height: 99%;
+				border: 2px solid #442F1F;
+				background: #FFFFFF;
+			}
+			
+			#left-area-up {
+				width: 100%;
+				height: 45%;
+				border-bottom: 2px solid #442F1F;
+				position: relative;
+			}
+			
+			.left-up-one {
+				width: 5%;
+				height: 80%;
+				border: 2px solid #000000;
+				position: absolute;
+				left: 2%;
+				top: 10%;
+				box-shadow: 3px 3px 0 0 hsl(0, 0%, 65%), 4px 4px 0 0 hsl(0, 0%, 70%), 5px 5px 0 0 hsl(0, 0%, 75%), 6px 6px 0 0 hsl(0, 0%, 80%), 7px 7px 0 0 hsl(0, 0%, 85%);
+				background: #C06148;
+			}
+			
+			#left-up-two {
+				width: 26%;
+				height: 80%;
+				border: 2px solid #000000;
+				position: absolute;
+				left: 9%;
+				top: 10%;
+				box-shadow: 3px 3px 0 0 hsl(0, 0%, 65%), 4px 4px 0 0 hsl(0, 0%, 70%), 5px 5px 0 0 hsl(0, 0%, 75%), 6px 6px 0 0 hsl(0, 0%, 80%), 7px 7px 0 0 hsl(0, 0%, 85%);
+				background: #EC9437;
+			}
+			
+			#up-house {
+				width: 23%;
+				height: 68%;
+				border: 2px solid #000000;
+				position: absolute;
+				left: 10%;
+				top: 14%;	
+				background: #EC9437;
+				box-shadow: 3px 3px 0 0 hsl(31, 82.6%, 30%), 4px 4px 0 0 hsl(31, 82.6%, 30%), 5px 5px 0 0 hsl(31, 82.6%, 30%);
+			    z-index:5;
+			}
+			
+			.triangle-left {
+				transform-style: preserve-3d;
+				transform: rotate(45deg);
+				width: 28px;
+				height: 2px;
+				background: #000000;
+				position: absolute;
+				top: 25px;
+				left: 40px;
+			}
+			.triangle-left1 {
+				transform-style: preserve-3d;
+				transform: rotate(-45deg);
+				width: 28px;
+				height: 2px;
+				background: #000000;
+				position: absolute;
+				bottom: 24px;
+				left: 40px;
+			}
+			.triangle-right {
+				transform-style: preserve-3d;
+				transform: rotate(135deg);
+				width: 28px;
+				height: 2px;
+				background: #000000;
+				position: absolute;
+				top: 25px;
+				right: 309px;
+			}
+			.triangle-right1 {
+				transform-style: preserve-3d;
+				transform: rotate(-135deg);
+				width: 28px;
+				height: 2px;
+				background: #000000;
+				position: absolute;
+				bottom: 24px;
+				right: 309px;
+			}
+			#thing-1{
+				border: 1px dotted #000000;
+				width: 10%;
+				height: 20%;
+				background-color: #CC9A52;
+				top: 19%;
+				left: 10%;
+				position: absolute;
+				z-index: 20;
+				box-shadow: 3px 3px 0 0 hsl(31, 82.6%, 30%), 4px 4px 0 0 hsl(31, 82.6%, 30%), 5px 5px 0 0 hsl(31, 82.6%, 30%);
+			}
+			#thing-2{
+				border: 1px dotted #000000;
+				width: 10%;
+				height: 20%;
+				background-color: #CC9A52;
+				top: 19%;
+				left: 22%;
+				position: absolute;
+				z-index: 20;
+				box-shadow: 3px 3px 0 0 hsl(31, 82.6%, 30%), 4px 4px 0 0 hsl(31, 82.6%, 30%), 5px 5px 0 0 hsl(31, 82.6%, 30%);
+			}
+			#thing-3{
+				border: 1px dotted #000000;
+				width: 10%;
+				height: 20%;
+				background-color: #CC9A52;
+				bottom: 20%;
+				left: 10%;
+				position: absolute;
+				z-index: 20;
+				box-shadow: 3px 3px 0 0 hsl(31, 82.6%, 30%), 4px 4px 0 0 hsl(31, 82.6%, 30%), 5px 5px 0 0 hsl(31, 82.6%, 30%);
+			}
+			#thing-4{
+				border: 1px dotted #000000;
+				width: 10%;
+				height: 20%;
+				background-color: #CC9A52;
+				bottom: 20%;
+				left: 22%;
+				position: absolute;
+				z-index: 20;
+				box-shadow: 3px 3px 0 0 hsl(31, 82.6%, 30%), 4px 4px 0 0 hsl(31, 82.6%, 30%), 5px 5px 0 0 hsl(31, 82.6%, 30%);
+			}
+			#thing-5{
+				cursor: pointer;
+				border: 1px dotted #000000;
+				width: 42%;
+				height: 8%;
+				background-color: #CC9A52;
+				top: 20%;
+				left: 12%;
+				position: absolute;
+				z-index: 20;
+				box-shadow: 3px 3px 0 0 hsl(31, 82.6%, 30%), 4px 4px 0 0 hsl(31, 82.6%, 30%), 5px 5px 0 0 hsl(31, 82.6%, 30%);
+			}
+			#thing-6{
+			  	cursor: pointer;
+				border: 1px dotted #000000;
+				height: 8%;
+				width: 42%;
+				background-color: #CC9A52;
+				top: 31%;
+				left: 12%;
+				position: absolute;
+				z-index: 20;
+				box-shadow: 3px 3px 0 0 hsl(31, 82.6%, 30%), 4px 4px 0 0 hsl(31, 82.6%, 30%), 5px 5px 0 0 hsl(31, 82.6%, 30%);
+			}
+			#thing-7{
+				cursor: pointer;
+				border: 1px dotted #000000;
+				width: 42%;
+				height: 20%;
+				background-color: #CC9A52;
+				bottom: 21%;
+				left: 12%;
+				position: absolute;
+				z-index: 20;
+				box-shadow: 3px 3px 0 0 hsl(31, 82.6%, 30%), 4px 4px 0 0 hsl(31, 82.6%, 30%), 5px 5px 0 0 hsl(31, 82.6%, 30%);
+			}
+			#thing-8{
+			    cursor: pointer;
+				border: 1px dotted #000000;
+				width: 5%;
+				height: 10%;
+				background-color: #42416F;
+				top:12%;
+				right: 11%;
+				position: absolute;
+				z-index: 20;
+				box-shadow: 3px 3px 0 0 hsl(31, 82.6%, 30%), 4px 4px 0 0 hsl(31, 82.6%, 30%), 5px 5px 0 0 hsl(31, 82.6%, 40%);
+			}
+			#thing-9{
+			    cursor: pointer;
+				border: 1px dotted #000000;
+				width: 5%;
+				height: 10%;
+				background-color: #42416F;
+				top:12%;
+				right: 3%;
+				position: absolute;
+				z-index: 20;
+				box-shadow: 3px 3px 0 0 hsl(31, 82.6%, 30%), 4px 4px 0 0 hsl(31, 82.6%, 30%), 5px 5px 0 0 hsl(241, 26.1%, 25%);
+			}
+			#thing-10{
+			    cursor: pointer;
+				border: 1px dotted #000000;
+				width: 5%;
+				height: 10%;
+				background-color: #42416F;
+				top:28%;
+				right: 11%;
+				position: absolute;
+				z-index: 20;
+				box-shadow: 3px 3px 0 0 hsl(31, 82.6%, 30%), 4px 4px 0 0 hsl(31, 82.6%, 30%), 5px 5px 0 0 hsl(241, 26.1%, 25%);
+			}
+			#thing-11{
+			    cursor: pointer;
+				border: 1px dotted #000000;
+				width: 5%;
+				height: 10%;
+				background-color: #42416F;
+				top:28%;
+				right: 3%;
+				position: absolute;
+				z-index: 20;
+				box-shadow: 3px 3px 0 0 hsl(31, 82.6%, 30%), 4px 4px 0 0 hsl(31, 82.6%, 30%), 5px 5px 0 0 hsl(241, 26.1%, 25%);
+			}
+			#thing-12{
+			    cursor: pointer;
+				border: 1px dotted #000000;
+				width: 5%;
+				height: 10%;
+				background-color: #42416F;
+				bottom: 28%;
+				right: 11%;
+				position: absolute;
+				z-index: 20;
+				box-shadow: 3px 3px 0 0 hsl(31, 82.6%, 30%), 4px 4px 0 0 hsl(31, 82.6%, 30%), 5px 5px 0 0 hsl(241, 26.1%, 25%);
+			}
+			#thing-13{
+			    cursor: pointer;
+				border: 1px dotted #000000;
+				width: 5%;
+				height: 10%;
+				background-color: #42416F;
+				bottom: 28%;
+				right: 3%;
+				position: absolute;
+				z-index: 20;
+				box-shadow: 3px 3px 0 0 hsl(31, 82.6%, 30%), 4px 4px 0 0 hsl(31, 82.6%, 30%), 5px 5px 0 0 hsl(241, 26.1%, 25%);
+			}
+			#thing-14{
+			    cursor: pointer;
+				border: 1px dotted #000000;
+				width: 5%;
+				height: 10%;
+				background-color: #42416F;
+				bottom: 12%;
+				right: 3%;
+				position: absolute;
+				z-index: 20;
+				box-shadow: 3px 3px 0 0 hsl(31, 82.6%, 30%), 4px 4px 0 0 hsl(31, 82.6%, 30%), 5px 5px 0 0 hsl(241, 26.1%, 25%);
+			}#thing-15{
+				border: 1px dotted #000000;
+				width: 5%;
+				height: 10%;
+				background-color: #42416F;
+				bottom: 12%;
+				right: 11%;
+				position: absolute;
+				z-index: 20;
+				box-shadow: 3px 3px 0 0 hsl(31, 82.6%, 30%), 4px 4px 0 0 hsl(31, 82.6%, 30%), 5px 5px 0 0 hsl(241, 26.1%, 25%);
+			}
+			#thing-16{
+			    cursor: pointer;
+				border: 1px dotted #000000;
+				width: 6%;
+				height: 50%;
+				background-color: #42416F;
+				bottom: 25%;
+				right: 16%;
+				position: absolute;
+				z-index: 20;
+				box-shadow: 3px 3px 0 0 hsl(31, 82.6%, 30%), 4px 4px 0 0 hsl(31, 82.6%, 30%), 5px 5px 0 0 hsl(241, 26.1%, 25%);
+			}#thing-17{
+			    cursor: pointer;
+				border: 1px dotted #000000;
+				width: 6%;
+				height: 50%;
+				background-color: #42416F;
+				bottom: 25%;
+				right: 3%;
+				position: absolute;
+				z-index: 20;
+				box-shadow: 3px 3px 0 0 hsl(31, 82.6%, 30%), 4px 4px 0 0 hsl(31, 82.6%, 30%), 5px 5px 0 0 hsl(241, 26.1%, 25%);
+			}
+			#left-up-three {
+				width: 10%;
+				height: 80%;
+				border: 2px solid #000000;
+				position: absolute;
+				left: 36%;
+				top: 10%;
+				box-shadow: 3px 3px 0 0 hsl(0, 0%, 65%), 4px 4px 0 0 hsl(0, 0%, 70%), 5px 5px 0 0 hsl(0, 0%, 75%), 6px 6px 0 0 hsl(0, 0%, 80%), 7px 7px 0 0 hsl(0, 0%, 85%);
+				background: #E67F60;
+			}
+			#black1{
+				width: 6%;
+				height: 20%;
+				background: #FFD079;
+				position: absolute;
+				top: 13%;
+				left: 39%;
+				border: 1px solid #000000;
+				box-shadow: 3px 3px 0 0 hsl(31, 82.6%, 30%), 4px 4px 0 0 hsl(31, 82.6%, 30%), 5px 5px 0 0 hsl(31, 82.6%, 30%);
+			}
+			#black2{
+				width: 6%;
+				height: 20%;
+				background: #FFD079;
+				position: absolute;
+				top: 40%;
+				left: 39%;
+				border: 1px solid #000000;
+				box-shadow: 3px 3px 0 0 hsl(31, 82.6%, 30%), 4px 4px 0 0 hsl(31, 82.6%, 30%), 5px 5px 0 0 hsl(31, 82.6%, 30%);
+			}
+			#black3{
+				width: 6%;
+				height: 20%;
+				background: #FFD079;
+				position: absolute;
+				top: 67%;
+				left: 39%;
+				border: 1px solid #000000;
+				box-shadow: 3px 3px 0 0 hsl(31, 82.6%, 30%), 4px 4px 0 0 hsl(31, 82.6%, 30%), 5px 5px 0 0 hsl(31, 82.6%, 30%);
+			}
+			#left-up-four {
+				width: 10%;
+				height: 100%;
+				border-left: 2px solid #442F1F;
+				border-right: 2px solid #442F1F;
+				position: absolute;
+				left: 48%;
+				top: 0;
+				background: rgba(133, 111, 79, .5);
+			}
+			
+			#left-up-five {
+				width: 15%;
+				height: 80%;
+				position: absolute;
+				left: 62%;
+				top: 10%;
+				border: 2px dotted #000000;
+				box-shadow: 3px 3px 0 0 hsl(0, 0%, 65%), 4px 4px 0 0 hsl(0, 0%, 70%), 5px 5px 0 0 hsl(0, 0%, 75%), 6px 6px 0 0 hsl(0, 0%, 80%), 7px 7px 0 0 hsl(0, 0%, 85%);
+			}
+			
+			#left-text1 {
+				width: 20%;
+				height: 10%;
+				position: absolute;
+				left: 59%;
+				top: 95%;
+				font-size: 5px;
+			}
+			
+			#left-up-six {
+				width: 15%;
+				height: 80%;
+				position: absolute;
+				left: 82%;
+				top: 10%;
+				border: 2px solid #000000;
+				box-shadow: 3px 3px 0 0 hsl(0, 0%, 65%), 4px 4px 0 0 hsl(0, 0%, 70%), 5px 5px 0 0 hsl(0, 0%, 75%), 6px 6px 0 0 hsl(0, 0%, 80%), 7px 7px 0 0 hsl(0, 0%, 85%);
+				background: #63D1AB;
+				cursor: pointer;
+			}
+			
+			#left-area-center {
+				width: 100%;
+				height: 10%;
+				background: rgba(133, 111, 79, .5);
+				color: black;
+			}
+			
+			#left-area-down {
+				width: 100%;
+				height: 45%;
+				border-top: 2px solid #442F1F;
+				position: relative;	
+								}
+			.details #left-area-down {
+			-webkit-transform: translateZ(40px);
+			transform: translateZ(40px);
+		}
+			#left-down-two {
+			    cursor: pointer;
+				width: 51%;
+				height: 80%;
+				position: absolute;
+				left: 9%;
+				top: 10%;
+				border: 2px solid #000000;
+				box-shadow: 3px 3px 0 0 hsl(0, 0%, 65%), 4px 4px 0 0 hsl(0, 0%, 70%), 5px 5px 0 0 hsl(0, 0%, 75%), 6px 6px 0 0 hsl(0, 0%, 80%), 7px 7px 0 0 hsl(0, 0%, 85%);
+				background: #EC9437;				
+			}
+
+			#down-house {
+				cursor: pointer;
+				width: 48%;
+				height: 68%;
+				border: 2px solid #000000;
+				position: absolute;
+				left: 10%;
+				top: 14%;
+				box-shadow: 0 5px 0px rgba(111, 109, 112, 0.9);
+				background: #EC9437;
+				box-shadow: 3px 3px 0 0 hsl(31, 82.6%, 30%), 4px 4px 0 0 hsl(31, 82.6%, 30%), 5px 5px 0 0 hsl(31, 82.6%, 30%);
+			    z-index:5;
+			}
+			
+			.triangle-left2 {
+				transform-style: preserve-3d;
+				transform: rotate(45deg);
+				width: 28px;
+				height: 2px;
+				background: #000000;
+				position: absolute;
+				top: 25px;
+				left: 40px;
+			}
+			.triangle-left3 {
+				transform-style: preserve-3d;
+				transform: rotate(-45deg);
+				width: 28px;
+				height: 2px;
+				background: #000000;
+				position: absolute;
+				bottom: 24px;
+				left: 40px;
+			}
+			.triangle-right2 {
+				transform-style: preserve-3d;
+				transform: rotate(135deg);
+				width: 28px;
+				height: 2px;
+				background: #000000;
+				position: absolute;
+				top: 25px;
+				right: 187px;
+			}
+			.triangle-right3 {
+				transform-style: preserve-3d;
+				transform: rotate(-135deg);
+				width: 28px;
+				height: 2px;
+				background: #000000;
+				position: absolute;
+				bottom: 24px;
+				right: 187px;
+			}
+			#left-down-three {
+				width: 12%;
+				height: 80%;
+				position: absolute;
+				left: 62%;
+				top: 10%;
+				border: 2px dotted #000000;
+				box-shadow: 3px 3px 0 0 hsl(0, 0%, 65%), 4px 4px 0 0 hsl(0, 0%, 70%), 5px 5px 0 0 hsl(0, 0%, 75%), 6px 6px 0 0 hsl(0, 0%, 80%), 7px 7px 0 0 hsl(0, 0%, 85%);
+				background: #94A6D6;
+			}
+			
+			#left-down-four {
+				width: 21%;
+				height: 80%;
+				position: absolute;
+				left: 76%;
+				top: 10%;
+				border: 2px solid #000000;
+				box-shadow: 3px 3px 0 0 hsl(0, 0%, 65%), 4px 4px 0 0 hsl(0, 0%, 70%), 5px 5px 0 0 hsl(0, 0%, 75%), 6px 6px 0 0 hsl(0, 0%, 80%), 7px 7px 0 0 hsl(0, 0%, 85%);
+				background: #63D1AB;
+				cursor: pointer;
+			}
+			
+			#middle-area {
+				float: left;
+				/* border-top: 2px solid #442F1F;
+				border-bottom: 2px solid #442F1F; */
+				height: 99%;
+				width: 4%;
+				float: left;
+				position: relative;
+				text-align: center;
+			}
+			
+			#text-up {
+				position: absolute;
+				top: 5%;
+				right: 25%;
+				writing-mode: tb-rl;
+			}
+			
+			#text-down {
+				position: absolute;
+				bottom: 5%;
+				right: 25%;
+				writing-mode: tb-rl;
+			}
+			
+			#right-area {
+				float: left;
+				width: 47.5%;
+				height: 99%;
+				border: 2px solid #442F1F;
+				background: #FFFFFF;
+			}
+			
+			#right-area-up {
+				position: relative;
+				width: 100%;
+				height: 45%;
+				
+			}
+			.right-0{
+			cursor: pointer;
+			    position: absolute;
+				left: 2%;
+				top: 10%;
+			    width: 43%;
+				height: 15%;
+				border-collapse: collapse;
+				background: #A87C59;
+				border-color: #000000;
+				text-align:center;
+				box-shadow: 3px 3px 0 0 hsl(0, 0%, 65%), 4px 4px 0 0 hsl(0, 0%, 70%), 5px 5px 0 0 hsl(0, 0%, 75%), 6px 6px 0 0 hsl(0, 0%, 80%), 7px 7px 0 0 hsl(0, 0%, 85%);
+			}
+		   
+		    .right-01{
+		        cursor: pointer;
+			    position: absolute;
+				left: 2%;
+				top: 35%;
+			    width: 43%;
+				height: 15%;
+				border-collapse: collapse;
+				background: #A87C59;
+				border-color: #000000;
+				text-align:center;
+				box-shadow: 3px 3px 0 0 hsl(0, 0%, 65%), 4px 4px 0 0 hsl(0, 0%, 70%), 5px 5px 0 0 hsl(0, 0%, 75%), 6px 6px 0 0 hsl(0, 0%, 80%), 7px 7px 0 0 hsl(0, 0%, 85%);
+			}
+			.right-02{
+			    cursor: pointer;
+			    position: absolute;
+				left: 2%;
+				top: 50%;
+			   width: 43%;
+				height: 15%;
+				border-collapse: collapse;
+				background: #A87C59;
+				border-color: #000000;
+				text-align:center;
+				box-shadow: 3px 3px 0 0 hsl(0, 0%, 65%), 4px 4px 0 0 hsl(0, 0%, 70%), 5px 5px 0 0 hsl(0, 0%, 75%), 6px 6px 0 0 hsl(0, 0%, 80%), 7px 7px 0 0 hsl(0, 0%, 85%);
+			}
+			.right-03{
+			    cursor: pointer;
+			    position: absolute;
+				left: 2%;
+				top: 75%;
+			    width: 43%;
+				height: 15%;
+				border-collapse: collapse;
+				background: #A87C59;
+				border-color: #000000;
+				text-align:center;
+				box-shadow: 3px 3px 0 0 hsl(0, 0%, 65%), 4px 4px 0 0 hsl(0, 0%, 70%), 5px 5px 0 0 hsl(0, 0%, 75%), 6px 6px 0 0 hsl(0, 0%, 80%), 7px 7px 0 0 hsl(0, 0%, 85%);
+			}
+			.right-04{
+			    cursor: pointer;
+			    position: absolute;
+				left: 2%;
+				top: 90%;
+			    width: 55%;
+				height: 15%;
+				border-collapse: collapse;
+				background: #A87C59;
+				border-color: #000000;
+				text-align:center;
+				box-shadow: 3px 3px 0 0 hsl(0, 0%, 65%), 4px 4px 0 0 hsl(0, 0%, 70%), 5px 5px 0 0 hsl(0, 0%, 75%), 6px 6px 0 0 hsl(0, 0%, 80%), 7px 7px 0 0 hsl(0, 0%, 85%);
+			}
+			.right-05{
+			    cursor: pointer;
+			    position: absolute;
+				left: 2%;
+				top: 110%;
+			    width: 55%;
+				height: 15%;
+				border-collapse: collapse;
+				background: #A87C59;
+				border-color: #000000;
+				text-align:center;
+				box-shadow: 3px 3px 0 0 hsl(0, 0%, 65%), 4px 4px 0 0 hsl(0, 0%, 70%), 5px 5px 0 0 hsl(0, 0%, 75%), 6px 6px 0 0 hsl(0, 0%, 80%), 7px 7px 0 0 hsl(0, 0%, 85%);
+			}
+			.right-06{
+			    cursor: pointer;
+			    position: absolute;
+				left: 2%;
+				top: 8%;
+			    width: 55%;
+				height: 15%;
+				border-collapse: collapse;
+				background: #A87C59;
+				border-color: #000000;
+				text-align:center;
+				box-shadow: 3px 3px 0 0 hsl(0, 0%, 65%), 4px 4px 0 0 hsl(0, 0%, 70%), 5px 5px 0 0 hsl(0, 0%, 75%), 6px 6px 0 0 hsl(0, 0%, 80%), 7px 7px 0 0 hsl(0, 0%, 85%);
+			}
+			.right-07{
+			    cursor: pointer;			
+			    position: absolute;
+				left: 2%;
+				top: 31%;
+			    width: 55%;
+				height: 15%;
+				border-collapse: collapse;
+				background: #A87C59;
+				border-color: #000000;
+				text-align:center;
+				box-shadow: 3px 3px 0 0 hsl(0, 0%, 65%), 4px 4px 0 0 hsl(0, 0%, 70%), 5px 5px 0 0 hsl(0, 0%, 75%), 6px 6px 0 0 hsl(0, 0%, 80%), 7px 7px 0 0 hsl(0, 0%, 85%);
+			}
+			.right-08{
+			    cursor: pointer;
+			    position: absolute;
+				left: 2%;
+				top: 54%;
+			    width: 55%;
+				height: 15%;
+				border-collapse: collapse;
+				background: #A87C59;
+				border-color: #000000;
+				text-align:center;
+				box-shadow: 3px 3px 0 0 hsl(0, 0%, 65%), 4px 4px 0 0 hsl(0, 0%, 70%), 5px 5px 0 0 hsl(0, 0%, 75%), 6px 6px 0 0 hsl(0, 0%, 80%), 7px 7px 0 0 hsl(0, 0%, 85%);
+			}
+			.right-09{
+			    cursor: pointer;
+			    position: absolute;
+				left: 2%;
+				top: 77%;
+			    width: 55%;
+				height: 15%;
+				border-collapse: collapse;
+				background: #A87C59;
+				border-color: #000000;
+				text-align:center;
+				box-shadow: 3px 3px 0 0 hsl(0, 0%, 65%), 4px 4px 0 0 hsl(0, 0%, 70%), 5px 5px 0 0 hsl(0, 0%, 75%), 6px 6px 0 0 hsl(0, 0%, 80%), 7px 7px 0 0 hsl(0, 0%, 85%);
+			}
+			.right-10{
+			  cursor: pointer;
+			  position: absolute;
+				left: 2%;
+				top: 50%;
+			    width: 43%;
+				height: 15%;
+				border-collapse: collapse;
+				background: #A87C59;
+				border-color: #000000;
+				text-align:center;
+				box-shadow: 3px 3px 0 0 hsl(0, 0%, 65%), 4px 4px 0 0 hsl(0, 0%, 70%), 5px 5px 0 0 hsl(0, 0%, 75%), 6px 6px 0 0 hsl(0, 0%, 80%), 7px 7px 0 0 hsl(0, 0%, 85%);
+			}
+			.right-11{
+			    cursor: pointer;
+			    position: absolute;
+				left: 2%;
+				top: 70%;
+			    width: 43%;
+				height: 15%;
+				border-collapse: collapse;
+				background: #A87C59;
+				border-color: #000000;
+				text-align:center;
+				box-shadow: 3px 3px 0 0 hsl(0, 0%, 65%), 4px 4px 0 0 hsl(0, 0%, 70%), 5px 5px 0 0 hsl(0, 0%, 75%), 6px 6px 0 0 hsl(0, 0%, 80%), 7px 7px 0 0 hsl(0, 0%, 85%);
+			}
+			.right-12{
+			    cursor: pointer;
+			    position: absolute;
+				left: 2%;
+				top: 30%;
+			    width: 43%;
+				height: 15%;
+				border-collapse: collapse;
+				background: #A87C59;
+				border-color: #000000;
+				text-align:center;
+				box-shadow: 3px 3px 0 0 hsl(0, 0%, 65%), 4px 4px 0 0 hsl(0, 0%, 70%), 5px 5px 0 0 hsl(0, 0%, 75%), 6px 6px 0 0 hsl(0, 0%, 80%), 7px 7px 0 0 hsl(0, 0%, 85%);
+			}
+			
+			#right-up-three {
+				width: 15%;
+				height: 65%;
+				position: absolute;
+				right: 37%;
+				top: 15%;
+				border: 2px dotted #000000;
+				box-shadow: 3px 3px 0 0 hsl(0, 0%, 65%), 4px 4px 0 0 hsl(0, 0%, 70%), 5px 5px 0 0 hsl(0, 0%, 75%), 6px 6px 0 0 hsl(0, 0%, 80%), 7px 7px 0 0 hsl(0, 0%, 85%);
+			}
+			
+			#right-up-four {
+				width: 15%;
+				height: 60%;
+				position: absolute;
+				right: 2%;
+				top: 20%;
+				border: 2px solid #000000;
+				box-shadow: 3px 3px 0 0 hsl(0, 0%, 65%), 4px 4px 0 0 hsl(0, 0%, 70%), 5px 5px 0 0 hsl(0, 0%, 75%), 6px 6px 0 0 hsl(0, 0%, 80%), 7px 7px 0 0 hsl(0, 0%, 85%);
+				background: #FFDC12;
+			}
+			
+			#right-up-five {
+				width: 15%;
+				height: 60%;
+				position: absolute;
+				right: 19%;
+				top: 20%;
+				border: 2px solid #000000;
+				box-shadow: 3px 3px 0 0 hsl(0, 0%, 65%), 4px 4px 0 0 hsl(0, 0%, 70%), 5px 5px 0 0 hsl(0, 0%, 75%), 6px 6px 0 0 hsl(0, 0%, 80%), 7px 7px 0 0 hsl(0, 0%, 85%);
+				background: #FFDC12;
+			}
+			
+			#right-text1 {
+				width: 15%;
+				height: 10%;
+				position: absolute;
+				left: 48.5%;
+				top: 4%;
+				font-size: 5px;
+			}
+			
+			#right-text2 {
+				width: 20%;
+				height: 10%;
+				position: absolute;
+				left: 63%;
+				top: 84%;
+			}
+			
+			#right-text3 {
+				width: 20%;
+				height: 10%;
+				position: absolute;
+				left: 81%;
+				top: 84%;
+			}
+			
+			#right-area-center {
+				width: 100%;
+				height: 10%;				
+				
+			}
+			#right-center-div{
+				float: right;
+				width: 42.2%;
+				background: rgba(133, 111, 79, .5);
+				height: 100%;
+				border-top: 2px solid #442F1F;
+				border-bottom: 2px solid #442F1F;
+			}
+			#right-area-down {
+				width: 100%;
+				height: 45%;
+				position: relative;
+				
+			}			
+			#right-down-five {
+				position: absolute;
+				left: 60%;
+				top: 18%;
+				border: 2px solid #000000;
+				height: 70%;
+				width: 37%;
+				box-shadow: 3px 3px 0 0 hsl(0, 0%, 65%), 4px 4px 0 0 hsl(0, 0%, 70%), 5px 5px 0 0 hsl(0, 0%, 75%), 6px 6px 0 0 hsl(0, 0%, 80%), 7px 7px 0 0 hsl(0, 0%, 85%);
+				background: #F0DBD7;
+			}
+			#down-house1 {
+				width: 33%;
+				height: 66%;
+				border: 2px solid #000000;
+				position: absolute;
+				right: 5%;
+				top: 12%;
+				box-shadow: 0 5px 0px rgba(111, 109, 112, 0.9);
+				background: #F0DBD7;
+				box-shadow: 3px 3px 0 0 hsl(10, 45.5%, 50%), 4px 4px 0 0 hsl(10, 45.5%, 50%), 5px 5px 0 0 hsl(10, 45.5%, 50%);
+			    z-index:5;
+			    font-size:12px;
+			}
+			
+			.triangle-left4 {
+				transform-style: preserve-3d;
+				transform: rotate(45deg);
+				width: 28px;
+				height: 2px;
+				background: #000000;
+				position: absolute;
+				top: 25px;
+				left: 40px;
+			}
+			.triangle-left5 {
+				transform-style: preserve-3d;
+				transform: rotate(-45deg);
+				width: 28px;
+				height: 2px;
+				background: #000000;
+				position: absolute;
+				bottom: 24px;
+				left: 40px;
+			}
+			.triangle-right4 {
+				transform-style: preserve-3d;
+				transform: rotate(135deg);
+				width: 28px;
+				height: 2px;
+				background: #000000;
+				position: absolute;
+				top: 25px;
+				right: 187px;
+			}
+			.triangle-right5 {
+				transform-style: preserve-3d;
+				transform: rotate(-135deg);
+				width: 28px;
+				height: 2px;
+				background: #000000;
+				position: absolute;
+				bottom: 24px;
+				right: 187px;
+			}
+			.door-right {
+				width: 2%;
+				height: 30%;
+				border: 2px solid #000000;
+				border-right: none;
+				position: absolute;
+				right: 0;
+				top: 30%;
+			}
+			
+			.door-bottom {
+				width: 30%;
+				height: 2%;
+				border: 2px solid #000000;
+				border-bottom: none;
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				background: #000000;
+			}
+			
+			.center-xy {
+				display: flex;
+				justify-content: center;
+				/*实现水平居中*/
+				align-items: center;
+				/*实现垂直居中*/
+			}
+			
+			.center-xy-text {
+				writing-mode: tb-rl;
+				display: flex;
+				justify-content: center;
+				/*实现水平居中*/
+				align-items: center;
+				/*实现垂直居中*/
+			}
+			
+			table {
+				/* word-break: break-all; */
+				width: 16%;
+				height: 35%;
+				border-collapse: collapse;				
+				border-color: #000000;
+				text-align:center;
+				box-shadow: 3px 3px 0 0 hsl(0, 0%, 65%), 4px 4px 0 0 hsl(0, 0%, 70%), 5px 5px 0 0 hsl(0, 0%, 75%), 6px 6px 0 0 hsl(0, 0%, 80%), 7px 7px 0 0 hsl(0, 0%, 85%);
+			}
+			
+			table td {			
+				font-size:15px;
+			}
+			.text-size{
+			    width: 50px !important;
+			}
+			
+.bar {
+			/*对高度提升渲染效果*/
+			will-change: height;
+			width: 15px;
+			height: 1px;
+			background-color: white;
+			/*定义转换，只是用 X 轴的值;定义沿着 X 轴的 3D 旋转;定义沿着Y 轴的3D 旋转*/
+			-webkit-transform: translateX(-7.5px) rotateX(-90deg) rotateY(-0deg);
+			transform: translateX(-7.5px) rotateX(-90deg) rotateY(-0deg);
+			/*transform-origin是变形原点，也就是该元素围绕着那个点变形或旋转，该属性只有在设置了transform属性的时候起作用；*/
+			-webkit-transform-origin: 100% 100%;
+			transform-origin: 100% 100%;
+			-webkit-transition: height 0.5s ease-in-out, margin 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+			transition: height 0.5s ease-in-out, margin 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+			transition: height 0.5s ease-in-out, margin 0.5s ease-in-out, transform 0.5s ease-in-out;
+			transition: height 0.5s ease-in-out, margin 0.5s ease-in-out, transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+			-webkit-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+			margin: 6px;
+			position: relative;
+			background: -webkit-linear-gradient(top, #feffff 0%, #ddf1f9 0%, #a0d8ef 100%);
+			background: linear-gradient(to bottom, #feffff 0%, #ddf1f9 0%, #a0d8ef 100%);
+		}
+		/*高度小于600px时*/
+		
+		@media (min-height: 600px) {
+			.bar {
+				/* margin: 20px;*/
+				
+				-webkit-transform: translateX(-12.5px) rotateX(-90deg) rotateY(-0deg);
+				transform: translateX(-12.5px) rotateX(-90deg) rotateY(-0deg);
+			}
+			.bar1 {
+				top:145px;
+				left:75px;
+				width:200px;
+				
+				
+			}
+		}
+		
+		.bar:after {
+			display: block;
+			content: '';
+			height: 100%;
+			width: 15px;
+			position: absolute;
+			top: 0;
+			right: -15px;
+			background-color: grey;
+			-webkit-transform: rotateY(90deg);
+			transform: rotateY(90deg);
+			-webkit-transform-origin: 0% 50%;
+			transform-origin: 0% 50%;
+			background: -webkit-linear-gradient(top, #feffff 0%, #85d7f7 0%, #4c8596 100%);
+			background: linear-gradient(to bottom, #feffff 0%, #85d7f7 0%, #4c8596 100%);
+		}
+		
+		@media (min-height: 600px) {
+			.bar:after {
+				width: 25px;
+				right: -25px;
+			}
+		}
+		
+		.bar:before {
+			font-family: 'Oxygen', sans-serif;
+			display: block;
+			content: '';
+			height: 15px;
+			width: 15px;
+			position: absolute;
+			top: -15px;
+			left: 0;
+			background: #EC9437;			
+			-webkit-transform: rotateX(90deg);
+			transform: rotateX(90deg);
+			-webkit-transform-origin: 0% 100%;
+			transform-origin: 0% 100%;
+			color: black;
+			text-align: center;
+			font-size: 10px;
+			line-height: 14px;
+			padding: 0;
+			-webkit-transition: color 0.3s ease-in-out;
+			transition: color 0.3s ease-in-out;
+			border: 2px solid #000000;
+		}
+		
+		@media (min-height: 600px) {
+			.bar:before {
+				width: 25px;
+				height: 25px;
+				top: -25px;
+				font-size: 12px;
+				line-height: 18px;
+			}
+		}
+		
+		.bar.bar1:before {
+			letter-spacing: 2px;
+			font-size: 20px;
+			content: '大件摆放区';
+			width: 200px !important;
+			height: 134px;
+			line-height: 134px;
+			-webkit-transform: rotateX(90deg) translateZ(109px);
+			transform: rotateX(90deg) translateZ(109px);
+		}
+		
+		.bar.bar1:after {
+			width: 134px;
+			-webkit-transform: rotateY(90deg) translateZ(109px);
+			transform: rotateY(90deg) translateZ(109px);
+		}
+
+
+
+		
+		
+		.details .bar {
+			cursor: pointer;
+			-webkit-transform: translateX(-7.5px) rotateX(-90deg) rotateY(-0deg);
+			transform: translateX(-7.5px) rotateX(-90deg) rotateY(-0deg);
+		}
+		
+		@media (min-height: 600px) {
+			.details .bar {
+				-webkit-transform: translateX(0px) rotateX(-45deg) rotateY(-0deg) translateY(-150px);
+				transform: translateX(0px) rotateX(-45deg) rotateY(-0deg) translateY(-150px);
+			}
+		}
+		
+		.details .bar.bar1 {
+			height: 100px;
+			width: 200px;
+			-webkit-transition-delay: 0.3s;
+			transition-delay: 0.3s;
+			margin-bottom: 200px;
+			margin-right: 10px;
+
+			
+		}
+
+		
+		.details .bar:before {
+		  	color: black;
+		  	border: none;
+		  	z-index: 9999;
+		  	background: white;
+		}
+
+		</style>
+	</head>
+
+	<body>
+		<div id="overall">
+			<div id="overall-border">
+				<div id="left-area">
+					<div id="left-area-up">
+						<div class="left-up-one center-xy-text">
+							<span>不合格品区</span>
+						</div>
+						<div id="left-up-two" class="center-xy">
+							<span style="z-index: 10;">大件存放区</span>
+						</div>
+						<div id="up-house"></div>
+						<div class="triangle-left"> </div>
+						<div class="triangle-left1"> </div>
+						<div class="triangle-right"> </div>
+						<div class="triangle-right1"> </div>
+						<div id="thing-1"></div>
+						<div id="thing-2"></div>
+						<div id="thing-3"></div>
+						<div id="thing-4"></div>
+						<div id="left-up-three" class="center-xy-text">
+							<span style="z-index: 10;">大件待检区</span>
+						</div>
+						<div id="black1"></div>
+						<div id="black2"></div>
+						<div id="black3"></div>
+						
+						<div id="left-up-four" class="center-xy-text">
+							<span>大件入库通道</span>
+						</div>
+						<div id="left-text1">叉车充电区</div>
+						<div id="left-up-five"><img src="${ctxStatic}/assets/img/lj1.png" style="width:100%;height:100%;"></div>
+						<div id="thing-8"></div>
+						<div id="thing-9"></div>
+						<div id="thing-10"></div>
+						<div id="thing-11"></div>
+						<div id="thing-12"></div>
+						<div id="thing-13"></div>
+						<div id="thing-14"></div>
+						<div id="thing-15"></div>
+						<div id="left-up-six" class="center-xy-text">
+							<span style="z-index: 50;">配送区</span>
+						</div>
+						
+					</div>
+					<div id="left-area-center" class="center-xy">通道</div>
+					<div id="left-area-down">
+						<div class="left-up-one center-xy-text">
+							<span>不合格品区</span>
+						</div>
+						<!-- <div id="left-down-two" class="center-xy">
+							<span style="z-index: 10;">大件存放区</span>
+						</div> -->
+						<div id="zbcl">
+						<div class="bar bar1"><span></span></div>
+					    </div>
+<!-- 					<div id="thing-5"></div>
+						<div id="thing-6"></div>
+						<div id="thing-7"></div>
+						
+						<div id="down-house"></div>
+						<div class="triangle-left2"> </div>
+						<div class="triangle-left3"> </div>
+						<div class="triangle-right2"> </div>
+						<div class="triangle-right3"> </div> -->
+						<div id="left-down-three" class="center-xy-text">
+							<span>&nbsp;&nbsp;工装车与空车存放区</span>
+						</div>
+						<a>
+						<div id="thing-16"></div>
+						<div id="thing-17"></div>
+						<div id="left-down-four" class="center-xy-text">
+							<span>配送区</span>
+						</div>
+						</a>
+					</div>
+				</div>
+				<div id="middle-area">
+					<span id="text-up">出库通道</span>
+					<span id="text-down">构体车间通道</span></div>
+				<div id="right-area">
+					<div id="right-area-up">
+						<div id="right-up-three"><img src="${ctxStatic}/assets/img/lj2.png" style="width:100%;height:100%;"></div>
+						<div id="right-text1">托盘车存放区</div>
+						<div id="right-up-four">
+							<div class="door-right"></div>
+							<div class="door-bottom"></div>
+						</div>
+						<div id="right-text2">休息室</div>
+						<div id="right-up-five">
+							<div class="door-right"></div>
+							<div class="door-bottom"></div>
+						</div>
+						<div id="right-text3">办公室</div>
+					</div>
+
+					<div id="right-area-center" >
+						
+						<div id="right-center-div" class="center-xy">中小件入库通道</div>
+					</div>
+					<div id="right-area-down">
+						<div id="right-down-five" >
+							
+						</div>
+						<div id="down-house1" class="center-xy"><span>中小物料待检区</span></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<span id="back"><span class="glyphicon glyphicon-send" aria-hidden="true" style="font-size: 25px;top: 2px !important;"></span>&nbsp;&nbsp;平面图视角</span>
+<script type="text/javascript" src="${ctxStatic}/assets/js/jquery.js"></script>	
+<script type="text/javascript">
+         jQuery(function($){
+         var trayList =$.parseJSON('${codeList}');
+          
+         var num = trayList.length;  
+         if(num == 1){         
+          $("#right-area-down").append("<table class='right-06' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['0'] +"</td></tr></table>");             
+          }else if(num == 2){              
+          $("#right-area-down").append("<table class='right-06' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['0'] +"</td></tr></table>");                                             
+          $("#right-area-down").append("<table class='right-07' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['1'] +"</td></tr></table>");           
+          }else if(num == 3){              
+          $("#right-area-down").append("<table class='right-06' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['0'] +"</td></tr></table>");                                             
+          $("#right-area-down").append("<table class='right-07' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['1'] +"</td></tr></table>",
+          "<table class='right-08' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['2'] +"</td></tr></table>");           
+          }else if(num == 4){              
+          $("#right-area-down").append("<table class='right-06' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['0'] +"</td></tr></table>",
+          "<table class='right-07' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['1'] +"</td></tr></table>");                                             
+          $("#right-area-down").append("<table class='right-08' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['2'] +"</td></tr></table>",
+          "<table class='right-09' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['3'] +"</td></tr></table>");           
+          }else if(num == 5){ 
+          $("#right-area-up").append(
+          "<table class='right-05' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['0'] +"</td></tr></table>");                                                   
+           $("#right-area-down").append(  
+          "<table class='right-06' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['1'] +"</td></tr></table>",
+          "<table class='right-07' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['2'] +"</td></tr></table>",
+          "<table class='right-08' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['3'] +"</td></tr></table>",                
+          "<table class='right-09' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['4'] +"</td></tr></table>");                                             
+          }else if(num == 6){              
+          $("#right-area-up").append("<table class='right-04' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['0'] +"</td></tr></table>",
+          "<table class='right-05' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['1'] +"</td></tr></table>");                                             
+         $("#right-area-down").append(  
+          "<table class='right-06' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['2'] +"</td></tr></table>",
+          "<table class='right-07' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['3'] +"</td></tr></table>",
+          "<table class='right-08' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['4'] +"</td></tr></table>",                
+          "<table class='right-09' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['5'] +"</td></tr></table>");                                             
+          }else if(num == 7){              
+          $("#right-area-up").append("<table class='right-11' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['0'] +"</td></tr></table>",
+          "<table class='right-04' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['1'] +"</td></tr></table>",
+          "<table class='right-05' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['2'] +"</td></tr></table>");
+                
+          $("#right-area-down").append(  
+          "<table class='right-06' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['3'] +"</td></tr></table>",
+          "<table class='right-07' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['4'] +"</td></tr></table>",
+          "<table class='right-08' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['5'] +"</td></tr></table>",                
+          "<table class='right-09' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['6'] +"</td></tr></table>");                                             
+          }else if(num == 8){              
+          $("#right-area-up").append("<table class='right-10' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['0'] +"</td></tr></table>",
+          "<table class='right-11' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['1'] +"</td></tr></table>",
+          "<table class='right-04' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['2'] +"</td></tr></table>",
+          "<table class='right-05' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['3'] +"</td></tr></table>");
+          $("#right-area-down").append("<table class='right-06' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['4'] +"</td></tr></table>",
+          "<table class='right-07' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['5'] +"</td></tr></table>",
+          "<table class='right-08' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['6'] +"</td></tr></table>",
+          "<table class='right-09' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['7'] +"</td></tr></table>");                                             
+          }else if(num == 9){              
+          $("#right-area-up").append("<table class='right-12' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['0'] +"</td></tr></table>",
+          "<table class='right-10' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['1'] +"</td></tr></table>",
+          "<table class='right-11' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['2'] +"</td></tr></table>",
+          "<table class='right-04' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['3'] +"</td></tr></table>",
+          "<table class='right-05' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['4'] +"</td></tr></table>");
+          $("#right-area-down").append("<table class='right-06' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['5'] +"</td></tr></table>",
+          "<table class='right-07' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['6'] +"</td></tr></table>",
+          "<table class='right-08' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['7'] +"</td></tr></table>",
+          "<table class='right-09' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['8'] +"</td></tr></table>");                                             
+          }else if(num == 10){              
+          $("#right-area-up").append("<table class='right-0' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['0'] +"</td></tr></table>",
+          "<table class='right-01' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['1'] +"</td></tr></table>",
+          "<table class='right-02' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['2'] +"</td></tr></table>",
+          "<table class='right-03' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['3'] +"</td></tr></table>",
+          "<table class='right-04' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['4'] +"</td></tr></table>",
+          "<table class='right-05' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['5'] +"</td></tr></table>");
+          $("#right-area-down").append("<table class='right-06' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['6'] +"</td></tr></table>",
+          "<table class='right-07' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['7'] +"</td></tr></table>",
+          "<table class='right-08' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['8'] +"</td></tr></table>",
+          "<table class='right-09' border='2'><tr><td class='text-size'>货架</td><td>"+trayList['9'] +"</td></tr></table>");                                             
+          }
+          
+	          $("#left-up-six").click(function(){
+	          		window.open("${ctx}/virtual/deliverylook");
+	          });
+	          $("#left-down-four").click(function(){
+	          		window.open("${ctx}/virtual/deliverylook");
+	          });
+	          $("#right-area-up").on("click","table",function(){
+	          	var code = $(this).find('tr').eq(0).find('td').eq(1).text();
+	          	window.open("${ctx}/virtual/shelflook?code="+code);
+	          });
+	          $("#right-area-down").on("click","table",function(){
+	          	var code = $(this).find('tr').eq(0).find('td').eq(1).text();
+	          	window.open("${ctx}/virtual/shelflook?code="+code);
+	          });	       
+	          $("#left-down-two").click(function(){
+	          		window.open("${ctx}/virtual/bulkLayout");
+	          });
+	          
+	      var body = document.body;    
+	      var toggleTilt = function() {
+					body.classList.add('details');
+					var infoPage = document.getElementsByClassName('details')[0].getElementsByClassName("bar");
+					//js与jquery的不同之处，jquery已经帮助处理了此循环，class返回的数组无法绑定事件，需要单独绑定，因此需要循环来绑定。
+					if(!!infoPage) {
+						for(var i = 0; i < infoPage.length; i++) {
+							var item = infoPage[i];
+							item.onclick = function() {
+								
+												
+							};
+						}
+					}					
+				};
+				var toggleBack = function() {
+					var infoPage = document.getElementsByClassName('details')[0].getElementsByClassName("bar");
+					//js与jquery的不同之处，jquery已经帮助处理了此循环，class返回的数组无法绑定事件，需要单独绑定，因此需要循环来绑定。
+					if(!!infoPage) {
+						for(var i = 0; i < infoPage.length; i++) {
+							var item = infoPage[i];
+							item.onclick = null;
+						}
+					}
+					body.classList.remove('details');
+				};
+				/*进入立体图*/
+				document.getElementById("overall").addEventListener('click', toggleTilt);
+				/*回退到平面图*/
+				document.getElementById("back").addEventListener('click', toggleBack);
+				body.addEventListener('touchstart', toggleTilt);
+				if(location.pathname.match(/fullcpgrid/i))
+				setTimeout(toggleTilt, 1000);    
+         })
+</script>
+	</body>
+</html>
