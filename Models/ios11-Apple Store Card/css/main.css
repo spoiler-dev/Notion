@@ -46,7 +46,7 @@ a {
 }
 
 .new-series-wrapper .con {
-    margin: 0 24px;
+    margin: 0 20px;
     padding-top: 20px;
     border-top: 1px solid #d8d8d8;
 }
@@ -167,4 +167,53 @@ a {
 
 .item-warning {
     background-color: #f90;
+}
+.item-author {
+    font-size: 16px;
+    color: #999;
+    font-weight: 700;
+    margin-bottom: 15px;
+    margin-left: 10px;
+}
+.probation-tag {
+    display: inline-block;
+    background-color: #1c8ce9;
+    width: 44.8px;
+    height: 16px;
+    line-height: 16px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 10px;
+    text-align: center;
+    transform: translateY(-1px);
+}
+.mybtn{
+    font-size: 16px;
+    line-height: 48px;
+    display: inline-block;
+    color: #FFF;
+    font-weight: 500;
+    letter-spacing: 5px;
+    width: 100px;
+    height: 48px;
+    text-align: center;
+    clear: both;
+    border-radius: 100px;
+    box-shadow: 0 2px 4px 0 rgba(1, 172, 38, 0.5);
+    border-color: transparent;
+}
+.mybtn-success{
+    background-color: #28d351;
+
+}
+.my-state{
+    float: left;
+    width: 100px;
+    height: 95px;
+}
+.my-state-time{
+    background-color: rgba(1,126,102,0.08);
+    color: #017E66;
+    padding: 4px;
+    font-size: 13px;
 }
