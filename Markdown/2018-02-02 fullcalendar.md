@@ -3,8 +3,6 @@
 -------------------
 > * 点击表头 title 即可出现日历，选择日期后跳转
 
-[TOC]
-
 ### 1. 源代码
 ``` html
 <%@ page contentType="text/html;charset=UTF-8"%>
