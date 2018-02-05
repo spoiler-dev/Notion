@@ -57,6 +57,8 @@ $ git push -u origin master
 5.再次回到vscode中，再次点击更多，点击推送(push)，出现输入GitHub邮箱窗口，输入后，出现输入Github密码窗口,vscode控制台可以看到git的相关输出。
 此时文件夹中的文件便以成功提交到GitHub中，浏览器刷新查看。
 
+6.同步GitHub代码到本地，选择'拉取'即可
+
 **注：**若如仍无法解决问题，也可以参考以下的博文：
 > * http://blog.csdn.net/lhb_11/article/details/77837078
 > * https://www.cnblogs.com/ashidamana/p/6122619.html
