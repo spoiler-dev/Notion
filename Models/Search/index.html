@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			html,
+			body {
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				padding: 0;
+				text-align: center;
+			}
+			#overall-border{
+				width: 1019.19px;
+				height: 370.39px;
+				border: 2px solid #6666CC;
+				padding: 2px;
+				background: #7F7FFF;
+				z-index: -1;
+				
+				
+			}
+			#overall {
+				margin-top: 20%;
+				margin-left: 10.5%;
+				width: 80%;
+				height: 40%;
+				
+				
+			}
+			
+			#left-area {
+				float: left;
+				width: 47.5%;
+				height: 99%;
+				border: 2px solid #6666CC;
+				background: #FFFFFF;
+			}
+			
+			#left-area-up {
+				width: 100%;
+				height: 45%;
+				border-bottom: 2px solid #6666CC;
+				position: relative;
+			}
+			
+			.left-up-one {
+				width: 5%;
+				height: 80%;
+				border: 2px solid #000000;
+				position: absolute;
+				left: 2%;
+				top: 10%;
+			}
+			
+			#left-up-one span {}
+			
+			#left-up-two {
+				width: 26%;
+				height: 80%;
+				border: 2px solid #000000;
+				position: absolute;
+				left: 9%;
+				top: 10%;
+			   
+						
+			}
+		
+			#left-up-three {
+				width: 10%;
+				height: 80%;
+				border: 2px solid #000000;
+				position: absolute;
+				left: 36%;
+				top: 10%;
+				
+				
+			}
+			
+			
+			#left-up-four {
+				width: 10%;
+				height: 100%;
+				border-left: 2px solid #6666CC;
+				border-right: 2px solid #6666CC;
+				position: absolute;
+				left: 48%;
+				top: 0;
+				
+			}
+			
+			#left-up-five {
+				width: 15%;
+				height: 80%;
+				position: absolute;
+				left: 61%;
+				top: 10%;
+				border: 2px dotted #000000;
+			}
+			
+			#left-up-six {
+				width: 15%;
+				height: 80%;
+				position: absolute;
+				left: 82%;
+				top: 10%;
+				border: 2px solid #000000;
+			}
+			
+			#left-area-center {
+				width: 100%;
+				height: 10%;
+			}
+			
+			#left-area-down {
+				width: 100%;
+				height: 45%;
+				border-top: 2px solid #6666CC;
+				position: relative;
+			}
+			
+			#left-down-two {
+				width: 51%;
+				height: 80%;
+				position: absolute;
+				left: 9%;
+				top: 10%;
+				border: 2px solid #000000;
+			}
+			
+			#left-down-three {
+				width: 12%;
+				height: 80%;
+				position: absolute;
+				left: 62%;
+				top: 10%;
+				border: 2px dotted #000000;
+			}
+			
+			#left-down-four {
+				width: 21%;
+				height: 80%;
+				position: absolute;
+				left: 76%;
+				top: 10%;
+				border: 2px solid #000000;
+			}
+			
+			#middle-area {
+				float: left;
+				border-top: 2px solid #6666CC;
+				border-bottom: 2px solid #6666CC;
+				height: 99%;
+				width: 4%;
+				float: left;
+				background: #FFFFFF;
+				position: relative;
+				text-align: center;
+			}
+			#text-up{
+				position: absolute;
+				top: 5%;
+				right: 25%;
+				writing-mode:tb-rl;
+				
+			}
+			#text-down{
+				position: absolute;
+				bottom: 5%;
+				right: 25%;
+				writing-mode:tb-rl;
+				
+			}
+			#right-area {
+				float: left;
+				width: 47.5%;
+				height: 99%;
+				border: 2px solid #6666CC;
+				background: #FFFFFF;
+			}
+			
+			#right-area-up {
+				position: relative;
+				width: 100%;
+				height: 45%;
+				border-bottom: 2px solid #6666CC;
+			}
+			
+			#right-up-one {
+				position: absolute;
+				left: 2%;
+				top: 55%;
+			}
+			
+			#right-up-two {
+				position: absolute;
+				left: 2%;
+				top: 10%;
+			}
+			
+			#right-up-three {
+				width: 15%;
+				height: 70%;
+				position: absolute;
+				left: 36%;
+				top: 15%;
+				border: 2px dotted #000000;
+			}
+			
+			#right-up-four {
+				width: 20%;
+				height: 60%;
+				position: absolute;
+				left: 53%;
+				top: 20%;
+				border: 2px solid #000000;
+			}
+			
+			#right-up-five {
+				width: 20%;
+				height: 60%;
+				position: absolute;
+				left: 75%;
+				top: 20%;
+				border: 2px solid #000000;
+			}
+			#right-text1{
+				width: 15%;
+				height: 10%;
+				position: absolute;
+				left: 36%;
+				top: 88%;
+				font-size: 5px;
+			}
+			#right-text2{
+				width: 20%;
+				height: 10%;
+				position: absolute;
+				left: 53%;
+				top: 84%;
+				
+			}
+			#right-text3{
+				width: 20%;
+				height: 10%;
+				position: absolute;
+				left: 75%;
+				top: 84%;
+			
+			}
+			#right-area-center {
+				width: 100%;
+				height: 10%;
+			}
+			
+			#right-area-down {
+				width: 100%;
+				height: 45%;
+				position: relative;
+				border-top: 2px solid #6666CC;
+			}
+			
+			#right-down-one {
+				position: absolute;
+				left: 2%;
+				top: 55%;
+			}
+			
+			#right-down-two {
+				position: absolute;
+				left: 2%;
+				top: 10%;
+			}
+			
+			#right-down-three {
+				position: absolute;
+				left: 36%;
+				top: 10%;
+			}
+			
+			#right-down-four {
+				position: absolute;
+				left: 36%;
+				top: 55%;
+			}
+			
+			#right-down-five {
+				position: absolute;
+				left: 70%;
+				top: 15%;
+				border: 2px solid #000000;
+				height: 70%;
+				width: 27%;
+			}
+			
+			.door-right {
+				width: 2%;
+				height: 30%;
+				border: 2px solid #000000;
+				border-right: none;
+				position: absolute;
+				right: 0;
+				top: 30%;
+			}
+			
+			.door-bottom {
+				width: 30%;
+				height: 2%;
+				border: 2px solid #000000;
+				border-bottom: none;
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				background: #000000;
+			}
+			.center-xy{
+				display: flex;
+                justify-content: center;/*实现水平居中*/
+                align-items:center; /*实现垂直居中*/
+			}
+			.center-xy-text{
+				writing-mode:tb-rl;
+				display: flex;
+                justify-content: center;/*实现水平居中*/
+                align-items:center; /*实现垂直居中*/
+			}
+			table {
+				width: 32%;
+				height: 35%;
+				border-collapse: collapse;
+			}
+			
+			table td {
+				width: 5%;
+			}
+		</style>
+	</head>
+
+	<body>
+		
+		<div id="overall">
+			<div id="overall-border">
+				<div id="left-area">
+					<div id="left-area-up">
+						<div class="left-up-one center-xy-text">
+							<span>不合格品区</span>
+						</div>
+						<div id="left-up-two" class="center-xy">
+							<span>大件存放区</span>
+						</div>
+						<div id="left-up-three" class="center-xy-text">
+							<span>大件待检区</span>
+						</div>
+						<div id="left-up-four" class="center-xy-text">
+							<span>大件入库通道</span>
+						</div>
+						<div id="left-up-five"></div>
+					<a href="distribution.html"><div id="left-up-six" class="center-xy-text" >
+							<span>配送区</span>
+						</div></a>	
+					</div>
+					<div id="left-area-center" class="center-xy">通道</div>
+					<div id="left-area-down">
+						<div class="left-up-one center-xy-text">
+							<span>不合格品区</span>
+						</div>
+						<div id="left-down-two" class="center-xy">
+							<span>大件存放区</span>
+						</div>
+						<div id="left-down-three" class="center-xy-text">
+							<span>&nbsp;&nbsp;工装车与空车存放区</span>
+						</div>
+						<div id="left-down-four" class="center-xy-text">
+							<span>配送区</span>
+						</div>
+					</div>
+				</div>
+				<div id="middle-area">
+					<span id="text-up" >出库通道</span>
+					<span id="text-down">构体车间通道</span></div>
+				<div id="right-area">
+					<div id="right-area-up">
+						<table id="right-up-one" border="2">
+							<tr>
+								<td>货架</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</table>
+						<table id="right-up-two" border="2">
+							<tr>
+								<td>货架</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</table>
+						<div id="right-up-three"></div>
+						<div id="right-text1">托盘车存放区</div>
+						<div id="right-up-four">
+							<div class="door-right"></div>
+							<div class="door-bottom"></div>
+						</div>
+						<div id="right-text2">办公室</div>
+						<div id="right-up-five">
+							<div class="door-right"></div>
+							<div class="door-bottom"></div>
+						</div>
+						<div id="right-text3">休息室</div>
+					</div>
+                        
+					<div id="right-area-center" class="center-xy">
+						中小件入库通道
+					</div>
+					<div id="right-area-down">
+						<table id="right-down-one" border="2">
+							<tr>
+								<td>货架</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</table>
+						<table id="right-down-two" border="2">
+							<tr>
+								<td>货架</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</table>
+						<table id="right-down-three" border="2">
+							<tr>
+								<td>货架</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</table>
+						<table id="right-down-four" border="2">
+							<tr>
+								<td>货架</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</table>
+						<div id="right-down-five" class="center-xy">
+							<span>中小物料待检区</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+
+</html>

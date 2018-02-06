@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>货架</title>
+
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Droid+Sans+Mono" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/style2.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="css/ace.css" />
+		<link rel="stylesheet" type="text/css" href="css/ace-fonts.css" />
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.css" />
+		<script src="js/jquery-2.1.1.min.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<!--[if IE]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+		<script>
+			document.documentElement.className = 'js';
+		</script>
+		<style type="text/css">
+			.black_overlay {
+				display: none;
+				top: 0;
+				left: 0;
+				position: fixed;
+				width: 100%;
+				height: 100%;
+				background-color: #595959;
+				z-index: 1001;
+				-moz-opacity: 0.8;
+				opacity: .80;
+				filter: alpha(opacity=80);
+			}
+			
+			.white_content {
+				display: none;
+				position: fixed;
+				top: 25%;
+				left: 25%;
+				width: 50%;
+				height: 55%;
+				padding: 16px;
+				border: 10px solid #B4EEB4;
+				background-color: white;
+				z-index: 1002;
+				overflow: auto;
+			}
+			
+			#table-things {
+				margin: 0 auto;
+				border: none;
+				width: 250px;
+				overflow: hidden;
+				text-align: center;
+				margin-top: 25px;
+				height: 500px;
+				overflow: auto
+			}
+			
+			#table-things .tr-hw {
+				margin-bottom: 15px;
+				display: block;
+				width: 540px;
+			}
+			
+			#table-things .td-hw {
+				display: block;
+				background: #FFF68F;
+				height: 60px;
+				line-height: 60px;
+			}
+			
+			#into {
+				margin-top: 10px;
+			}
+			
+			th {
+				text-align: center !important;
+			}
+			/*设置背景图片*/
+			
+			#coverpage {
+				width: 100%;
+				height: 100%;
+				z-index: -9999;
+				background: #000;
+				overflow: hidden;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			
+			#onepics {
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				position: relative;
+			}
+			
+			.onepic_wrap {
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				display: block;
+				position: relative;
+				cursor: pointer;
+			}
+			
+			.onepic_bg {
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				height: 45px;
+				width: 100%;
+				color: #fff;
+				background: rgba(0, 0, 0, 0.5);
+				filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#7f000000', EndColorStr='#7f000000');
+				*zoom: 1;
+			}
+			
+			:root .onepic_bg {
+				filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#00000000', EndColorStr='#00000000');
+			}
+			
+			
+		</style>
+	</head>
+
+	<body>
+
+		<main>
+
+			<header class="codrops-header">
+				<nav class="codrops-demos">
+					<a class="link" href="货架.html">货架</a>
+				</nav>
+			</header>
+
+			<div class="calendar-wrap">
+				<div class="calendar">
+					
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-inactive data-bg-color="#DDF4DE"></div>
+                     <div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-inactive data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-inactive data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+					<div class="cube" data-bg-color="#DDF4DE"></div>
+				
+
+				</div>
+
+				<div class="content">
+
+				</div>
+				<!-- /content -->
+			</div>
+
+			<div id="light" class="white_content">
+
+				<a href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'" style="float: right;">
+					<i class="ace-icon fa fa-times red2 bigger-180"></i></a>
+				<table id="table-things">
+					<tr class="tr-hw">
+						<td>
+							<h4><strong>货架商品列表</strong></h4>
+						</td>
+					</tr>
+					<tr id="inafter" class="tr-hw">
+						<td id="info" class="td-hw">货物1</td>
+					</tr>
+					<tr class="tr-hw">
+						<td class="td-hw">货物2</td>
+					</tr>
+					<tr class="tr-hw">
+						<td class="td-hw">货物3</td>
+					</tr>
+					<tr class="tr-hw">
+						<td class="td-hw">货物4</td>
+					</tr>
+
+				</table>
+			</div>
+			<div id="fade" class="black_overlay">
+			</div>
+			<div id="into">
+				<span class="ace-icon fa fa-caret-down icon-only" style="margin:0 auto;display: block;font-size: 22.5px;"></span>
+				<!--	<span class="line_m">中间是空格</span>文字<span class="line_m">中间是空格</span>-->
+				<hr style="border: 1px dotted #959595;width: 50px;float: left;">
+				<h5 style="float: left;margin-left: 10px;">物料信息</h5>
+				<hr style="border: 1px dotted #959595;width: 404px;float: right;margin-bottom: 10px;">
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<td>编码</td>
+							<td></td>
+							<td>型号</td>
+							<td></td>
+							<td>规格</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>总量</td>
+							<td></td>
+							<td>单位</td>
+							<td></td>
+							<td>物料状态</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>项目仓库</td>
+							<td></td>
+							<td>工位</td>
+							<td></td>
+							<td>负责人</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>盈亏</td>
+							<td></td>
+
+						</tr>
+					</tbody>
+				</table>
+				<hr style="border: 1px dotted #959595;width: 50px;float: left;">
+				<h5 style="float: left;margin-left: 10px;">物料详情</h5>
+				<hr style="border: 1px dotted #959595;width: 404px;float: right;">
+				<div class="tabbable tabs-left" style="clear: both;">
+
+					<ul class="nav nav-tabs" id="myTab3">
+
+						<li class="active">
+							<a data-toggle="tab" href="#profile3">
+								<i class="blue ace-icon fa fa-user bigger-110"></i> 上下架
+							</a>
+						</li>
+
+						<li>
+							<a data-toggle="tab" href="#dropdown13">
+								<i class="ace-icon fa fa-rocket"></i> 借料
+							</a>
+						</li>
+					</ul>
+
+					<div class="tab-content">
+
+						<div id="profile3" class="tab-pane in active">
+							<table class="table table-bordered" style="margin-top:0px !important ;">
+
+								<tbody>
+									<tr>
+										<th>来源单据号</th>
+										<th>上架时间</th>
+										<th>下架时间</th>
+										<th>数量</th>
+										<th>操作者</th>
+
+									</tr>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+
+									</tr>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+
+									</tr>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+
+									</tr>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<div id="dropdown13" class="tab-pane">
+							<table class="table table-bordered" style="margin-top:0px !important ;">
+
+								<tbody>
+									<tr>
+										<th>借料单据号</th>
+										<th>借料时间</th>
+										<th>数量</th>
+										<th>借料者</th>
+
+									</tr>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+
+									</tr>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+
+									</tr>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+
+										<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+
+										</tr>
+										<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+
+										</tr>
+										<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+
+										</tr>
+										<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+
+										</tr>
+										<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+
+										</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script language="javascript">
+			$(function() {
+				$('#into').hide();
+				$('#info').click(function() { //点击a标签        
+					if($('#into').is(':hidden')) { //如果当前隐藏  
+						$('#into').show().appendTo('#inafter'); //那么就显示div  
+					} else { //否则  
+						$('#into').hide(); //就隐藏div  
+					}
+				})
+			})
+		</script>
+		<!-- cover begin -->
+<div id="coverpage">
+  <div id="onepics"><div class="onepic_wrap"><img src="img/5655f2491d4b2.jpg" class="wrap_pic"></div></div>
+  
+</div>
+
+<script type="text/javascript">
+      var win_height; //浏览器当前窗口可视区域高度
+      var win_width; //浏览器当前窗口可视区域宽度
+      var original_width = 2100; //图片原始尺寸，编辑可手填
+      var original_height = 1000; //图片原始尺寸，编辑可手填
+
+      var pic_width, pic_height, pic_left ,pic_top; //裁剪适配后的图片显示尺寸和左边距、上边距
+
+	  OnePicAction();
+
+      function OnePicAction(){
+          win_height = $(window).height(); //浏览器当前窗口可视区域高度
+          win_width = $(window).width(); //浏览器当前窗口可视区域宽度
+
+          //裁剪图片
+          if(Math.ceil(win_height * original_width / original_height) < win_width ){
+              pic_width = win_width ;
+              pic_height = Math.ceil(win_width * original_height / original_width);
+              pic_left = 0;
+              pic_top = - Math.ceil((pic_height - win_height) / 2);
+          }else{
+              pic_height = win_height;
+              pic_width = Math.ceil(win_height * original_width / original_height);
+              pic_left = - Math.ceil((pic_width - win_width) / 2);
+              pic_top = 0;
+          }
+          $("#onepics .wrap_pic").css("width",pic_width+"px").css("height",pic_height+"px").css("margin-top",pic_top+"px").css("margin-left",pic_left+"px");
+
+      }
+	  //浏览器大小变化时壹图处理
+	  window.onresize = function(){
+		  OnePicAction();
+	  }
+
+</script>
+<script type="text/javascript"> 
+function popup(light){ 
+var _scrollHeight = $(document).scrollTop(),//获取当前窗口距离页面顶部高度 
+_windowHeight = $(window).height(),//获取当前窗口高度 
+_windowWidth = $(window).width(),//获取当前窗口宽度 
+_popupHeight = light.height(),//获取弹出层高度 
+_popupWeight = light.width();//获取弹出层宽度 
+_posiTop = (_windowHeight - _popupHeight)/2 + _scrollHeight; 
+_posiLeft = (_windowWidth - _popupWeight)/2; 
+light.css({"left": _posiLeft + "px","top":_posiTop + "px","display":"block"});//设置position 
+} 	
+</script>
+		<script src="js/charming.min.js"></script>
+		<script src="js/anime.min.js"></script>
+		<script src="js/textfx.js"></script>
+		<script src="js/main2.js"></script>
+
+	</body>
+
+</html>

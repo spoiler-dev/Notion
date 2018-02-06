@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="css/ace.css" />
+		<link rel="stylesheet" type="text/css" href="css/ace-fonts.css" />
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.css" />
+		<script src="js/jquery-2.1.1.min.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<style type="text/css">
+			#triangle-left {
+				width: 0;
+				height: 0;
+				border-left: 80px solid transparent;
+                border-right: 0px solid transparent;
+                border-bottom: 60px solid #e4e6e9;
+                
+				position: absolute;
+				bottom: 0;
+				right: 0;
+			}
+			
+			#left {
+				width: 1164px;
+				height: 600px;
+				background: #C9D6E5;
+				margin-top: 10%;
+				position: relative;
+				color: #F0F7FC;
+				border-left:2px dotted #080808;
+			}
+			#put-one{
+				position: absolute;
+				left: 15%;
+				top: 30%;
+				width: 50%;
+				height: 60%;
+				background: #009CEB;
+				display:table;
+				border: 2px solid #080808;
+			}
+			#put-two{
+				position: absolute;
+				left: 75%;
+				top: 30%;
+				width: 22%;
+				height: 15%;
+				background: #009CEB;
+				display:table;
+				border:2px dotted #080808;
+			}
+			#put-three{
+				position: absolute;
+				left: 75%;
+				top: 48%;
+				width: 22%;
+				height: 40%;
+				background: #009CEB;
+				border-radius:20px ;
+				display:table;
+				border: 2px solid #080808;
+			}
+			#put-four{
+				position: absolute;
+				left: 0%;
+				top: 15%;
+				width: 6%;
+				height: 70%;
+				background: #009CEB;
+				display:table;
+			    border: 2px solid #080808;
+			    border-left:none ;
+			}
+			#put-five{
+				position: absolute;
+				left: 15%;
+				top: 10%;
+				width: 50%;
+				height: 15%;
+				background: #009CEB;
+				display:table;
+				border: 2px solid #080808;
+			}
+			span{
+				display:table-cell; vertical-align:middle;
+				text-align: center;
+			}
+			
+			.slopingside{  
+				position: absolute;
+				bottom: 28px;
+				right: -10px;
+        height:0px;  
+        border:1.5px dotted #080808;  
+        width: 95px;  
+        transform:rotate(125deg);  
+        -o-transform:rotate(125deg);  
+        -moz-transform:rotate(125deg);  
+        -webkit-transform:rotate(143deg);  
+        z-index: 999;
+    }  
+    
+
+
+
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+		<div class="row">
+			<div id='left'>
+<div class="slopingside"></div>  
+
+				<div id="triangle-left"> </div>
+			    <div id="all">
+				<div id="put-one"><span>大件摆放</span></div>
+				<div id="put-two"><span>大件摆放</span></div>
+				<div id="put-three"><span>大件摆放</span></div>
+				<div id="put-four"><span>大件摆放</span></div>
+				<div id="put-five"><span>大件摆放</span></div>
+				<div style="border-top:2px dotted #080808;height: 2px;width:100%;overflow:hidden;position: absolute;top: 0;left: 0;"></div>
+				<div style="border-top:2px dotted #080808;height: 2px;width:1084px;overflow:hidden;position: absolute;bottom:0 ;left: 0;"></div>
+				<div style="border-right:2px dotted #080808;height: 540px;width:2px;overflow:hidden;position: absolute;top:0 ;right: 0;"></div>
+			</div>
+			</div>
+			
+           
+			
+
+		</div>
+		</div>
+	</body>
+
+</html>

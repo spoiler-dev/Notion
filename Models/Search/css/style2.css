@@ -1,0 +1,86 @@
+body {
+	font-family: 'Montserrat', sans-serif;
+}
+
+.cube__side,
+.no-js .cube {
+	border: 10px solid;
+	outline: 1px solid;
+	background-color: currentColor;
+	background-blend-mode: soft-light;
+}
+
+.cube:not(.cube--inactive):nth-child(n) .cube__side,
+.no-js .cube:not(.cube--inactive):nth-child(n) {
+	background-image: url(../img/ok8.png);
+	/*color: #DBC07F;*/
+    /*	color: #E0C47B;*/
+	/*color: #C6A16D;*/
+	/*color: #BD8630;*/
+	color:#D3A268;
+
+}
+
+
+
+.cube--inactive .cube__side,
+.no-js .cube--inactive {
+	background-image: url(../img/ok2.png);
+	color:#D3A268;
+}
+
+
+/* With JS we insert a number span into the cube */
+
+.cube__number,
+.no-js .cube::after {
+	bottom: auto;
+	top: 0.15em;
+	left: 0.25em;
+	/*right: auto;*/
+	line-height: 1;
+	font-size: 1.2em;
+	color: #fff;
+	text-align: center;
+	font-weight: bold;
+	text-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+@media screen and (max-width: 50.75em) {
+	.cube__number,
+	.no-js .cube::after {
+		font-size: 1em;
+	}
+}
+
+.js .content__block {
+	width: 100%;
+	text-align: center;
+	left: 0;
+	padding: 2em;
+}
+
+.js .content__description {
+	padding: 0;
+	max-width: 30em;
+	margin: 2em auto 0.5em;
+}
+
+.js .content__meta {
+	padding: 0;
+}
+
+.content__number {
+	color: #fff;
+	font-weight: bold;
+	line-height: 0.5;
+	letter-spacing: -0.175em;
+	text-indent: -0.175em;
+	font-size: 40vw;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate3d(-50%, -50%, 0);
+	transform: translate3d(-50%, -50%, 0);
+	font-family: 'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif;
+}

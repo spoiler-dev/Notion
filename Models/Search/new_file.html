@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.css" />
+		<script src="js/jquery-2.1.1.min.js"></script>
+		<script src="js/bootstrap.js"></script>		
+	</head>
+	<body>
+		<div class="container">  
+        <h1 class="page-header">滚动列表</h1>  
+        <table class="table table-bordered table-striped table-condensed "  style="margin-bottom: 0px;width:500px">  
+            <thead>  
+            <th>name</th>  
+            <th>sex</th>  
+            <th>age</th>  
+            <th>phone</th>  
+            </thead>  
+        </table>  
+        <!--  
+        marguee总结  
+         direction="up"  滚动方向 up是向上，down是向下  
+          onmouseout="this.start()"   鼠标移出开始滚动  
+            onmouseover="this.stop()"鼠标移进滚动停止  
+            bgcolor  滚动的背景颜色  
+            align：标签内容的对齐方式  
+            absbottom：绝对底部对齐  
+            absmiddle：绝对中央对齐  
+            baseline：底线对齐  
+            bottom：底线对齐  
+            bottom：底部对齐（默认）  
+            left：左对齐  
+            middle：中间对齐  
+            right:右对齐  
+            top：顶部对齐  
+            texttop：顶线对齐  
+            scrollamount：调节滚动速度  
+  
+            left_shortcut_menu.js  
+        -->  
+        
+             <table class="table table-bordered table-striped table-condensed " style="width:500px">  
+                <tr>  
+                    <td width="137px"><marquee direction="left" scrollamount="10" bgcolor="#fcf8e3" onmouseout="this.start()"  
+                 onmouseover="this.stop()"  >  linda</marquee>  </td>  
+                    <td width="100px">woman</td>  
+                    <td  width="100px">18</td>  
+                    <td>181234367768</td>  
+                </tr>  
+                <tr>  
+                    <td>judy</td>  
+                    <td>woman</td>  
+                    <td>18</td>  
+                    <td>181234367768</td>  
+                </tr>  
+                <tr>  
+                    <td>davi</td>  
+                    <td>man</td>  
+                    <td>18</td>  
+                    <td>181234367768</td>  
+                </tr>  
+             </table>  
+        
+  <MARQUEE behavior="scroll" contenteditable="true" onstart="this.firstChild.innerHTML+=this.firstChild.innerHTML;" scrollamount="3" width="100"><SPAN unselectable="on">这里是要滚动的内容</SPAN></MARQUEE>
+  
+    </div>  
+   <marquee behavior="scroll" contenteditable="true" onstart="this.firstChild.innerHTML+=this.firstChild.innerHTML;" scrollamount="3" width="100" onmouseover="this.stop();" onmouseout="this.start();"> 
+这里是要滚动的内容 
+</marquee>
+<div class="marquee" id="marquee">  
+            <p><span id="marquee-content">  
+            18301552530用户已获得25%的加奖资格　1830155253１用户已获得25%的加奖资格　1830155253２用户已获得25%的加奖资格</span>  
+  
+                <span id="marquee-content-footer"></span></p>  
+        </div> 
+<script>
+	
+	$(function () {  
+            var m = $('#marquee')[0];  
+            var m1 = $('#marquee-content')[0];  
+            var m2 = $('#marquee-content-footer')[0];  
+            m2.textContent = m1.textContent;  
+  
+            function marquee() {  
+                if (m2.offsetWidth <= m.scrollLeft) {  
+                    m.scrollLeft -= m2.offsetWidth;  
+                } else {  
+                    m.scrollLeft++;  
+                }  
+            }  
+  
+            timer = setInterval(marquee, 30);  
+            //m.onmouseover = clearInterval(timer, 30);  
+            /*m.onmouseout = function () { 
+                timer = setInterval(marquee,30); 
+            }*/  
+        })  
+</script>
+
+<DIV id="scrollobj" style="white-space:nowrap;overflow:hidden;width:500px;"><span>这里是要滚动的内容www.97zzw.com</span></DIV>
+<script language="javascript" type="text/javascript">
+<!--
+ function scroll(obj) {
+  var tmp = (obj.scrollLeft)++;
+  //当滚动条到达右边顶端时
+  if (obj.scrollLeft==tmp) obj.innerHTML += obj.innerHTML;
+  //当滚动条滚动了初始内容的宽度时滚动条回到最左端
+  if (obj.scrollLeft>=obj.firstChild.offsetWidth) obj.scrollLeft=0;
+ }
+ setInterval("scroll(document.getElementById('scrollobj'))",20);
+//-->
+</script>
+	</body>
+</html>

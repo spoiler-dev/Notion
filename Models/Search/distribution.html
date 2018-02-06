@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>jQuery水平时间轴内容切换插件DEMO演示</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<!-- CSS reset -->
+		<link rel="stylesheet" href="css/style.css">
+		<!-- Resource style -->
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="css/ace.css" />
+		<link rel="stylesheet" type="text/css" href="css/ace-fonts.css" />
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.css" />
+		<script src="js/jquery-2.1.1.min.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<script src="js/iconfont.js"></script>
+		<script src="js/modernizr.js"></script>
+		<!-- Modernizr -->
+		<style type="text/css">
+			.icon {
+				width: 1em;
+				height: 1em;
+				vertical-align: -0.15em;
+				fill: currentColor;
+				overflow: hidden;
+				font-size: 25px;
+			}
+			
+			#button0 {
+				left: 0px !important;
+			}
+			
+			#button1 {
+				left: 70px !important;
+			}
+			
+			#button2 {
+				left: 150px !important;
+			}
+			
+			#button3 {
+				left: 260px !important;
+			}
+			
+			#button4 {
+				position: absolute;
+				left: 470px;
+				bottom: 5px;
+				font-size: 1.3rem;
+				color: #383838;
+			}
+			
+			#button5 {
+				left: 650px !important;
+			}
+			
+			#button6 {
+				left: 0px !important;
+			}
+			
+			#line-back {
+				position: relative;
+			}
+			
+			.events-wrapper {
+				padding-top: 10px;
+			}
+			
+			#icon1 {
+				position: absolute;
+				bottom: 27px;
+				left: 483px;
+				color: #0086B3;
+			}
+			
+			#icon2 {
+				position: absolute;
+				bottom: -45px;
+				left: 361px;
+				color: #0086B3;
+			}
+			.label{
+				border-radius: 15px;
+				text-align: center;
+				line-height: 15px;
+				font-size: 15px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<section class="cd-horizontal-timeline">
+			<div class="timeline">
+				<div class="events-wrapper">
+					<div class="events" id="line-back">
+						<ol>
+							<svg class="icon" aria-hidden="true" id="icon1">
+								<use xlink:href="#icon-huoche7"></use>
+							</svg>
+							
+							<li>
+								<a href="#0" data-date="01/01/2014" id="button0"><span class="label label-inverse" >检修区</span></a>
+							</li>
+							<li>
+								<a href="#0" data-date="16/01/2014" class="selected" id="button1"><span class="label label-success">待用区</span></a>
+							</li>
+							<li>
+								<a href="#0" data-date="28/02/2014" id="button2"><span class="label label">配料区</span></a>
+							</li>
+							<li>
+								<a href="#0" data-date="20/04/2014" id="button3"><span class="label label-warning">待发货</span></a>
+							</li>
+							<div id="button4">发货在途</div>
+							<!--<li><a href="#0" data-date="20/05/2014" id="button4">发货在途</a></li>-->
+							<li>
+								<a href="#0" data-date="22/05/2014" id="button5"><span class="label label-info">现场</span></a>
+							</li>
+
+							<div style="width:574px;height:2px;margin:0px auto;padding:0px;background-color:#D5D5D5;overflow:hidden;position: absolute;bottom:-50px;left: 101px;"></div>
+							<div style="width:2px;height:60px;margin:0px auto;padding:0px;background-color:#D5D5D5;overflow:hidden;position: absolute;bottom:-50px;left: 101px;"></div>
+							<div style="width:2px;height:60px;margin:0px auto;padding:0px;background-color:#D5D5D5;overflow:hidden;position: absolute;bottom:-50px;left: 673px;"></div>
+							<div style="position: absolute;bottom:-73px;left: 346px;font-size: 1.3rem;color: #383838;">空车返回</div>
+							<svg class="icon" aria-hidden="true" id="icon2">
+								<use xlink:href="#icon-huoche1"></use>
+							</svg>
+						</ol>
+
+						<span class="filling-line" aria-hidden="true"></span>
+					</div>
+					<!-- .events -->
+				</div>
+				<!-- .events-wrapper -->
+
+				<ul class="cd-timeline-navigation">
+					<!--<li><a href="#0" class="prev inactive">Prev</a></li>
+			<li><a href="#0" class="next">Next</a></li>-->
+				</ul>
+				<!-- .cd-timeline-navigation -->
+			</div>
+			<!-- .timeline -->
+
+			<div class="events-content">
+				<ol>
+					<li data-date="01/01/2014">
+
+						<h3 style="margin-bottom: 0px;height: 45px;line-height: 45px;color: #FFF;background: #307ecc;padding: 0;font-size: 15px;">
+											<span class="col-sm-7">
+												<i class="ace-icon fa fa-th-large"></i>
+												检修区工装
+											</span><!-- /.col -->
+
+											
+										</h3>
+
+						<table class="table table-bordered table-striped">
+							<thead class="thin-border-bottom">
+								<tr>
+									<th style="text-align: center;">
+										<i class="ace-icon fa fa-caret-right blue"></i>排序
+									</th>
+
+									<th colspan="4" style="text-align: center;">
+										<i class="ace-icon fa fa-caret-right blue"></i>车辆详情
+									</th>
+
+								</tr>
+							</thead>
+
+							<tbody style="text-align: center;">
+								<tr>
+									<td>1</td>
+
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-dahuoche"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-daochexiehuo"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-songhuoche"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-huoyunche1"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+
+								</tr>
+
+								<tr>
+									<td>2</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-dahuoche1"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-huoche-"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-huoche-1"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-daxinghuoche2"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+								</tr>
+
+								<tr>
+									<td>3</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-daxinghuoche1"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-huoche11"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-xiaohuoche"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-huoche5"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+								</tr>
+
+								<tr>
+									<td>4</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-xiaoxinghuoche1"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-daxinghuoche1"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-gouwuche-copy"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-huoche8"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+								</tr>
+
+								<tr>
+									<td>5</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-minivans"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-tuihuoche"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-huoche9"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-huoche3"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+								</tr>
+								<tr>
+									<td>5</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-huochelufeichaxun"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+								</tr>
+								<tr>
+									<td>5</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+								</tr>
+								<tr>
+									<td>5</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+								</tr>
+								<tr>
+									<td>5</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+								</tr>
+								<tr>
+									<td>5</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+								</tr>
+								<tr>
+									<td>5</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+								</tr>
+								<tr>
+									<td>5</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+								</tr>
+								<tr>
+									<td>5</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+									<td>
+										<svg class="icon" aria-hidden="true">
+											<use xlink:href="#icon-deliver"></use>
+										</svg>&nbsp;&nbsp;D-003
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+					</li>
+
+					<li class="selected" data-date="16/01/2014">
+
+					
+					</li>
+
+					<li data-date="28/02/2014">
+						<h4>配料区工装</h4>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
+						</p>
+					</li>
+
+					<li data-date="20/04/2014">
+						<h4>待发区工装</h4>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
+						</p>
+					</li>
+
+					<!--<li data-date="20/05/2014">
+				<h2>Event title here</h2>
+				<em>May 20th, 2014</em>
+				<p>	
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
+				</p>
+			</li>-->
+
+					<li data-date="22/05/2014">
+						<h4>现场工装</h4>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
+						</p>
+					</li>
+
+				</ol>
+			</div>
+			<!-- .events-content -->
+		</section>
+
+		<script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>
+		<script src="js/jquery.mobile.custom.min.js"></script>
+		<script src="js/main.js"></script>
+
+	</body>
+
+</html>
