@@ -63,3 +63,6 @@ $ git push -u origin master
 > * http://blog.csdn.net/lhb_11/article/details/77837078
 > * https://www.cnblogs.com/ashidamana/p/6122619.html
 > * https://www.cnblogs.com/xuanhun/p/6019038.html?utm_source=tuicool&utm_medium=referral
+
+License
+> * 可以拷贝、转发，但是必须提供原作者信息，同时也不能将本项目用于商业用途。
