@@ -1,0 +1,235 @@
+html, body {
+  overflow: hidden;
+  height: 100%;
+  margin: 0;
+  background-color: #00495F;
+}
+
+#devman {
+  width: 80%;
+  height: auto;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  -webkit-animation: 8s flying infinite;
+          animation: 8s flying infinite;
+}
+#devman .eye {
+  -webkit-animation: 8s blink infinite;
+          animation: 8s blink infinite;
+}
+#devman [class^="beam"] {
+  -webkit-animation: 8s beam infinite;
+          animation: 8s beam infinite;
+}
+
+.particles {
+  background-image: -webkit-radial-gradient(70px 2px at 20% 30%, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0)), -webkit-radial-gradient(40px 2px at 40% 70%, rgba(255, 255, 255, 0.28), rgba(0, 0, 0, 0)), -webkit-radial-gradient(330px 2px at 50% 16%, rgba(255, 255, 255, 0.26), rgba(0, 0, 0, 0)), -webkit-radial-gradient(50px 4px at 90% 40%, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0)), -webkit-radial-gradient(13px 1px at 10% 80%, rgba(255, 255, 255, 0.22), rgba(0, 0, 0, 0)), -webkit-radial-gradient(94px 2px at 16% 20%, rgba(255, 255, 255, 0.33), rgba(0, 0, 0, 0)), -webkit-radial-gradient(130px 5px at 10% 80%, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)), -webkit-radial-gradient(90px 2px at 16% 25%, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)), -webkit-radial-gradient(130px 2px at 10% 84%, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)), -webkit-radial-gradient(200px 4px at 90% 45%, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0)), -webkit-radial-gradient(130px 1px at 40% 55%, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)), -webkit-radial-gradient(940px 2px at 26% 63%, rgba(255, 255, 255, 0.14), rgba(0, 0, 0, 0)), -webkit-radial-gradient(120px 5px at 30% 63%, rgba(255, 255, 255, 0.42), rgba(0, 0, 0, 0)), -webkit-radial-gradient(900px 5px at 46% 14%, rgba(255, 255, 255, 0.21), rgba(0, 0, 0, 0)), -webkit-radial-gradient(1300px 3px at 30% 80%, rgba(255, 255, 255, 0.22), rgba(0, 0, 0, 0)), -webkit-radial-gradient(900px 2px at 56% 20%, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
+  background-image: radial-gradient(70px 2px at 20% 30%, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0)), radial-gradient(40px 2px at 40% 70%, rgba(255, 255, 255, 0.28), rgba(0, 0, 0, 0)), radial-gradient(330px 2px at 50% 16%, rgba(255, 255, 255, 0.26), rgba(0, 0, 0, 0)), radial-gradient(50px 4px at 90% 40%, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0)), radial-gradient(13px 1px at 10% 80%, rgba(255, 255, 255, 0.22), rgba(0, 0, 0, 0)), radial-gradient(94px 2px at 16% 20%, rgba(255, 255, 255, 0.33), rgba(0, 0, 0, 0)), radial-gradient(130px 5px at 10% 80%, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)), radial-gradient(90px 2px at 16% 25%, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)), radial-gradient(130px 2px at 10% 84%, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)), radial-gradient(200px 4px at 90% 45%, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0)), radial-gradient(130px 1px at 40% 55%, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)), radial-gradient(940px 2px at 26% 63%, rgba(255, 255, 255, 0.14), rgba(0, 0, 0, 0)), radial-gradient(120px 5px at 30% 63%, rgba(255, 255, 255, 0.42), rgba(0, 0, 0, 0)), radial-gradient(900px 5px at 46% 14%, rgba(255, 255, 255, 0.21), rgba(0, 0, 0, 0)), radial-gradient(1300px 3px at 30% 80%, rgba(255, 255, 255, 0.22), rgba(0, 0, 0, 0)), radial-gradient(900px 2px at 56% 20%, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
+  background-repeat: repeat;
+  background-size: 100%;
+  -webkit-animation: flyby 0.5s infinite linear;
+          animation: flyby 0.5s infinite linear;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+}
+.particles:nth-of-type(2) {
+  background-size: 300%;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+}
+.particles:nth-of-type(3) {
+  background-position: -10%;
+  background-size: 300%;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+}
+
+[id^="screen"] {
+  position: absolute;
+  -webkit-animation: shake 2s steps(1, end) infinite;
+          animation: shake 2s steps(1, end) infinite;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+@-webkit-keyframes blink {
+  0%, 20%, 24%, 70%, 72%, 80%, 82%, 100% {
+    fill: #fff;
+  }
+  22%, 71%, 81% {
+    fill: #111;
+  }
+}
+
+@keyframes blink {
+  0%, 20%, 24%, 70%, 72%, 80%, 82%, 100% {
+    fill: #fff;
+  }
+  22%, 71%, 81% {
+    fill: #111;
+  }
+}
+@-webkit-keyframes beam {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  20%, 28% {
+    opacity: 0.8;
+  }
+  24%, 70% {
+    opacity: 0.7;
+  }
+  40% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+@keyframes beam {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  20%, 28% {
+    opacity: 0.8;
+  }
+  24%, 70% {
+    opacity: 0.7;
+  }
+  40% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+@-webkit-keyframes flying {
+  0%, 100% {
+    -webkit-transform: translate(-60%, -50%);
+            transform: translate(-60%, -50%);
+  }
+  20%, 28% {
+    -webkit-transform: translate(-25%, -50%);
+            transform: translate(-25%, -50%);
+  }
+  24%, 70% {
+    -webkit-transform: translate(-30%, -50%);
+            transform: translate(-30%, -50%);
+  }
+  40% {
+    -webkit-transform: translate(-40%, -50%);
+            transform: translate(-40%, -50%);
+  }
+  50% {
+    -webkit-transform: translateX(-50%, -50%);
+            transform: translateX(-50%, -50%);
+  }
+}
+@keyframes flying {
+  0%, 100% {
+    -webkit-transform: translate(-60%, -50%);
+            transform: translate(-60%, -50%);
+  }
+  20%, 28% {
+    -webkit-transform: translate(-25%, -50%);
+            transform: translate(-25%, -50%);
+  }
+  24%, 70% {
+    -webkit-transform: translate(-30%, -50%);
+            transform: translate(-30%, -50%);
+  }
+  40% {
+    -webkit-transform: translate(-40%, -50%);
+            transform: translate(-40%, -50%);
+  }
+  50% {
+    -webkit-transform: translateX(-50%, -50%);
+            transform: translateX(-50%, -50%);
+  }
+}
+@-webkit-keyframes shake {
+  0%, 12%, 26%, 67%, 96%, 100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  34%, 46%, 85% {
+    -webkit-transform: translateY(2px);
+            transform: translateY(2px);
+  }
+  45%, 70% {
+    -webkit-transform: translateY(4px);
+            transform: translateY(4px);
+  }
+  87% {
+    -webkit-transform: translateY(-1px);
+            transform: translateY(-1px);
+  }
+  75% {
+    -webkit-transform: translateY(-4px);
+            transform: translateY(-4px);
+  }
+}
+@keyframes shake {
+  0%, 12%, 26%, 67%, 96%, 100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  34%, 46%, 85% {
+    -webkit-transform: translateY(2px);
+            transform: translateY(2px);
+  }
+  45%, 70% {
+    -webkit-transform: translateY(4px);
+            transform: translateY(4px);
+  }
+  87% {
+    -webkit-transform: translateY(-1px);
+            transform: translateY(-1px);
+  }
+  75% {
+    -webkit-transform: translateY(-4px);
+            transform: translateY(-4px);
+  }
+}
+@-webkit-keyframes flyby {
+  0% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+  }
+}
+@keyframes flyby {
+  0% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+  }
+}
+a.brand {
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  right: 0;
+  margin: 10px 20px;
+  opacity: 0.4;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+a.brand:hover {
+  opacity: 1;
+}
+a.brand svg {
+  fill: #fff;
+}
