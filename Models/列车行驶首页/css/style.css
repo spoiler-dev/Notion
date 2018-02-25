@@ -1,0 +1,120 @@
+html,
+body {
+  overflow: hidden;
+  height: 100%;
+  margin: 0;
+  background-color: #00495F;
+}
+
+#car {
+  position: absolute;
+  /*汽车在容器中采用绝对定位*/
+  width: 1080px;
+  height: 560px;
+  /*汽车的总高度，包括轮胎和底盘*/
+  z-index: 1;
+  /*让汽车在背景的上方*/
+  bottom: -80px;
+  /*距顶端的距离(y轴)*/
+  right: 0;
+  /*距左侧的距离(x轴)*/
+  -webkit-animation: 8s flying infinite;
+  animation: 8s flying infinite;
+}
+
+@-webkit-keyframes flying {
+  0%,
+  100% {
+    -webkit-transform: translate(1%, 0%);
+    transform: translate(1%, 0%);
+  }
+  20%,
+  28% {
+    -webkit-transform: translate(25%, 0%);
+    transform: translate(25%, 0%);
+  }
+  24%,
+  70% {
+    -webkit-transform: translate(30%, 0%);
+    transform: translate(30%, 0%);
+  }
+  40% {
+    -webkit-transform: translate(40%, 0%);
+    transform: translate(40%, 0%);
+  }
+  50% {
+    -webkit-transform: translateX(50%, 0%);
+    transform: translateX(50%, 0%);
+  }
+}
+
+@keyframes flying {
+  0%,
+  100% {
+    -webkit-transform: translate(1%, 0%);
+    transform: translate(1%, 0%);
+  }
+  20%,
+  28% {
+    -webkit-transform: translate(25%, 0%);
+    transform: translate(25%, 0%);
+  }
+  24%,
+  70% {
+    -webkit-transform: translate(30%, 0%);
+    transform: translate(30%, 0%);
+  }
+  40% {
+    -webkit-transform: translate(40%, 0%);
+    transform: translate(40%, 0%);
+  }
+  50% {
+    -webkit-transform: translateX(50%, 0%);
+    transform: translateX(50%, 0%);
+  }
+}
+
+.particles {
+  background-image: -webkit-radial-gradient(70px 2px at 20% 30%, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0)), -webkit-radial-gradient(40px 2px at 40% 70%, rgba(255, 255, 255, 0.28), rgba(0, 0, 0, 0)), -webkit-radial-gradient(330px 2px at 50% 16%, rgba(255, 255, 255, 0.26), rgba(0, 0, 0, 0)), -webkit-radial-gradient(50px 4px at 90% 40%, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0)), -webkit-radial-gradient(13px 1px at 10% 80%, rgba(255, 255, 255, 0.22), rgba(0, 0, 0, 0)), -webkit-radial-gradient(94px 2px at 16% 20%, rgba(255, 255, 255, 0.33), rgba(0, 0, 0, 0)), -webkit-radial-gradient(130px 5px at 10% 80%, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)), -webkit-radial-gradient(90px 2px at 16% 25%, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)), -webkit-radial-gradient(130px 2px at 10% 84%, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)), -webkit-radial-gradient(200px 4px at 90% 45%, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0)), -webkit-radial-gradient(130px 1px at 40% 55%, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)), -webkit-radial-gradient(940px 2px at 26% 63%, rgba(255, 255, 255, 0.14), rgba(0, 0, 0, 0)), -webkit-radial-gradient(120px 5px at 30% 63%, rgba(255, 255, 255, 0.42), rgba(0, 0, 0, 0)), -webkit-radial-gradient(900px 5px at 46% 14%, rgba(255, 255, 255, 0.21), rgba(0, 0, 0, 0)), -webkit-radial-gradient(1300px 3px at 30% 80%, rgba(255, 255, 255, 0.22), rgba(0, 0, 0, 0)), -webkit-radial-gradient(900px 2px at 56% 20%, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
+  background-image: radial-gradient(70px 2px at 20% 30%, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0)), radial-gradient(40px 2px at 40% 70%, rgba(255, 255, 255, 0.28), rgba(0, 0, 0, 0)), radial-gradient(330px 2px at 50% 16%, rgba(255, 255, 255, 0.26), rgba(0, 0, 0, 0)), radial-gradient(50px 4px at 90% 40%, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0)), radial-gradient(13px 1px at 10% 80%, rgba(255, 255, 255, 0.22), rgba(0, 0, 0, 0)), radial-gradient(94px 2px at 16% 20%, rgba(255, 255, 255, 0.33), rgba(0, 0, 0, 0)), radial-gradient(130px 5px at 10% 80%, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)), radial-gradient(90px 2px at 16% 25%, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)), radial-gradient(130px 2px at 10% 84%, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)), radial-gradient(200px 4px at 90% 45%, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0)), radial-gradient(130px 1px at 40% 55%, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)), radial-gradient(940px 2px at 26% 63%, rgba(255, 255, 255, 0.14), rgba(0, 0, 0, 0)), radial-gradient(120px 5px at 30% 63%, rgba(255, 255, 255, 0.42), rgba(0, 0, 0, 0)), radial-gradient(900px 5px at 46% 14%, rgba(255, 255, 255, 0.21), rgba(0, 0, 0, 0)), radial-gradient(1300px 3px at 30% 80%, rgba(255, 255, 255, 0.22), rgba(0, 0, 0, 0)), radial-gradient(900px 2px at 56% 20%, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
+  background-repeat: repeat;
+  background-size: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  -webkit-animation: flyby 0.5s infinite linear;
+  animation: flyby 0.5s infinite linear;
+}
+
+.particles:nth-of-type(2) {
+  background-size: 300%;
+}
+
+.particles:nth-of-type(3) {
+  background-position: -10%;
+  background-size: 300%;
+}
+
+@-webkit-keyframes flyby {
+  0% {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes flyby {
+  0% {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+  }
+  100% {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+}
