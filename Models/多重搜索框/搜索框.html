@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>搜索框</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css" />
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <style type="text/css">
+        #overall {
+            margin-top: 20px !important;
+            width: 992px;
+            height: 75px;
+            margin: 0 auto;
+            box-shadow: 3px 3px 3px #805b2f;
+            border: 1px solid #e1e1e1 !important;
+        }
+
+        #left {
+            position: relative;
+            float: left;
+            width: 130px;
+            height: 75px;
+            text-align: center;
+        }
+
+        #text {
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 130px;
+            height: 75px;
+            padding-top: 15px;
+            line-height: 20px;
+            color: #F0F7FC;
+            z-index: 20;
+        }
+
+        #triangle-right {
+            width: 0;
+            height: 0;
+            border-top: 35px solid transparent;
+            border-left: 10px solid #2D2D2D;
+            border-bottom: 35px solid transparent;
+            float: left;
+            z-index: 10;
+        }
+
+        #stone-left {
+            float: left;
+            width: 120px;
+            height: 75px;
+            background: #2D2D2D;
+        }
+
+        #middle {
+            float: left;
+
+            width: 620px;
+            height: 70px;
+            z-index: 5;
+            background: #FFFFFF;
+            padding: 7px;
+
+        }
+
+        #middle-up {
+            border: none;
+            color: #af945d;
+            height: 15px;
+
+            margin-bottom: 10px;
+        }
+
+        #middle-down {
+            width: 800px;
+            height: 40px;
+        }
+
+        #middle-down-first {
+            float: left;
+        }
+
+        #middle-down-first input {
+            width: 245px;
+            color: #33322e !important;
+
+        }
+
+        .middle-down-date {
+            float: left;
+            width: 100px !important;
+            margin-left: 10px;
+        }
+
+        .middle-down-date input {
+            width: 100px !important;
+        }
+
+        .middle-down-number {
+            height: 30px !important;
+            float: left;
+            width: 90px !important;
+            margin-left: 10px;
+            overflow: hidden;
+
+            border: 1px solid #e1e1e1 !important;
+
+        }
+
+        #span-a {
+            margin-left: 181px;
+        }
+
+        #span-b {
+            margin-left: 38px;
+        }
+
+        #span-c {
+            margin-left: 30px;
+        }
+
+        input {
+            padding-left: 5px;
+            color: #fcfbff !important;
+            height: 30px !important;
+            background-color: #f7f7f7 !important;
+            border: 1px solid #e1e1e1 !important;
+
+        }
+
+        #right {
+            width: 140px;
+            height: 73px;
+            float: left;
+            background: #f4f4f2;
+            color: #3c3c3c;
+            padding-left: 10px;
+
+        }
+
+        .right {
+            width: 120px;
+            height: 25px;
+            margin-top: 8px;
+            overflow: hidden;
+            box-shadow: 3px 3px 3px #cccccc;
+        }
+
+        #serach {
+            text-align: center;
+            line-height: 73px;
+            float: left;
+            width: 100px;
+            height: 74px;
+            background: #b49c6c;
+            color: #fcfbff;
+        }
+
+        #triangle-facing-right {
+            position: relative;
+            top: 2px;
+            right: 0px;
+            display: inline-block;
+            border-right: 4px solid;
+            border-bottom: 4px solid;
+            width: 15px;
+            height: 15px;
+            transform: rotate(-45deg);
+        }
+
+        button {
+            width: 120px;
+            height: 25px;
+            background: #fcfcfe;
+            border: 1px solid #fcfcfe;
+            box-shadow: 3px 3px 3px #cccccc;
+        }
+
+        .middle-down-number select {
+            width: 100px;
+            height: 30px;
+            background-color: #f7f7f7 !important;
+            border: none;
+            background: url(img/select.png) no-repeat 85% 50% #ddd;
+        }
+
+        .right select {
+            width: 140px !important;
+            height: 25px !important;
+            border: 1px solid #fcfcfe;
+            text-align: center !important;
+            background: url(img/select1.png) no-repeat 85% 50% #fcfcfe;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="overall">
+        <div id="left">
+            <span id="text"> 订单管理
+                <br />复合搜索</span>
+            <div id="stone-left"></div>
+            <div id="triangle-right"></div>
+        </div>
+        <div id="middle">
+            <div id="middle-first">
+                <div id="middle-up">
+                    <span>采购单编码</span>
+                    <span id="span-a">采购单日期</span>
+                    <span id="span-b">项目名称</span>
+                    <span id="span-c">供应商名称</span>
+                </div>
+                <div id="middle-down">
+                    <div id="middle-down-first">
+                        <input type="text" placeholder="采购单编码">
+                    </div>
+                    <div class="middle-down-date">
+                        <input type="date" placeholder="">
+                    </div>
+                    <div class="middle-down-number">
+                        <select>
+                            <option>大连一号</option>
+                            <option>大连二号</option>
+                        </select>
+                    </div>
+                    <div class="middle-down-number">
+                        <select>
+                            <option>大连机车</option>
+                            <option>大连机车二</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div id="middle-second">
+            </div>
+        </div>
+        <div id="right">
+            <div class="right">
+                <button>重置</button>
+            </div>
+            <div class="right">
+                <select>
+                    <option>已下发</option>
+                    <option>未下发</option>
+                </select>
+            </div>
+        </div>
+        <div id="serach">
+            <span>搜索 </span>
+            <span id="triangle-facing-right"></span>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>音乐小站</title>
+        <style type="text/css">
+			.music {
+    width: 200px;
+    height:300px;
+    background:#333;
+    border-radius: 5px;
+    box-shadow: 3px -3px 1px #666;
+    position: relative;
+}
+.music .screen {
+    height:70%;
+    width:96%;
+    background: linear-gradient(#403d3d,65%,#5f5b5b);
+    margin-left:2%;
+    margin-top: 2%;
+    position: relative;
+
+}
+
+.music .screen i {
+    color:#fff;
+    font-size: 88px;
+}
+
+.music .buttons {
+    height:25%;
+    width:96%;
+    margin-left:2%;
+    margin-top: 2%;
+}
+.music .info {
+    position: absolute;
+    display: inline-block;
+    width: 80%;
+    height: 30px;
+    left: 15px;
+    top: 20px;
+    text-align: center;
+    color: #eee;
+    font-family:黑体;
+    font-size: 14px;
+}
+
+        </style>
+    </head>
+    <body>
+	<div id='music' class='music'>
+    <div class='screen'>
+        <i id='music-icon'  class="iconfont icon-yinle"></i>
+    </div>
+    <div class='buttons'>
+        <i id='prev' class="iconfont icon-icon">1</i>
+        <i id='play' class="iconfont icon-bofanganniu">2</i>
+        <i id='pause' class="iconfont icon-zanting" style="display:none">3</i>
+        <i id='next' class="iconfont icon-icon1">4</i>
+    </div>
+    <span id='info' class='info'></span>
+
+</div>
+
+
+    </body>
+    <script type="text/javascript" src="js/util.js"></script>
+    <script type="text/javascript">
+var musicDom = utils.dom('#music'); 
+var musicIcon = utils.dom('#music-icon');
+utils._center(musicDom);    
+utils._center(musicIcon);
+
+
+musicBox.init(); //初始化
+musicBox.add('mp3/2.mp3');
+musicBox.add('mp3/曲婉婷 - 我的歌声里.mp3');
+musicBox.add('mp3/夜空中最亮的星.mp3');
+musicBox.add('mp3/班得瑞 - 雪之梦.mp3');
+musicBox.add('mp3/超级好听的龙猫轻音乐.mp3');
+/* 获取开始按钮 */
+var playDom =  utils.dom('#play');
+/* 获取暂停按钮 */
+var pauseDom = utils.dom('#pause');
+/* 获取下一首按钮 */
+var nextDom = utils.dom('#next');
+/* 获取上一首按钮 */
+var prevDom = utils.dom('#prev');
+
+//播放按钮
+playDom.onclick = function(){
+    this.style.display = 'none';
+    pauseDom.style.display = 'inline';
+    utils.addClass(musicIcon,'r');
+    //播放音乐
+    musicBox.play();
+}
+
+//暂停按钮
+pauseDom.onclick = function(){
+    this.style.display = 'none';
+    playDom.style.display = 'inline';
+    utils.removeClass(musicIcon,'r');
+    musicBox.stop();
+}
+
+//下一首
+nextDom.onclick = function(){
+    musicBox.next();
+    //当直接点击下一首的时候，同时改变播放按钮为暂停的样式
+    playDom.style.display = 'none';
+    pauseDom.style.display = 'inline';
+    utils.addClass(musicIcon,'r');
+}
+
+//上一首
+prevDom.onclick = function(){
+    musicBox.prev();
+    //当直接点击下一首的时候，同时改变播放按钮为暂停的样式
+    playDom.style.display = 'none';
+    pauseDom.style.display = 'inline';
+    utils.addClass(musicIcon,'r');
+}
+
+
+		musicBox.init(); //初始化
+		musicBox.add('mp3/2.mp3');
+		musicBox.play(0); //听第一首歌
+		
+		//让元素居中的方法
+		function _center(dom){
+		    dom.style.position = 'absolute';
+		    dom.style.top = '50%';
+		    dom.style.left = '50%';
+		    dom.style['margin-top'] = - dom.offsetHeight / 2 + 'px';
+		    dom.style['margin-left'] = - dom.offsetWidth / 2 + 'px';
+		}
+		
+		//根据id获取元素
+		function dom(id){
+		    if(id.toString().indexOf('#') != -1) {
+		        id = id.replace('#','');
+		    }
+		    return document.getElementById(id);
+		};
+		var musicDom = dom('#music');
+		_center(musicDom);
+		
+		
+		/* 获取开始按钮 */
+var playDom =  utils.dom('#play');
+/* 获取暂停按钮 */
+var pauseDom = utils.dom('#pause');
+
+playDom.onclick = function(){
+    this.style.display = 'none';
+    pauseDom.style.display = 'inline';
+}
+
+pauseDom.onclick = function(){
+    this.style.display = 'none';
+    playDom.style.display = 'inline';
+}
+
+getCurrentSong : function(){
+    var info = this.songs[this.index];
+    info = info.split('/')[1];
+    info = info.split('.')[0];
+    return '正在播放：' +　info;
+}
+/* 获取歌曲的信息栏 */
+var infoDom = utils.dom('#info');
+infoDom.innerHTML = ''; //先清空上一次的信息
+infoDom.innerHTML = musicBox.getCurrentSong();//显示当前的歌曲信息
+
+
+		
+    </script>
+</html>
