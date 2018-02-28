@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>vscode-git 配置说明及注意事项</title>
+</head>
+
+<body>
+	<div id="wmd-preview" class="wmd-preview">
+		<div class="md-section-divider"></div>
+		<div class="md-section-divider"></div>
+		<h1 data-anchor-id="cf81" id="vscode-git-配置说明及注意事项">vscode-git 配置说明及注意事项</h1>
+		<div class="md-section-divider"></div>
+		<h2 data-anchor-id="x1os" id="vscode-git-founder">
+			<code>vscode-git</code>
+			<code>Founder</code>
+		</h2>
+		<blockquote data-anchor-id="8o7h" class="white-blockquote">
+			<p>最近在接触GitHub过程中，想实现将公司与家中的代码同步的目的，在使用vscode -git插件的过程中，遇到了很多的小坎坷，在查找相关的资料后发现很多资料的记录并不详细且存在错误，现将本人的步骤记录并发布，好让像我这样的麻瓜们早日脱坑。</p>
+		</blockquote>
+		<div class="md-section-divider"></div>
+		<h3 data-anchor-id="og5k" id="1-下载-git">1. 下载
+			<a href="https://git-scm.com/" target="_blank">Git</a>
+		</h3>
+		<p data-anchor-id="esh0">按照安装提示安装即可（环境变量一般会自动配置）</p>
+		<div class="md-section-divider"></div>
+		<h3 data-anchor-id="ox8p" id="2-git配置">2. Git配置</h3>
+		<p data-anchor-id="lvkk">打开Git的Git Bash配置全局设置（主程序）</p>
+		<p data-anchor-id="nybr">
+			<img src="http://p3nlrkpll.bkt.clouddn.com/vscode-git-2.png" alt="vscode-git" title="">
+		</p>
+		<div class="md-section-divider"></div>
+		<pre class="prettyprint linenums prettyprinted" data-anchor-id="2q92" style=""><ol class="linenums"><li class="L0"><code><span class="pun">用户名：</span></code></li><li class="L1"><code><span class="pln">$ git config </span><span class="pun">--</span><span class="kwd">global</span><span class="pln"> user</span><span class="pun">.</span><span class="pln">name </span><span class="str">"FounderInxx"</span></code></li><li class="L2"><code></code></li><li class="L3"><code><span class="pun">邮箱：</span></code></li><li class="L4"><code><span class="pln">$ git config </span><span class="pun">--</span><span class="kwd">global</span><span class="pln"> user</span><span class="pun">.</span><span class="pln">email </span><span class="str">"founder1994@icloud.com"</span></code></li><li class="L5"><code></code></li><li class="L6"><code><span class="pun">记住提交的邮箱及密码：</span></code></li><li class="L7"><code><span class="pln">$ git config </span><span class="pun">--</span><span class="kwd">global</span><span class="pln"> credential</span><span class="pun">.</span><span class="pln">helper store</span></code></li></ol></pre>
+		<div class="md-section-divider"></div>
+		<h3 data-anchor-id="3oam" id="3-vscode配置">3. vscode配置</h3>
+		<p data-anchor-id="9cdr">1.打开D盘创建一个自定义的文件夹，再创建一个文件。
+			<br> 2.打开vscode，打开刚刚创建的文件夹，点击git源代码管理图标，初始化存储库，你文件夹下的文件就会出现在窗口中
+		</p>
+		<p data-anchor-id="ibp1">点击 + 号（暂存所有更改），点击更多，选中提交所有更改，</p>
+		<p data-anchor-id="3omz">
+			<img src="http://p3nlrkpll.bkt.clouddn.com/vscode-git-5.png" alt="vscode-git" title="">
+		</p>
+		<p data-anchor-id="lr5e">出现窗口（自定义的上传注释），输入后，按Enter。</p>
+		<p data-anchor-id="bfj7">
+			<img src="http://p3nlrkpll.bkt.clouddn.com/vscode-git-4.png" alt="vscode-git">
+		</p>
+		<p data-anchor-id="b9pj">3.这时刷新之前创建的文件夹，会出现.git文件夹（文件夹一般是隐藏的，打开文件管理器的让隐藏的文件显示的选项）。</p>
+		<p data-anchor-id="cva3">
+			<img src="http://p3nlrkpll.bkt.clouddn.com/vscode-git-1.png" alt="vscode-git">
+		</p>
+		<p data-anchor-id="cziy">4.鼠标右键，出现相关的Git右键快捷命令，选中Git Bash here，出现命令窗口（与主程序一样的界面），输入命令。</p>
+		<p data-anchor-id="zizu">
+			<img src="http://p3nlrkpll.bkt.clouddn.com/vscode-git-3.png" alt="vscode-git">
+		</p>
+		<div class="md-section-divider"></div>
+		<pre class="prettyprint linenums prettyprinted" data-anchor-id="tcd8" style=""><ol class="linenums"><li class="L0"><code><span class="pln">github</span><span class="pun">项目的地址（此时</span><span class="pln">gitHub</span><span class="pun">中已经预先创建了</span><span class="typ">Note</span><span class="pun">这个</span><span class="pln">repository</span><span class="pun">）：</span></code></li><li class="L1"><code><span class="pln">$ git remote add origin https</span><span class="pun">:</span><span class="com">//github.com/FounderInxx/Note.git</span></code></li><li class="L2"><code></code></li><li class="L3"><code><span class="pun">初始化仓库：</span></code></li><li class="L4"><code><span class="pln">$ git pull </span><span class="pun">--</span><span class="pln">rebase origin master</span></code></li><li class="L5"><code></code></li><li class="L6"><code><span class="pun">提交到仓库：</span></code></li><li class="L7"><code><span class="pln">$ git push </span><span class="pun">-</span><span class="pln">u origin master</span></code></li></ol></pre>
+		<p data-anchor-id="zv8s">5.再次回到vscode中，再次点击更多，点击推送(push)，出现输入GitHub邮箱窗口，输入后，出现输入Github密码窗口,vscode控制台可以看到git的相关输出。
+			<br> 此时文件夹中的文件便以成功提交到GitHub中，浏览器刷新查看。
+		</p>
+		<p data-anchor-id="ifl1">6.同步GitHub代码到本地，选择'拉取'即可</p>
+		<p data-anchor-id="jmv2">
+			<strong>注：</strong>若如仍无法解决问题，也可以参考以下的博文：</p>
+		<blockquote data-anchor-id="uhue" class="white-blockquote">
+			<ul>
+				<li>
+					<a href="http://blog.csdn.net/lhb_11/article/details/77837078" target="_blank">http://blog.csdn.net/lhb_11/article/details/77837078</a>
+				</li>
+				<li>
+					<a href="https://www.cnblogs.com/ashidamana/p/6122619.html" target="_blank">https://www.cnblogs.com/ashidamana/p/6122619.html</a>
+				</li>
+				<li>
+					<a href="https://www.cnblogs.com/xuanhun/p/6019038.html?utm_source=tuicool&amp;utm_medium=referral" target="_blank">https://www.cnblogs.com/xuanhun/p/6019038.html?utm_source=tuicool&amp;utm_medium=referral</a>
+				</li>
+			</ul>
+		</blockquote>
+		<p data-anchor-id="dxts">License</p>
+		<blockquote data-anchor-id="n8ji" class="white-blockquote">
+			<ul>
+				<li>可以拷贝、转发，但是必须提供原作者信息，同时也不能将本项目用于商业用途。</li>
+			</ul>
+		</blockquote>
+	</div>
+</body>
+
+</html>
