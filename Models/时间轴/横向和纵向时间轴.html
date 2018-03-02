@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>横向和纵向时间轴</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+        body{
+            overflow: auto;
+        }
+
+        .container {
+            clear: both;
+            margin: 0 auto;
+            overflow: hidden;
+            padding: 30px;
+            width: 2000px;
+        }
+
+        /*横向时间轴*/
+
+        .time-horizontal {
+            list-style-type: none;
+            width: 2000px;
+            border-top: 1px solid #707070;
+            padding: 0px;
+            margin-bottom: 120px;
+            
+        }
+
+        .time-horizontal li {
+            float: left;
+            position: relative;
+            text-align: center;
+            width: 100px;
+        }
+
+        .time-horizontal li code {
+            margin-top: -30px;
+            display: block;
+        }
+
+        .time-horizontal li span {
+            margin-top: 30px;
+            display: block;
+        }
+
+        .time-horizontal li b:before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 42px;
+            width: 12px;
+            height: 12px;
+            border: 2px solid #4c4c4c;
+            border-radius: 8px;
+            background: #4c4c4c;
+        }
+        /*纵向时间轴*/
+
+        .time-vertical {
+            list-style-type: none;
+            border-left: 1px solid #707070;
+            padding: 0px;
+            height: 400px;
+        }
+
+        .time-vertical li {
+            height: 100px;
+            position: relative;
+        }
+
+        .time-vertical li a {
+            display: inline-block;
+            margin-left: 20px;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #000;
+        }
+
+        .time-vertical li b:before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: -12px;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #98FB98;
+            border-radius: 10px;
+            background: #98FB98;
+        }
+
+        .time-vertical li span {
+            position: absolute;
+            color: #fff;
+            top: 18px;
+            left: -6px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-x">
+        <ul class="time-horizontal">
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第1道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第2道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第3道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第4道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第5道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第6道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第7道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第8道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第9道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第10道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第11道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第12道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第13道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第14道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第14道工序</span>
+            </li>
+        </ul>
+        <ul class="time-horizontal">
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第1道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第2道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第3道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第4道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第5道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第6道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第7道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第8道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第9道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第10道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第11道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第12道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第13道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第14道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第14道工序</span>
+            </li>
+        </ul>
+        <ul class="time-horizontal">
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第1道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第2道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第3道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第4道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第5道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第6道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第7道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第8道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第9道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第10道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第11道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第12道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第13道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第14道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第14道工序</span>
+            </li>
+        </ul>
+        <ul class="time-horizontal">
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第1道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第2道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第3道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第4道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第5道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第6道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第7道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第8道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第9道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第10道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第11道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第12道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第13道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第14道工序</span>
+            </li>
+            <li>
+                <b></b>
+                <code>10:00</code>
+                <span>第14道工序</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="container-y">
+        <ul class="time-vertical">
+            <li>
+                <b></b>
+                <span>1</span>
+                <a href="javascript:void(0)">keso</a>
+            </li>
+            <li>
+                <b></b>
+                <span>2</span>
+                <a href="javascript:void(0)">FlyElephant</a>
+            </li>
+            <li>
+                <b></b>
+                <span>3</span>
+                <a href="javascript:void(0)">博客园</a>
+            </li>
+            <li>
+                <b></b>
+                <span>4</span>
+                <a href="javascript:void(0)">创业</a>
+            </li>
+        </ul>
+    </div>
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var ulnum = $(".container-x ul").length;
+            for (var i = 0; i < ulnum; i++) {
+                var linum = $(".container-x ul:eq("+i+") li").length;
+                $(".container-x ul:eq("+i+") li:eq("+i+")")
+            }   
+            
+
+            for (var i = 0; i < inxx; i++) {
+                $(".timeline:eq("+i+") li").removeClass('colornone').addClass('colorpick');
+                $(".timeline:eq("+(i-1)+")").removeClass('bgnone').addClass('bgpick');    
+            }
+        })
+    </script>     
+</body>
+
+</html>
