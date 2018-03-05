@@ -7,7 +7,7 @@
     <title>横向和纵向时间轴</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type="text/css">
-        body{
+        body {
             overflow: auto;
         }
 
@@ -27,7 +27,7 @@
             border-top: 1px solid #707070;
             padding: 0px;
             margin-bottom: 120px;
-            
+
         }
 
         .time-horizontal li {
@@ -56,11 +56,17 @@
             height: 12px;
             border: 2px solid #4c4c4c;
             border-radius: 8px;
-            background: #4c4c4c;
+            background: red;
         }
+
+        .y::before {
+            background: blue !important;
+        }
+
         /*纵向时间轴*/
 
         .time-vertical {
+            margin-left: 50px;
             list-style-type: none;
             border-left: 1px solid #707070;
             padding: 0px;
@@ -412,7 +418,7 @@
             </li>
         </ul>
     </div>
-
+    <hr>
     <div class="container-y">
         <ul class="time-vertical">
             <li>
@@ -439,20 +445,29 @@
     </div>
     <script src="js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript">
-        $(function(){
+        $(function () {
+            var i = 0;
+            var j = 0;
             var ulnum = $(".container-x ul").length;
             for (var i = 0; i < ulnum; i++) {
-                var linum = $(".container-x ul:eq("+i+") li").length;
-                $(".container-x ul:eq("+i+") li:eq("+i+")")
-            }   
-            
+                mySetInterval(i, j);
+            }
 
-            for (var i = 0; i < inxx; i++) {
-                $(".timeline:eq("+i+") li").removeClass('colornone').addClass('colorpick');
-                $(".timeline:eq("+(i-1)+")").removeClass('bgnone').addClass('bgpick');    
+            function mySetInterval(i, j) {
+                var linum = $(".container-x ul:eq(" + i + ") li").length;
+                var timer = setInterval(function () {
+                    $(".container-x ul:eq(" + i + ") li:eq(" + j + ")").siblings().find("b").removeClass(
+                        'y');
+                    $(".container-x ul:eq(" + i + ") li:eq(" + j + ") b").addClass('y');
+
+                    j++;
+                    if (j == linum) {
+                        j = 0;
+                    }
+                }, 2000)
             }
         })
-    </script>     
+    </script>
 </body>
 
 </html>
