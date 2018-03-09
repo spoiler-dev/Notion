@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+        .main{
+            max-width: 800px;
+            margin:0 auto;
+            padding: 2rem 1rem;
+            width: 100%;
+        }
+        .pic-box{
+            margin: 165px auto;
+            position: relative;
+            max-width: 400px;
+            text-align: center;
+            -webkit-perspective: 50px;
+            /* perspective的中文意思是：透视，视角！ */
+            perspective: 50px;
+        }
+        .pic-up{
+            position: relative;
+            z-index: 1;
+            padding: 3rem 1.5rem;
+            /* 规定以慢速开始和结束的过渡效果 */
+            -webkit-transition: 0.25s ease-in-out;
+            transition: 0.25s ease-in-out;
+            background-color: rgba(103, 144, 138, 0.9);
+        }
+        .pic-up:hover {
+            opacity: 0;
+            -webkit-transform: translateY(-15px);
+            transform: translateY(-15px);
+        }
+        .pic-down {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 0;
+            -webkit-transition: 5s ease-in-out;
+            transition: 5s ease-in-out;
+        }
+        .part {
+            /* margin-left: -125px;
+            margin-top: -75px; */
+            width: 180px;
+            height: 100px;
+            background-image: url(img/pin.jpg);
+        }
+        .part-1 {
+            -webkit-transform: translate(-63%, -68%);
+            transform: translate(-63%, -68%);
+            background-position: 0px 180px;
+        }
+        .part-2 {
+            -webkit-transform: translate(37%, -118%);
+            transform: translate(37%, -118%);
+            background-position: 180px 0px;
+        }
+        .part-3 {
+            -webkit-transform: translate(137%, -168%);
+            transform: translate(137%, -168%);
+            background-position: 270px 0px;
+        }
+        .part-4 {
+            -webkit-transform: translate(-63%, -118%);
+            transform: translate(-63%, -118%);
+            background-position: 90px 50px;
+        }
+        .part-5 {
+            -webkit-transform: translate(37%, -168%);
+            transform: translate(37%, -168%);
+            background-position: 180px 50px;
+        }
+        .part-6 {
+            -webkit-transform: translate(137%, -218%);
+            transform: translate(137%, -218%);
+            background-position: 270px 50px;
+        }
+        .part-7 {
+            -webkit-transform: translate(-63%, -168%);
+            transform: translate(-63%, -168%);
+            background-position: 0px 150px;
+        }
+        .part-8 {
+            -webkit-transform: translate(37%, -218%);
+            transform: translate(37%, -218%);
+            background-position: 90px 150px;
+        }
+        .part-9 {
+            -webkit-transform: translate(137%, -268%);
+            transform: translate(137%, -268%);
+            background-position: 270px 150px;
+        }
+
+    </style>
+    
+</head>
+<body>
+    <main class="main">
+        <div class="pic-box">
+            <div class="pic-up">
+                <h2>试一试</h2>
+            </div>
+            <div class="pic-down">
+                <div class="part part-1"></div>
+                <div class="part part-2"></div>
+                <div class="part part-3"></div>
+                <div class="part part-4"></div>
+                <div class="part part-5"></div>
+                <div class="part part-6"></div>
+                <div class="part part-7"></div>
+                <div class="part part-8"></div>
+                <div class="part part-9"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="main.js"></script>    
+</body>
+</html>
