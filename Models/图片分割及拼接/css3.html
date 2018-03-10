@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>图片切割还原</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type="text/css">
-        .main{
+        .main {
             max-width: 800px;
-            margin:0 auto;
+            margin: 0 auto;
             padding: 2rem 1rem;
             width: 100%;
         }
-        .pic-box{
+
+        .pic-box {
             margin: 165px auto;
             position: relative;
             max-width: 400px;
@@ -21,7 +23,8 @@
             /* perspective的中文意思是：透视，视角！ */
             perspective: 50px;
         }
-        .pic-up{
+
+        .pic-up {
             position: relative;
             z-index: 1;
             padding: 3rem 1.5rem;
@@ -30,11 +33,13 @@
             transition: 0.25s ease-in-out;
             background-color: rgba(103, 144, 138, 0.9);
         }
+
         .pic-up:hover {
             opacity: 0;
             -webkit-transform: translateY(-15px);
             transform: translateY(-15px);
         }
+
         .pic-down {
             position: absolute;
             top: 0;
@@ -45,62 +50,133 @@
             -webkit-transition: 5s ease-in-out;
             transition: 5s ease-in-out;
         }
+
         .part {
-            /* margin-left: -125px;
-            margin-top: -75px; */
             width: 180px;
             height: 100px;
             background-image: url(img/pin.jpg);
-        }
-        .part-1 {
-            -webkit-transform: translate(-63%, -68%);
-            transform: translate(-63%, -68%);
-            background-position: 0px 180px;
-        }
-        .part-2 {
-            -webkit-transform: translate(37%, -118%);
-            transform: translate(37%, -118%);
-            background-position: 180px 0px;
-        }
-        .part-3 {
-            -webkit-transform: translate(137%, -168%);
-            transform: translate(137%, -168%);
-            background-position: 270px 0px;
-        }
-        .part-4 {
-            -webkit-transform: translate(-63%, -118%);
-            transform: translate(-63%, -118%);
-            background-position: 90px 50px;
-        }
-        .part-5 {
-            -webkit-transform: translate(37%, -168%);
-            transform: translate(37%, -168%);
-            background-position: 180px 50px;
-        }
-        .part-6 {
-            -webkit-transform: translate(137%, -218%);
-            transform: translate(137%, -218%);
-            background-position: 270px 50px;
-        }
-        .part-7 {
-            -webkit-transform: translate(-63%, -168%);
-            transform: translate(-63%, -168%);
-            background-position: 0px 150px;
-        }
-        .part-8 {
-            -webkit-transform: translate(37%, -218%);
-            transform: translate(37%, -218%);
-            background-position: 90px 150px;
-        }
-        .part-9 {
-            -webkit-transform: translate(137%, -268%);
-            transform: translate(137%, -268%);
-            background-position: 270px 150px;
+            background-repeat: no-repeat;
         }
 
+        .part-1 {
+            -webkit-transform: translate(-140px, 0px);
+            transform: translate(-140px, 0px);
+            background-position: 0px 0px;
+        }
+
+        .part-2 {
+            -webkit-transform: translate(-70px, 100px);
+            transform: translate(-70px, 100px);
+            background-position: -180px 0px;
+        }
+
+        .part-3 {
+            -webkit-transform: translate(200px, 0px);
+            transform: translate(200px, 0px);
+            background-position: -360px 0px;
+        }
+
+        .part-4 {
+            -webkit-transform: translate(-180px, -200px);
+            transform: translate(-180px, -200px);
+            background-position: 0px -100px;
+        }
+
+        .part-5 {
+            -webkit-transform: translate(30px, -300px);
+            transform: translate(30px, -300px);
+            background-position: -180px -100px;
+        }
+
+        .part-6 {
+            -webkit-transform: translate(40px, -500px);
+            transform: translate(40px, -500px);
+            background-position: -360px -100px;
+        }
+
+        .part-7 {
+            -webkit-transform: translate(280px, -600px);
+            transform: translate(280px, -600px);
+            background-position: 0px -200px;
+        }
+
+        .part-8 {
+            -webkit-transform: translate(-140px, -700px);
+            transform: translate(-140px, -700px);
+            background-position: -180px -200px;
+        }
+
+        .part-9 {
+            -webkit-transform: translate(120px, -900px);
+            transform: translate(120px, -909px);
+            background-position: -360px -200px;
+        }
+
+        .pic-up:hover+.pic-down .part-1 {
+            -webkit-transform: translate(-70px, 0px);
+            transform: translate(-70px, 0px);
+            background-position: 0px 0px;
+        }
+
+        .pic-up:hover+.pic-down .part-2 {
+            -webkit-transform: translate(110px, -100px);
+            transform: translate(110px, -100px);
+            background-position: -180px 0px;
+        }
+
+        .pic-up:hover+.pic-down .part-3 {
+            -webkit-transform: translate(290px, -200px);
+            transform: translate(290px, -200px);
+            background-position: -360px 0px;
+        }
+
+        .pic-up:hover+.pic-down .part-4 {
+            -webkit-transform: translate(-70px, -200px);
+            transform: translate(-70px, -200px);
+            background-position: 0px -100px;
+        }
+
+        .pic-up:hover+.pic-down .part-5 {
+            -webkit-transform: translate(110px, -300px);
+            transform: translate(110px, -300px);
+            background-position: -180px -100px;
+        }
+
+        .pic-up:hover+.pic-down .part-6 {
+            -webkit-transform: translate(290px, -400px);
+            transform: translate(290px, -400px);
+            background-position: -360px -100px;
+        }
+
+        .pic-up:hover+.pic-down .part-7 {
+            -webkit-transform: translate(-70px, -400px);
+            transform: translate(-70px, -400px);
+            background-position: 0px -200px;
+        }
+
+        .pic-up:hover+.pic-down .part-8 {
+            -webkit-transform: translate(110px, -500px);
+            transform: translate(110px, -500px);
+            background-position: -180px -200px;
+        }
+
+        .pic-up:hover+.pic-down .part-9 {
+            -webkit-transform: translate(290px, -600px);
+            transform: translate(290px, -600px);
+            background-position: -360px -200px;
+        }
+
+        .parts {
+            background-position: 180px 100px;
+            width: 180px;
+            height: 100px;
+            background-image: url(img/pin.jpg);
+            background-repeat: no-repeat;
+        }
     </style>
-    
+
 </head>
+
 <body>
     <main class="main">
         <div class="pic-box">
@@ -121,6 +197,8 @@
         </div>
     </main>
 
-    <script src="main.js"></script>    
+    <div class="parts"></div>
+    <script src="main.js"></script>
 </body>
+
 </html>
