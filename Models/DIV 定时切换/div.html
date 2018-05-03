@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DIV 定时切换</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .content{
+            margin: 0 auto;
+            width: 300px;
+            position: relative;
+        }
+        .card{
+            width: 200px;
+            height: 300px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .card1{
+            background: red;
+        }
+        .card2{
+            background:powderblue;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="card card1">1</div>
+        <div class="card card2">2</div>
+    </div>
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script>
+        function change(){ 
+            if($('.card1').css('z-index') == 3){
+                $('.card1').css("z-index","1");
+            }else{
+                $('.card1').css("z-index","3");
+            }
+        } 
+        window.setInterval(change,1000); 
+    </script>
+</body>
+</html>
