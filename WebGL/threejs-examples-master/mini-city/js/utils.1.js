@@ -52,7 +52,9 @@ var utils = {
       material = new THREE.MeshLambertMaterial({color: color})
     } else if (type === 'phong') {
       material = new THREE.MeshPhongMaterial({color: color})
-    } else {
+    } else if (type === 'opacity') {
+      material = new THREE.MeshPhongMaterial({opacity:0,transparent:true})
+    }else {
       console.error('unrecognized type!')
     }
     

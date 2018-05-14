@@ -217,12 +217,17 @@ function buildbuilding() {
     separator.receiveShadow = false
     separator.position.set(-40, 45, 0)
     scene.add(separator)
+
     // 门
-    var door = new THREE.BoxGeometry(20, 30, 5)
-    var matarial = new THREE.MeshLambertMaterial({color: 'red'});
-    var cube = new THREE.Mesh(door, matarial);
-    shape.holes.push(hole3);
-    scene.add(cube)
+    var door1 = new THREE.BoxBufferGeometry(40, 90, 6)
+    var door = utils.makeMesh('opacity', door1, 0x00ffffff)
+    door.receiveShadow = false
+    door.position.set(-95, 45, 98)
+    // var door = new THREE.BoxGeometry(20, 30, 5)
+    // var matarial = new THREE.MeshLambertMaterial({color: 'red'});
+    // var cube = new THREE.Mesh(door, matarial);
+    // shape.holes.push(hole3);
+    scene.add(door)
 
   }
 
