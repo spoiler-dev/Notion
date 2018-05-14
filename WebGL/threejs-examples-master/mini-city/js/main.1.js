@@ -26,16 +26,22 @@ renderer.shadowMap.enabled = true // 设置是否开启投影, 开启的话, 光
 renderer.shadowMap.type = THREE.PCFSoftShadowMap // 设置投影类型, 这边是柔和投影
 document.body.appendChild(renderer.domElement) // renderer.domElement 是渲染器用来显示结果的 canvas 标签
 
+// 检查客户端
 checkUserAgent()
+// 设置辅助线 以及鼠标插件
 buildAuxSystem()
+// 设置光照
 buildLightSystem()
+// 构造建筑物
 buildbuilding()
-buildRoad()
-buildStaticCars()
-buildMovingCars()
+//buildRoad()
+//buildStaticCars()
+//buildMovingCars()
 
 loop()
 onWindowResize()
+
+
 
 function checkUserAgent() {
   var n = navigator.userAgent;
@@ -163,19 +169,123 @@ function buildRoad() {
 
 function buildbuilding() {
   // 创建底座 长/宽/高
-  var planeGeometry = new THREE.BoxBufferGeometry(320, 6, 320)
+  var planeGeometry = new THREE.BoxBufferGeometry(320, 6, 200)
   // 设置材质
   var plane = utils.makeMesh('lambert', planeGeometry, 0x6f5f6a)
   // 网格线上浮
   plane.position.y = -3
   // 添加网格线
   scene.add(plane)
-	
-  addFense()
-  addGreen()
-  addTrees()
-  addHospital()
-  addLamps()
+  
+  // 篱笆
+  //addFense()
+  // 草坪
+  //addGreen()
+  // 树
+  //addTrees()
+  // 医院
+  //addHospital()
+  // 路灯
+  //addLamps()
+  room()
+  waterDispenser()
+  // 房间主结构
+  function room() {
+    // 墙
+    var room = new THREE.Object3D()
+    var wallCoords = [
+      [-160, -100],
+      [-160, 100],
+      [160, 100],
+      [160, -100],
+      [-160, -100]
+    ]
+    var wallHolePath = [
+      [-155, -95],
+      [155, -95],
+      [155, 95],
+      [-155, 95],
+      [-155, -95]
+    ]
+    var wallShape = utils.makeShape(wallCoords, wallHolePath) 
+    var wallGeometry = utils.makeExtrudeGeometry(wallShape, 90)
+    var wall = utils.makeMesh('lambert', wallGeometry, 0x0792a5)
+    scene.add(wall)
+    // 隔断墙
+    var separatorGeometry = new THREE.BoxBufferGeometry(5, 90, 190)
+    var separator = utils.makeMesh('phong', separatorGeometry, 0x0792a5)
+    separator.receiveShadow = false
+    separator.position.set(-40, 45, 0)
+    scene.add(separator)
+    // 门
+    var door = new THREE.BoxGeometry(20, 30, 5)
+    var matarial = new THREE.MeshLambertMaterial({color: 'red'});
+    var cube = new THREE.Mesh(door, matarial);
+    shape.holes.push(hole3);
+    scene.add(cube)
+
+  }
+
+// 饮水机
+function waterDispenser() {
+  var waterDispenser = new THREE.Object3D()
+  
+  // 饮水机柜
+  var waterDispenserCoords = [
+    [-15, -30],
+    [-15, 30],
+    [15, 30],
+    [15, -30],
+    [-15, -30]
+  ]
+  var waterDispenserHolePath = [
+    [-14, -29],
+    [14, -29],
+    [14, 29],
+    [-14, 29],
+    [-14, -29]
+  ]
+  var waterDispenserShape = utils.makeShape(waterDispenserCoords,waterDispenserHolePath) 
+  var waterDispenserGeometry = utils.makeExtrudeGeometry(waterDispenserShape, 20)
+  var waterDispenserMain = utils.makeMesh('lambert', waterDispenserGeometry, 0x00ffffff)
+  waterDispenserMain.rotation.x = -0.5 * Math.PI
+  waterDispenserMain.position.x = -135
+  waterDispenserMain.position.y = 30
+  waterDispenserMain.position.z = -75
+  waterDispenser.add(waterDispenserMain)
+  // 饮水机隔断
+  var waterDispenserSeparatorGeometry = new THREE.BoxBufferGeometry(28, 1, 20)
+  var waterDispenserSeparator = utils.makeMesh('phong', waterDispenserSeparatorGeometry, 0x00ffffff)
+  waterDispenserSeparator.receiveShadow = false
+  waterDispenserSeparator.position.set(-135, 35, -85)
+  waterDispenser.add(waterDispenserSeparator)
+  // 饮水机下面板
+  var waterDispenserUpGeometry = new THREE.BoxBufferGeometry(28, 32, 1)
+  var waterDispenserUp = utils.makeMesh('phong', waterDispenserUpGeometry, 0x00000000)
+  waterDispenserUp.receiveShadow = false
+  waterDispenserUp.position.set(-135, 18, -75)
+  waterDispenser.add(waterDispenserUp)
+  // 饮水机下面板提手
+  var waterDispenserUpBarGeometry = new THREE.BoxBufferGeometry(20, 1, 1)
+  var waterDispenserUpBar = utils.makeMesh('phong', waterDispenserUpBarGeometry, 0x00ffffff)
+  waterDispenserUpBar.receiveShadow = false
+  waterDispenserUpBar.position.set(-135, 20, -74)
+  waterDispenser.add(waterDispenserUpBar)
+  // 饮水机上面板
+  var waterDispenserDownGeometry = new THREE.BoxBufferGeometry(28, 23, 1)
+  var waterDispenserDown = utils.makeMesh('phong', waterDispenserDownGeometry, 0x00ff0000)
+  waterDispenserDown.receiveShadow = false
+  waterDispenserDown.position.set(-135, 47, -75)
+  waterDispenser.add(waterDispenserDown)
+  // 饮水机上面板提手
+  var waterDispenserDownBarGeometry = new THREE.BoxBufferGeometry(6, 1, 1)
+  var waterDispenserDownBar = utils.makeMesh('phong', waterDispenserDownBarGeometry, 0x00ffffff)
+  waterDispenserDownBar.receiveShadow = false
+  waterDispenserDownBar.position.set(-135, 47, -74)
+  waterDispenser.add(waterDispenserDownBar)
+
+  scene.add(waterDispenser)
+}
 
   function addLamps() {
     var lampsPosition = [
@@ -338,15 +448,17 @@ function buildbuilding() {
 
     return lamp
   }
-
+  
   function createHospital() {
     var hospital = new THREE.Object3D()
-
+    
+    // 底座
     var baseGeometry = new THREE.BoxBufferGeometry(180, 3, 140)
     var base = utils.makeMesh('lambert', baseGeometry, 0xffffff)
     base.position.y = 1
     hospital.add(base)
-
+    
+    // 楼的主体
     var frontMainCoords = [
       [-80, -30],
       [-80, 20],
@@ -364,12 +476,14 @@ function buildbuilding() {
     frontMain.receiveShadow = true
     hospital.add(frontMain)
 
+    // 楼顶地板
     var frontTopShape = frontMainShape
     var frontTopGeometry = utils.makeExtrudeGeometry(frontTopShape, 5)
     var frontTop = utils.makeMesh('lambert', frontTopGeometry, 0xb1a7af)
     frontTop.position.y = 100
     hospital.add(frontTop)
 
+    // 楼顶架
     var frontRoofShelfGeometry = new THREE.Geometry()
     var frontRoofShelfCubeGeometry = new THREE.BoxGeometry(2, 2, 40)
     // for z-axis
@@ -406,31 +520,37 @@ function buildbuilding() {
     frontRoofShelf.position.set(-70, 115, 5)
     hospital.add(frontRoofShelf)
 
+    // 楼前的平台
     var frontPlatGeometry = new THREE.BoxBufferGeometry(150, 3, 90)
     var fronPlat = utils.makeMesh('lambert', frontPlatGeometry, 0x0792a5)
     fronPlat.position.set(-3, 18, 25)
     hospital.add(fronPlat)
 
+    // 楼前的平台的前护栏
     var frontPlatVerticalGeometry = new THREE.BoxBufferGeometry(150, 15, 3)
     var frontPlatVertical = utils.makeMesh('phong', frontPlatVerticalGeometry, 0x0792a5)
     frontPlatVertical.receiveShadow = false
     frontPlatVertical.position.set(-3, 24, 68.5)
     hospital.add(frontPlatVertical)
 
+    // 楼前的平台的前护栏的白色护栏块
     var frontPlatVerticalWhiteGeometry = new THREE.BoxBufferGeometry(150, 3, 3)
     var frontPlatVerticalWhite = utils.makeMesh('phong', frontPlatVerticalWhiteGeometry, 0xffffff)
     frontPlatVerticalWhite.position.set(-3, 33, 68.5)
     hospital.add(frontPlatVerticalWhite)
 
+    // 楼前的平台的左底柱
     var frontPlatPillarGeometry = new THREE.CylinderGeometry(2, 2, 15, 32)
     var frontPlatPillar = utils.makeMesh('lambert', frontPlatPillarGeometry, 0xffffff)
     frontPlatPillar.position.set(-60, 10, 55)
     hospital.add(frontPlatPillar)
 
+    // 楼前的平台的右底柱
     var frontPlatPillar2 = frontPlatPillar.clone()
     frontPlatPillar2.position.set(55, 10, 55)
     hospital.add(frontPlatPillar2)
 
+    // 楼的主体骨架
     var frontBorderVerticles = new THREE.Object3D()
     var frontBorderVerticleGeometry = new THREE.BoxBufferGeometry(4, 106, 4)
     var frontBorderVerticleMesh = utils.makeMesh('phong', frontBorderVerticleGeometry, 0xffffff)
@@ -445,6 +565,7 @@ function buildbuilding() {
     frontBorderVerticles.add(frontBorderVerticle3)
     hospital.add(frontBorderVerticles)
 
+    // 楼的屋顶骨架
     var frontRoofCoords = [
       [-82, -32],
       [20, -32],
@@ -467,6 +588,7 @@ function buildbuilding() {
     frontRoof.position.y = 100
     hospital.add(frontRoof)
 
+    // 后楼的主体
     var backMainCoords = [
       [-80, 20],
       [-80, 60],
@@ -510,7 +632,7 @@ function buildbuilding() {
     backMiddle.position.y = 86
     backMiddle.position.z = -58
     backMiddle.position.x = -78
-    hospital.add(backMiddle)
+    //hospital.add(backMiddle)
 
     var backMiddleWindowGeometry = new THREE.PlaneGeometry(32, 66, 1, 1)
     var backMiddleWindowMaterial = new THREE.MeshPhongMaterial({ map: textures.window() })
@@ -519,7 +641,7 @@ function buildbuilding() {
     var backMiddleWindow = new THREE.Mesh(backMiddleWindowGeometry, backMiddleWindowMaterial)
     backMiddleWindow.position.set(83, 51, -40)
     backMiddleWindow.rotation.y = 0.5 * Math.PI
-    hospital.add(backMiddleWindow)
+    //hospital.add(backMiddleWindow)
 
     var windowBackOrigin = createWindow()
     windowBackOrigin.scale.set(0.6, 0.6, 1)
@@ -530,7 +652,7 @@ function buildbuilding() {
         var windowObj = windowBackOrigin.clone()
         windowObj.position.x -= i * 22
         windowObj.position.y -= j * 20
-        hospital.add(windowObj)
+        //hospital.add(windowObj)
       }
     }
 
@@ -592,23 +714,29 @@ function buildbuilding() {
 function buildLightSystem() {
 
   if (!config.isMobile) {
+    // 平行的一束光，模拟从很远处照射的太阳光
+    // DirectionalLight( color, intensity )
+    // color — 光的颜色值，十六进制，默认值为0xffffff.
+    // intensity — 光的强度，默认值为1.  
     var directionalLight = new THREE.DirectionalLight(0xffffff, 1.1);
     directionalLight.position.set(300, 1000, 500);
     directionalLight.target.position.set(0, 0, 0);
     directionalLight.castShadow = true;
 
     var d = 300;
+    // 正交投影相机
+    // var camera = new THREE.OrthographicCamera(left, right, top, bottom, near, far);
     directionalLight.shadow.camera = new THREE.OrthographicCamera(-d, d, d, -d, 500, 1600);
     directionalLight.shadow.bias = 0.0001;
     directionalLight.shadow.mapSize.width = directionalLight.shadow.mapSize.height = 1024;
     scene.add(directionalLight)
-
+    // 环境光( AmbientLight )：笼罩在整个空间无处不在的光
     var light = new THREE.AmbientLight(0xffffff, 0.3)
     scene.add(light)
   } else {
+    // 半球光光源( HemisphereLight )
     var hemisphereLight = new THREE.HemisphereLight(0xffffff, 1)
     scene.add(hemisphereLight)
-
     var light = new THREE.AmbientLight(0xffffff, 0.15)
     scene.add(light)
   }
@@ -626,12 +754,16 @@ function buildAuxSystem() {
   // var axisHelper = new THREE.AxesHelper(200)
   // scene.add(axisHelper)
 
+  // 创建网格辅助线
   var gridHelper = new THREE.GridHelper(320, 32)
   scene.add(gridHelper)
 
   var controls = new THREE.OrbitControls(camera, renderer.domElement)
+  // 使动画循环使用时阻尼或自转 意思是否有惯性
   controls.enableDamping = true
+  // 动态阻尼系数 就是鼠标拖拽旋转灵敏度
   controls.dampingFactor = 0.25
+  // 旋转速度
   controls.rotateSpeed = 0.35
 }
 
