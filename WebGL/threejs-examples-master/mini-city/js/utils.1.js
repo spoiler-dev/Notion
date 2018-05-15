@@ -49,12 +49,10 @@ var utils = {
     var material
     if (type === 'lambert') {
 		// 材质
-      material = new THREE.MeshLambertMaterial({color: color})
+      material = new THREE.MeshLambertMaterial({color: color,wireframe: false})
     } else if (type === 'phong') {
       material = new THREE.MeshPhongMaterial({color: color})
-    } else if (type === 'opacity') {
-      material = new THREE.MeshPhongMaterial({opacity:0,transparent:true})
-    }else {
+    } else {
       console.error('unrecognized type!')
     }
     
@@ -66,4 +64,5 @@ var utils = {
     return mesh
 
   }
+  
 }

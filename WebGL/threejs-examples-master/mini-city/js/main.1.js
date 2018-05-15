@@ -16,7 +16,7 @@ height = window.innerHeight
 scene = new THREE.Scene() // 新建一个场景
 camera = new THREE.PerspectiveCamera(45, width / height, 1, 5000) // 新建一个透视摄像机, 并设置 视场, 视野长宽比例, 可见远近范围
 // 摄像机的位置
-camera.position.set(330, 330, 330)
+camera.position.set(0, 330, 330)
 camera.lookAt(scene.position) // 设置摄像机观察的方向
 
 renderer = new THREE.WebGLRenderer({ antialias: true }) // 新建一个渲染器, 渲染器用来输出最终结果
@@ -171,7 +171,7 @@ function buildbuilding() {
   // 创建底座 长/宽/高
   var planeGeometry = new THREE.BoxBufferGeometry(320, 6, 200)
   // 设置材质
-  var plane = utils.makeMesh('lambert', planeGeometry, 0x6f5f6a)
+  var plane = utils.makeMesh('lambert', planeGeometry, 0xCDC673)
   // 网格线上浮
   plane.position.y = -3
   // 添加网格线
@@ -189,6 +189,9 @@ function buildbuilding() {
   //addLamps()
   room()
   waterDispenser()
+  machine()
+  fileCabinets()
+
   // 房间主结构
   function room() {
     // 墙
@@ -209,26 +212,27 @@ function buildbuilding() {
     ]
     var wallShape = utils.makeShape(wallCoords, wallHolePath) 
     var wallGeometry = utils.makeExtrudeGeometry(wallShape, 90)
-    var wall = utils.makeMesh('lambert', wallGeometry, 0x0792a5)
+    var wall = utils.makeMesh('lambert', wallGeometry, 0x9cb2d1)
     scene.add(wall)
     // 隔断墙
     var separatorGeometry = new THREE.BoxBufferGeometry(5, 90, 190)
-    var separator = utils.makeMesh('phong', separatorGeometry, 0x0792a5)
+    var separator = utils.makeMesh('phong', separatorGeometry, 0x9cb2d1)
     separator.receiveShadow = false
     separator.position.set(-40, 45, 0)
     scene.add(separator)
 
     // 门
-    var door1 = new THREE.BoxBufferGeometry(40, 90, 6)
-    var door = utils.makeMesh('opacity', door1, 0x00ffffff)
+    var door1 = new THREE.BoxBufferGeometry(40, 91, 7)
+    var door = utils.makeMesh('phong', door1, 0xD2691E)
     door.receiveShadow = false
     door.position.set(-95, 45, 98)
-    // var door = new THREE.BoxGeometry(20, 30, 5)
-    // var matarial = new THREE.MeshLambertMaterial({color: 'red'});
-    // var cube = new THREE.Mesh(door, matarial);
-    // shape.holes.push(hole3);
     scene.add(door)
-
+    // 门把手
+    var doorknobGeo = new THREE.CylinderGeometry(3, 3, 6,40 ,40);
+    var doorknob = utils.makeMesh('lambert', doorknobGeo, 0xBDB76B)
+    doorknob.rotation.x = -0.5 * Math.PI
+    doorknob.position.set(-80, 45, 103) //设置圆柱坐标 
+    scene.add(doorknob)
   }
 
 // 饮水机
@@ -291,6 +295,84 @@ function waterDispenser() {
 
   scene.add(waterDispenser)
 }
+
+  // 机柜
+  function machine() {
+    var machinePosition = [
+      [0, 34, -70],
+      [40, 34, -70],
+      [80, 34, -70],
+      [0, 34, -20],
+      [40, 34, -20],
+      [80, 34, -20],
+      [0, 34, 30],
+      [40, 34, 30],
+      [80, 34, 30]           
+    ]
+
+    var machineGeometry = new THREE.BoxBufferGeometry(28, 70, 20)
+    var machine = utils.makeMesh('phong', machineGeometry, 0x575757) 
+    machine.receiveShadow = false
+    for (var i = 0; i < 9; i++){
+      var machineClone = machine.clone()
+      machineClone.position.set(machinePosition[i][0], machinePosition[i][1], machinePosition[i][2])
+      scene.add(machineClone)
+    }  
+  }  
+  // 文件柜
+  function fileCabinets() {
+    //创建球形几何体
+    var sphereGeometry = new THREE.BoxGeometry(30, 80, 50)
+    var sphere = utils.makeMesh('phong', sphereGeometry, 0xEBEBEB)
+    //创建立方体几何体
+    var cubeGeometry = new THREE.BoxGeometry(20, 10, 10)
+    var cube1 = utils.makeMesh('phong', cubeGeometry, 0x00000000)
+    cube1.position.y = 25;
+    cube1.position.x = -10;
+    cube1.position.z = 15;
+
+    var cube2 = cube1.clone();
+    cube2.position.z = 0;
+
+    var cube3 = cube1.clone();
+    cube3.position.z = -15;
+
+    var cube4Geo = new THREE.BoxGeometry(30,30,30,20,20,20)
+    var cube4 = utils.makeMesh('lambert', cube4Geo, 0xBDB76B)
+    cube4.position.y = 10;
+    cube4.position.x = -10;
+    cube4.position.z = 15;
+
+
+    //生成ThreeBSP对象
+    var sphereBSP = new ThreeBSP(sphere);
+    var cube1BSP = new ThreeBSP(cube1);
+    var result1BSP = sphereBSP.subtract(cube1BSP);
+
+    var cube2BSP = new ThreeBSP(cube2);
+    var result2BSP = result1BSP.subtract(cube2BSP);
+
+    var cube3BSP = new ThreeBSP(cube3);
+    var result3BSP = result2BSP.subtract(cube3BSP);
+
+    var cube4BSP = new ThreeBSP(cube4)
+    var result4BSP = result3BSP.subtract(cube4BSP)
+
+    //从BSP对象内获取到处理完后的mesh模型数据
+    var result = result4BSP.toMesh();
+    //更新模型的面和顶点的数据
+    result.geometry.computeFaceNormals();
+    result.geometry.computeVertexNormals();
+    //重新赋值一个纹理
+    var material = new THREE.MeshPhongMaterial({
+        color: 0xEBEBEB
+    });
+    result.material = material;
+    result.position.set(140, 47, 65)  
+    //将计算出来模型添加到场景当中
+    scene.add(result);
+}
+
 
   function addLamps() {
     var lampsPosition = [
