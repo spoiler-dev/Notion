@@ -292,7 +292,6 @@ function waterDispenser() {
   waterDispenserDownBar.receiveShadow = false
   waterDispenserDownBar.position.set(-135, 47, -74)
   waterDispenser.add(waterDispenserDownBar)
-
   scene.add(waterDispenser)
 }
 
@@ -321,57 +320,118 @@ function waterDispenser() {
   }  
   // 文件柜
   function fileCabinets() {
-    //创建球形几何体
+    // 创建立方体几何体-柜子
     var sphereGeometry = new THREE.BoxGeometry(30, 80, 50)
     var sphere = utils.makeMesh('phong', sphereGeometry, 0xEBEBEB)
-    //创建立方体几何体
+    // 创建立方体几何体-柜子窗户
     var cubeGeometry = new THREE.BoxGeometry(20, 10, 10)
     var cube1 = utils.makeMesh('phong', cubeGeometry, 0x00000000)
-    cube1.position.y = 25;
-    cube1.position.x = -10;
-    cube1.position.z = 15;
+    cube1.position.y = 25
+    cube1.position.x = -10
+    cube1.position.z = 15
 
-    var cube2 = cube1.clone();
-    cube2.position.z = 0;
+    var cube2 = cube1.clone()
+    cube2.position.z = 0
 
-    var cube3 = cube1.clone();
-    cube3.position.z = -15;
+    var cube3 = cube1.clone()
+    cube3.position.z = -15
 
-    var cube4Geo = new THREE.BoxGeometry(30,30,30,20,20,20)
-    var cube4 = utils.makeMesh('lambert', cube4Geo, 0xBDB76B)
-    cube4.position.y = 10;
-    cube4.position.x = -10;
-    cube4.position.z = 15;
+    // 创建梯形体-柜子低凹槽
+    var cube4Geometry = new THREE.Geometry()
 
+    // 创建一个立方体
+    //    v6----- v5
+    //   /|      /|
+    //  v1------v0|
+    //  | |     | |
+    //  | |v7---|-|v4
+    //  |/      |/
+    //  v2------v3
+
+    // 创建立方体的顶点
+    var vertices = [
+        new THREE.Vector3(15, 10, 4), //v0
+        new THREE.Vector3(-15, 10, 4), //v1
+        new THREE.Vector3(-20, 0, 4), //v2
+        new THREE.Vector3(20, 0, 4), //v3
+        new THREE.Vector3(20, 0, -4), //v4
+        new THREE.Vector3(15, 10, -4), //v5
+        new THREE.Vector3(-15, 10, -4), //v6
+        new THREE.Vector3(-20, 0, -4) //v7
+    ];
+    cube4Geometry.vertices = vertices
+
+    //创建立方的面
+    var faces=[
+        new THREE.Face3(0,1,2),
+        new THREE.Face3(0,2,3),
+        new THREE.Face3(0,3,4),
+        new THREE.Face3(0,4,5),
+        new THREE.Face3(1,6,7),
+        new THREE.Face3(1,7,2),
+        new THREE.Face3(6,5,4),
+        new THREE.Face3(6,4,7),
+        new THREE.Face3(5,6,1),
+        new THREE.Face3(5,1,0),
+        new THREE.Face3(3,2,7),
+        new THREE.Face3(3,7,4)
+    ];
+    cube4Geometry.faces = faces
+
+    //生成法向量
+    cube4Geometry.computeFaceNormals();
+    var cube4Material = new THREE.MeshLambertMaterial({color: 0x00ffff})
+        cube4 = new THREE.Mesh(cube4Geometry, cube4Material)
+        cube4.rotation.y = -0.5 * Math.PI
+        cube4.position.y = -40
+        cube4.position.x = -15
+        cube4.position.z = 0
 
     //生成ThreeBSP对象
-    var sphereBSP = new ThreeBSP(sphere);
-    var cube1BSP = new ThreeBSP(cube1);
-    var result1BSP = sphereBSP.subtract(cube1BSP);
+    var sphereBSP = new ThreeBSP(sphere)
+    var cube1BSP = new ThreeBSP(cube1)
+    var result1BSP = utils.bsp('subtract', sphereBSP, cube1BSP)
 
-    var cube2BSP = new ThreeBSP(cube2);
-    var result2BSP = result1BSP.subtract(cube2BSP);
+    var cube2BSP = new ThreeBSP(cube2)
+    var result2BSP = utils.bsp('subtract', result1BSP, cube2BSP)
 
-    var cube3BSP = new ThreeBSP(cube3);
-    var result3BSP = result2BSP.subtract(cube3BSP);
+    var cube3BSP = new ThreeBSP(cube3)
+    var result3BSP = utils.bsp('subtract', result2BSP, cube3BSP)
 
     var cube4BSP = new ThreeBSP(cube4)
-    var result4BSP = result3BSP.subtract(cube4BSP)
-
-    //从BSP对象内获取到处理完后的mesh模型数据
-    var result = result4BSP.toMesh();
-    //更新模型的面和顶点的数据
-    result.geometry.computeFaceNormals();
-    result.geometry.computeVertexNormals();
-    //重新赋值一个纹理
-    var material = new THREE.MeshPhongMaterial({
-        color: 0xEBEBEB
-    });
-    result.material = material;
+    var result4BSP = utils.bsp('subtract',result3BSP,cube4BSP)
+    
+    // 重新赋值一个纹理
+    var result = utils.bspMesh('phong',0xEBEBEB,result4BSP)
     result.position.set(140, 47, 65)  
-    //将计算出来模型添加到场景当中
-    scene.add(result);
-}
+    // 将计算出来模型添加到场景当中
+    scene.add(result)
+
+    var fileCabinetsBlue = new THREE.Object3D()
+    // 蓝色文件柜
+    var fileCabinets1Geometry = new THREE.BoxGeometry(15, 60, 20)
+    var fileCabinets1 = utils.makeMesh('phong', fileCabinets1Geometry, 0x27408B) 
+    // 窗户
+    var glassHoleGeometry = new THREE.BoxGeometry(10, 20, 12)
+    var glassHole = utils.makeMesh('phong', glassHoleGeometry, 0x27408B) 
+    glassHole.position.x = -5
+    glassHole.position.y = 15
+  
+    var glassHoleBSP = new ThreeBSP(glassHole)
+    var fileCabinets1BSP = new ThreeBSP(fileCabinets1)
+    var fileCabinets1ResultBSP = utils.bsp('subtract', fileCabinets1BSP, glassHoleBSP)
+    var fileCabinets1Result = utils.bspMesh('phong',0x27408B,fileCabinets1ResultBSP)
+    fileCabinets1Result.position.set(140, 47, 24)
+    fileCabinetsBlue.add(fileCabinets1Result)
+    // 玻璃
+    var glassGeometry = new THREE.BoxGeometry(1, 20, 12)
+    var glass = utils.makeMesh('lambert', glassGeometry, 0XECF1F3)
+    glass.position.set(133, 62, 24)
+    fileCabinetsBlue.add(glass)
+    scene.add(fileCabinetsBlue)
+    
+  }
+
 
 
   function addLamps() {
@@ -432,7 +492,6 @@ function waterDispenser() {
       [-120, -120]
     ]
     var greenShape = utils.makeShape(greenCoords)
-
     var greenGeometry = utils.makeExtrudeGeometry(greenShape, 3)
     var green = utils.makeMesh('lambert', greenGeometry, 0xc0c06a)
     scene.add(green)

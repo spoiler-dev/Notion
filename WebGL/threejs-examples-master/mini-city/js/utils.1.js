@@ -45,11 +45,11 @@ var utils = {
     var geometry = new THREE.ShapeGeometry(shape)
     return geometry
   },
-  makeMesh: function (type, geometry, color) { // 制作网格 类型,
+  makeMesh: function (type, geometry, color) { 
     var material
     if (type === 'lambert') {
 		// 材质
-      material = new THREE.MeshLambertMaterial({color: color,wireframe: false})
+      material = new THREE.MeshLambertMaterial({color: color})
     } else if (type === 'phong') {
       material = new THREE.MeshPhongMaterial({color: color})
     } else {
@@ -62,7 +62,40 @@ var utils = {
     mesh.receiveShadow = true
 
     return mesh
+  },
+  bsp: function (type,sphereBSP,cubeBSP) {   
+    var resultBSP
+    if (type === 'subtract') {
+      resultBSP = sphereBSP.subtract(cubeBSP)
+    } else if (type === 'intersect') {
+      resultBSP = sphereBSP.intersect(cubeBSP)
+    } else if (type === 'union') {
+      resultBSP = sphereBSP.union(cubeBSP)
+    } else {
+      console.error('BSP-Type is wrong!')
+    }
 
+    return resultBSP
+  },
+  bspMesh: function (type,color,bsp) {
+    // 从BSP对象内获取到处理完后的mesh模型数据
+    var result = bsp.toMesh()
+    // 更新模型的面和顶点的数据
+    result.geometry.computeFaceNormals()
+    result.geometry.computeVertexNormals()
+    // 重新赋值一个纹理
+    var material
+    if (type === 'lambert') {
+		// 材质
+      material = new THREE.MeshLambertMaterial({color: color})
+    } else if (type === 'phong') {
+      material = new THREE.MeshPhongMaterial({color: color})
+    } else {
+      console.error('unrecognized type!')
+    }
+    result.material = material;
+
+    return result
   }
   
 }
