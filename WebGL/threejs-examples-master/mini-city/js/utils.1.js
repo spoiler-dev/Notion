@@ -51,7 +51,9 @@ var utils = {
 		// 材质
       material = new THREE.MeshLambertMaterial({color: color})
     } else if (type === 'phong') {
-      material = new THREE.MeshPhongMaterial({color: color})
+      material = new THREE.MeshPhongMaterial({ color: color })
+    } else if (type === 'glass') {
+      material = new THREE.MeshBasicMaterial( { color: color,opacity: 0.4,transparent: true});
     } else {
       console.error('unrecognized type!')
     }

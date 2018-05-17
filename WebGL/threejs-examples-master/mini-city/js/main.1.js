@@ -235,65 +235,60 @@ function buildbuilding() {
     scene.add(doorknob)
   }
 
-// 饮水机
-function waterDispenser() {
-  var waterDispenser = new THREE.Object3D()
-  
-  // 饮水机柜
-  var waterDispenserCoords = [
-    [-15, -30],
-    [-15, 30],
-    [15, 30],
-    [15, -30],
-    [-15, -30]
-  ]
-  var waterDispenserHolePath = [
-    [-14, -29],
-    [14, -29],
-    [14, 29],
-    [-14, 29],
-    [-14, -29]
-  ]
-  var waterDispenserShape = utils.makeShape(waterDispenserCoords,waterDispenserHolePath) 
-  var waterDispenserGeometry = utils.makeExtrudeGeometry(waterDispenserShape, 20)
-  var waterDispenserMain = utils.makeMesh('lambert', waterDispenserGeometry, 0x00ffffff)
-  waterDispenserMain.rotation.x = -0.5 * Math.PI
-  waterDispenserMain.position.x = -135
-  waterDispenserMain.position.y = 30
-  waterDispenserMain.position.z = -75
-  waterDispenser.add(waterDispenserMain)
-  // 饮水机隔断
-  var waterDispenserSeparatorGeometry = new THREE.BoxBufferGeometry(28, 1, 20)
-  var waterDispenserSeparator = utils.makeMesh('phong', waterDispenserSeparatorGeometry, 0x00ffffff)
-  waterDispenserSeparator.receiveShadow = false
-  waterDispenserSeparator.position.set(-135, 35, -85)
-  waterDispenser.add(waterDispenserSeparator)
-  // 饮水机下面板
-  var waterDispenserUpGeometry = new THREE.BoxBufferGeometry(28, 32, 1)
-  var waterDispenserUp = utils.makeMesh('phong', waterDispenserUpGeometry, 0x00000000)
-  waterDispenserUp.receiveShadow = false
-  waterDispenserUp.position.set(-135, 18, -75)
-  waterDispenser.add(waterDispenserUp)
-  // 饮水机下面板提手
-  var waterDispenserUpBarGeometry = new THREE.BoxBufferGeometry(20, 1, 1)
-  var waterDispenserUpBar = utils.makeMesh('phong', waterDispenserUpBarGeometry, 0x00ffffff)
-  waterDispenserUpBar.receiveShadow = false
-  waterDispenserUpBar.position.set(-135, 20, -74)
-  waterDispenser.add(waterDispenserUpBar)
-  // 饮水机上面板
-  var waterDispenserDownGeometry = new THREE.BoxBufferGeometry(28, 23, 1)
-  var waterDispenserDown = utils.makeMesh('phong', waterDispenserDownGeometry, 0x00ff0000)
-  waterDispenserDown.receiveShadow = false
-  waterDispenserDown.position.set(-135, 47, -75)
-  waterDispenser.add(waterDispenserDown)
-  // 饮水机上面板提手
-  var waterDispenserDownBarGeometry = new THREE.BoxBufferGeometry(6, 1, 1)
-  var waterDispenserDownBar = utils.makeMesh('phong', waterDispenserDownBarGeometry, 0x00ffffff)
-  waterDispenserDownBar.receiveShadow = false
-  waterDispenserDownBar.position.set(-135, 47, -74)
-  waterDispenser.add(waterDispenserDownBar)
-  scene.add(waterDispenser)
-}
+  // 饮水机
+  function waterDispenser() {
+    var waterDispenser = new THREE.Object3D()
+    
+    // 饮水机柜
+    var waterDispenserCoords = [
+      [-15, -30],
+      [-15, 30],
+      [15, 30],
+      [15, -30],
+      [-15, -30]
+    ]
+    var waterDispenserHolePath = [
+      [-14, -29],
+      [14, -29],
+      [14, 29],
+      [-14, 29],
+      [-14, -29]
+    ]
+    var waterDispenserShape = utils.makeShape(waterDispenserCoords,waterDispenserHolePath) 
+    var waterDispenserGeometry = utils.makeExtrudeGeometry(waterDispenserShape, 20)
+    var waterDispenserMain = utils.makeMesh('lambert', waterDispenserGeometry, 0x00ffffff)
+    waterDispenserMain.rotation.x = -0.5 * Math.PI
+    waterDispenserMain.position.x = -135
+    waterDispenserMain.position.y = 30
+    waterDispenserMain.position.z = -75
+    waterDispenser.add(waterDispenserMain)
+    // 饮水机隔断
+    var waterDispenserSeparatorGeometry = new THREE.BoxBufferGeometry(28, 1, 20)
+    var waterDispenserSeparator = utils.makeMesh('phong', waterDispenserSeparatorGeometry, 0x00ffffff)
+    waterDispenserSeparator.position.set(-135, 35, -85)
+    waterDispenser.add(waterDispenserSeparator)
+    // 饮水机下面板
+    var waterDispenserUpGeometry = new THREE.BoxBufferGeometry(28, 32, 1)
+    var waterDispenserUp = utils.makeMesh('phong', waterDispenserUpGeometry, 0x00000000)
+    waterDispenserUp.position.set(-135, 18, -75)
+    waterDispenser.add(waterDispenserUp)
+    // 饮水机下面板提手
+    var waterDispenserUpBarGeometry = new THREE.BoxBufferGeometry(20, 1, 1)
+    var waterDispenserUpBar = utils.makeMesh('phong', waterDispenserUpBarGeometry, 0x00ffffff)
+    waterDispenserUpBar.position.set(-135, 20, -74)
+    waterDispenser.add(waterDispenserUpBar)
+    // 饮水机上面板
+    var waterDispenserDownGeometry = new THREE.BoxBufferGeometry(28, 23, 1)
+    var waterDispenserDown = utils.makeMesh('phong', waterDispenserDownGeometry, 0x00ff0000)
+    waterDispenserDown.position.set(-135, 47, -75)
+    waterDispenser.add(waterDispenserDown)
+    // 饮水机上面板提手
+    var waterDispenserDownBarGeometry = new THREE.BoxBufferGeometry(6, 1, 1)
+    var waterDispenserDownBar = utils.makeMesh('phong', waterDispenserDownBarGeometry, 0x00ffffff)
+    waterDispenserDownBar.position.set(-135, 47, -74)
+    waterDispenser.add(waterDispenserDownBar)
+    scene.add(waterDispenser)
+  }
 
   // 机柜
   function machine() {
@@ -318,10 +313,11 @@ function waterDispenser() {
       scene.add(machineClone)
     }  
   }  
+
   // 文件柜
   function fileCabinets() {
     // 创建立方体几何体-柜子
-    var sphereGeometry = new THREE.BoxGeometry(30, 80, 50)
+    var sphereGeometry = new THREE.BoxGeometry(20, 80, 50)
     var sphere = utils.makeMesh('phong', sphereGeometry, 0xEBEBEB)
     // 创建立方体几何体-柜子窗户
     var cubeGeometry = new THREE.BoxGeometry(20, 10, 10)
@@ -384,7 +380,7 @@ function waterDispenser() {
         cube4 = new THREE.Mesh(cube4Geometry, cube4Material)
         cube4.rotation.y = -0.5 * Math.PI
         cube4.position.y = -40
-        cube4.position.x = -15
+        cube4.position.x = -7
         cube4.position.z = 0
 
     //生成ThreeBSP对象
@@ -407,10 +403,11 @@ function waterDispenser() {
     // 将计算出来模型添加到场景当中
     scene.add(result)
 
-    var fileCabinetsBlue = new THREE.Object3D()
     // 蓝色文件柜
+    var fileCabinetsBlue = new THREE.Object3D()
     var fileCabinets1Geometry = new THREE.BoxGeometry(15, 60, 20)
     var fileCabinets1 = utils.makeMesh('phong', fileCabinets1Geometry, 0x27408B) 
+
     // 窗户
     var glassHoleGeometry = new THREE.BoxGeometry(10, 20, 12)
     var glassHole = utils.makeMesh('phong', glassHoleGeometry, 0x27408B) 
@@ -421,15 +418,139 @@ function waterDispenser() {
     var fileCabinets1BSP = new ThreeBSP(fileCabinets1)
     var fileCabinets1ResultBSP = utils.bsp('subtract', fileCabinets1BSP, glassHoleBSP)
     var fileCabinets1Result = utils.bspMesh('phong',0x27408B,fileCabinets1ResultBSP)
-    fileCabinets1Result.position.set(140, 47, 24)
+    fileCabinets1Result.position.set(140, 30, 26)
     fileCabinetsBlue.add(fileCabinets1Result)
+
     // 玻璃
     var glassGeometry = new THREE.BoxGeometry(1, 20, 12)
-    var glass = utils.makeMesh('lambert', glassGeometry, 0XECF1F3)
-    glass.position.set(133, 62, 24)
+    var glass = utils.makeMesh('glass', glassGeometry, 0XECF1F3)
+    glass.castShadow = false
+    glass.position.set(133, 44, 26)
     fileCabinetsBlue.add(glass)
     scene.add(fileCabinetsBlue)
     
+    // 货架
+    var shelves = new THREE.Geometry()
+    var shelvesGeometry = new THREE.BoxGeometry(2, 2, 20)
+
+    // for z-axis
+    for (var i = 0; i < 4; i++) {
+      var shelvesZ1Clone = shelvesGeometry.clone()
+      shelvesZ1Clone.translate(0, i * 10, 0)
+      shelves.merge(shelvesZ1Clone)
+    }
+    for (var i = 0; i < 4; i++) {
+      var shelvesZ2Clone = shelvesGeometry.clone()
+      shelvesZ2Clone.translate(30, i * 10, 0)
+      shelves.merge(shelvesZ2Clone)
+    }
+    // for x-axis
+    for (var i = 0; i < 4; i++) {
+      var shelvesX1Clone = shelvesGeometry.clone()
+      shelvesX1Clone.rotateY(0.5 * Math.PI)
+      shelvesX1Clone.scale(1.5, 1, 1)
+      shelvesX1Clone.translate(15, i * 10, 10)
+      shelves.merge(shelvesX1Clone)
+    }
+    for (var i = 0; i < 4; i++) {
+      var shelvesX2Clone = shelvesGeometry.clone()
+      shelvesX2Clone.rotateY(0.5 * Math.PI)
+      shelvesX2Clone.scale(1.5, 1, 1)
+      shelvesX2Clone.translate(15, i * 10, -10)
+      shelves.merge(shelvesX2Clone)
+    }
+    // for x-axis
+    for (var i = 0; i < 2; i++) {
+      var shelvesZ1Clone = shelvesGeometry.clone()
+      shelvesZ1Clone.rotateX(0.5 * Math.PI)
+      shelvesZ1Clone.scale(1, 2.5, 1)
+      shelvesZ1Clone.translate(i * 30, 8, 10)
+      shelves.merge(shelvesZ1Clone)
+    }
+    for (var i = 0; i < 2; i++) {
+      var shelvesZ2Clone = shelvesGeometry.clone()
+      shelvesZ2Clone.rotateX(0.5 * Math.PI)
+      shelvesZ2Clone.scale(1, 2.5, 1)
+      shelvesZ2Clone.translate(i * 30, 8, -10)
+      shelves.merge(shelvesZ2Clone)
+    }
+
+    shelves = new THREE.BufferGeometry().fromGeometry(shelves)
+    var shelvesResult = utils.makeMesh('phong', shelves, 0x607B8B)
+    shelvesResult.position.set(122, 16, 0)
+    scene.add(shelvesResult)
+
+    // 货物
+    var goods = new THREE.Geometry()
+    var goodsGeometry = new THREE.BoxGeometry(13, 50, 8)
+    for (var i = 0; i < 2; i++) {
+      var goodsZ1Clone = goodsGeometry.clone()
+      goodsZ1Clone.translate(0, 0, i * 10)
+      var goodsZ2Clone = goodsZ1Clone.clone()
+      goodsZ2Clone.translate(15, 0, 0)
+      goods.merge(goodsZ1Clone)
+      goods.merge(goodsZ2Clone)
+    }
+    goods = new THREE.BufferGeometry().fromGeometry(goods)
+    var goodsResult = utils.makeMesh('phong', goods, 0xB8860B)
+    goodsResult.position.set(131, 24, -5)
+    scene.add(goodsResult)
+
+    // 收纳柜
+    var storageBox = new THREE.Object3D()
+    // 柜子主体
+    var storageBoxGeometry = new THREE.BoxGeometry(30, 70, 40)
+    var storageBoxObj = utils.makeMesh('phong', storageBoxGeometry, 0xEBEBEB)
+    // 柜子侧边
+    var storageBoxHole1Geometry = new THREE.BoxGeometry(2, 69, 15)
+    var storageBoxHole1 = utils.makeMesh('phong', storageBoxHole1Geometry, 0xEBEBEB)
+
+    storageBoxHole1.position.x = -12
+    storageBoxHole1.position.z = 20
+
+    var storageBoxHole2 = storageBoxHole1.clone()
+
+    storageBoxHole2.position.x = 12
+    //  柜子底层
+    var storageBoxHole3Geometry = new THREE.BoxGeometry(20, 42, 32)
+    var storageBoxHole3 = utils.makeMesh('phong', storageBoxHole3Geometry, 0xEBEBEB)
+    storageBoxHole3.position.x = -10
+    storageBoxHole3.position.y = -10
+
+    var storageBoxHole1BSP = new ThreeBSP(storageBoxHole1)
+    var storageBoxObj1BSP = new ThreeBSP(storageBoxObj)
+    var storageBoxObj1ResultBSP = utils.bsp('subtract', storageBoxObj1BSP, storageBoxHole1BSP)
+
+    var storageBoxHole2BSP = new ThreeBSP(storageBoxHole2)
+    var storageBoxObj2ResultBSP = utils.bsp('subtract', storageBoxObj1ResultBSP, storageBoxHole2BSP)
+
+    var storageBoxHole3BSP = new ThreeBSP(storageBoxHole3)
+    var storageBoxObj3ResultBSP = utils.bsp('subtract', storageBoxObj2ResultBSP, storageBoxHole3BSP)
+
+    var storageBoxObjResult = utils.bspMesh('phong', 0xEBEBEB, storageBoxObj3ResultBSP)
+    storageBoxObjResult.position.set(140, 47, -34)
+    storageBox.add(storageBoxObjResult)
+    
+    // 柜子把手
+    var storageBoxBarGeometry = new THREE.BoxBufferGeometry(1, 3, 6)
+    var storageBoxBar = utils.makeMesh('phong', storageBoxBarGeometry, 0x292929)
+    storageBoxBar.castShadow = false
+    storageBoxBar.position.set(124, 74, -28)
+    storageBox.add(storageBoxBar)
+    
+    // 柜子底层门
+    var storageBoxHole3Door = utils.makeMesh('phong', storageBoxHole3Geometry, 0x838B8B)
+    storageBoxHole3Door.position.set(135, 36, -34)
+    var storageBoxHole3DoorMaterial = new THREE.MeshBasicMaterial( { color: 0x2F4F4F,opacity: 0.9,transparent: true});
+    storageBoxHole3Door.material = storageBoxHole3DoorMaterial
+    storageBox.add(storageBoxHole3Door)
+    
+    // 箱子
+    var BoxGeometry = new THREE.BoxBufferGeometry(20, 60, 20)
+    var Box = utils.makeMesh('phong', BoxGeometry, 0xCD8500)
+    Box.position.set(140, 34, -74)
+    storageBox.add(Box)
+    scene.add(storageBox) 
   }
 
 
