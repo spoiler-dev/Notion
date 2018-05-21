@@ -292,26 +292,152 @@ function buildbuilding() {
 
   // 机柜
   function machine() {
+    var machine = new THREE.Object3D()
     var machinePosition = [
-      [0, 34, -70],
-      [40, 34, -70],
-      [80, 34, -70],
-      [0, 34, -20],
-      [40, 34, -20],
-      [80, 34, -20],
-      [0, 34, 30],
-      [40, 34, 30],
-      [80, 34, 30]           
+      [0, 0, 0],
+      [40, 0, 0],
+      [80, 0, 0],
+      [0, 0, 50],
+      [40, 0, 50],
+      [80, 0, 50],
+      [0, 0, 100],
+      [40, 0, 100],
+      [80, 0, 100]           
     ]
 
-    var machineGeometry = new THREE.BoxBufferGeometry(28, 70, 20)
-    var machine = utils.makeMesh('phong', machineGeometry, 0x575757) 
-    machine.receiveShadow = false
+    var textureFront = new THREE.TextureLoader().load("../js/libs/rack_front_door.jpg");
+    var materialFront = new THREE.MeshPhongMaterial({ map: textureFront});
+    var machineFrontGeometry = new THREE.BoxBufferGeometry(2, 70, 24)
+    var machineFront = new THREE.Mesh(machineFrontGeometry, materialFront);
+    machineFront.rotation.y = -0.5 * Math.PI
+    machineFront.position.set(0, 36, -60)
+    machine.add(machineFront)
+
+    var textureBack = new THREE.TextureLoader().load("../js/libs/rack_door_back.jpg");
+    var materialBack = new THREE.MeshPhongMaterial({map:textureBack});
+    var machineBackGeometry = new THREE.BoxBufferGeometry(2, 70, 24)
+    var machineBack = new THREE.Mesh(machineBackGeometry, materialBack);
+    machineBack.rotation.y = -0.5 * Math.PI
+    machineBack.position.set(0, 36, -82)
+    machine.add(machineBack)
+
+    var textureLeft = new THREE.TextureLoader().load("../js/libs/rack_panel.jpg");
+    var materialLeft = new THREE.MeshPhongMaterial({map:textureLeft, color:0x383838});
+    var machineLeftGeometry = new THREE.BoxBufferGeometry(2, 70, 24)
+    var machineLeft = new THREE.Mesh(machineLeftGeometry, materialLeft);
+    machineLeft.position.set(-13, 36, -71)
+    machine.add(machineLeft)
+
+    var machineRight = machineLeft.clone()
+    machineRight.position.set(13, 36, -71)
+    machine.add(machineRight)
+
+    var textureBottom = new THREE.TextureLoader().load("../js/libs/rack_panel.jpg");
+    var materialBottom = new THREE.MeshPhongMaterial({map:textureBottom, color:0x383838});
+    var machineBottomGeometry = new THREE.BoxBufferGeometry(24, 2,24)
+    var machineBottom = new THREE.Mesh(machineBottomGeometry, materialBottom);
+    machineBottom.position.set(0, 2, -71)
+    machine.add(machineBottom)
+
+    var textureTop = new THREE.TextureLoader().load("../js/libs/rack_panel.jpg");
+    var materialTop = new THREE.MeshPhongMaterial({map:textureTop, color:0x383838});
+    var machineTopGeometry = new THREE.BoxBufferGeometry(28, 2,24)
+    var machineTop = new THREE.Mesh(machineTopGeometry, materialTop);
+    machineTop.position.set(0, 72, -71)
+    machine.add(machineTop)
+
     for (var i = 0; i < 9; i++){
       var machineClone = machine.clone()
       machineClone.position.set(machinePosition[i][0], machinePosition[i][1], machinePosition[i][2])
       scene.add(machineClone)
     }  
+    
+    var label = new THREE.Object3D()
+    var labelUpGeometry = new THREE.CircleGeometry(10,36)
+    var labelUp = utils.makeMesh('phong', labelUpGeometry, 0xEBEBEB)
+    var labelDownGeometry = new THREE.CircleGeometry(20, 18, Math.PI / 3, Math.PI / 3)
+    
+    var labelDown = utils.makeMesh('phong', labelDownGeometry, 0xEBEBEB)
+    labelUp.position.set(-200,80,40)
+    labelDown.position.set(-200, 60, 40)
+
+    scene.add(labelUp)
+    scene.add(labelDown)
+    //生成gui设置配置项
+    initGui()
+    var gui,shape;
+    function initGui() {
+        //声明一个保存需求修改的相关数据的对象
+        gui = {
+            amount:2,
+            bevelThickness:2,
+            bevelSize:0.5,
+            bevelEnabled:true,
+            bevelSegments:3,
+            curveSegments:12,
+            steps:1,
+            asGeom:function () {
+                // 删除旧的模型
+                scene.remove(shape);
+                // 创建一个新的
+                var options = {
+                    amount: gui.amount,
+                    bevelThickness: gui.bevelThickness,
+                    bevelSize: gui.bevelSize,
+                    bevelSegments: gui.bevelSegments,
+                    bevelEnabled: gui.bevelEnabled,
+                    curveSegments: gui.curveSegments,
+                    steps: gui.steps
+                };
+                var svgString = document.querySelector("#st0").getAttribute("d");
+                var shapem = transformSVGPathExposed(svgString);
+                shape = createMesh(new THREE.ExtrudeGeometry(shapem, options));
+                // 返回shape
+                scene.add(shape);
+            }
+        };
+        var datGui = new dat.GUI();
+        //将设置属性添加到gui当中，gui.add(对象，属性，最小值，最大值）
+        datGui.add(gui, 'amount', 0, 200).onChange(gui.asGeom);
+        datGui.add(gui, 'bevelThickness', 0, 10).onChange(gui.asGeom);
+        datGui.add(gui, 'bevelSize', 0, 10).onChange(gui.asGeom);
+        datGui.add(gui, 'bevelSegments', 0, 30).step(1).onChange(gui.asGeom);
+        datGui.add(gui, 'bevelEnabled').onChange(gui.asGeom);
+        datGui.add(gui, 'curveSegments', 1, 30).step(1).onChange(gui.asGeom);
+        datGui.add(gui, 'steps', 1, 5).step(1).onChange(gui.asGeom);
+        //调用生成一次图形
+        gui.asGeom();
+    }
+
+    function createMesh(geom) {
+      
+        //让图形居中显示
+
+
+
+
+ 
+
+
+      //设置当前的模型矩阵沿xy轴偏移，让图片处于显示中心
+      geom.applyMatrix(new THREE.Matrix4().makeTranslation(-450, -3000, -2000));
+      // 创建法向量纹理
+      var meshMaterial = new THREE.MeshNormalMaterial();
+      var textureFire = new THREE.TextureLoader().load("../js/libs/fire_l.png");
+      //  创建一个线框纹理
+      var wireFrameMat = new THREE.MeshBasicMaterial({
+
+          map:textureFire
+      })
+      wireFrameMat.map.matrix.scale( 1, 2) //缩放
+
+      // 创建模型
+      var mesh = THREE.SceneUtils.createMultiMaterialObject(geom, [meshMaterial,wireFrameMat])
+      //由于图形时反的，让图形翻个个
+      mesh.rotation.z = Math.PI
+      mesh.scale.set(0.04,0.04,0.04);
+      return mesh
+    }
   }  
 
   // 文件柜
