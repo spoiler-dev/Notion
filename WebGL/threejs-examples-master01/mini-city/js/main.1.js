@@ -223,7 +223,7 @@ function buildbuilding() {
     ]
     var wallShape = utils.makeShape(wallCoords, wallHolePath) 
     var wallGeometry = utils.makeExtrudeGeometry(wallShape, 70)
-    var wall = utils.makeMesh('lambert', wallGeometry, 0xA5BDDD)
+    var wall = utils.makeMesh('phong', wallGeometry, 0xA5BDDD)
     scene.add(wall)
 
     // 门
@@ -233,7 +233,7 @@ function buildbuilding() {
     door.position.set(-95, 35, 98)
     scene.add(door)
     // 门把手
-    var doorknobGeo = new THREE.CylinderGeometry(3, 3, 3,40 ,40);
+    var doorknobGeo = new THREE.CylinderGeometry(3, 3, 2,40 ,40);
     var doorknob = utils.makeMesh('lambert', doorknobGeo, 0xBDB76B)
     doorknob.rotation.x = -0.5 * Math.PI
     doorknob.position.set(-80, 30, 103) //设置圆柱坐标 
@@ -318,25 +318,25 @@ function buildbuilding() {
   // 温感
   function temperature() {
     var temperature = new THREE.Object3D()
-    var temperatureBaseGeometry = new THREE.CylinderGeometry(5,8,5,40,40)
-    var temperatureBase = utils.makeMesh('phong',temperatureBaseGeometry,0xE8E8E8)
-    temperatureBase.position.set(-104,96,-50)
-    temperature.add(temperatureBase)
+    // var temperatureBaseGeometry = new THREE.CylinderGeometry(5,8,1,40,40)
+    // var temperatureBase = utils.makeMesh('phong',temperatureBaseGeometry,0xE8E8E8)
+    // temperatureBase.position.set(-104,96,-50)
+    // temperature.add(temperatureBase)
 
-    var temperaturePillarGeometry = new THREE.CylinderGeometry(5,5,6,40,40)
+    var temperaturePillarGeometry = new THREE.CylinderGeometry(6,6,4,40,40)
     var temperaturePillar = utils.makeMesh('phong',temperaturePillarGeometry,0xE8E8E8)
-    temperaturePillar.position.set(-104,99,-50)
+    temperaturePillar.position.set(-104,95,-50)
     temperature.add(temperaturePillar)
 
-    var temperatureUpGeometry = new THREE.CylinderGeometry(5,5,2,40,5)
+    var temperatureUpGeometry = new THREE.CylinderGeometry(6,6,3,40,5)
     var temperatureUp = utils.makeMesh('glass',temperatureUpGeometry,0x000080,0.8)
     /* smokeUp.rotation.x = 0.5*Math.PI */
-    temperatureUp.position.set(-104,103,-50)
+    temperatureUp.position.set(-104,98,-50)
     temperature.add(temperatureUp)
 
-    var temperatureCoverGeometry = new THREE.SphereGeometry(5, 20, 6, 0, Math.PI * 2, 0, Math.PI / 2)
+    var temperatureCoverGeometry = new THREE.SphereGeometry(6, 20, 6, 0, Math.PI * 2, 0, Math.PI / 2)
     var temperatureCover = utils.makeMesh('phong',temperatureCoverGeometry,0xE8E8E8)
-    temperatureCover.position.set(-104,104,-50)
+    temperatureCover.position.set(-104,100,-50)
     temperature.add(temperatureCover)   
 
     scene.add(temperature)
@@ -346,46 +346,54 @@ function buildbuilding() {
    function fire() {
     var fire = new THREE.Object3D()
 
-    var fireBaseGeometry = new THREE.BoxGeometry(13, 10, 13)
-    var fireBase = utils.makeMesh('lambert',fireBaseGeometry,0xE8E8E8)
-    fireBase.position.set(-126,100,-26)
+    var fireBaseGeometry = new THREE.BoxGeometry(16, 8, 10)
+    var fireBase = utils.makeMesh('phong',fireBaseGeometry,0xE8E8E8)
+    fireBase.position.set(-126,99,-26)
     fire.add(fireBase)
 
-    var fireLeftBarGeometry = new THREE.BoxGeometry(2, 6, 6)
-    var fireLeftBar = utils.makeMesh('glass',fireLeftBarGeometry,0xDAA520,0.9)
-    fireLeftBar.position.set(-132,100,-26)
+    var fireLeftBarGeometry = new THREE.BoxGeometry(4, 5, 12)
+    var fireLeftBar = utils.makeMesh('glass',fireLeftBarGeometry,0x68228B,0.9)
+    fireLeftBar.position.set(-133,99,-26)
     fire.add(fireLeftBar)
     var fireRightBar = fireLeftBar.clone()
-    fireRightBar.position.set(-120,100,-26)
+    fireRightBar.position.set(-118,99,-26)
     fire.add(fireRightBar)
 
     var lampGeometry = new THREE.CircleGeometry(0.5, 36, 0, Math.PI*2)
     var lampGreen = utils.makeMesh('glass',lampGeometry,0x00EE00,0.9)
-    lampGreen.position.set(-130,102,-18)
+    lampGreen.position.set(-129,102,-20)
     fire.add(lampGreen)
     var lampYellow = utils.makeMesh('glass',lampGeometry,0xEEEE00,0.9)
-    lampYellow.position.set(-128,102,-18)
+    lampYellow.position.set(-127,102,-20)
     fire.add(lampYellow)
     var lampRed = utils.makeMesh('glass',lampGeometry,0xEE0000,0.9)
-    lampRed.position.set(-126,102,-18)
+    lampRed.position.set(-125,102,-20)
     fire.add(lampRed)
 
     var fireButtonGeometry = new THREE.BoxGeometry(4, 2, 0.1)
     var fireButton = utils.makeMesh('phong',fireButtonGeometry,0x4A708B)
     fireButton.castShadow = false
-    fireButton.position.set(-128,98,-18)
+    fireButton.position.set(-128,98,-20)
     fire.add(fireButton)
 
     var fireButtonClone = fireButton.clone()
-    fireButtonClone.position.set(-123,98,-18)
-    
- 
+    fireButtonClone.position.set(-123,98,-20)
     fire.add(fireButtonClone)
+ 
+    // fire.add(fireButtonClone)
+    // var colorindex = 0 
 
-    fireBase.material.color.set(0xEE0000)
-/*     lampGreen
-    lampRed
-    lampBlue */
+    // var colorarray = new Array(0xEE0000, 0xE8E8E8)
+    //  setInterval(function () {
+    //    debugger
+    //   colorindex++
+    //   if (colorindex == 3) {
+    //     colorindex = 0
+    //   }
+    //   fireBase.material.color.set(colorarray[colorindex])
+      
+    // }, 200);
+
 
     scene.add(fire)
 
@@ -1127,7 +1135,7 @@ function buildLightSystem() {
     // color — 光的颜色值，十六进制，默认值为0xffffff.
     // intensity — 光的强度，默认值为1.  
     var directionalLight = new THREE.DirectionalLight(0xffffff, 1.1);
-    directionalLight.position.set(300, 1000, 500);
+    directionalLight.position.set(0, 1000, 500);
     directionalLight.target.position.set(0, 0, 0);
     directionalLight.castShadow = true;
 
