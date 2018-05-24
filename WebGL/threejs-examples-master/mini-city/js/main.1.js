@@ -420,7 +420,7 @@ function buildbuilding() {
 
 
       //设置当前的模型矩阵沿xy轴偏移，让图片处于显示中心
-      geom.applyMatrix(new THREE.Matrix4().makeTranslation(-450, -3000, -2000));
+      geom.applyMatrix(new THREE.Matrix4().makeTranslation(-300, -500, 0));
       // 创建法向量纹理
       var meshMaterial = new THREE.MeshNormalMaterial();
       var textureFire = new THREE.TextureLoader().load("../js/libs/fire_l.png");
@@ -435,7 +435,7 @@ function buildbuilding() {
       var mesh = THREE.SceneUtils.createMultiMaterialObject(geom, [meshMaterial,wireFrameMat])
       //由于图形时反的，让图形翻个个
       mesh.rotation.z = Math.PI
-      mesh.scale.set(0.04,0.04,0.04);
+     // mesh.scale.set(0.04,0.04,0.04);
       return mesh
     }
   }  
