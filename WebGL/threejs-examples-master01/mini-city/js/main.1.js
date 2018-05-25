@@ -16,7 +16,7 @@ height = window.innerHeight
 scene = new THREE.Scene() // 新建一个场景
 camera = new THREE.PerspectiveCamera(45, width / height, 1, 5000) // 新建一个透视摄像机, 并设置 视场, 视野长宽比例, 可见远近范围
 // 摄像机的位置
-camera.position.set(0, 400, 200)
+camera.position.set(0, 360, 400)
 camera.lookAt(scene.position) // 设置摄像机观察的方向
 
 renderer = new THREE.WebGLRenderer({ antialias: true }) // 新建一个渲染器, 渲染器用来输出最终结果
@@ -42,6 +42,39 @@ loop()
 onWindowResize()
 
 
+function fontModel() {
+  var fontModel
+  var font
+  var loader = new THREE.FontLoader()
+  var fontPosition = [
+    [-128, 86, -18],
+    [-62, 86, -18],
+    [18, 86, -18],
+    [104, 86, -18],
+    [-128, 86, 58],
+    [-62, 86, 58],
+    [18, 86, 58],
+    [104, 86, 58]
+  ]
+  var fontarray = new Array("行走控制柜", "料斗、皮带控制柜","主副缆切换开关箱")
+  loader.load("../js/libs/MicrosoftYaHei_Regular.json", function (res) {
+    for (var i = 0; i < 8; i++){
+      font = new THREE.TextBufferGeometry(fontarray[i], {  
+        font: res,  
+        size: 4,  
+        height: 1  
+      })
+    font.computeBoundingBox() // 运行以后设置font的boundingBox属性对象，如果不运行无法获得。
+    var material = new THREE.MeshLambertMaterial({})
+    fontModel = new THREE.Mesh(font, material) 
+    //设置位置  
+    var fontClone = fontModel.clone()
+      debugger;
+    fontClone.position.set(fontPosition[i][0], fontPosition[i][1], fontPosition[i][2])
+      scene.add(fontClone)
+    }    
+  })  
+}  
 
 function checkUserAgent() {
   var n = navigator.userAgent;
@@ -184,7 +217,7 @@ function buildbuilding() {
   plane.position.y = -1
   // 添加网格线
   scene.add(plane)
-  
+  fontModel()
   // 篱笆
   //addFense()
   // 草坪
@@ -201,7 +234,7 @@ function buildbuilding() {
   //fileCabinets()
   smoke()
   temperature()
-  fire()
+  controller()
 
   // 房间主结构
   function room() {
@@ -294,8 +327,19 @@ function buildbuilding() {
     waterDispenser.add(waterDispenserDownBar)
     scene.add(waterDispenser)
   }
+
   // 烟感
   function smoke() {
+    var smokePosition = [
+      [0, 0, 0],
+      [75, 0, 0],
+      [155, 0, 0],
+      [230, 0, 0],
+      [0, 0, 70],
+      [75, 0, 70],
+      [155, 0, 70],
+      [230, 0, 70]
+    ]
     var smoke = new THREE.Object3D()
     var smokeBaseGeometry = new THREE.CylinderGeometry(8,8,4,40,5)
     var smokeBase = utils.makeMesh('lambert',smokeBaseGeometry,0xE8E8E8)
@@ -308,15 +352,32 @@ function buildbuilding() {
     smokeUp.position.set(-126,98,-50)
     smoke.add(smokeUp)
 
-    var smokeCoverGeometry = new THREE.CylinderGeometry(3,4,2,40,5)
+    var smokeCoverGeometry = new THREE.CylinderGeometry(4,5,3,40,5)
     var smokeCover = utils.makeMesh('lambert',smokeCoverGeometry,0xE8E8E8)
     /* smokeUp.rotation.x = 0.5*Math.PI */
     smokeCover.position.set(-126,100,-50)
     smoke.add(smokeCover) 
-    scene.add(smoke)
+
+    for (var i = 0; i < 8; i++){
+      var smokeClone = smoke.clone()
+      smokeClone.position.set(smokePosition[i][0], smokePosition[i][1], smokePosition[i][2])
+      scene.add(smokeClone)
+    } 
+    
   }
+
   // 温感
   function temperature() {
+    var temperaturePosition = [
+      [0, 0, 0],
+      [75, 0, 0],
+      [155, 0, 0],
+      [230, 0, 0],
+      [0, 0, 70],
+      [75, 0, 70],
+      [155, 0, 70],
+      [230, 0, 70]
+    ]
     var temperature = new THREE.Object3D()
     // var temperatureBaseGeometry = new THREE.CylinderGeometry(5,8,1,40,40)
     // var temperatureBase = utils.makeMesh('phong',temperatureBaseGeometry,0xE8E8E8)
@@ -339,64 +400,79 @@ function buildbuilding() {
     temperatureCover.position.set(-104,100,-50)
     temperature.add(temperatureCover)   
 
-    scene.add(temperature)
+    for (var i = 0; i < 8; i++){
+      var temperatureClone = temperature.clone()
+      temperatureClone.position.set(temperaturePosition[i][0], temperaturePosition[i][1], temperaturePosition[i][2])
+      scene.add(temperatureClone)
+    } 
   }
 
   // 火警
-   function fire() {
-    var fire = new THREE.Object3D()
+  function controller() {
+    var controllerPosition = [
+      [0, 0, 0],
+      [75, 0, 0],
+      [155, 0, 0],
+      [230, 0, 0],
+      [0, 0, 70],
+      [75, 0, 70],
+      [155, 0, 70],
+      [230, 0, 70]
+    ]
+    var controller = new THREE.Object3D()
 
-    var fireBaseGeometry = new THREE.BoxGeometry(16, 8, 10)
-    var fireBase = utils.makeMesh('phong',fireBaseGeometry,0xE8E8E8)
-    fireBase.position.set(-126,99,-26)
-    fire.add(fireBase)
+    var controllerBaseGeometry = new THREE.BoxGeometry(16, 8, 10)
+    var controllerBase = utils.makeMesh('phong',controllerBaseGeometry,0xE8E8E8)
+    controllerBase.position.set(-126,99,-26)
+    controller.add(controllerBase)
 
-    var fireLeftBarGeometry = new THREE.BoxGeometry(4, 5, 12)
-    var fireLeftBar = utils.makeMesh('glass',fireLeftBarGeometry,0x68228B,0.9)
-    fireLeftBar.position.set(-133,99,-26)
-    fire.add(fireLeftBar)
-    var fireRightBar = fireLeftBar.clone()
-    fireRightBar.position.set(-118,99,-26)
-    fire.add(fireRightBar)
+    var controllerLeftBarGeometry = new THREE.BoxGeometry(2, 5, 12)
+    var controllerLeftBar = utils.makeMesh('glass',controllerLeftBarGeometry,0x848484,0.9)
+    controllerLeftBar.position.set(-134,99,-26)
+    controller.add(controllerLeftBar)
+    var controllerRightBar = controllerLeftBar.clone()
+    controllerRightBar.position.set(-118,99,-26)
+    controller.add(controllerRightBar)
 
     var lampGeometry = new THREE.CircleGeometry(0.5, 36, 0, Math.PI*2)
     var lampGreen = utils.makeMesh('glass',lampGeometry,0x00EE00,0.9)
     lampGreen.position.set(-129,102,-20)
-    fire.add(lampGreen)
+    controller.add(lampGreen)
     var lampYellow = utils.makeMesh('glass',lampGeometry,0xEEEE00,0.9)
     lampYellow.position.set(-127,102,-20)
-    fire.add(lampYellow)
+    controller.add(lampYellow)
     var lampRed = utils.makeMesh('glass',lampGeometry,0xEE0000,0.9)
     lampRed.position.set(-125,102,-20)
-    fire.add(lampRed)
+    controller.add(lampRed)
 
-    var fireButtonGeometry = new THREE.BoxGeometry(4, 2, 0.1)
-    var fireButton = utils.makeMesh('phong',fireButtonGeometry,0x4A708B)
-    fireButton.castShadow = false
-    fireButton.position.set(-128,98,-20)
-    fire.add(fireButton)
+    var controllerButtonGeometry = new THREE.BoxGeometry(4, 2, 0.1)
+    var controllerButton = utils.makeMesh('phong',controllerButtonGeometry,0x4A708B)
+    controllerButton.castShadow = false
+    controllerButton.position.set(-128,98,-20)
+    controller.add(controllerButton)
 
-    var fireButtonClone = fireButton.clone()
-    fireButtonClone.position.set(-123,98,-20)
-    fire.add(fireButtonClone)
+    var controllerButtonClone = controllerButton.clone()
+    controllerButtonClone.position.set(-123,98,-20)
+    controller.add(controllerButtonClone)
  
-    // fire.add(fireButtonClone)
-    // var colorindex = 0 
+/*     var colorindex = 0 
 
-    // var colorarray = new Array(0xEE0000, 0xE8E8E8)
-    //  setInterval(function () {
-    //    debugger
-    //   colorindex++
-    //   if (colorindex == 3) {
-    //     colorindex = 0
-    //   }
-    //   fireBase.material.color.set(colorarray[colorindex])
+    var colorarray = new Array(0xEE0000, 0xE8E8E8)
+     setInterval(function () {
+       debugger
+      colorindex++
+      if (colorindex == 3) {
+        colorindex = 0
+      }
+      controllerBase.material.color.set(colorarray[colorindex])
       
-    // }, 200);
+    }, 200); */
 
-
-    scene.add(fire)
-
+     for (var i = 0; i < 8; i++){
+      var controllerClone = controller.clone()
+      controllerClone.position.set(controllerPosition[i][0], controllerPosition[i][1], controllerPosition[i][2])
+      scene.add(controllerClone)
+    }  
   } 
 
   // 机柜
