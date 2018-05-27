@@ -57,7 +57,7 @@ function fontModel() {
     [104, 86, 58]
   ]
   var fontarray = new Array("行走控制柜", "料斗、皮带控制柜","主副缆切换开关箱")
-  loader.load("../js/libs/MicrosoftYaHei_Regular.json", function (res) {
+  loader.load("../js/libs/Microsoft YaHei_Regular.js", function (res) {
     for (var i = 0; i < 8; i++){
       font = new THREE.TextBufferGeometry(fontarray[i], {  
         font: res,  
