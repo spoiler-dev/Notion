@@ -47,16 +47,16 @@ function fontModel() {
   var font
   var loader = new THREE.FontLoader()
   var fontPosition = [
-    [-128, 86, -18],
+    [-136, 86, -18],
     [-62, 86, -18],
     [18, 86, -18],
-    [104, 86, -18],
-    [-128, 86, 58],
-    [-62, 86, 58],
-    [18, 86, 58],
-    [104, 86, 58]
+    [94, 86, -18],
+    [-136, 86, 51],
+    [-62, 86, 51],
+    [18, 86, 51],
+    [94, 86, 51]
   ]
-  var fontarray = new Array("行走控制柜", "料斗、皮带控制柜","主副缆切换开关箱")
+  var fontarray = new Array("行走控制柜", "料斗、皮带控制柜","主副缆切换开关箱","主副缆切换开关箱","主副缆切换开关箱","主副缆切换开关箱","主副缆切换开关箱","主副缆切换开关箱")
   loader.load("../js/libs/Microsoft YaHei_Regular.js", function (res) {
     for (var i = 0; i < 8; i++){
       font = new THREE.TextBufferGeometry(fontarray[i], {  
@@ -456,7 +456,6 @@ function buildbuilding() {
     controller.add(controllerButtonClone)
  
 /*     var colorindex = 0 
-
     var colorarray = new Array(0xEE0000, 0xE8E8E8)
      setInterval(function () {
        debugger
