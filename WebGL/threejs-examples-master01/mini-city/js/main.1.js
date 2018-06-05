@@ -34,6 +34,7 @@ buildAuxSystem()
 buildLightSystem()
 // 构造建筑物
 buildbuilding()
+text()
 //buildRoad()
 //buildStaticCars()
 //buildMovingCars()
@@ -41,6 +42,31 @@ buildbuilding()
 loop()
 onWindowResize()
 
+function text() {
+
+    var canvas = document.createElement( 'canvas' );
+    var ctx = canvas.getContext('2d');
+    canvas.width= 384;
+    canvas.height = 128;
+    ctx.fillStyle = "red";
+    ctx.font = "50px '微软雅黑'";
+    ctx.textAlign = "center";
+    //shadowBlur:模式级数
+    ctx.shadowBlur = 10;
+    ctx.shadowOffsetX = 5;
+    ctx.shadowOffsetY = 5;
+    ctx.shadowColor = "black";
+    //fillText("要添加的文字",x0坐标，y0坐标)
+    //ctx.strokeText("You jump! I jump!",50,100);
+    ctx.fillText("行走控制柜",192,89);
+
+    var canvasTexture = new THREE.Texture(canvas);
+    canvasTexture.wrapS = THREE.RepeatWrapping;
+    canvasTexture.wrapT = THREE.RepeatWrapping;
+    canvasTexture.needsUpdate = true;
+    
+    return canvasTexture;
+}
 
 function fontModel() {
   var fontModel
@@ -257,6 +283,7 @@ function buildbuilding() {
     var wallShape = utils.makeShape(wallCoords, wallHolePath) 
     var wallGeometry = utils.makeExtrudeGeometry(wallShape, 70)
     var wall = utils.makeMesh('phong', wallGeometry, 0xA5BDDD)
+    
     scene.add(wall)
 
     // 门
@@ -265,6 +292,14 @@ function buildbuilding() {
     door.receiveShadow = false
     door.position.set(-95, 35, 98)
     scene.add(door)
+    debugger
+    var geo = new THREE.PlaneGeometry(60,10)
+    var material = new THREE.MeshLambertMaterial({ map: text() })
+    
+    var sss = new THREE.Mesh(geo, material);
+    sss.position.set(0, 180, 0)
+    sss.rotation.x =  -0.5 * Math.PI
+    scene.add(sss)
     // 门把手
     var doorknobGeo = new THREE.CylinderGeometry(3, 3, 2,40 ,40);
     var doorknob = utils.makeMesh('lambert', doorknobGeo, 0xBDB76B)
