@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>挂载点，模板，实例</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 最好放在head标签中，以防发生抖屏 -->
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <!-- 挂载点，模板，实例之间的关系 -->
+
+    <!-- 挂载点 -->
+    <div id="root">
+        <!-- 模板 -->
+        <!-- 插值表达式 -->
+        <h1>hello {{msg}}</h1>
+        <div v-text="content"></div>
+        <div v-html="content"></div>
+        <div v-on:click="handleClick">{{pin}}</div>
+        <div @click="handleClick">{{pin}}</div>
+    </div>
+    <script>     
+        new Vue({
+            el:"#root", // 绑定DOM
+            /* template: '<h1>hello {{msg}}</h1>', */
+            data: {
+                msg:"word",
+                number:123,
+                content:"<h1>hello</h1>",
+                pin: "hello"
+            },
+            methods: {
+                handleClick:function(){
+                    // alert(123)
+                    this.pin = "word"
+                }
+            }
+        })
+/*         var dom = document.getElementById('root')
+        dom.innerHTML = 'hello world' */
+    
+    </script>
+</body>
+</html>

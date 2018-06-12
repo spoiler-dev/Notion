@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>v-if,v-show,v-for 指令</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div v-if="show">hello world</div> <!-- 删除、添加节点 -->
+        <!-- 更好的选择： --><div v-show="show">hello world</div> <!-- 隐藏与显示 -->
+        <button @click="handleClick">toggle</button>
+        <ul>
+            <li v-for="(item,index) of list" :key="index">{{item}}</li>
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el:"#root",
+            data:{
+                show:true,
+                list:[1,2,3]
+            },
+            methods:{
+                handleClick: function() {
+                    this.show = !this.show;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

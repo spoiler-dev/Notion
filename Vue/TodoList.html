@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>TodoList</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div>
+            <input type="text" v-model="inputValue">
+            <button @click="handleSubmit">提交</button>
+        </div>
+        <ul>
+            <!-- <li v-for="(item,index) of list" :key="index">{{item}}</li> -->
+            <todo-item 
+                v-for="(item,index) of list"
+                :key="index"
+                :content="item"
+                :index="index" 
+                @delete="handleDelete"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+            >
+            </todo-item>
+        </ul>
+    </div>
+    <script>
+        // 全局组件
+        Vue.component('todo-item',{
+            props:['content','index'],
+            template:'<li @click="handleClick">{{content}}</li>',
+            methods:{
+                handleClick: function() {
+                    this.$emit('delete',this.index)
+                }
+            }
+        })
+
+        // 局部组件
+        // var TodoItem = {
+        //     template:'<li>item</li>'
+        // }
+        
+        // 实例
+        new Vue({
+            el:"#root", // root 下的标签会默认为 template
+            // 局部组件
+            // components:{
+            //     'todo-item':TodoItem
+            // },
+            data:{
+                inputValue:'',
+                list:[]
+            },
+            methods:{
+                handleSubmit:function(){
+                    this.list.push(this.inputValue)
+                    this.inputValue = ''
+                },
+                handleDelete:function(index){
+                    // alert(index)
+                    this.list.splice(index,1)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

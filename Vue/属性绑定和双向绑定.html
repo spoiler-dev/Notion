@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>属性绑定和双向绑定</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 最好放在head标签中，以防发生抖屏 -->
+    <script src="./vue.js"></script>
+</head>
+<body>
+
+    <div id="root">
+        <div v-bind:title="'founder'+title">hello world</div>
+        <div :title="'founder'+title">hello world</div>
+        <input type="text" v-model="content">
+        <div>{{content}}</div>
+    </div>
+    <script>     
+        new Vue({
+            el:"#root",
+            data: {
+                title:"this is hello world",
+                content:"this is a content"
+            }
+        })
+    </script>
+</body>
+</html>
