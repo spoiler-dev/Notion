@@ -1,0 +1,69 @@
+html,body {
+  width: 100%;
+  height: 100%;
+}
+*{  
+  margin: 0;  
+  padding: 0;  
+}  
+.both-content{
+  width: 100%;  
+  height: 100%;
+}
+.axis-content{
+  width:50%;
+  height:100%;
+  float: left;
+}
+.three-content{
+  width:50%;
+  height:100%;
+  float: right;
+}
+.left-nav{
+  width: 100%;
+  height: 140px;
+  background: black;
+}
+.left-nav ul li {
+  float:left;
+  list-style:none;
+  width:10%;
+  height:100px;
+  line-height: 100px;
+  text-align: center;
+  margin-right:10px;
+  background: blue;
+  color:#FFFFFF;
+  position: relative;
+}
+.left-nav ul  {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px 20px;
+}
+.drag-machine{
+  width: 100%;
+  height: 100%;
+  background: brown;
+  position: absolute;
+}
+/* .info{
+  margin: 20px 0;
+  position: absolute;
+  text-align: center;
+  opacity: 0.2;
+  width:100%;
+}
+.info a{
+  display: block;
+  font-size: 16px;
+  line-height: 28px;
+  color: #ffffff;
+  text-decoration: none;
+}
+a.title{
+  font-size: 20px;
+  font-weight: bold;
+} */

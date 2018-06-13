@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>3D电气室</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/index.css" />
+</head>
+<body>
+    <div class="both-content">
+        <section class="axis-content">
+            <nav class="left-nav">
+                <ul>
+                    <li>
+                        <div class="drag-machine">机箱</div>
+                    </li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </nav>
+        </section>
+        <section class="three-content"></section>
+    </div>
+
+<!--     <div class="info">
+        <a class="title" target="_blank">
+          3D 电气室消防监控
+        </a>
+        <a class="author">
+          方正
+        </a>
+
+    </div> -->
+    <script>
+        var moveElem = document.querySelector('.drag-machine'); //待拖拽元素      
+
+        var dragging; //是否激活拖拽状态
+        var tLeft, tTop; //鼠标按下时相对于选中元素的位移
+
+        //监听鼠标按下事件
+        document.addEventListener('mousedown', function(e) {
+            if (e.target == moveElem) {
+                
+                dragging = true; //激活拖拽状态
+            var moveElemRect = moveElem.getBoundingClientRect();
+                tLeft = e.clientX - moveElemRect.left; //鼠标按下时和选中元素的坐标偏移:x坐标
+                tTop = e.clientY - moveElemRect.top; //鼠标按下时和选中元素的坐标偏移:y坐标
+            }
+        });
+
+        //监听鼠标放开事件
+        document.addEventListener('mouseup', function(e) {
+            dragging = false;
+        });
+
+        //监听鼠标移动事件
+        document.addEventListener('mousemove', function(e) {
+            if (dragging) {
+                var moveX = e.clientX - tLeft, 
+                    moveY = e.clientY - tTop;
+
+                moveElem.style.left = moveX + 'px';
+                moveElem.style.top = moveY + 'px';
+            
+            }
+        });  
+    </script>
+    <script src="./js/libs/three.min.js"></script>
+    <!-- <script src="./js/libs/DragControls.js"></script> -->
+    <!-- <script src="./js/libs/TrackballControls.js"></script> -->
+    <script src="./js/libs/d3-threeD.js"></script>
+    <script src="./js/libs/OrbitControls.js"></script>
+    <script src="./js/libs/ThreeBSP.js"></script>
+    <script src="./js/libs/dat.gui.min.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/textures.js"></script>
+    <script src="./js/martix.js"></script>
+</body>
+</html>
