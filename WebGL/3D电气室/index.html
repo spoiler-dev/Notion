@@ -12,18 +12,202 @@
         <section class="axis-content">
             <nav class="left-nav">
                 <ul>
-                    <li>
-                        <div class="drag-machine">机箱</div>
+                    <li class="drag-li">
+                        机箱
                     </li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                    <li class="drag-li"></li>
+                    <li class="drag-li"></li>
+                    <li class="drag-li"></li>
+                    <li class="drag-li"></li>
+                    <li class="drag-li"></li>
                 </ul>
             </nav>
+            <table class="drag-grid">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
         </section>
-        <section class="three-content"></section>
+        <section class="three-content">
+            <button id="aqq">11111111111</button>
+        </section>
     </div>
 
 <!--     <div class="info">
@@ -36,38 +220,86 @@
 
     </div> -->
     <script>
-        var moveElem = document.querySelector('.drag-machine'); //待拖拽元素      
-
-        var dragging; //是否激活拖拽状态
-        var tLeft, tTop; //鼠标按下时相对于选中元素的位移
-
-        //监听鼠标按下事件
-        document.addEventListener('mousedown', function(e) {
-            if (e.target == moveElem) {
-                
-                dragging = true; //激活拖拽状态
-            var moveElemRect = moveElem.getBoundingClientRect();
-                tLeft = e.clientX - moveElemRect.left; //鼠标按下时和选中元素的坐标偏移:x坐标
-                tTop = e.clientY - moveElemRect.top; //鼠标按下时和选中元素的坐标偏移:y坐标
+        var zIndex = 4;
+        window.onload = function () {
+            var dragList = document.getElementsByClassName('drag-li');
+            for (var i = 0;i<dragList.length;i++) {
+                drag(dragList[i])
             }
-        });
 
-        //监听鼠标放开事件
-        document.addEventListener('mouseup', function(e) {
-            dragging = false;
-        });
-
-        //监听鼠标移动事件
-        document.addEventListener('mousemove', function(e) {
-            if (dragging) {
-                var moveX = e.clientX - tLeft, 
-                    moveY = e.clientY - tTop;
-
-                moveElem.style.left = moveX + 'px';
-                moveElem.style.top = moveY + 'px';
-            
+        document.getElementById("aqq").onclick = function(){
+                        var boxList = document.getElementsByClassName('temp');
+        var machineArr = [];
+        var boxArr = [];
+        var x;
+        var y;
+        var z;
+            for(var i=0;i<boxList.length;i++){
+            if(boxList[i].style.left>160){
+                x = parseInt(boxList[i].style.left) - 160 + 5
+            }else{
+                x = 0 - ((parseInt(boxList[i].style.left) - 80) / 5 - 5)
             }
-        });  
+            boxArr.push(x);
+            boxArr.push(0);
+            if(boxList[i].style.top>50){
+                y = 0 - (parseInt(boxList[i].style.top) - 50 + 5)
+            }else{
+                y = parseInt(boxList[i].style.left) + 50 - 5
+            }      
+
+            boxArr.push(y);
+            machineArr.push(boxArr);
+            boxArr = [];
+        }
+            console.log(boxArr)
+        };
+        }
+
+
+        function drag (oDrag) {
+            var disX = 0;
+            var disY = 0;
+            oDrag.onmousedown = function (e) {
+                var e = e || window.event;
+                disX = e.clientX - this.offsetLeft;
+                disY = e.clientY - this.offsetTop;
+                var oTemp = document.createElement('div');
+                oTemp.className = 'temp';
+                oTemp.style.left = this.currentStyle ? this.currentStyle['left'] : getComputedStyle(this,null)['left'];
+                oTemp.style.top = this.currentStyle ? this.currentStyle['top'] : getComputedStyle(this,null)['top'];
+                oTemp.style.zIndex = zIndex++;
+                document.body.appendChild(oTemp);
+                document.onmousemove = function (e) {
+                    var e = e || window.event;
+                    var iL = e.clientX - disX;
+                    var iT = e.clientY - disY;
+                    var maxL = document.documentElement.clientWidth - oDrag.offsetWidth;
+                    var maxT = document.documentElement.clientHeight - oDrag.offsetHeight;
+                    iL <=0 && (iL = 0);
+                    iT <= 0 && (iT = 0);
+                    iL >= maxL && (iL = maxL);
+                    iT >= maxT && (iT = maxT);
+                    oTemp.style.left = iL + 'px';
+                    oTemp.style.top = iT + 'px';
+                    return false
+                }
+                document.onmouseup = function () {
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                    // oDrag.style.left = oTemp.style.left;
+                    // oDrag.style.top = oTemp.style.top;
+                    // oDrag.style.zIndex = oTemp.style.zIndex;
+                    //document.body.removeChild(oTemp);
+                    oDrag.releaseCapture && oDrag.releaseCapture();
+                }
+                this.setCapture && this.setCapture();
+                return false
+
+
+            }
+
+        }
     </script>
     <script src="./js/libs/three.min.js"></script>
     <!-- <script src="./js/libs/DragControls.js"></script> -->
