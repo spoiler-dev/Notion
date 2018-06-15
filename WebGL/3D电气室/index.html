@@ -1,315 +1,152 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>3D电气室</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/index.css" />
-</head>
-<body>
-    <div class="both-content">
-        <section class="axis-content">
-            <nav class="left-nav">
-                <ul>
-                    <li class="drag-li">
-                        机箱
-                    </li>
-                    <li class="drag-li"></li>
-                    <li class="drag-li"></li>
-                    <li class="drag-li"></li>
-                    <li class="drag-li"></li>
-                    <li class="drag-li"></li>
-                </ul>
-            </nav>
-            <table class="drag-grid">
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </table>
-        </section>
-        <section class="three-content">
-            <button id="aqq">11111111111</button>
-        </section>
-    </div>
-
-<!--     <div class="info">
-        <a class="title" target="_blank">
-          3D 电气室消防监控
-        </a>
-        <a class="author">
-          方正
-        </a>
-
-    </div> -->
-    <script>
-        var zIndex = 4;
-        window.onload = function () {
-            var dragList = document.getElementsByClassName('drag-li');
-            for (var i = 0;i<dragList.length;i++) {
-                drag(dragList[i])
-            }
-
-        document.getElementById("aqq").onclick = function(){
-                        var boxList = document.getElementsByClassName('temp');
-        var machineArr = [];
-        var boxArr = [];
-        var x;
-        var y;
-        var z;
-            for(var i=0;i<boxList.length;i++){
-            if(boxList[i].style.left>160){
-                x = parseInt(boxList[i].style.left) - 160 + 5
-            }else{
-                x = 0 - ((parseInt(boxList[i].style.left) - 80) / 5 - 5)
-            }
-            boxArr.push(x);
-            boxArr.push(0);
-            if(boxList[i].style.top>50){
-                y = 0 - (parseInt(boxList[i].style.top) - 50 + 5)
-            }else{
-                y = parseInt(boxList[i].style.left) + 50 - 5
-            }      
-
-            boxArr.push(y);
-            machineArr.push(boxArr);
-            boxArr = [];
-        }
-            console.log(boxArr)
-        };
-        }
-
-
-        function drag (oDrag) {
-            var disX = 0;
-            var disY = 0;
-            oDrag.onmousedown = function (e) {
-                var e = e || window.event;
-                disX = e.clientX - this.offsetLeft;
-                disY = e.clientY - this.offsetTop;
-                var oTemp = document.createElement('div');
-                oTemp.className = 'temp';
-                oTemp.style.left = this.currentStyle ? this.currentStyle['left'] : getComputedStyle(this,null)['left'];
-                oTemp.style.top = this.currentStyle ? this.currentStyle['top'] : getComputedStyle(this,null)['top'];
-                oTemp.style.zIndex = zIndex++;
-                document.body.appendChild(oTemp);
-                document.onmousemove = function (e) {
-                    var e = e || window.event;
-                    var iL = e.clientX - disX;
-                    var iT = e.clientY - disY;
-                    var maxL = document.documentElement.clientWidth - oDrag.offsetWidth;
-                    var maxT = document.documentElement.clientHeight - oDrag.offsetHeight;
-                    iL <=0 && (iL = 0);
-                    iT <= 0 && (iT = 0);
-                    iL >= maxL && (iL = maxL);
-                    iT >= maxT && (iT = maxT);
-                    oTemp.style.left = iL + 'px';
-                    oTemp.style.top = iT + 'px';
-                    return false
-                }
-                document.onmouseup = function () {
-                    document.onmousemove = null;
-                    document.onmouseup = null;
-                    // oDrag.style.left = oTemp.style.left;
-                    // oDrag.style.top = oTemp.style.top;
-                    // oDrag.style.zIndex = oTemp.style.zIndex;
-                    //document.body.removeChild(oTemp);
-                    oDrag.releaseCapture && oDrag.releaseCapture();
-                }
-                this.setCapture && this.setCapture();
-                return false
-
-
-            }
-
-        }
-    </script>
-    <script src="./js/libs/three.min.js"></script>
-    <!-- <script src="./js/libs/DragControls.js"></script> -->
-    <!-- <script src="./js/libs/TrackballControls.js"></script> -->
-    <script src="./js/libs/d3-threeD.js"></script>
-    <script src="./js/libs/OrbitControls.js"></script>
-    <script src="./js/libs/ThreeBSP.js"></script>
-    <script src="./js/libs/dat.gui.min.js"></script>
-    <script src="./js/utils.js"></script>
-    <script src="./js/textures.js"></script>
-    <script src="./js/martix.js"></script>
-</body>
-</html>
+<!DOCTYPE html>    
+<html>    
+    <head>    
+        <meta charset="utf-8" />    
+        <title></title>    
+        <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">    
+        <style type="text/css">    
+            *{    
+                padding: 0;    
+                margin: 0;    
+            }    
+            .father{    
+                height: 300px;    
+                width: 99%;;    
+                border: 1px solid red;    
+                margin: 0 auto;    
+                overflow: hidden;    
+            }    
+            ul{    
+                width: 100px;  
+                /*父元素ul不要设置高让li的个数把盒子撑开*/    
+                /*height: 100%;*/    
+            }    
+            li{    
+                border: 1px solid blue;    
+                list-style: none;    
+                width: 100px;    
+                height: 50px;    
+            }    
+        </style>    
+    </head>    
+    <body>    
+            
+            
+        <div class="father">    
+            <ul>    
+                <li>上</li>    
+                <li>下</li>    
+                <li>托</li>    
+                <li>动</li>    
+                <li>5</li>    
+                <li>6</li>    
+                <li>7</li>    
+                <li>8</li>    
+                <li>9</li>    
+                <li>10</li>  
+                <li>11</li>  
+                <li>12</li>  
+                <li>13</li>  
+                <li>14</li>  
+                <li>15</li>  
+            </ul>    
+        </div>    
+    </body>    
+    <script>    
+        
+            // 页面加载完毕事件    
+            window.onload = function () {    
+                var ele=document.querySelector(".father")  
+                left_scroll(ele);    
+            }    
+                
+            function left_scroll(ele) {    
+                
+                // 获取移动的ul    
+                var moveNode = document.querySelector("ul");    
+                
+                // ul父盒子的高度     
+                var moveNodeParentHeight = ele.offsetHeight;    
+                
+                // ul的高度    
+                var moveNodeHeight = moveNode.offsetHeight;    
+                
+                // 计算移动的范围 因为 往上移动个是 y负方向 所有 这里 是减去 而不是加    
+                var minDistance = moveNodeParentHeight - moveNodeHeight ;    
+                
+                var maxDistance = 0;    
+                
+                // 定义变量 用来 标示 吸附的 距离    
+                var delayDistance = 150;    
+                // console.log('最小值'+minDistance);    
+                // console.log('最大值'+maxDistance);    
+                
+                // 2.通过touch事件 修改 ul的移动    
+                // 定义一些变量 记录 距离    
+                //  起始值    
+                var startY  = 0;    
+                // 移动值    
+                var moveY = 0;    
+                // 总的移动距离    
+                var distanceY = 0    
+                
+                // 将 重复的代码 进行封装    
+                var startTransition = function () {    
+                    moveNode.style.transition = 'all .5s';    
+                }    
+                var endTransition = function () {    
+                    moveNode.style.transition = '';    
+                }    
+                var setTransform = function (distance) {    
+                    moveNode.style.transform = 'translateY('+distance+'px)';    
+                }    
+                
+                
+                moveNode.addEventListener('touchstart',function(event){    
+                    startY = event.touches[0].clientY;    
+                })    
+                moveNode.addEventListener('touchmove',function(event){    
+                    moveY = event.touches[0].clientY - startY;    
+                
+                    // 判断 是否满足 移动的条件    
+                    if ((moveY+distanceY)>(maxDistance+delayDistance)) {    
+                        // 修正 moveY    
+                        moveY = 0;    
+                        distanceY = maxDistance+delayDistance;    
+                        // 为什么是减法 因为 往上移动 是负值 要比最小值 还要更小    
+                    }else if((moveY+distanceY)<(minDistance-delayDistance)){    
+                        // 修改 moveY    
+                        moveY = 0;    
+                        distanceY = minDistance-delayDistance;    
+                    }       
+                    console.log(distanceY);    
+                    // 关闭 过渡效果    
+                    // moveNode.style.transition = '';    
+                    endTransition();    
+                    // 移动    
+                    // moveNode.style.transform = 'translateY('+(moveY+distanceY)+'px)';    
+                    setTransform(moveY+distanceY);    
+                })    
+                moveNode.addEventListener('touchend',function(event){    
+                    // 修改移动的总距离    
+                    distanceY+=moveY;    
+                
+                    // 吸附回去 判断 吸附的方位    
+                    if (distanceY>maxDistance) {    
+                        distanceY = maxDistance;    
+                    }else if(distanceY<minDistance){    
+                        distanceY = minDistance;    
+                    }    
+                
+                    // 吸附回去    
+                    // 移动    
+                    // moveNode.style.transition  ='all .5s';    
+                    startTransition();    
+                    // moveNode.style.transform = 'translateY('+(distanceY)+'px)';    
+                    setTransform(distanceY);    
+                })    
+                    
+            }    
+    </script>    
+        
+</html>    
