@@ -9,25 +9,63 @@
 </head>
 <body>
     <div class="both-content">
-        <div class="createTable">
-            长：<input type="text" id="tableLength">
-            宽：<input type="text" id="tableWidth">
-            <button id="createButton">创建表格</button>
-        </div>
-        <div class="axis-content">
+        <!-- 侧边栏 -->
+        <div class="left-dashboard">
             <nav class="left-nav">
-                <ul>
+                <div class="nav-list">
+                    <div class="nav-label">选择机柜或空调</div>
+                    <div class="nav-zone">
+                        <div class="nav-box">
+                            <p class="nav-box-title">机柜</p>
+                            <div class="nav-box-machine"></div>
+                        </div>
+                        <div class="nav-box">
+                            <p class="nav-box-title">空调</p>
+                            <div class="nav-box-machine"></div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="nav-list">
+                    <div class="nav-label">选择设备</div>
+                    <div class="equip-box">
+                        <div class="equip-title">烟感</div>
+                        <div class="equip-moudle"></div>
+                    </div>
+                    <div class="equip-box">
+                        <div class="equip-title">温感</div>
+                        <div class="equip-moudle"></div>
+                    </div>
+                    <div class="equip-box">
+                        <div class="equip-title">控制器</div>
+                        <div class="equip-moudle"></div>
+                    </div>
+                </div>
+                
+<!--                 <ul>
                     <li class="drag machine">机箱</li>
                     <li class="drag air">空调</li>
                     <li class="drag">控制器</li>
                     <li class="drag">温感</li>
                     <li class="drag">烟感</li>
-                </ul>
+                </ul> -->
             </nav>
+        </div>
+
+        <div class="right-dashboard">
+            <div class="createTable">
+                长：<input type="text" id="tableLength">
+                宽：<input type="text" id="tableWidth">
+                <button id="createButton">创建表格</button>
+            </div>
+        </div>
+
+        <div class="axis-content">
             <table class="drag-grid" id="grid-table">
-                
             </table>
         </div>
+
         <div class="three-content"></div>
     </div>
     <script type="text/javascript">
