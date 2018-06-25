@@ -148,6 +148,7 @@
                 var type = this.getAttribute('type');
                 oTemp = document.createElement("div");
                 if(type == 'machine'){
+                    // 添加多个类名
                     oTemp.classList.add("machine-zone", "machine-line");
                     oTemp.innerHTML = machineHtml;
                 }else if(type == "air"){
