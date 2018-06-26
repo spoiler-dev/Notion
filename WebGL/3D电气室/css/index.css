@@ -83,6 +83,10 @@ button {
   border:1px solid #2E2C48; 
   float:left; 
 }
+.equip-moudle{
+  padding: 20px 55px;
+  box-sizing: border-box;
+}
 .right-dashboard {
   height: 100%;
   margin-left: 260px;
@@ -160,18 +164,98 @@ button {
   margin-left: 60px;
 }
 .right-dashboard-bottom{
-  background: #8E8E8E;
   height:calc(100% - 70px);
   margin-top: 10px; 
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
-
+.axis-orign{
+  width: 20px;
+  height: 20px;
+  background: #242427;
+  float: left;
+}
+#axis-x{
+  width: 100%;
+  height: 20px;
+  background: #525256;
+  left: 20px;
+  top: -20px;
+  position: relative;
+  overflow: hidden;
+}
+#axis-y{
+  width: 20px;
+  height: 100%;
+  background: #525256;
+  left: 0;
+  top: -20px;
+  position: relative;
+  float: left;
+  overflow: hidden;
+}
+.x-micro{
+  background: #8E8E8E;
+  width: 1px;
+  height: 5px;
+  bottom: 0;
+  position: absolute;
+}
+.x-minor{
+  background: #8E8E8E;
+  width: 1px;
+  height: 10px;
+  bottom: 0;
+  position: absolute;
+}
+.x-major{
+  background: #8E8E8E;
+  width: 1px;
+  height: 20px;
+  bottom: 0;
+  position: absolute;
+  font-size: 12px;
+  color: #8E8E8E;
+  text-indent: 1px;
+}
+.y-micro{
+  background: #8E8E8E;
+  width: 5px;
+  height: 1px;
+  left: 0;
+  position: absolute;
+}
+.y-minor{
+  background: #8E8E8E;
+  width: 10px;
+  height: 1px;
+  left: 0;
+  position: absolute;
+}
+.y-major{
+  background: #8E8E8E;
+  width: 20px;
+  height: 1px;
+  left: 0;
+  position: absolute;
+  font-size: 12px;
+  color: #8E8E8E;
+  word-wrap: break-word;
+  padding-left:8px;
+  box-sizing: border-box;
+}
+.painting{
+  overflow: hidden;
+  display: flex;
+/*   align-items: center;
+  justify-content: center; */
+  padding: 100px;
+  height:calc(100% - 20px);
+  margin-top: -20px;
+}
 #love-house{
   border: 10px solid #2E2C48;
   background: #292930;
+  box-sizing: border-box;
 }
 .machine-zone{
   width: 150px;
@@ -189,7 +273,7 @@ button {
 .machine-position{
   width:120px;
   height: 130px;
-  border: 1px dotted #666666;
+  border: 1px dashed #666666;
   box-sizing: border-box;
 }
 .machine-center{
@@ -202,7 +286,7 @@ button {
 .air-position{
   width:120px;
   height: 130px;
-  border: 1px dotted #9DDDFF;
+  border: 1px dashed #9DDDFF;
   box-sizing: border-box;
 }
 .air-center{
@@ -299,6 +383,25 @@ button {
   height: 40px;
   position: absolute;
 }
+#sup-yline{
+  width: 1px;
+  background: #1B86FF;
+  height: 100%;
+  position: absolute;
+  z-index: 999;
+}
+#sup-xline{
+  height: 1px;
+  background: #1B86FF;
+  width: 100%;
+  position: absolute;
+  z-index: 999;
+}
+.drag-img{
+  margin: 14px 13px;
+  transition: all 1s ease-out;
+}
+
 /* .info{
   margin: 20px 0;
   position: absolute;
