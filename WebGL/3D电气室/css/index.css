@@ -147,7 +147,7 @@ button {
   box-sizing: border-box;
 }
 #tab2-button{
-  margin-left: -4px;
+  margin-left: -5px;
 }
 .tab2-button{
   width: 80px;
@@ -161,7 +161,7 @@ button {
   box-sizing: border-box;
 }
 #submit-button{
-  margin-left: 60px;
+  margin-left: 200px;
 }
 .right-dashboard-bottom{
   height:calc(100% - 70px);
@@ -383,14 +383,28 @@ button {
   height: 40px;
   position: absolute;
 }
-#sup-yline{
+#sup-yline1{
   width: 1px;
   background: #1B86FF;
   height: 100%;
   position: absolute;
   z-index: 999;
 }
-#sup-xline{
+#sup-xline1{
+  height: 1px;
+  background: #1B86FF;
+  width: 100%;
+  position: absolute;
+  z-index: 999;
+}
+#sup-yline2{
+  width: 1px;
+  background: #1B86FF;
+  height: 100%;
+  position: absolute;
+  z-index: 999;
+}
+#sup-xline2{
   height: 1px;
   background: #1B86FF;
   width: 100%;
@@ -401,7 +415,24 @@ button {
   margin: 14px 13px;
   transition: all 1s ease-out;
 }
-
+.hide{
+  display: none;
+}
+#fixed-btn{
+  position: fixed;
+  top: 17px;
+  left: 740px;
+  z-index: 999;
+}
+#three-dimensional{
+  width: 100%;
+  height: 100%;
+  background: #1E1E24;
+}
+canvas{
+  position: absolute;
+  z-index: 998;
+}
 /* .info{
   margin: 20px 0;
   position: absolute;
