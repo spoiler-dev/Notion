@@ -138,13 +138,13 @@ button {
 .tab1-button{
   width: 80px;
   height: 28px;
-  background: #2E2C48;
-  border:1px solid #2E2C48;
   color: #C7CEF2;
   font-size: 14px;
   border-top-left-radius: 14px;
   border-bottom-left-radius: 14px;
   box-sizing: border-box;
+  background: #2E2C48;
+  border:1px solid #2E2C48;
 }
 #tab2-button{
   margin-left: -5px;
@@ -152,13 +152,21 @@ button {
 .tab2-button{
   width: 80px;
   height: 28px;
-  background: #1B86FF;
-  border:1px solid #1B86FF;
   color: #C7CEF2;
   font-size: 14px;
   border-top-right-radius: 14px;
   border-bottom-right-radius: 14px;
   box-sizing: border-box;
+  background: #2E2C48;
+  border:1px solid #2E2C48;
+}
+.tab1-style{
+  background: #2E2C48;
+  border:1px solid #2E2C48;
+}
+.tab2-style{
+  background: #1B86FF;
+  border:1px solid #1B86FF;
 }
 #submit-button{
   margin-left: 200px;
@@ -177,7 +185,7 @@ button {
 #axis-x{
   width: 100%;
   height: 20px;
-  background: #525256;
+  background: #303038;
   left: 20px;
   top: -20px;
   position: relative;
@@ -186,7 +194,7 @@ button {
 #axis-y{
   width: 20px;
   height: 100%;
-  background: #525256;
+  background: #303038;
   left: 0;
   top: -20px;
   position: relative;
@@ -299,7 +307,7 @@ button {
 .machine-title-input{
   width: 150px;
   height: 30px;
-  color: #666666;
+  color: #E6E6E6;
   font-size: 12px;
   border: 1px solid #666666;
   margin-top: 20px;
@@ -382,6 +390,7 @@ button {
   width: 40px;
   height: 40px;
   position: absolute;
+  vertical-align: middle;
 }
 #sup-yline1{
   width: 1px;
@@ -433,21 +442,31 @@ canvas{
   position: absolute;
   z-index: 998;
 }
-/* .info{
-  margin: 20px 0;
-  position: absolute;
-  text-align: center;
-  opacity: 0.2;
-  width:100%;
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { 
+  /* WebKit browsers */ 
+ color: #666666; 
+ } 
+ input:-moz-placeholder, textarea:-moz-placeholder { 
+ /* Mozilla Firefox 4 to 18 */ 
+ color: #666666; 
+ } 
+ input::-moz-placeholder, textarea::-moz-placeholder { 
+  /* Mozilla Firefox 19+ */ 
+ color: #666666; 
+ } 
+ input:-ms-input-placeholder, textarea:-ms-input-placeholder { 
+  /* Internet Explorer 10+ */ 
+ color: #666666; 
+ }
+.toolbar{
+  width: 32px;
+  height: 480px;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 5px;
+  z-index: 999;
+  position: relative;
+  top: 75px;
+  left: 10px;
+  float: left;
 }
-.info a{
-  display: block;
-  font-size: 16px;
-  line-height: 28px;
-  color: #ffffff;
-  text-decoration: none;
-}
-a.title{
-  font-size: 20px;
-  font-weight: bold;
-} */
