@@ -179,7 +179,7 @@
         var zIndex = 1;
         // 拖拽模块
         function drag(oDrag) {
-            var disX = dixY = 0;
+            var disX = disY = 0;
             var iL = iT = 0;
 
             // 机柜
@@ -366,7 +366,7 @@
                         xMin = left + disX;
                         yMin = top + disY;
                         xMax = left + width - disX;
-                        yMax = top + height - dixY;
+                        yMax = top + height - disY;
                         if ((event.clientX < xMin) || (event.clientX > xMax) || (event.clientY < yMin) || (event.clientY > yMax)) {
                             document.body.removeChild(oTemp);
                         }
@@ -419,7 +419,7 @@
                 return false
             }
         }
-
+        var zone;
         // 机箱位置
         var machinePositionArr = [];
         var airPositionArr = [];
@@ -869,11 +869,11 @@
                 var airHole1Geometry = new THREE.BoxGeometry(2, 60, 120)
                 var airHole1 = utils.makeMesh('phong', airHole1Geometry, 0x4A708B)
 
-                airHole1.position.y = 60
+                airHole1.position.y = 87
 
-                var airHole2Geometry = new THREE.BoxGeometry(2, 80, 35)
+                var airHole2Geometry = new THREE.BoxGeometry(2, 40, 35)
                 var airHole2 = utils.makeMesh('phong', airHole2Geometry, 0x4A708B)
-                airHole2.position.y = -80
+                airHole2.position.y = -118
 
                 var airHole3 = airHole2.clone()
                 airHole3.position.z = 45
@@ -895,22 +895,26 @@
                 var machineFront4ResultBSP = utils.bsp('subtract', machineFront3ResultBSP, airHole4BSP)
                 var machineFront = utils.bspMesh('phong', 0xEBEBEB, machineFront4ResultBSP)
 
-                var textureGrid = new THREE.TextureLoader().load("./img/eee.png");
+                var textureGrid = new THREE.TextureLoader().load("./img/flag.jpg");
                 var materialGrid = new THREE.MeshBasicMaterial({
                     map: textureGrid,
                     color: 0xFFFFFF
                 })
-
+                var textureGrid1 = new THREE.TextureLoader().load("./img/eee.png");
+                var materialGrid1 = new THREE.MeshBasicMaterial({
+                    map: textureGrid1,
+                    color: 0xFFFFFF
+                })
                 var airGrid1Geometry = new THREE.BoxGeometry(120, 60, 2)
                 var airGrid1 = new THREE.Mesh(airGrid1Geometry, materialGrid);
                 airGrid1.position.z = 0
-                airGrid1.position.y = 212
+                airGrid1.position.y = 240
                 air.add(airGrid1)
 
-                var airGrid2Geometry = new THREE.BoxGeometry(35, 80, 2)
-                var airGrid2 = new THREE.Mesh(airGrid2Geometry, materialGrid)
+                var airGrid2Geometry = new THREE.BoxGeometry(35, 40, 2)
+                var airGrid2 = new THREE.Mesh(airGrid2Geometry, materialGrid1)
                 airGrid2.position.z = 0
-                airGrid2.position.y = 72
+                airGrid2.position.y = 35
                 air.add(airGrid2)
 
                 var airGrid3 = airGrid2.clone()
@@ -926,10 +930,10 @@
                     map: textureLock,
                     color: 0xFFFFFF
                 })
-                var LockGeometry = new THREE.BoxGeometry(25, 35, 10)
+                var LockGeometry = new THREE.BoxGeometry(18, 24, 10)
                 var Lock = new THREE.Mesh(LockGeometry, materialLock)
-                Lock.position.y = 145
-                Lock.position.x = 45
+                Lock.position.y = 166
+                Lock.position.x = 0
                 air.add(Lock)
 
                 machineFront.rotation.y = -0.5 * Math.PI
