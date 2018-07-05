@@ -538,69 +538,69 @@
             three.style.display = 'block';
         })
         
-        // 提交数据
-        var submitBtn = document.getElementById('submit-button');
-        // 设备信息
-        var equip = '';
-        // 组件信息
-        var model = '';
-        submitBtn.addEventListener('click', function () {
-            // 获取坐标数据
-            data(machinePositionArr, airPositionArr, smokePositionArr, temperaturePositionArr, controllerPositionArr, fontPositionArr, describArr,machineNameArr,machineNamePositionArr,airNameArr,airNamePositionArr);
+        // // 提交数据
+        // var submitBtn = document.getElementById('submit-button');
+        // // 设备信息
+        // var equip = '';
+        // // 组件信息
+        // var model = '';
+        // submitBtn.addEventListener('click', function () {
+        //     // 获取坐标数据
+        //     data(machinePositionArr, airPositionArr, smokePositionArr, temperaturePositionArr, controllerPositionArr, fontPositionArr, describArr,machineNameArr,machineNamePositionArr,airNameArr,airNamePositionArr);
  
-            for(i = 0; i < machinePositionArr.length; i++) {
-                var a = machinePositionArr[i];
-                var b = machineNamePositionArr[i];
-                var c =  machineNameArr[i];
-                a == '' && (a = null);
-                b == '' && (b = null);
-                c == '' && (c = null);
-                equip += "["+ a + "]" + "-"+ "[" + b + "]" + "-" + c  + "-" +  "0" + "~";
-            }
-            for(i = 0; i < airPositionArr.length; i++) {
-                var a = airPositionArr[i];
-                var b = airNamePositionArr[i];
-                var c =  airNameArr[i];
-                a == '' && (a = null);
-                b == '' && (b = null);
-                c == '' && (c = null);
-                equip += "["+ a + "]" + "-"+ "[" + b + "]" + "-" + c  + "-" +  "1" + "~";
-            } 
-            for(i = 0; i < smokePositionArr.length; i++) {
-                var a = smokePositionArr[i];
-                a == '' && (a = null);
-                model += "smoke:"+"["+ a + "]" + "~";
-            }     
-            for(i = 0; i < temperaturePositionArr.length; i++) {
-                var a = temperaturePositionArr[i];
-                a == '' && (a = null);
-                model += "temperature:"+"["+ a + "]" + "~";
-            }    
-            for(i = 0; i < controllerPositionArr.length; i++) {
-                var a = controllerPositionArr[i];
-                a == '' && (a = null);
-                model += "controller:"+"["+ a + "]" + "-"+ "[" + b + "]" + "-" + c  + "-" +  "c" + "~";
-            }            
-            // 去除末尾逗号
-            equip = equip.substr(0, equip.length - 1);
-            model = model.substr(0, model.length - 1);
-            //创建异步对象  
-            var xhr = new XMLHttpRequest();
-            //设置请求的类型及url
-            //post请求一定要添加请求头才行不然会报错
-            xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-            xhr.open('post','');
-            //发送请求
-            xhr.send('equip&');
-            xhr.onreadystatechange = function () {
-                // 这步为判断服务器是否正确响应
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    console.log(xhr.responseText);
+        //     for(i = 0; i < machinePositionArr.length; i++) {
+        //         var a = machinePositionArr[i];
+        //         var b = machineNamePositionArr[i];
+        //         var c =  machineNameArr[i];
+        //         a == '' && (a = null);
+        //         b == '' && (b = null);
+        //         c == '' && (c = null);
+        //         equip += "["+ a + "]" + "-"+ "[" + b + "]" + "-" + c  + "-" +  "0" + "~";
+        //     }
+        //     for(i = 0; i < airPositionArr.length; i++) {
+        //         var a = airPositionArr[i];
+        //         var b = airNamePositionArr[i];
+        //         var c =  airNameArr[i];
+        //         a == '' && (a = null);
+        //         b == '' && (b = null);
+        //         c == '' && (c = null);
+        //         equip += "["+ a + "]" + "-"+ "[" + b + "]" + "-" + c  + "-" +  "1" + "~";
+        //     } 
+        //     for(i = 0; i < smokePositionArr.length; i++) {
+        //         var a = smokePositionArr[i];
+        //         a == '' && (a = null);
+        //         model += "smoke:"+"["+ a + "]" + "~";
+        //     }     
+        //     for(i = 0; i < temperaturePositionArr.length; i++) {
+        //         var a = temperaturePositionArr[i];
+        //         a == '' && (a = null);
+        //         model += "temperature:"+"["+ a + "]" + "~";
+        //     }    
+        //     for(i = 0; i < controllerPositionArr.length; i++) {
+        //         var a = controllerPositionArr[i];
+        //         a == '' && (a = null);
+        //         model += "controller:"+"["+ a + "]" + "-"+ "[" + b + "]" + "-" + c  + "-" +  "c" + "~";
+        //     }            
+        //     // 去除末尾逗号
+        //     equip = equip.substr(0, equip.length - 1);
+        //     model = model.substr(0, model.length - 1);
+        //     //创建异步对象  
+        //     var xhr = new XMLHttpRequest();
+        //     //设置请求的类型及url
+        //     //post请求一定要添加请求头才行不然会报错
+        //     xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        //     xhr.open('post','');
+        //     //发送请求
+        //     xhr.send('equip&');
+        //     xhr.onreadystatechange = function () {
+        //         // 这步为判断服务器是否正确响应
+        //         if (xhr.readyState == 4 && xhr.status == 200) {
+        //             console.log(xhr.responseText);
                     
-                    _this.$router.push('/manager/safe/fdisk');
-                } 
-            };
-        })
+        //             _this.$router.push('/manager/safe/fdisk');
+        //         } 
+        //     };
+        // })
 
         // 3D电气室
         function threeRoom(gridWidth, gridLength, machinePositionArr, airPositionArr, smokePositionArr, temperaturePositionArr, controllerPositionArr, describArr,machineNameArr,machineNamePositionArr,airNameArr,airNamePositionArr) {
