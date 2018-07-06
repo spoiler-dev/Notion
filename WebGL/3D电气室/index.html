@@ -179,8 +179,10 @@
         var zIndex = 1;
         // 拖拽模块
         function drag(oDrag) {
-            var disX = disY = 0;
-            var iL = iT = 0;
+            var disX =0;
+            var disY = 0;
+            var iL = 0;
+            var iT = 0;
 
             // 机柜
             var machineHtml = '<div class="machine"> \
@@ -225,7 +227,7 @@
                 // 机柜拖拽
                 if (type == 'machine') {
                     // 添加多个类名
-                    oTemp.classList.add("machine-zone", "machine-line");
+                    oTemp.classList.add("machine-zone", "machine-line","dragDel");
                     oTemp.setAttribute("type", "outer");
                     oTemp.innerHTML = machineHtml;
                     // 旋转动画
@@ -239,7 +241,7 @@
                 }
                 // 空调拖拽
                 else if (type == "air") {
-                    oTemp.classList.add("machine-zone", "air-line");
+                    oTemp.classList.add("machine-zone", "air-line","dragDel");
                     oTemp.setAttribute("type", "outer");
                     oTemp.innerHTML = airHtml;
                     // 旋转动画
@@ -251,15 +253,15 @@
                     rotate.style.marginTop = 50 + 'px';
                     rotate.style.transform = "rotateX(180deg)";
                 } else if (type == "smoke") {
-                    oTemp.classList.add("img-zone", "smoke-line");
+                    oTemp.classList.add("img-zone", "smoke-line","dragDel");
                     oTemp.setAttribute("type", "inner");
                     oTemp.innerHTML = smokeHtml;
                 } else if (type == "temperature") {
-                    oTemp.classList.add("img-zone", "temperature-line");
+                    oTemp.classList.add("img-zone", "temperature-line","dragDel");
                     oTemp.setAttribute("type", "inner");
                     oTemp.innerHTML = temperatureHtml;
                 } else if (type == "control") {
-                    oTemp.classList.add("img-zone", "control-line");
+                    oTemp.classList.add("img-zone", "control-line","dragDel");
                     oTemp.setAttribute("type", "inner");
                     oTemp.innerHTML = controlHtml;
                 } else {
@@ -370,6 +372,7 @@
                         if ((event.clientX < xMin) || (event.clientX > xMax) || (event.clientY < yMin) || (event.clientY > yMax)) {
                             document.body.removeChild(oTemp);
                         }
+                        dragD(oTemp);
                     }
                     // 温感、烟感、控制器移入到机箱顶部
                     else if (oTemp.getAttribute('type') == 'inner') {
@@ -389,11 +392,13 @@
                             } else {
                                 arr.push(1);
                             }
+                            
                         }
                         // 数组中不存在1，表示未能移入机柜顶部有效范围
                         if (arr.indexOf(1) == '-1') {
                             document.body.removeChild(oTemp);
                         }
+                        dragD(oTemp);
                     }
                     if (oDrag.children[0].getAttribute('id') == 'drag-machine') {
                         rotate.style.transform = "rotateX(0deg)";
@@ -419,6 +424,42 @@
                 return false
             }
         }
+
+        // 拖拽删除
+/*         var dragDel = document.getElementsByClassName('dragDel');
+        if(dragDel.length>0){
+            for(var i = 0 ;i < dragDel.length;i++){
+                dragD(dragDel[i]);
+            }
+        } */
+        
+        function dragD (obj) {
+            var disX =0;
+            var disY = 0;
+            var iL = 0;
+            var iT = 0;
+            obj.onmousedown = function (event) {
+                debugger
+                var event = event || window.event;
+                disX = obj.offsetWidth / 2;
+                disY = obj.offsetHeight / 2;
+                document.onmousemove = function (event) {
+                    var event = event || window.event;
+                    iL = event.clientX - disX;
+                    iT = event.clientY - disY;
+                    // 实际拖拽体的位置
+                    obj.style.left = iL+"px";
+                    obj.style.top = iT+"px";
+                }
+                document.onmouseup = function (event) {
+
+                }
+            }
+            this.setCapture && this.setCapture();
+            return false;
+        }
+
+
         var zone;
         // 机箱位置
         var machinePositionArr = [];
