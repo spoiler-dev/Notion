@@ -397,7 +397,7 @@
                         // 数组中不存在1，表示未能移入机柜顶部有效范围
                         if (arr.indexOf(1) == '-1') {
                             document.body.removeChild(oTemp);
-                        }
+                        }            
                         dragD(oTemp);
                     }
                     if (oDrag.children[0].getAttribute('id') == 'drag-machine') {
@@ -426,39 +426,115 @@
         }
 
         // 拖拽删除
-/*         var dragDel = document.getElementsByClassName('dragDel');
-        if(dragDel.length>0){
-            for(var i = 0 ;i < dragDel.length;i++){
-                dragD(dragDel[i]);
-            }
-        } */
-        
-        function dragD (obj) {
+        function dragD (oTemp) {
             var disX =0;
             var disY = 0;
             var iL = 0;
             var iT = 0;
-            obj.onmousedown = function (event) {
-                debugger
+            var x1;
+            var y1;
+            var x2;
+            var y2;
+            oTemp.onmousedown = function (event) {
                 var event = event || window.event;
-                disX = obj.offsetWidth / 2;
-                disY = obj.offsetHeight / 2;
+                disX = oTemp.offsetWidth / 2;
+                disY = oTemp.offsetHeight / 2;
+                x1 = event.clientX;
+                y1 = event.clientY;
+                // 创建x-min辅助线
+                var xline1 = document.createElement('div');
+                xline1['id'] = 'sup-xline1';
+                xline1.style.left = this.currentStyle ? this.currentStyle["left"] : getComputedStyle(this, null)["left"];
+                xline1.style.top = this.currentStyle ? this.currentStyle["top"] : getComputedStyle(this, null)["top"];
+                document.body.appendChild(xline1);
+                // 创建x-max辅助线
+                var xline2 = document.createElement('div');
+                xline2['id'] = 'sup-xline2';
+                xline2.style.left = this.currentStyle ? this.currentStyle["left"] : getComputedStyle(this, null)["left"];
+                xline2.style.top = this.currentStyle ? this.currentStyle["top"] : getComputedStyle(this, null)["top"];
+                document.body.appendChild(xline2);
+                // 创建y-min辅助线
+                var yline1 = document.createElement('div');
+                yline1['id'] = 'sup-yline1';
+                yline1.style.left = this.currentStyle ? this.currentStyle["left"] : getComputedStyle(this, null)["left"];
+                yline1.style.top = this.currentStyle ? this.currentStyle["top"] : getComputedStyle(this, null)["top"];
+                document.body.appendChild(yline1);
+                // 创建y-max辅助线
+                var yline2 = document.createElement('div');
+                yline2['id'] = 'sup-yline2';
+                yline2.style.left = this.currentStyle ? this.currentStyle["left"] : getComputedStyle(this, null)["left"];
+                yline2.style.top = this.currentStyle ? this.currentStyle["top"] : getComputedStyle(this, null)["top"];
+                document.body.appendChild(yline2);
+
                 document.onmousemove = function (event) {
                     var event = event || window.event;
                     iL = event.clientX - disX;
                     iT = event.clientY - disY;
                     // 实际拖拽体的位置
-                    obj.style.left = iL+"px";
-                    obj.style.top = iT+"px";
+                    x2 = event.clientX;
+                    y2 = event.clientY;
+                    var oTempWidth = oTemp.offsetWidth;
+                    var oTempHeight = oTemp.offsetHeight;
+                    if(x1!=x2 || y1!=y2){
+                        oTemp.style.left = iL+"px";
+                        oTemp.style.top = iT+"px";
+                        // x-min辅助线的位置
+                        xline1.style.left = 0;
+                        xline1.style.top = iT + "px";
+                        // x-max辅助线的位置
+                        xline2.style.left = 0;
+                        xline2.style.top = iT + oTempHeight + "px";
+                        // y-min辅助线的位置          
+                        yline1.style.left = iL + "px";
+                        yline1.style.top = 0;
+                        // y-max辅助线的位置          
+                        yline2.style.left = iL + oTempWidth + "px";
+                        yline2.style.top = 0;
+                    }
+                    return false;
                 }
                 document.onmouseup = function (event) {
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                    // 移除辅助线
+                    document.body.removeChild(xline1);
+                    document.body.removeChild(xline2);
+                    document.body.removeChild(yline1);
+                    document.body.removeChild(yline2);
+                    // 拖拽体
+                    var width;
+                    var height;
+                    // 拖拽体与浏览器窗口距离
+                    var left;
+                    var top;
+                    // 拖拽范围
+                    var xMin;
+                    var xMax;
+                    var yMin;
+                    var yMax;
+                    // 父级容器
+                    var zone;
 
+                    // 电气室宽度
+                    zone = document.getElementById('love-house');
+                    width = zone.offsetWidth;
+                    // 电气室高度
+                    height = zone.offsetHeight;
+                    // 获取电气室到浏览器的距离
+                    left = zone.getBoundingClientRect().left;
+                    top = zone.getBoundingClientRect().top;
+                    xMin = left + disX;
+                    yMin = top + disY;
+                    xMax = left + width - disX;
+                    yMax = top + height - disY;
+                    if ((event.clientX < xMin) || (event.clientX > xMax) || (event.clientY < yMin) || (event.clientY > yMax)) {
+                        document.body.removeChild(oTemp);
+                    }
                 }
             }
             this.setCapture && this.setCapture();
             return false;
         }
-
 
         var zone;
         // 机箱位置
@@ -564,7 +640,7 @@
             tab2Btn.classList.remove('tab1-style');
             tab2Btn.classList.add('tab2-style');
             tab1Btn.classList.remove('tab2-style');
-            data(machinePositionArr, airPositionArr, smokePositionArr, temperaturePositionArr, controllerPositionArr, fontPositionArr, describArr);
+            data(machinePositionArr, airPositionArr, smokePositionArr, temperaturePositionArr, controllerPositionArr, fontPositionArr, describArr,machineNameArr,machineNamePositionArr,airNameArr,airNamePositionArr);
             threeRoom(gridWidth, gridLength, machinePositionArr, airPositionArr, smokePositionArr, temperaturePositionArr, controllerPositionArr, describArr);
             // 数据清空
             machinePositionArr = [];
