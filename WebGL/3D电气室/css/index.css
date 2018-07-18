@@ -61,6 +61,7 @@ button {
   line-height: 50px;
   text-align: center;
   color: #C7CEF2;
+  font-size: 14px;
 }
 .equip-box{
   width:100%;
@@ -105,9 +106,10 @@ button {
 }
 
 .coordinate-input{
+  box-sizing: border-box;
+  background: #121214;
   width: 100px;
   height: 28px;
-  background:#4A485D;
   color:#C7CEF2;
   font-size:12px;
   border: 1px solid #4A485D;
@@ -309,11 +311,11 @@ button {
   height: 30px;
   color: #E6E6E6;
   font-size: 12px;
-  border: 1px solid #666666;
   margin-top: 20px;
   box-sizing: border-box;
-  background: #1E1E24;
   padding-left: 10px;
+  text-align: center;
+  padding: 0 5px;
 }
 .axis-content {
   height: 100%;
@@ -471,3 +473,110 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
   float: left;
 }
 
+#fixed-panel{
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 260px;
+  height: 100%;
+  z-index: 999;
+  background:#1E1E24;
+  display: none;
+}
+#fixed-panel ul  {
+  list-style: none;
+  overflow: hidden;
+}
+#fixed-panel ul li {
+  color: #C7CEF2;;
+  overflow: hidden;
+  padding-left: 20px; 
+}
+.item-title {
+  line-height: 40px;
+  height: 40px;
+  float: left;
+  width: 220px;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(18,18,20,1);
+  font-size: 14px;
+}
+.item-info {
+  line-height: 50px;
+  height: 50px;
+  float: left;
+  width: 220px;
+  box-sizing: border-box;
+  
+}
+.item-li1{
+  height: 40px;
+  line-height: 40px;
+}
+.item-li2{
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 2px solid rgba(18,18,20,1);
+}
+.item-li3{
+
+}
+.item-li2:last-child{
+  border: none;
+}
+.item-btn{
+  width:100px;
+  height:28px;
+  background:rgba(27,134,255,1);
+  border-radius:14px;
+  border: none;
+  font-size:14px;
+  color:rgba(255,255,255,1);
+  text-align: center;
+  margin-left: 60px;
+  margin-top: 100px;
+
+}
+.item-input{
+  color: #C7CEF2;
+  border: 1px solid #4A485D;
+  box-sizing: border-box;
+  background: #121214;
+  padding-left: 10px;
+  height: 30px;
+  font-size: 12px;
+  box-sizing: border-box;
+  width: 220px;
+}
+.item-axis{
+  color: #828099;
+}
+.info-axis{
+  color: #828099;
+}
+.item-input-num{
+  color: #C7CEF2;
+  border: 1px solid #4A485D;
+  box-sizing: border-box;
+  background: #121214;
+  padding-left: 10px;
+  height: 28px;
+  font-size: 12px;
+  box-sizing: border-box;
+  width: 70px;
+  margin-left: 5px;
+}
+
+#panel-title{
+  width: 100%;
+  height: 40px;
+  background: #2E2C48;
+  color: #C7CEF2;
+  line-height: 40px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  font-size:14px;
+}
+#fixed-panel ul li:first-child{
+  padding-left: 0; 
+}

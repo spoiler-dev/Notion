@@ -16,6 +16,7 @@
         <div class="left-dashboard">
             <!-- 机器类型选择 -->
             <nav class="left-nav">
+                <!-- 机柜和空调 -->
                 <div class="nav-list">
                     <div class="nav-label">选择机柜或空调</div>
                     <div class="nav-zone">
@@ -33,6 +34,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- 烟感、温感、控制器 -->
                 <div class="nav-list">
                     <div class="nav-label">选择设备</div>
                     <div class="equip-box">
@@ -63,6 +65,7 @@
                 <div class="create-axis">
                     <span class="axis-label"> W：</span>
                     <input type="text" id="grid-width" class="coordinate-input">
+                    <img class="item-link" src="./img/link.png">
                     <span class="axis-label"> H：</span>
                     <input type="text" id="grid-length" class="coordinate-input">
                     <button id="create-button" class="create-button">创建网格</button>
@@ -87,7 +90,37 @@
         <button id="tab1-button" class="tab1-button tab2-style">2D预览</button>
         <button id="tab2-button" class="tab2-button tab1-style">3D预览</button>
     </div>
-
+    <!-- 面板控件 -->
+    <div id="fixed-panel">
+        <ul>
+            <li>
+                <div id="panel-title">选择机柜或空调</div>
+            </li>
+            <li class="item-li1">
+                <div class="item-title">名称</div>
+            </li>
+            <li class="item-li2">
+                <div class="item-info">
+                    <input id="machineName" class="item-input" type="text" placeholder="请输入名称">
+                </div>
+            </li>
+            <li class="item-li1">
+                <div class="item-title">位置</div>
+            </li>
+            <li class="item-li2">
+                <div class="item-info info-axis">
+                    <span class="item-axis">X:</span>
+                    <input id="machineAxis-x" class="item-input-num" type="text">
+                    <img class="item-link" src="./img/link.png">
+                    <span class="item-axis">Y:</span>
+                    <input id="machineAxis-y" class="item-input-num" type="text">
+                </div>
+            </li>
+            <li class="item-li3">
+                <button class="item-btn" id="item-btn">确认</button>
+            </li>
+        </ul>
+    </div>
     <script src="./js/libs/three.min.js"></script>
     <script src="./js/libs/OrbitControls.js"></script>
     <script src="./js/libs/ThreeBSP.js"></script>
@@ -114,7 +147,7 @@
                 scale.style.left = i * 10 + "px";
                 scale.innerText = i * 10 - 100;
                 xRuler.appendChild(scale);
-                // 1px
+            // 1px
             } else {
                 scale = document.createElement('div');
                 scale.setAttribute('class', 'x-micro');
@@ -160,21 +193,24 @@
                 // 获取输入框内的长宽
                 gridLength = document.getElementById('grid-length').value;
                 gridWidth = document.getElementById('grid-width').value;
-                // 创建电气室
+                // 画布
                 var right = document.getElementById('painting');
                 var houseHtml = '<div id="love-house"></div>';
                 right.innerHTML = houseHtml;
+                // 电气室
                 var house = document.getElementById('love-house');
                 house.style.width = gridWidth + "px";
                 house.style.height = gridLength + "px";
             }
         })
-
+        
         // 赋予拖拽能力
         var oDrag = document.getElementsByClassName('drag');
         for (var i = 0; i < oDrag.length; i++) {
             drag(oDrag[i]);
         }
+        // 储存当前拖拽体
+        var ontology;
         // 悬浮层级
         var zIndex = 1;
         // 拖拽模块
@@ -183,7 +219,6 @@
             var disY = 0;
             var iL = 0;
             var iT = 0;
-
             // 机柜
             var machineHtml = '<div class="machine"> \
                                     <div class="machine-center"> \
@@ -191,7 +226,7 @@
                                     </div> \
                                 </div> \
                                 <div class="machine-title"> \
-                                    <input type="text" class="machine-title-input" placeholder="请输入名称"> \
+                                    <div class="machine-title-input"></div> \
                             </div>';
             // 空调                    
             var airHtml = '<div class="machine"> \
@@ -200,7 +235,7 @@
                                 </div> \
                             </div> \
                             <div class="machine-title"> \
-                                <input type="text" class="machine-title-input" placeholder="请输入名称"> \
+                                <div class="machine-title-input"></div> \
                         </div> ';
             // 烟感
             var smokeHtml = '<img src="./img/smoke.png" width="100%">';
@@ -212,7 +247,7 @@
             var oTemp;
             // 翻转体
             var rotate;
-
+            
             // 鼠标点击
             oDrag.onmousedown = function (event) {
                 // 电气室若未创建则拖拽无效
@@ -224,6 +259,8 @@
                 // 获取要拖拽div的对应类型
                 var type = this.getAttribute('type');
                 oTemp = document.createElement("div");
+                oTemp.setAttribute("name", "");
+                oTemp.setAttribute("axis", "");
                 // 机柜拖拽
                 if (type == 'machine') {
                     // 添加多个类名
@@ -315,6 +352,11 @@
                     iT <= 0 && (iT = 0);
                     iL >= maxL && (iL = maxL);
                     iT >= maxT && (iT = maxT);
+                    if(oTemp.classList.contains('machine-zone')==true){
+                        xline2.style.top = iT + oTempHeight - 50 + "px";
+                    }else{
+                        xline2.style.top = iT + oTempHeight + "px";
+                    }
                     // 实际拖拽体的位置
                     oTemp.style.left = iL + "px";
                     oTemp.style.top = iT + "px";
@@ -323,7 +365,6 @@
                     xline1.style.top = iT + "px";
                     // x-max辅助线的位置
                     xline2.style.left = 0;
-                    xline2.style.top = iT + oTempHeight + "px";
                     // y-min辅助线的位置          
                     yline1.style.left = iL + "px";
                     yline1.style.top = 0;
@@ -372,7 +413,7 @@
                         if ((event.clientX < xMin) || (event.clientX > xMax) || (event.clientY < yMin) || (event.clientY > yMax)) {
                             document.body.removeChild(oTemp);
                         }
-                        dragD(oTemp);
+                        dragD(oTemp,ontology);
                     }
                     // 温感、烟感、控制器移入到机箱顶部
                     else if (oTemp.getAttribute('type') == 'inner') {
@@ -398,7 +439,7 @@
                         if (arr.indexOf(1) == '-1') {
                             document.body.removeChild(oTemp);
                         }            
-                        dragD(oTemp);
+                        dragD(oTemp,ontology);
                     }
                     if (oDrag.children[0].getAttribute('id') == 'drag-machine') {
                         rotate.style.transform = "rotateX(0deg)";
@@ -424,9 +465,9 @@
                 return false
             }
         }
-
+        var panel = document.getElementById('fixed-panel');
         // 拖拽删除
-        function dragD (oTemp) {
+        function dragD (oTemp,ontology) {
             var disX =0;
             var disY = 0;
             var iL = 0;
@@ -435,7 +476,10 @@
             var y1;
             var x2;
             var y2;
+            // 判断点击事件和拖拽事件的标识符
+            var flag = ''
             oTemp.onmousedown = function (event) {
+                flag = true;
                 var event = event || window.event;
                 disX = oTemp.offsetWidth / 2;
                 disY = oTemp.offsetHeight / 2;
@@ -444,28 +488,20 @@
                 // 创建x-min辅助线
                 var xline1 = document.createElement('div');
                 xline1['id'] = 'sup-xline1';
-                xline1.style.left = this.currentStyle ? this.currentStyle["left"] : getComputedStyle(this, null)["left"];
-                xline1.style.top = this.currentStyle ? this.currentStyle["top"] : getComputedStyle(this, null)["top"];
                 document.body.appendChild(xline1);
                 // 创建x-max辅助线
                 var xline2 = document.createElement('div');
                 xline2['id'] = 'sup-xline2';
-                xline2.style.left = this.currentStyle ? this.currentStyle["left"] : getComputedStyle(this, null)["left"];
-                xline2.style.top = this.currentStyle ? this.currentStyle["top"] : getComputedStyle(this, null)["top"];
                 document.body.appendChild(xline2);
                 // 创建y-min辅助线
                 var yline1 = document.createElement('div');
                 yline1['id'] = 'sup-yline1';
-                yline1.style.left = this.currentStyle ? this.currentStyle["left"] : getComputedStyle(this, null)["left"];
-                yline1.style.top = this.currentStyle ? this.currentStyle["top"] : getComputedStyle(this, null)["top"];
                 document.body.appendChild(yline1);
                 // 创建y-max辅助线
                 var yline2 = document.createElement('div');
                 yline2['id'] = 'sup-yline2';
-                yline2.style.left = this.currentStyle ? this.currentStyle["left"] : getComputedStyle(this, null)["left"];
-                yline2.style.top = this.currentStyle ? this.currentStyle["top"] : getComputedStyle(this, null)["top"];
                 document.body.appendChild(yline2);
-
+                
                 document.onmousemove = function (event) {
                     var event = event || window.event;
                     iL = event.clientX - disX;
@@ -475,7 +511,14 @@
                     y2 = event.clientY;
                     var oTempWidth = oTemp.offsetWidth;
                     var oTempHeight = oTemp.offsetHeight;
-                    if(x1!=x2 || y1!=y2){
+                    // 判断点击的位置是否相同
+                    if(x1!=x2 && y1!=y2){
+                        flag = false;
+                        if(oTemp.classList.contains('machine-zone')==true){
+                            xline2.style.top = iT + oTempHeight - 50 + "px";
+                        }else{
+                            xline2.style.top = iT + oTempHeight + "px";
+                        }
                         oTemp.style.left = iL+"px";
                         oTemp.style.top = iT+"px";
                         // x-min辅助线的位置
@@ -483,7 +526,6 @@
                         xline1.style.top = iT + "px";
                         // x-max辅助线的位置
                         xline2.style.left = 0;
-                        xline2.style.top = iT + oTempHeight + "px";
                         // y-min辅助线的位置          
                         yline1.style.left = iL + "px";
                         yline1.style.top = 0;
@@ -494,6 +536,7 @@
                     return false;
                 }
                 document.onmouseup = function (event) {
+                    var event = event || window.event;
                     document.onmousemove = null;
                     document.onmouseup = null;
                     // 移除辅助线
@@ -501,40 +544,150 @@
                     document.body.removeChild(xline2);
                     document.body.removeChild(yline1);
                     document.body.removeChild(yline2);
-                    // 拖拽体
-                    var width;
-                    var height;
-                    // 拖拽体与浏览器窗口距离
-                    var left;
-                    var top;
-                    // 拖拽范围
-                    var xMin;
-                    var xMax;
-                    var yMin;
-                    var yMax;
-                    // 父级容器
-                    var zone;
-
-                    // 电气室宽度
-                    zone = document.getElementById('love-house');
-                    width = zone.offsetWidth;
-                    // 电气室高度
-                    height = zone.offsetHeight;
-                    // 获取电气室到浏览器的距离
-                    left = zone.getBoundingClientRect().left;
-                    top = zone.getBoundingClientRect().top;
-                    xMin = left + disX;
-                    yMin = top + disY;
-                    xMax = left + width - disX;
-                    yMax = top + height - disY;
-                    if ((event.clientX < xMin) || (event.clientX > xMax) || (event.clientY < yMin) || (event.clientY > yMax)) {
-                        document.body.removeChild(oTemp);
+                    // 去除选中效果
+                    var machineZone = document.getElementsByClassName('machine');
+                    for(var i=0;i<machineZone.length;i++){
+                        machineZone[i].style.borderTop = 'none';
+                        machineZone[i].style.borderBottom = 'none';
+                        machineZone[i].style.borderLeft = '5px solid #666666';
+                        machineZone[i].style.borderRight = '5px solid #666666';
+                        machineZone[i].style.background = 'none';
+                    }
+                    var imgZone = document.getElementsByClassName('img-zone');
+                    for(var i=0;i<imgZone.length;i++){
+                        imgZone[i].style.border = 'none';
+                        imgZone[i].style.background = 'none';
+                    }
+                    // 判断为点击事件非拖拽事件
+                    if(flag == true){
+                        window.ontology = oTemp;
+                        var input = document.getElementById('machineName');
+                        var axisX = document.getElementById('machineAxis-x');
+                        var axisY = document.getElementById('machineAxis-y');
+                        if(oTemp.classList.contains('machine-zone')==true){
+                            oTemp.children[0].style.borderTop = '1px solid #1B86FF';
+                            oTemp.children[0].style.borderBottom = '1px solid #1B86FF';
+                            oTemp.children[0].style.borderLeft = '5px solid #1B86FF';
+                            oTemp.children[0].style.borderRight = '5px solid #1B86FF';
+                            oTemp.children[0].style.background = '#01234A';
+                        }else{
+                            oTemp.style.border = '1px solid #1B86FF';
+                            oTemp.style.background = '#01234A';
+                        }
+                        // 获取当前拖拽体的页面坐标与名称
+                        axisX.value=(oTemp.offsetWidth/2)+oTemp.offsetLeft-390;
+                        axisY.value=(oTemp.offsetHeight/2)+oTemp.offsetTop-190;
+                        input.value=oTemp.getAttribute('name');
+                        // 面板显示
+                        panel.style.display = 'block';
+                    }else{
+                        // 拖拽体
+                        var width;
+                        var height;
+                        // 拖拽体与浏览器窗口距离
+                        var left;
+                        var top;
+                        // 拖拽范围
+                        var xMin;
+                        var xMax;
+                        var yMin;
+                        var yMax;
+                        // 父级容器
+                        var zone;
+                        // 电气室宽度
+                        zone = document.getElementById('love-house');
+                        width = zone.offsetWidth;
+                        // 电气室高度
+                        height = zone.offsetHeight;
+                        // 获取电气室到浏览器的距离
+                        left = zone.getBoundingClientRect().left;
+                        top = zone.getBoundingClientRect().top;
+                        xMin = left + disX;
+                        yMin = top + disY;
+                        xMax = left + width - disX;
+                        yMax = top + height - disY;
+                        // 拖拽删除
+                        if ((event.clientX < xMin) || (event.clientX > xMax) || (event.clientY < yMin) || (event.clientY > yMax)) {
+                            document.body.removeChild(oTemp);
+                            panel.style.display = 'none';
+                        }
                     }
                 }
             }
             this.setCapture && this.setCapture();
             return false;
         }
+        // 点击画板，面板隐藏
+        var painting = document.getElementById('painting');
+        painting.addEventListener('click',function(){
+            // 去选中效果
+            var machineZone = document.getElementsByClassName('machine');
+            for(var i=0;i<machineZone.length;i++){
+                machineZone[i].style.borderTop = 'none';
+                machineZone[i].style.borderBottom = 'none';
+                machineZone[i].style.borderLeft = '5px solid #666666';
+                machineZone[i].style.borderRight = '5px solid #666666';
+                machineZone[i].style.background = 'none';
+            }
+            var imgZone = document.getElementsByClassName('img-zone');
+            for(var i=0;i<imgZone.length;i++){
+                imgZone[i].style.border = 'none';
+                imgZone[i].style.background = 'none';
+            }
+            // 面板隐藏
+            panel.style.display = 'none';
+        })
+        // 面板-确认按钮
+        var panelBtn = document.getElementById('item-btn');
+        panelBtn.addEventListener('click',function(){
+            var input = document.getElementById('machineName');
+            var axisX = document.getElementById('machineAxis-x');
+            var axisY = document.getElementById('machineAxis-y');
+            var zone = document.getElementById('love-house');
+            var input = document.getElementById('machineName');
+            // x轴距离浏览器窗口顶部的位置
+            var xTop = zone.getBoundingClientRect().top + zone.offsetHeight / 2;
+            // y轴距离浏览器窗口左部的位置
+            var yLeft = zone.getBoundingClientRect().left + zone.offsetWidth / 2;
+            // 真实坐标
+            var axis;
+            // 根据输入的x、y坐标改变当前模块的位置
+            var x = (axisX.value - (ontology.offsetWidth/2)+ 390) + "px";
+            var y = (axisY.value - (ontology.offsetHeight/2)+ 190) + "px";
+            ontology.style.left = x;
+            ontology.style.top = y;   
+            // 真实坐标
+            if(ontology.classList.contains('machine-zone')==true){
+                var x = (ontology.offsetLeft + ontology.offsetWidth / 2) - yLeft;
+                var y = 0;
+                var z = (ontology.offsetTop + ontology.offsetHeight - 50) - xTop;    
+                axis = "(" + x +","+ y + "," + z + ")";
+                ontology.children[1].children[0].innerText = input.value;
+            }else if(ontology.classList.contains('img-zone')==true){
+                var x = (ontology.offsetLeft + ontology.offsetWidth / 2) - yLeft;
+                var y = 220;
+                var z = (ontology.offsetTop + ontology.offsetHeight / 2) - xTop;
+                axis = "(" + x +","+ y + "," + z + ")";
+            }
+            ontology.setAttribute('name',input.value);
+            ontology.setAttribute('axis',axis); 
+            // 去除选中效果
+            var machineZone = document.getElementsByClassName('machine');
+            for(var i=0;i<machineZone.length;i++){
+                machineZone[i].style.borderTop = 'none';
+                machineZone[i].style.borderBottom = 'none';
+                machineZone[i].style.borderLeft = '5px solid #666666';
+                machineZone[i].style.borderRight = '5px solid #666666';
+                machineZone[i].style.background = 'none';
+            }
+            var imgZone = document.getElementsByClassName('img-zone');
+            for(var i=0;i<imgZone.length;i++){
+                imgZone[i].style.border = 'none';
+                imgZone[i].style.background = 'none';
+            } 
+            // 面板隐藏
+            panel.style.display = 'none';                                                                                                                                                              
+        })
 
         var zone;
         // 机箱位置
@@ -568,7 +721,7 @@
             // 机柜名称坐标根据机柜坐标计算
             var equipLine = document.getElementsByClassName('machine-zone');
             for (var i = 0; i < describLine.length; i++) {
-                describArr.push(describLine[i].value);
+                describArr.push(describLine[i].innerText);
             }
             for (var i = 0; i < machineLine.length; i++) {
                 machineNameArr.push(machineLine[i].children[1].children[0].value);
@@ -637,6 +790,7 @@
         })
         // 3D视图切换
         tab2Btn.addEventListener('click', function () {
+            panel.style.display = 'none';  
             tab2Btn.classList.remove('tab1-style');
             tab2Btn.classList.add('tab2-style');
             tab1Btn.classList.remove('tab2-style');
