@@ -94,7 +94,7 @@
     <div id="fixed-panel">
         <ul>
             <li>
-                <div id="panel-title">选择机柜或空调</div>
+                <div id="panel-title"></div>
             </li>
             <li class="item-li1">
                 <div class="item-title">名称</div>
@@ -560,6 +560,13 @@
                     }
                     // 判断为点击事件非拖拽事件
                     if(flag == true){
+                        // 面板标题修改
+                        var panelTitle = document.getElementById('panel-title');
+                        oTemp.classList.contains('machine-line') && (panelTitle.innerText = '机柜信息');
+                        oTemp.classList.contains('air-line') && (panelTitle.innerText = '空调信息');
+                        oTemp.classList.contains('smoke-line') && (panelTitle.innerText = '烟感信息');
+                        oTemp.classList.contains('temperature-line') && (panelTitle.innerText = '温感信息');
+                        oTemp.classList.contains('control-line') && (panelTitle.innerText = '控制器信息'); 
                         window.ontology = oTemp;
                         var input = document.getElementById('machineName');
                         var axisX = document.getElementById('machineAxis-x');
