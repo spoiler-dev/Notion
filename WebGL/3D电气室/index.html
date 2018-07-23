@@ -212,7 +212,8 @@
         // 储存当前拖拽体
         var ontology;
         // 悬浮层级
-        var zIndex = 1;
+        var zIndex1 = 10;
+        var zIndex2 = 50;
         // 拖拽模块
         function drag(oDrag) {
             var disX =0;
@@ -267,6 +268,7 @@
                     oTemp.classList.add("machine-zone", "machine-line","dragDel");
                     oTemp.setAttribute("type", "outer");
                     oTemp.innerHTML = machineHtml;
+                    oTemp.style.zIndex = zIndex1;
                     // 旋转动画
                     rotate = document.getElementById('drag-machine');
                     rotate.style.transform = "rotateX(90deg)";
@@ -281,6 +283,7 @@
                     oTemp.classList.add("machine-zone", "air-line","dragDel");
                     oTemp.setAttribute("type", "outer");
                     oTemp.innerHTML = airHtml;
+                    oTemp.style.zIndex = zIndex1;
                     // 旋转动画
                     rotate = document.getElementById('drag-air');
                     rotate.style.transform = "rotateX(90deg)";
@@ -293,22 +296,23 @@
                     oTemp.classList.add("img-zone", "smoke-line","dragDel");
                     oTemp.setAttribute("type", "inner");
                     oTemp.innerHTML = smokeHtml;
+                    oTemp.style.zIndex = zIndex2;
                 } else if (type == "temperature") {
                     oTemp.classList.add("img-zone", "temperature-line","dragDel");
                     oTemp.setAttribute("type", "inner");
                     oTemp.innerHTML = temperatureHtml;
+                    oTemp.style.zIndex = zIndex2;
                 } else if (type == "control") {
                     oTemp.classList.add("img-zone", "control-line","dragDel");
                     oTemp.setAttribute("type", "inner");
                     oTemp.innerHTML = controlHtml;
+                    oTemp.style.zIndex = zIndex2;
                 } else {
                     console.log("类型错误");
                 }
                 // 设置 position 的 top left属性
                 oTemp.style.left = this.currentStyle ? this.currentStyle["left"] : getComputedStyle(this, null)["left"];
                 oTemp.style.top = this.currentStyle ? this.currentStyle["top"] : getComputedStyle(this, null)["top"];
-                // 悬浮层级递增
-                oTemp.style.zIndex = zIndex++;
                 // 追加拖拽体到页面
                 document.body.appendChild(oTemp);
                 // 创建x-min辅助线
