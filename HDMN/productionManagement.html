@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>华电蒙能</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <style type="text/css">
+    </style>
+</head>
+
+<body>
+    <nav id="nav">
+        <div class="nav-img">
+            <img src="../HDMN/img/logo.png" alt="华电蒙能">
+        </div>
+        <div class="nav-bar fl">
+            <div class="nav-title fl">电力板块生产与经营管控平台</div>
+            <div class="nav-status fr">
+                <div class="nav-date fl" id="nav-date"></div>
+                <div class="nav-weather fl">
+                    <div id="nav-iframe">
+                        <iframe scrolling="no" frameborder="0" allowtransparency="true"
+                        src="http://i.tianqi.com/index.php?c=code&id=34&icon=1&num=3"></iframe>
+                    </div>
+                </div>
+                <div class="nav-message fl"></div>
+                <div class="nav-notify fl"></div>
+                <div class="nav-user fl">超级管理员</div>
+            </div>
+        </div>
+    </nav>
+    <div id="box">
+        <div id="left">
+            <div class="sideMenu">
+                <a href="home" class="side-header">首页</a>
+                <ul id="home"></ul>
+                <a href="productionManagement" class="side-header">生产管理</a>
+                <ul id="productionManagement">
+                    <li class="side-list">设备管理</li>
+                    <li class="side-list">生产运行</li>
+                    <li class="side-list">实时监控</li>
+                    <li class="side-list">安监环保</li>
+                </ul>
+                <a href="coalManagement" class="side-header">燃煤管理</a>
+                <ul id="coalManagement">
+                    <li class="side-list"></li>
+                    <li class="side-list"></li>
+                    <li class="side-list"></li>
+                    <li class="side-list"></li>
+                </ul>
+                <a href="marketing" class="side-header">市场营销</a>
+                <ul id="marketing">
+                    <li class="side-list"></li>
+                    <li class="side-list"></li>
+                    <li class="side-list"></li>
+                    <li class="side-list"></li>
+                </ul>
+            </div>
+        </div>
+        <div id="right">
+        </div>
+    </div>
+    <script type="text/javascript">
+    (function () {
+        'use strict'
+        window.onload = function () {
+            rem()
+            currentTime()
+        }
+        window.onresize = function () {
+            // 实现弹性布局
+            // 这个函数是为了解决，当进行浏览器窗口大小操作时，rem还是之前的值，如果想要看到效果，需要进行一次手动刷新
+            // 所以，为了解决不手动刷新我们需要在浏览器窗口变化的时候，进行监听，如果浏览器窗口变化了，就进行rem的重新计算
+            rem()
+        }
+
+        // 进行rem的计算 因为是已1920px为基准进行计算的，所以为了方便，把1rem等于100px
+        let rem = () => {
+            let width = document.body.clientWidth
+            let fontSize = document.getElementsByTagName('html')[0].style.fontSize = width / 19.2 + "px"
+        }
+        // 当前时间
+        let currentTime = () => {
+            let myDate    = new Date(),
+                year      = myDate.getFullYear(),
+                month     = myDate.getMonth()+1,    /* 因为月份的计算是从 0 开始的 */
+                date      = myDate.getDate(),
+                day       = myDate.getDay(),
+                hour      = myDate.getHours(),
+                minutes   = myDate.getMinutes(),
+                seconds   = myDate.getSeconds(),
+                week,
+                now;
+            const seperator = ':';
+            minutes < 10 && (minutes = `0${minutes}`)
+            seconds < 10 && (seconds = `0${seconds}`)
+            day == 1 && (week = '一')
+            day == 2 && (week = '二')
+            day == 3 && (week = '三')
+            day == 4 && (week = '四')
+            day == 5 && (week = '五')
+            day == 6 && (week = '六')
+            day == 7 && (week = '日')
+            now = document.getElementById('nav-date')
+            now.innerText =  `${year}年${month}月${date}日  ${hour}${seperator}${minutes}${seperator}${seconds}  星期${week}`
+            setTimeout( () => {currentTime()},1000)
+        }
+    })();
+    </script>
+</body>
+
+</html>

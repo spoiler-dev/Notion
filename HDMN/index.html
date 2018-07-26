@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>华电蒙能</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript">
+		$(window).resize(function () {// 绑定到窗口的这个事件中
+			var whdef = (100 / 1920); //表示1920的设计图,使用100PX的默认值
+			var wH = window.innerHeight;// 当前窗口的高度
+			var wW = window.innerWidth;// 当前窗口的宽度
+			var rem = wW * whdef;// 以默认比例值乘以当前窗口宽度,得到该宽度下的相应FONT-SIZE值
+			//console.log(whdef);console.log(wW);console.log(rem)
+			$('html').css('font-size', rem + "px");
+		});
+	</script>
+</head>
+
+<body>
+	<nav id="nav">
+		<div class="nav-img"><img src="../HDMN/img/logo.png" alt="华电蒙能" ></div>
+		<div class="nav-bar fl">
+			<div class="nav-title fl">电力板块生产与经营管控平台</div>
+			<div class="nav-status fl">
+				<div class="nav-date fl"></div>
+				<div class="nav-weather fl">
+					<div id="nav-iframe">
+						<iframe scrolling="no" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=34&icon=1&num=3"></iframe>
+					</div>
+				</div>
+				<div class="nav-message fl"></div>
+				<div class="nav-notify fl"></div>
+				<div class="user fl"></div>
+			</div>
+		</div>
+	</nav>
+	<div id="box">
+		<div id="left">
+
+		</div>
+		<div id="right">
+
+		</div>
+	</div>
+</body>
+
+</html>
