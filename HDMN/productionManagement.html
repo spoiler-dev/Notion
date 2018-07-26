@@ -34,29 +34,59 @@
     </nav>
     <div id="box">
         <div id="left">
-            <div class="sideMenu">
-                <a href="home" class="side-header">首页</a>
-                <ul id="home"></ul>
-                <a href="productionManagement" class="side-header">生产管理</a>
-                <ul id="productionManagement">
-                    <li class="side-list">设备管理</li>
-                    <li class="side-list">生产运行</li>
-                    <li class="side-list">实时监控</li>
-                    <li class="side-list">安监环保</li>
-                </ul>
-                <a href="coalManagement" class="side-header">燃煤管理</a>
-                <ul id="coalManagement">
-                    <li class="side-list"></li>
-                    <li class="side-list"></li>
-                    <li class="side-list"></li>
-                    <li class="side-list"></li>
-                </ul>
-                <a href="marketing" class="side-header">市场营销</a>
-                <ul id="marketing">
-                    <li class="side-list"></li>
-                    <li class="side-list"></li>
-                    <li class="side-list"></li>
-                    <li class="side-list"></li>
+            <div class="sidebarMenu">
+                <ul>
+                    <li class="sidebar-header">
+                        <a href="#" class="active sidebar-click">
+                            <span></span>
+                            首页
+                            <span></span>
+                        </a>
+                        <ul id="home"></ul>
+                    </li>
+                    <li class="sidebar-header">
+                        <a href="productionManagement" class="sidebar-click">生产管理</a>
+                        <ul id="productionManagement" class="hide">
+                            <li class="sidebar-list">
+                                <a href="#">设备管理</a>
+                            </li>
+                            <li class="sidebar-list">
+                                <a href="#">生产运行</a>
+                            </li>
+                            <li class="sidebar-list">
+                                <a href="#">实时监控</a>
+                            </li>
+                            <li class="sidebar-list">
+                                <a href="#">安监环保</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-header">
+                        <a href="coalManagement" class="sidebar-click">
+                            <span></span>
+                            燃煤管理
+                            <span></span>
+                        </a>
+                        <ul id="coalManagement" class="hide">
+                            <li class="sidebar-list"></li>
+                            <li class="sidebar-list"></li>
+                            <li class="sidebar-list"></li>
+                            <li class="sidebar-list"></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-header">
+                        <a href="marketing" class="sidebar-click">
+                            <span></span>
+                            市场营销
+                            <span></span>
+                        </a>
+                        <ul id="marketing" class="hide">
+                            <li class="sidebar-list"></li>
+                            <li class="sidebar-list"></li>
+                            <li class="sidebar-list"></li>
+                            <li class="sidebar-list"></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -66,11 +96,15 @@
     <script type="text/javascript">
     (function () {
         'use strict'
-        window.onload = function () {
+        const options = {
+            color: '#333333'
+        }
+        window.onload = () => {
             rem()
             currentTime()
+            sidebar()
         }
-        window.onresize = function () {
+        window.onresize = () => {
             // 实现弹性布局
             // 这个函数是为了解决，当进行浏览器窗口大小操作时，rem还是之前的值，如果想要看到效果，需要进行一次手动刷新
             // 所以，为了解决不手动刷新我们需要在浏览器窗口变化的时候，进行监听，如果浏览器窗口变化了，就进行rem的重新计算
@@ -82,6 +116,7 @@
             let width = document.body.clientWidth
             let fontSize = document.getElementsByTagName('html')[0].style.fontSize = width / 19.2 + "px"
         }
+
         // 当前时间
         let currentTime = () => {
             let myDate    = new Date(),
@@ -107,6 +142,28 @@
             now = document.getElementById('nav-date')
             now.innerText =  `${year}年${month}月${date}日  ${hour}${seperator}${minutes}${seperator}${seconds}  星期${week}`
             setTimeout( () => {currentTime()},1000)
+        }
+        let sidebar = () => {
+            let sideClick = document.getElementsByClassName('sidebar-click'),
+                sideNode;
+            for(let i = 0,l = sideClick.length;i < l;i++){
+                sideClick[i].addEventListener('click',function(e){
+                    e.preventDefault();
+                    if (!this.classList.contains('active')){
+                        sideNode = this.parentNode.parentNode.children
+                        for (let j = 0,k = sideNode.length;j < k;j++){
+                            sideNode[j].children[0].classList.remove('active')
+                        }
+                        this.classList.add('active')
+                    }
+                    if(this.parentNode.children[1].classList.contains('hide')){
+                        this.parentNode.children[1].classList.remove('hide')
+                    } else {
+                        this.parentNode.children[1].classList.add('hide')
+                    }
+                },false)
+            }
+            
         }
     })();
     </script>
