@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>华电蒙能</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <style type="text/css">
+    </style>
+</head>
+
+<body>
+    <nav id="nav">
+        <div class="nav-left">
+            <div class="nav-img">
+            </div>
+        </div>
+        <div class="nav-bar fl">
+            <div class="nav-title fl">电力板块生产与经营管控平台</div>
+            <div class="nav-status fr">
+                <div class="nav-date fl" id="nav-date"></div>
+                <div class="nav-weather fl">
+                    <div id="nav-iframe">
+                        <iframe scrolling="no" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=34&icon=1&num=3"></iframe>
+                    </div>
+                </div>
+                <div class="nav-message fl">
+                    <img src="./img/messages.png" alt="">
+                </div>
+                <div class="nav-notify fl">
+                    <img src="./img/notice.png" alt="">
+                </div>
+                <div class="nav-user fl">超级管理员
+                    <span>
+                        <img src="./img/combo_l.png" alt="">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="box">
+        <div id="left">
+            <div class="sidebarMenu">
+                <ul>
+                    <li class="sidebar sidebar-header">
+                        <a href="#" class="active header-click">
+                            <span class="ring active"></span>
+                            首页
+                            <span class="arrow arrowbg1"></span>
+                        </a>
+                        <ul id="home" class="sidebar-ul hide"></ul>
+                    </li>
+                    <li class="sidebar sidebar-header">
+                        <a href="productionManagement" class="header-click">
+                            <span class="ring"></span>
+                            生产管理
+                            <span class="arrow arrowbg1"></span>
+                        </a>
+                        <ul id="productionManagement" class="sidebar-ul hide">
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    设备台账
+                                </a>
+                            </li>
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    设备总览
+                                </a>
+                            </li>
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    运行总览
+                                </a>
+                            </li>
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    实时监控
+                                </a>
+                            </li>
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    安监环保
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar sidebar-header">
+                        <a href="coalManagement" class="header-click">
+                            <span class="ring"></span>
+                            燃煤管理
+                            <span class="arrow arrowbg1"></span>
+                        </a>
+                        <ul id="coalManagement" class="sidebar-ul hide">
+                        </ul>
+                    </li>
+                    <li class="sidebar sidebar-header">
+                        <a href="marketing" class="header-click">
+                            <span class="ring"></span>
+                            市场营销
+                            <span class="arrow arrowbg1"></span>
+                        </a>
+                        <ul id="marketing" class="sidebar-ul hide">
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    指标管理
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="right">
+        </div>
+    </div>
+    <script type="text/javascript">
+    (function () {
+        'use strict'
+        window.onload = () => {
+            rem()
+            currentTime()
+            sidebar()
+        }
+        window.onresize = () => {
+            // 实现弹性布局
+            // 这个函数是为了解决，当进行浏览器窗口大小操作时，rem还是之前的值，如果想要看到效果，需要进行一次手动刷新
+            // 所以，为了解决不手动刷新我们需要在浏览器窗口变化的时候，进行监听，如果浏览器窗口变化了，就进行rem的重新计算
+            rem()
+        }
+
+        // 进行rem的计算 因为是已1920px为基准进行计算的，所以为了方便，把1rem等于100px
+        let rem = () => {
+            let width = document.body.clientWidth
+            let fontSize = document.getElementsByTagName('html')[0].style.fontSize = width / 19.2 + "px"
+        }
+
+        // 当前时间
+        let currentTime = () => {
+            let myDate    = new Date(),
+                year      = myDate.getFullYear(),
+                month     = myDate.getMonth()+1,    /* 因为月份的计算是从 0 开始的 */
+                date      = myDate.getDate(),
+                day       = myDate.getDay(),
+                hour      = myDate.getHours(),
+                minutes   = myDate.getMinutes(),
+                seconds   = myDate.getSeconds(),
+                week,
+                now
+            const seperator = ':'
+            minutes < 10 && (minutes = `0${minutes}`)
+            seconds < 10 && (seconds = `0${seconds}`)
+            day == 1 && (week = '一')
+            day == 2 && (week = '二')
+            day == 3 && (week = '三')
+            day == 4 && (week = '四')
+            day == 5 && (week = '五')
+            day == 6 && (week = '六')
+            day == 7 && (week = '日')
+            now = document.getElementById('nav-date')
+            now.innerText =  `${year}年${month}月${date}日  ${hour}${seperator}${minutes}${seperator}${seconds}  星期${week}`
+            setTimeout( () => {currentTime()},1000)
+        }
+        // 侧边栏
+        let sidebar = () => {
+            let headerClick = document.getElementsByClassName('header-click'),
+                listClick = document.getElementsByClassName('list-click'),
+                sideNode = document.getElementsByClassName('sidebar'),
+                listNode = document.getElementsByClassName('sidebar-ul'),
+                ring = document.getElementsByClassName('ring'),
+                arrow = document.getElementsByClassName('arrow')
+            for (let i = 0,l = headerClick.length;i < l;i++) {
+                headerClick[i].addEventListener('click',function(e) {
+                    e.preventDefault()
+                    if (!this.classList.contains('active')) {
+                        for (let j = 0,k = sideNode.length;j < k;j++) {
+                            sideNode[j].children[0] && (sideNode[j].children[0].classList.remove('active'))
+                        }
+                        for (let a = 0,b = ring.length;a < b;a++) {
+                            ring[a].classList.remove('active')
+                        }
+                        this.classList.add('active')
+                        this.children[0].classList.add("active")
+                    }
+                    if (this.parentNode.children[1].children.length) {
+                        if (this.children[1].classList.contains('arrowbg2')) {
+                            this.children[1].classList.remove('arrowbg2')
+                        } else {
+                            for (let c = 0,d = arrow.length;c < d;c++) {
+                                arrow[c].classList.remove('arrowbg2')
+                            }
+                            this.children[1].classList.add('arrowbg2')
+                        }
+                    }
+                    if (this.parentNode.children[1].classList.contains('hide')) {
+                        for (let m = 0,n = listNode.length;m < n;m++) {
+                            listNode[m].classList.add('hide')
+                        }
+                        this.parentNode.children[1].classList.remove('hide')
+                    } else {
+                        this.parentNode.children[1].classList.add('hide')
+                    }
+                },false)
+            }
+            for (let i = 0,l = listClick.length;i<l;i++) {
+                listClick[i].addEventListener('click',function(e) {
+                    e.preventDefault()
+                    if (!this.classList.contains('active')) {
+                        for (let j = 0,k = sideNode.length;j < k;j++) {
+                            sideNode[j].children[0] && (sideNode[j].children[0].classList.remove('active'))
+                        }
+                        for (let a = 0,b = ring.length;a < b;a++) {
+                            ring[a].classList.remove('active')
+                        }
+                        this.classList.add('active')
+                        this.children[0].classList.add("active");
+                    }
+                },false)
+            }
+        }
+    })();
+    </script>
+</body>
+
+</html>
