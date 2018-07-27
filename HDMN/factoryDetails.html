@@ -4,10 +4,68 @@
 <head>
     <meta charset="UTF-8">
     <title>华电蒙能</title>
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <style type="text/css">
+    #panel-content {
+        height: calc(100% - 40px);
+        /* overflow-y: scroll; */
+    }
+    #panel {
+        font-size: 0.14rem;
+        height: 40px;
+        border-radius: 5px;
+        background: #FFFFFF;
+        margin-bottom: 20px;
+        line-height: 40px;
+        color: #7A758C;
+        font-family:SimSun;
+        padding-left: 20px;
+    }
+    #tab {
+        height: 130px;
+        margin-bottom: 20px;
+    }
+    #app-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 870px;
+    }
+    #app-title {
+        font-size: 0.14rem;
+        text-align: center;
+        height: 40px;
+        line-height: 40px;
+        width: 100%;
+    }
+    #workflow {
+        width: 70%;
+        height: 100%;
+        background:rgba(255,255,255,1);
+        border-radius:5px;
+        box-shadow:6px 0px 10px rgba(0,92,255,0.15);
+        padding: 0 10px;
+    }
+    #workflow .group-line {
+        height: 275px;
+    }
+    #workflow .group-line .group-title {
+        font-size: 0.14rem;
+        height: 30px;
+        line-height: 30px;
+        background: #E9EAF4;
+        color: #4D4D4D;
+    }
+    #workflow .group-line .group-panel {
+        height: 245px;
+    }
+    #chart {
+        width: 30%;
+        height: 100%;
+    }
+    
     </style>
 </head>
 
@@ -45,7 +103,7 @@
             <div class="sidebarMenu">
                 <ul>
                     <li class="sidebar sidebar-header">
-                        <a href="#" class="active header-click">
+                        <a href="#" class="header-click">
                             <span class="ring active"></span>
                             首页
                             <span class="arrow arrowbg1"></span>
@@ -53,7 +111,7 @@
                         <ul id="home" class="sidebar-ul hide"></ul>
                     </li>
                     <li class="sidebar sidebar-header">
-                        <a href="productionManagement" class="header-click">
+                        <a href="productionManagement" class="header-click active">
                             <span class="ring"></span>
                             生产管理
                             <span class="arrow arrowbg1"></span>
@@ -119,6 +177,33 @@
             </div>
         </div>
         <div id="right">
+            <div id="panel">
+                生产管理>河西电厂
+            </div>
+            <div id="panel-content">
+                <div id="tab"></div>
+                <div id="app-content">
+                    <div id="workflow">
+                        <div id="app-title">河西电厂发电量完成情况</div>
+                        <div class="group-line">
+                            <div class="group-title">发电量年趋势(万千瓦时)</div>
+                            <div class="group-panel"></div>
+                        </div>
+                        <div class="group-line">
+                            <div class="group-title">发电量年趋势(万千瓦时)</div>
+                            <div class="group-panel"></div>
+                        </div>
+                        <div class="group-line">
+                            <div class="group-title">发电量年趋势(万千瓦时)</div>
+                            <div class="group-panel"></div>
+                        </div>
+                    </div>
+                    <div id="chart">
+                        <div id="pie-chart"></div>
+                        <div id="bar-chart"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script type="text/javascript">

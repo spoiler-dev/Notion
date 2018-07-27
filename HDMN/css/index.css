@@ -8,6 +8,7 @@ body {
   width: 100%;
   height: 100%;
   font-size: 100px;
+  font-family:SimSun;
 }
 
 a:hover,
@@ -40,6 +41,8 @@ ul li {
   background: rgba(255, 255, 255, 1);
   box-shadow: 6px 0px 10px rgba(0, 92, 255, 0.15);
   line-height: 70px;
+  z-index: 100;
+  position: relative;
 }
 
 #nav .nav-left {
@@ -70,6 +73,7 @@ ul li {
   font-size: 0.24rem;
   color: #4d4d4d;
   margin-left: 0.3rem;
+  font-family:FZZHJW--GB1-0;
 }
 
 #nav .nav-bar .nav-date {
@@ -120,6 +124,8 @@ ul li {
   box-shadow: 6px 0px 10px rgba(0, 92, 255, 0.15);
   height: calc(100vh - 70px);
   font-size: 0.14rem;
+  position: relative;
+  z-index: 100;
 }
 
 #left .sidebarMenu .sidebar-header {
@@ -192,4 +198,14 @@ ul li {
   height: calc(100vh - 70px);
   width: 90%;
   float: right;
+  padding: 10px 10px 20px 10px;
+  box-sizing: border-box;
+}
+
+#right1,
+#right2 {
+  width: 90%;
+  float: left;
+  background: #dfe6f8;
+  height: calc(100vh - 70px);
 }
