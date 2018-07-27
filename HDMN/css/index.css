@@ -29,9 +29,11 @@ ul li {
 .fr {
   float: right;
 }
+
 .hide {
   display: none;
 }
+
 #nav {
   width: 100%;
   height: 70px;
@@ -39,10 +41,12 @@ ul li {
   box-shadow: 6px 0px 10px rgba(0, 92, 255, 0.15);
   line-height: 70px;
 }
+
 #nav .nav-left {
   width: 10%;
   float: left;
 }
+
 #nav .nav-img {
   height: 40px;
   text-align: center;
@@ -57,9 +61,11 @@ ul li {
   width: 90%;
   height: 100%;
 }
+
 #nav .nav-bar .nav-status {
   font-size: 0.14rem;
 }
+
 #nav .nav-bar .nav-title {
   font-size: 0.24rem;
   color: #4d4d4d;
@@ -82,17 +88,20 @@ ul li {
 #nav-iframe {
   margin-top: 0.08rem;
 }
+
 #nav .nav-bar .nav-message {
   font-size: 30px;
   width: 90px;
   text-align: center;
   cursor: pointer;
 }
+
 #nav .nav-bar .nav-notify {
   font-size: 30px;
   width: 60px;
   cursor: pointer;
 }
+
 #nav .nav-bar .nav-user {
   color: #494c56;
   margin-right: 7px;
@@ -127,49 +136,57 @@ ul li {
 }
 
 #left .sidebarMenu .sidebar-header a.active .ring,
-#left .sidebarMenu .sidebar-header a:hover .ring{
+#left .sidebarMenu .sidebar-header a:hover .ring {
   background: #ffffff;
   border: 1px solid #ffffff;
 }
+
 #left .sidebarMenu .sidebar-header a {
   color: #a1a6c9;
   font-size: 0.14rem;
   display: block;
   padding: 0 0.2rem;
 }
+
 #left .sidebarMenu .sidebar-header .sidebar-list {
   background: #1a1c22;
   height: 50px;
   width: 100%;
   line-height: 50px;
 }
+
 #left .ring {
   width: 6px;
   height: 6px;
   display: inline-block;
   border-radius: 50%;
-  background: #292C3B;
-  border: 1px solid #A1A6C9;
+  background: #292c3b;
+  border: 1px solid #a1a6c9;
   margin-right: 0.2rem;
 }
+
 #left .arrow {
   width: 12px;
   height: 12px;
   display: block;
-  background:url(../img/fold.png) no-repeat center center;
+  background: url(../img/fold.png) no-repeat center center;
   float: right;
   margin-top: 19px;
 }
+
 #left .arrow.arrowbg1 {
-  background:url(../img/fold.png) no-repeat center center;
+  background: url(../img/fold.png) no-repeat center center;
 }
+
 #left .arrow.arrowbg2 {
-  background:url(../img/unfold.png) no-repeat center center !important;
+  background: url(../img/unfold.png) no-repeat center center !important;
 }
-#left .ring.active{
+
+#left .ring.active {
   background: #ffffff;
   border: 1px solid #ffffff;
 }
+
 #right {
   background: #eff0f7;
   height: calc(100vh - 70px);
