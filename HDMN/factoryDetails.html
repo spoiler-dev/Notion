@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <style type="text/css">
     #panel-content {
-        height: calc(100% - 40px);
-        /* overflow-y: scroll; */
+        height: calc(100% - 60px);
+        overflow-y: scroll;
     }
     #panel {
         font-size: 0.14rem;
@@ -47,6 +47,7 @@
         border-radius:5px;
         box-shadow:6px 0px 10px rgba(0,92,255,0.15);
         padding: 0 10px;
+        margin-right: 20px;
     }
     #workflow .group-line {
         height: 275px;
@@ -65,7 +66,23 @@
         width: 30%;
         height: 100%;
     }
-    
+    #pie-chart,#bar-chart {
+        padding: 0 10px;
+        height: 425px;
+        background:rgba(255,255,255,1);
+        border-radius:5px;
+        box-shadow:6px 0px 10px rgba(0,92,255,0.15);
+    }
+    #pie-chart {
+        margin-bottom: 20px;
+    }
+    .chart-title {
+        color: #4D4D4D;
+        font-size: 0.14rem;
+        height: 40px;
+        line-height: 40px;
+        border-bottom: 1px solid #D9E2F8;
+    }
     </style>
 </head>
 
@@ -199,8 +216,14 @@
                         </div>
                     </div>
                     <div id="chart">
-                        <div id="pie-chart"></div>
-                        <div id="bar-chart"></div>
+                        <div id="pie-chart">
+                            <div class="chart-title">年度计划完成情况(%)</div>
+                            <div class="chart-panel"></div>
+                        </div>
+                        <div id="bar-chart">
+                            <div class="chart-title">年度进度情况(%)</div>
+                            <div class="chart-panel"></div>
+                        </div>
                     </div>
                 </div>
             </div>
