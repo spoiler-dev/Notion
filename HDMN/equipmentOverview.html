@@ -26,176 +26,59 @@
         padding-left: 20px;
         box-shadow: 0px 0px 10px 2px rgba(0,92,255,0.15);
     }
-    #tab {
-        height: 130px;
-        margin-bottom: 20px;
-    }
-    #app-content {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        flex-direction: column;
-        height: 870px;
-    }
-    #app-title {
-        font-size: 0.14rem;
-        text-align: center;
-        height: 40px;
-        line-height: 40px;
-        width: 100%;
-    }
-    #workflow {
-        width: 70%;
-        height: 100%;
-        background:rgba(255,255,255,1);
-        border-radius:5px;
-        box-shadow: 0px 0px 10px 5px rgba(0,92,255,0.15);
-        padding: 0 10px;
-        margin: 0 20px 10px 0;
+    #panel-content .panel-section {
+        height: 320px;
         position: relative;
         z-index: 999;
+        box-shadow: 0px 0px 10px 5px rgba(0,92,255,0.15);
+        padding: 10px;
+        box-sizing: border-box;
+        margin-bottom: 20px;
     }
-    #workflow .group-line {
-        height: 275px;
+    #panel-content .panel-section .panel-table {
+        width: 60%;
+        height: 100%;
+        margin-right: 20px;
     }
-    #workflow .group-line .group-title {
-        font-size: 0.14rem;
+    #panel-content .panel-section .panel-chart {
+        width: calc(40% - 20px);
+        height: 100%;
+    }
+    #panel-content .panel-section .panel-table .panel-title {
+        border-bottom: 1px solid #CCCADF;
+    }
+    .panel-title {
+        background:rgba(233,234,244,1);
         height: 30px;
+        font-size: 0.14rem;
+        color: #4D4D4D;
+        text-align: center;
         line-height: 30px;
-        background: #E9EAF4;
-        color: #4D4D4D;
     }
-    #workflow .group-line .group-panel {
-        height: 245px;
-    }
-    #workflow .group-line .group-panel .group-search {
-        height: 26px;
+    #table1 {
         width: 100%;
-        line-height: 26px;
-        margin-top: 10px;
-    }
-    #workflow .group-line .group-panel .group-search .group-search-img {
-        width: 30px;
-        height: 10px;
-        margin: 8px 6px 8px 30px;
-    }
-    #workflow .group-line .group-panel .group-search-icon span {
-        display: block;
-        float: left;
-        color: #4D4D4D;
-    }
-    #workflow .group-line .group-panel .group-search .group-search-icon1 {
-        background: url(./img/legend1.png) no-repeat center center;
-        margin-left: 20px !important;
-    }
-    #workflow .group-line .group-panel .group-search .group-search-icon2 {
-        background: url(./img/legend2.png) no-repeat center center;
-    }
-    #workflow .group-line .group-panel .group-search .group-search-icon3 {
-        background: url(./img/legend3.png) no-repeat center center;
-    }
-    #workflow .group-line .group-panel .group-search .group-search-icon-title {
-        font-size: 0.12rem;
-    }
-    .group-chart {
-        width: 100%;
-        height: 215px;
-    }
-    #chart {
-        width: calc(30% - 50px);
         height: 100%;
-        position: relative;
-        z-index: 999;
-        margin-bottom: 10px;
     }
-    #pie-chart,#bar-chart {
-        padding: 0 10px;
-        height: 425px;
-        background:rgba(255,255,255,1);
-        border-radius: 5px;
-        box-shadow: 0px 0px 10px 5px rgba(0,92,255,0.15);
+    #table1 .tr1 {
+        border-bottom: 1px solid rgba(0,92,255,0.15);
+        color: #494C56;
+        font-size: 0.14rem;
+        text-align: center;
     }
-    #pie-chart {
-        margin-bottom: 20px;
+    #table1 tr {
+        height: 50px;
     }
-    .chart-title {
+    #table1 tr td {
         color: #4D4D4D;
-        font-size: 0.14rem;
-        height: 40px;
-        line-height: 40px;
-        border-bottom: 1px solid #D9E2F8;
-    }
-    .chart-panel {
-        width: 100%;
-        height: 380px;
-    }
-    #tab #tab-left {
-        background: url(./img/previouspage.png) no-repeat center center;
-        width: 50px;
-        height: 130px;
-        border-radius:5px;
-        box-shadow: 0px 0px 10px 5px rgba(0,92,255,0.15);
-    }
-    #tab #tab-right {
-        background: url(./img/nextpage.png) no-repeat center center;
-        width: 50px;
-        height: 130px;
-        border-radius:5px;
-        box-shadow: 0px 0px 10px 5px rgba(0,92,255,0.15);
-    }
-    #tab #tab-content {
-        width: calc(100% - 100px);
-        height: 130px;
-        padding: 0 20px;
-        box-sizing: border-box;
-        overflow: hidden;
-    }
-    #tab #tab-content .tab-list {
-
-    }
-    #tab #tab-content .tab-item {
-        display: block;
-        float: left;
-        width: 15%;
-        height: 130px;
-        margin-right: 2%;
-        border-radius:5px;
-        box-sizing: border-box;
-        color: #FFFFFF;
-    }
-    #tab #tab-content .tab-item:last-child {
-        margin-right: 0;
-    }
-    #tab #tab-content .tab-item .tab-item-title {
-        width: 100%;
-        height: 40px;
+        font-size: 0.12rem;
         text-align: center;
-        line-height: 40px;
-        font-size: 0.14rem;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
     }
-    .tab-item-panel {
-        width: 100%;
-        height: 90px;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
+    #table1 tr:nth-child(odd) {
+        background: #E9EAF4;
     }
-    .tab-item-number {
-        font-family: ArialMT;
-        font-size: 0.3rem;
+    #bar-chart1 {
         width: 100%;
-        height: 65px;
-        text-align: center;
-        line-height: 65px;
-    }
-    .tab-item-info {
-        font-size: 0.14rem;
-        width: 100%;
-        height: 25px;
-        text-align: center;
-        font-family: MicrosoftYaHei;
+        height: calc(100% - 30px);
     }
     /* lay-UI */
     .layui-form-label {
@@ -332,176 +215,117 @@
         </div>
         <div id="right">
             <div id="panel">
-                生产管理>河西电厂
+                设备总览
             </div>
             <div id="panel-content">
-                <div id="tab">
-                    <div id="tab-left" class="fl"></div>
-                    <div id="tab-content" class="fl">
-                        <ul class="tab-list">
-                            <li class="tab-item">
-                                <p class="tab-item-title">装机容量(万千瓦时)</p>
-                                <div class="tab-item-panel">
-                                    <p class="tab-item-number">1560.5</p>
-                                    <p class="tab-item-info">本月: 1560.5     本年: 1560.5</p>
-                                </div>
-                            </li>
-                            <li class="tab-item">
-                                <p class="tab-item-title">今日发电量(万千瓦时)</p>
-                                <div class="tab-item-panel">
-                                    <p class="tab-item-number">26540</p>
-                                    <p class="tab-item-info">本月: 573452     本年: 1711253</p>
-                                </div>
-                            </li>
-                            <li class="tab-item">
-                                <p class="tab-item-title">上网电量(万千瓦时)</p>
-                                <div class="tab-item-panel">
-                                    <p class="tab-item-number">351</p>
-                                    <p class="tab-item-info">本月: 13257     本年: 1648231</p>
-                                </div>
-                            </li>
-                            <li class="tab-item">
-                                <p class="tab-item-title">利用小时(小时)</p>
-                                <div class="tab-item-panel">
-                                    <p class="tab-item-number">1560.5</p>
-                                    <p class="tab-item-info">本月: 1560.5     本年: 1560.5</p>
-                                </div>
-                            </li>
-                            <li class="tab-item">
-                                <p class="tab-item-title">综合厂用电率(%)</p>
-                                <div class="tab-item-panel">
-                                    <p class="tab-item-number">3.2%</p>
-                                    <p class="tab-item-info">本月: 3.6%     本年: 2.8%</p>
-                                </div>
-                            </li>
-                            <li class="tab-item">
-                                <p class="tab-item-title">供电煤耗(g/qwh)</p>
-                                <div class="tab-item-panel">
-                                    <p class="tab-item-number">490</p>
-                                    <p class="tab-item-info">本月: 7135     本年: 165700</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div id="tab-right" class="fl"></div>
-                </div>
-                <div id="app-content">
-                    <div id="workflow">
-                        <div id="app-title">河西电厂发电量完成情况</div>
-                        <div class="group-line">
-                            <div class="group-title">发电量年趋势(万千瓦时)</div>
-                            <div class="group-panel">
-                                <div class="group-search">
-                                    <div class="group-search-icon fl">
-                                        <span class="group-search-icon1 group-search-img"></span>
-                                        <span class="group-search-icon-title">
-                                            本期实际值
-                                        </span>
-                                        <span class="group-search-icon2 group-search-img"></span>
-                                        <span class="group-search-icon-title">
-                                            本期计划值
-                                        </span>
-                                        <span class="group-search-icon3 group-search-img"></span>
-                                        <span class="group-search-icon-title">
-                                            同期发生值
-                                        </span>
-                                    </div>
-                                    <div class="group-search-date fr">
-                                        <div class="layui-inline">
-                                            <label class="layui-form-label">开始时间</label>
-                                            <div class="layui-input-inline">
-                                                <input type="text" class="layui-input" id="startTime">
-                                            </div>
-                                        </div>
-                                        <div class="layui-inline">
-                                            <label class="layui-form-label">截止时间</label>
-                                            <div class="layui-input-inline">
-                                                <input type="text" class="layui-input" id="endTime">
-                                            </div>
-                                        </div>
-                                        <button class="group-search-button">查询</button>
-                                    </div>
-                                </div>
-                                <div class="group-chart" id="group-chart1">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="group-line">
-                            <div class="group-title">发电量年趋势(万千瓦时)</div>
-                            <div class="group-panel">
-                                <div class="group-search">
-                                    <div class="group-search-icon fl">
-                                        <span class="group-search-icon1 group-search-img"></span>
-                                        <span class="group-search-icon-title">
-                                            本期实际值
-                                        </span>
-                                        <span class="group-search-icon2 group-search-img"></span>
-                                        <span class="group-search-icon-title">
-                                            本期计划值
-                                        </span>
-                                        <span class="group-search-icon3 group-search-img"></span>
-                                        <span class="group-search-icon-title">
-                                            同期发生值
-                                        </span>
-                                    </div>
-                                    <div class="group-search-date fr">
-                                        <div class="layui-inline">
-                                            <label class="layui-form-label">选择月份</label>
-                                            <div class="layui-input-inline">
-                                                <input type="text" class="layui-input" id="pickMonth">
-                                            </div>
-                                        </div>
-                                        <button class="group-search-button">查询</button>
-                                    </div>
-                                </div>
-                                <div class="group-chart" id="group-chart2">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="group-line">
-                            <div class="group-title">发电量年趋势(万千瓦时)</div>
-                            <div class="group-panel">
-                                <div class="group-search">
-                                    <div class="group-search-icon fl">
-                                        <span class="group-search-icon1 group-search-img"></span>
-                                        <span class="group-search-icon-title">
-                                            本期实际值
-                                        </span>
-                                        <span class="group-search-icon2 group-search-img"></span>
-                                        <span class="group-search-icon-title">
-                                            本期计划值
-                                        </span>
-                                        <span class="group-search-icon3 group-search-img"></span>
-                                        <span class="group-search-icon-title">
-                                            同期发生值
-                                        </span>
-                                    </div>
-                                    <div class="group-search-date fr">
-                                        <div class="layui-inline">
-                                            <label class="layui-form-label">选择日期</label>
-                                            <div class="layui-input-inline">
-                                                <input type="text" class="layui-input" id="pickDate">
-                                            </div>
-                                        </div>
-                                        <button class="group-search-button">查询</button>
-                                    </div>
-                                </div>
-                                <div class="group-chart" id="group-chart3">
-                                </div>
-                            </div>
+                <div class="panel-section">
+                    <div class="panel-table fl">
+                        <p class="panel-title">设备评级及完好率</p>
+                        <div>
+                            <table id="table1">
+                                <tr class="tr1">
+                                    <th>单位名称</th>
+                                    <th>设备总数</th>
+                                    <th>一类设备数</th>
+                                    <th>二类设备数</th>
+                                    <th>一类设备比例%</th>
+                                    <th>设备完好率</th>
+                                </tr>
+                                <tr>
+                                    <td>包头热电</td>
+                                    <td>3206</td>
+                                    <td>2651</td>
+                                    <td>251</td>
+                                    <td>82.69%</td>
+                                    <td>97.12</td>
+                                </tr>
+                                <tr>
+                                    <td>河西电厂</td>
+                                    <td>2873</td>
+                                    <td>2416</td>
+                                    <td>198</td>
+                                    <td>84.09%</td>
+                                    <td>95.17</td>
+                                </tr>
+                                <tr>
+                                    <td>卓资发电</td>
+                                    <td>2652</td>
+                                    <td>2254</td>
+                                    <td>205</td>
+                                    <td>84.99%</td>
+                                    <td>96.54</td>
+                                </tr>
+                                <tr>
+                                    <td>乌达热电</td>
+                                    <td>3108</td>
+                                    <td>2864</td>
+                                    <td>219</td>
+                                    <td>92.5%</td>
+                                    <td>98.11</td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
-                    <div id="chart">
-                        <div id="pie-chart">
-                            <div class="chart-title">年度计划完成情况(%)</div>
-                            <div class="chart-panel" id="pie-chart1"></div>
-                        </div>
-                        <div id="bar-chart">
-                            <div class="chart-title">年度进度情况(%)</div>
-                            <div class="chart-panel" id="bar-chart1"></div>
-                        </div>
+                    <div class="panel-chart fr">
+                        <p class="panel-title">设备故障率</p>
+                        <div id="bar-chart1"></div>
                     </div>
                 </div>
+
+                <div class="panel-section">
+                    <div class="panel-table fl">
+                        <p class="panel-title">缺陷统计</p>
+                        <div>
+                            <table id="table2">
+                                <tr class="tr1">
+                                    <th>单位名称</th>
+                                    <th>设备总数</th>
+                                    <th>一类设备数</th>
+                                    <th>二类设备数</th>
+                                    <th>一类设备比例%</th>
+                                    <th>设备完好率</th>
+                                </tr>
+                                <tr>
+                                    <td>包头热电</td>
+                                    <td>3206</td>
+                                    <td>2651</td>
+                                    <td>251</td>
+                                    <td>82.69%</td>
+                                    <td>97.12</td>
+                                </tr>
+                                <tr>
+                                    <td>河西电厂</td>
+                                    <td>2873</td>
+                                    <td>2416</td>
+                                    <td>198</td>
+                                    <td>84.09%</td>
+                                    <td>95.17</td>
+                                </tr>
+                                <tr>
+                                    <td>卓资发电</td>
+                                    <td>2652</td>
+                                    <td>2254</td>
+                                    <td>205</td>
+                                    <td>84.99%</td>
+                                    <td>96.54</td>
+                                </tr>
+                                <tr>
+                                    <td>乌达热电</td>
+                                    <td>3108</td>
+                                    <td>2864</td>
+                                    <td>219</td>
+                                    <td>92.5%</td>
+                                    <td>98.11</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="panel-chart fr">
+                        <p class="panel-title">缺陷监控</p>
+                        <div id="bar-chart2"></div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -528,17 +352,17 @@
         }
 
         window.onload = () => {
-            rem()
-            currentTime()
-            sidebar()
-            tab(tabPlugin.titleColor,tabPlugin.panelColor)
-            lay()
-            for (let i = 0,l = chartPlugin.line.length;i < l ;i++) {
-                lineChart(echarts.init(chartPlugin.line[i]))
-            }
-            for (let i = 0,l = chartPlugin.pie.length;i < l ;i++) {
-                pieChart(echarts.init(chartPlugin.pie[i]))
-            }
+            // rem()
+            // currentTime()
+            // sidebar()
+            // tab(tabPlugin.titleColor,tabPlugin.panelColor)
+            // lay()
+            // for (let i = 0,l = chartPlugin.line.length;i < l ;i++) {
+            //     lineChart(echarts.init(chartPlugin.line[i]))
+            // }
+            // for (let i = 0,l = chartPlugin.pie.length;i < l ;i++) {
+            //     pieChart(echarts.init(chartPlugin.pie[i]))
+            // }
             for (let i = 0,l = chartPlugin.bar.length;i < l ;i++) {
                 barChart(echarts.init(chartPlugin.bar[i]))
             }
@@ -846,7 +670,19 @@
                     xAxis : [
                         {
                             type : 'category',
-                            data : ['日历进度', '实际进度']
+                            data : ['包头热电', '河西电厂','卓资发电','乌达热电'],
+                            axisLine:{
+		                        lineStyle:{
+		                            color:'#D5DAE6',
+		                            width:1,//这里是为了突出显示加上的
+		                        }
+		                    },
+                            axisLabel: {
+                                show: true,
+                                textStyle: {
+                                    color: "#7A758C" // y轴单位坐标文字颜色
+                                }
+                            },
                         }
                     ],
                     yAxis : [
@@ -859,19 +695,22 @@
                             nameTextStyle: {
                                 color: "#7A758C" // y轴单位标签颜色
                             },
-                            axisLabel: {
-                                show: true,
-                                textStyle: {
-                                    color: "#7A758C" // y轴单位坐标文字颜色
-                                }
-                            },
+                            axisLine:{
+		                        lineStyle:{
+		                            color:'#D5DAE6',
+		                            width:1,//这里是为了突出显示加上的
+		                        }
+		                    },
                             max: 100,
                             min: 0,
                             axisLabel: {
                                 show: true,
                                 interval: 'auto',
-                                formatter: '{value} %'
-                                },
+                                formatter: '{value} %',
+                                textStyle: {
+                                    color: "#7A758C" // y轴单位坐标文字颜色
+                                }
+                            },
                             show: true,
                             splitLine: {
                                 // 网格线
@@ -892,21 +731,21 @@
             　　　　　　　　　　　　　　//好，这里就是重头戏了，定义一个list，然后根据所以取得不同的值，这样就实现了，
                                     color: function(params) {
                                         // build a color map as your need.
-                                        var colorList = ['#CE9FFF','#AD77FF'];
+                                        var colorList = ['#6278FF','#239FFF','#AD77FF','#D36AFF'];
                                         return colorList[params.dataIndex]
                                     },
             　　　　　　　　　　　　　//以下为是否显示，显示位置和显示格式的设置了
                                     label: {
                                         show: true,
                                         position: 'top',
-                                        formatter: '{c}%',
+                                        formatter: '{c}',
                                         textStyle: {
                                             color: "#4D4D4D" // y轴单位坐标文字颜色
                                         }
                                     }
                                 }
                             },
-                            data:[58,64]
+                            data:[18.23,21.54,28.16,42.12]
                         }
                     ]
                 };

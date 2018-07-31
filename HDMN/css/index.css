@@ -202,7 +202,7 @@ ul li {
   box-sizing: border-box;
 }
 
-#right1,
+#right1,#right3,
 #right2 {
   width: 90%;
   float: left;

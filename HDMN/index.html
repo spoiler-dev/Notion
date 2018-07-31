@@ -3,8 +3,14 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>华电蒙能</title>
+		
 		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="js/theme/default/laydate.css"/>
+		<link rel="stylesheet" href="css/layui.css"  media="all">
 		<script src="js/jquery-3.3.1.min.js"></script>
+		<script src="js/laydate.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/layui.js" charset="utf-8"></script>
+		<script src="js/tree.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			$(window).resize(function (){// 绑定到窗口的这个事件中
 				  var whdef = (100/1920); //表示1920的设计图,使用100PX的默认值
@@ -17,7 +23,7 @@
 		</script>
 		<style type="text/css">
 			ul li{list-style-type:none;}
-			#ulList li{float: left;width: 15%;margin-left: 1.45%;background: #239FFF;height: 100%;border-radius: 5px;}
+			#ulList li{float: left;width: 15%;margin-left: 1.45%;height: 100%;border-radius: 5px;}
 		</style>
 	</head>
 	<body>
@@ -33,7 +39,7 @@
 			<div id="left">
 				
 			</div>
-			<div id="right1"   style="">
+			<div id="right1"   style="display: none;">
 				
 				<div id="map" style="background-image: url(img/map_l.png);background-repeat: no-repeat;background-size:100% 100%;width: 79%;height:64%;float: left;border-radius: 5px;margin-left: 0.5%;margin-top: 0.5%;">
 					<ul>
@@ -64,8 +70,8 @@
 					</div>
 					<div id="" style="width: 100%;height: 49%;border-radius: 5px;margin-top: 4%;background: white;">
 						<p style="width: 93.5%;height: 14%;margin-left: 2%;border-bottom: 1px solid gray;font-family: SimSun;line-height: 40px;padding-left: 5px;">发电完成情况</p>
-						<div id="" style="width: 100%;height: 86%;">
-							
+						<div id="" style="width: 100%;height: 86%;text-align: center;">
+							<img style="height: 100%;" src="img/firstP.png"/>
 						</div>
 					</div>
 				</div>
@@ -73,24 +79,36 @@
 				<div id="footer" style="width: 79%;height:33%;float: left;border-radius: 5px;background: white;margin-left: 0.5%;margin-top: 0.5%;font-size: 0.15rem;">
 					<div id="" style="width: 32%;height: 100%;margin-left: 0.5%;float:left;margin-top: 0.5%;">
 						<p style="width: 100%;height: 10%;background: #E9EAF4;">
-							<img src="img/more.png"/>
-							<span id="">
+							<span  style="width: 10%;padding-left: 5px;"><img src="img/more.png"/></span>
+							<span id=""   style="display:inline-block;width: 79%;text-align: center;margin-top: 1%;">
 								日耗煤统计
 							</span>
-							<span>24日 <img src="img/combo_s.png"/></span>
+							<span id=""   style="width: 15%;">24日 <img src="img/combo_s.png"/></span>
 						</p>
 						<div id="bar1" style="width: 100%;height: 86%;">
 							
 						</div>
 					</div>
 					<div id="" style="width: 32%;height: 100%;margin-left: 1.5%;float:left;margin-top: 0.5%;">
-						<p style="width: 100%;height: 10%;background: #E9EAF4;">月耗煤统计</p>
+						<p style="width: 100%;height: 10%;background: #E9EAF4;">
+							<span  style="width: 10%;padding-left: 5px;"><img src="img/more.png"/></span>
+							<span id=""   style="display:inline-block;width: 79%;text-align: center;margin-top: 1%;">
+								月耗煤统计
+							</span>
+							<span id=""   style="width: 15%;">7月 <img src="img/combo_s.png"/></span>
+						</p>
 						<div id="bar2" style="width: 100%;height: 86%;">
 							
 						</div>
 					</div>
 					<div id="" style="width: 32%;height: 100%;margin-left: 1.5%;float:left;margin-top: 0.5%;">
-						<p style="width: 100%;height: 10%;background: #E9EAF4;">年耗煤统计</p>
+						<p style="width: 100%;height: 10%;background: #E9EAF4;">
+							<span  style="width: 10%;padding-left: 5px;"><img src="img/more.png"/></span>
+							<span id=""   style="display:inline-block;width: 70%;text-align: center;margin-top: 1%;">
+								年耗煤统计
+							</span>
+							<span id=""   style="float: right;margin-right: 5px;margin-top: 1%;">2018年 <img src="img/combo_s.png"/></span>
+						</p>
 						<div id="bar3" style="width: 100%;height: 86%;">
 							
 						</div>
@@ -108,268 +126,186 @@
 					<p style="padding: 0.35%;">生产管理</p>
 				</div>
 				<div id="" style="width: 99%;height: 14%;margin-left: 0.5%;margin-top: 0.5%;">
-					<div id="" style="float: left;width: 3%;height: 100%;background: white;border-radius: 5px;">
-						
+					<div id="" style="float: left;width: 3%;height: 100%;background:white;border-radius: 5px;">
+						<div id="" style="width: 100%;height: 100%;background: url(img/previouspage.png) no-repeat center center;">
+							
+						</div>
 					</div>
-					<ul id="ulList"  style="float: left;font-size: 0.1rem;width: 94%;height: 100%;">
+					<ul id="ulList"  style="float: left;font-size: 0.15rem;width: 94%;height: 100%;font-family: SimSun;">
 						<li>
-							<p>装机容量(万千瓦时)</p>
-							<div id="">
-								<p></p>
-								<p></p>
+							<p style="height:30%;background:#1882ff;width: 100%;text-align: center;line-height: 40px;border-top-left-radius:5px;border-top-right-radius:5px;">装机容量(万千瓦时)</p>
+							<div id=""  style="height:70%;background:rgba(35,159,255,1);border-bottom-left-radius:5px;border-bottom-right-radius:5px;">
+								<br />
+								<p style="width: 100%;text-align: center;font-size: 0.3rem;color: white;">1560.5</p>
+								<p style="width: 100%;text-align: center;color: white;margin-top: 3%;">本月: 1560.5   本年: 1560.5</p>
 							</div>
 						</li>
 						<li>
-							<p>今日发电量(万千瓦时)</p>
-							<div id="">
-								<p></p>
-								<p></p>
+							<p style="height:30%;background:#4485ff;width: 100%;text-align: center;line-height: 40px;border-top-left-radius:5px;border-top-right-radius:5px;">今日发电量(万千瓦时)</p>
+							<div id=""  style="height:70%;background:rgba(98,161,255,1);border-bottom-left-radius:5px;border-bottom-right-radius:5px;">
+								<br />
+								<p style="width: 100%;text-align: center;font-size: 0.3rem;color: white;">26540</p>
+								<p style="width: 100%;text-align: center;color: white;margin-top: 3%;">本月: 573452     本年: 1711253</p>
 							</div>
 						</li>
 						<li>
-							<p>上网电量(万千瓦时)</p>
-							<div id="">
-								<p></p>
-								<p></p>
+							<p style="height:30%;background:#4454ff;width: 100%;text-align: center;line-height: 40px;border-top-left-radius:5px;border-top-right-radius:5px;">上网电量(万千瓦时)</p>
+							<div id=""  style="height:70%;background:#6278FF;border-bottom-left-radius:5px;border-bottom-right-radius:5px;">
+								<br />
+								<p style="width: 100%;text-align: center;font-size: 0.3rem;color: white;">25187</p>
+								<p style="width: 100%;text-align: center;color: white;margin-top: 3%;">本月: 52132     本年: 165236</p>
 							</div>
 						</li>
 						<li>
-							<p>利用小时(小时)</p>
-							<div id="">
-								<p></p>
-								<p></p>
+							<p style="height:30%;background:#5444ff;width: 100%;text-align: center;line-height: 40px;border-top-left-radius:5px;border-top-right-radius:5px;">利用小时(小时)</p>
+							<div id=""  style="height:70%;background:#7862FF;border-bottom-left-radius:5px;border-bottom-right-radius:5px;">
+								<br />
+								<p style="width: 100%;text-align: center;font-size: 0.3rem;color: white;">351</p>
+								<p style="width: 100%;text-align: center;color: white;margin-top: 3%;">本月: 13257     本年: 1648231</p>
 							</div>
 						</li>
 						<li>
-							<p>综合厂用电率(%)</p>
-							<div id="">
-								<p></p>
-								<p></p>
+							<p style="height:30%;background:#9453ff;width: 100%;text-align: center;line-height: 40px;border-top-left-radius:5px;border-top-right-radius:5px;">综合厂用电率(%)</p>
+							<div id=""  style="height:70%;background:#AD77FF;border-bottom-left-radius:5px;border-bottom-right-radius:5px;">
+								<br />
+								<p style="width: 100%;text-align: center;font-size: 0.3rem;color: white;">3.2%</p>
+								<p style="width: 100%;text-align: center;color: white;margin-top: 3%;">本月: 3.6%     本年: 2.8%</p>
 							</div>
 						</li>
 						<li>
-							<p>供电煤耗(g/qwh)</p>
-							<div id="">
-								<p></p>
-								<p></p>
+							<p style="height:30%;background:#bf51ef;width: 100%;text-align: center;line-height: 40px;border-top-left-radius:5px;border-top-right-radius:5px;">供电煤耗(g/qwh)</p>
+							<div id=""  style="height:70%;background:#CE74F3;border-bottom-left-radius:5px;border-bottom-right-radius:5px;">
+								<br />
+								<p style="width: 100%;text-align: center;font-size: 0.3rem;color: white;">490</p>
+								<p style="width: 100%;text-align: center;color: white;margin-top: 3%;">本月: 7135     本年: 165700</p>
 							</div>
 						</li>
 					</ul>
 					<div id="" style="float: left;width: 3%;height: 100%;background: white;border-radius: 5px;">
-						
+						<div id="" style="width: 100%;height: 100%;background: url(img/nextpage.png) no-repeat center center;">
+							
+						</div>
 					</div>
 				</div>
 				<div id="" style="width: 100%;height: 40%;">
 					<div id="" style="width: 49%;height: 99%;background: white;border-radius: 5px;margin-left: 0.5%;margin-top: 0.5%;float: left;">
-						
+						<div style="font-size: 0.1rem;font-family: SimSun;height: 10%;width: 98%;margin-left: 1%;border-bottom:1px solid gray;">
+							<span style="margin-left: 1%;margin-top:10px;display: inline-block;">各单位发电量完成进度情况</span> 
+							<img style="float:right;margin-right: 0%;display: inline-block;margin-top: 8px;" src="img/forward.png"/>
+						</div>
+						<div id="bar6" style="width: 100%;height: 90%;">
+							
+						</div>
 					</div>
 					<div id="" style="width: 49%;height: 99%;background: white;border-radius: 5px;margin-left: 1%;margin-top: 0.5%;float: left;">
-						
+						<div style="font-size: 0.1rem;font-family: SimSun;height: 10%;width: 98%;margin-left: 1%;border-bottom:1px solid gray;">
+							<span style="margin-left: 1%;margin-top:10px;display: inline-block;">各单位发电量完成情况</span> 
+							<img style="float:right;margin-right: 0%;display: inline-block;margin-top: 8px;" src="img/forward.png"/>
+						</div>
+						<div id="" style="width: 100%;height: 10%;font-size: 0.1rem;text-align: center;padding-top: 3px;">
+							<input type="radio" name="radio" value="1">与计划比
+							<input type="radio" name="radio" value="2" checked>同期环比
+							开始时间：
+							<input type="text" id="time1"  class="layui-icon layui-input" value="" />
+							结束时间：
+							<input type="text" id="time2" value="" />
+							
+							<input type="button" id="" value="查询" style="width: 100px;height: 20px;border-radius: 15px;background: #7A758C;border:0px;line-height: 20px;"/>
+						</div>
+						<div id="bar7" style="width: 100%;height: 80%;">
+							
+						</div>
 					</div>
 				</div>
-				<div id="" style="width: 100%;height: 38%;">
+				<div id="" style="width: 100%;height: 38%;overflow: hidden;">
 					<div id="" style="width: 59%;height: 99%;background: white;border-radius: 5px;margin-left: 0.5%;margin-top: 0.5%;float: left;">
-						
+						<div style="font-size: 0.1rem;font-family: SimSun;height: 10%;width: 98%;margin-left: 1%;border-bottom:1px solid gray;">
+							<span style="margin-left: 1%;margin-top:10px;display: inline-block;">各厂装机运行情况(装机容量的单位: 万千瓦)</span> 
+							<img style="float:right;margin-right: 0%;display: inline-block;margin-top: 8px;" src="img/forward.png"/>
+						</div>
+						<div id="" style="width: 100%;height: 90%;">
+							<div id="" style="width: 100%;height: 10%;text-align: center;overflow: auto;">
+								<!--<img  style="display: inline-block;margin-top: 0;" src="img/legend.png"/>-->
+								<ul style="font-size: 0.1rem;width: 100%;">
+									<li style="float: left;font-size: 0.1rem; margin-left: 30%;">
+										<div id="" style="width: 20px;height: 10px;background: #6278FF;float: left;margin-top: 5%;"></div>
+										<p style="float: left;">&nbsp;包头热电</p>
+									</li>
+									<li style="float: left;font-size: 0.1rem; margin-left: 5%;">
+										<div id="" style="width: 20px;height: 10px;background: #239FFF;float: left;margin-top: 5%;"></div>
+										<p style="float: left;">&nbsp;河西电厂</p>
+									</li>
+									<li style="float: left;font-size: 0.1rem; margin-left: 5%;">
+										<div id="" style="width: 20px;height: 10px;background: #AD77FF;float: left;margin-top: 5%;"></div>
+										<p style="float: left;">&nbsp;卓资发电</p>
+									</li>
+									<li style="float: left;font-size: 0.1rem; margin-left: 5%;">
+										<div id="" style="width: 20px;height: 10px;background: #D36AFF;float: left;margin-top: 5%;"></div>
+										<p style="float: left;">&nbsp;乌达热电</p>
+									</li>
+								</ul>
+							</div>
+							<div id="bar9"  style="width: 40%;height: 80%;float: left;">
+								
+							</div>
+							<div id=" " style="width: 20%;height: 80%;float: left;">
+								<ul style="text-align: center;width: 100%;height: 100%;font-size: 0.15rem;">
+									<li style="width: 100%;margin-top: 20%;">包头热电: 2716.91</li>
+									<li style="width: 100%;margin-top: 15%;">河西电厂: 1694.00</li>
+									<li style="width: 100%;margin-top: 15%;">卓资发电: 698.24</li>
+									<li style="width: 100%;margin-top: 15%;">乌达热电: 305.57</li>
+								</ul>
+								
+							</div>
+							<div id="bar8" style="width: 40%;height: 80%;float: left;">
+								
+							</div>
+							<div id="" style="width: 100%;height: 10%;float: left;font-size: 0.15rem;">
+								<div id="" style="width: 33.3%;text-align: center;float: left;">
+									各厂负荷容量占比
+								</div>
+								<div id="" style="width: 33.3%;text-align: center;float: left;">
+									各厂装机总量
+								</div>
+								<div id=""  style="width: 33.3%;text-align: center;float: left;">
+									各厂运行容量占比
+								</div>
+							</div>
+						</div>
 					</div>
 					<div id="" style="width: 39%;height: 99%;background: white;border-radius: 5px;margin-left: 1%;margin-top: 0.5%;float: left;">
-						
+						<div style="font-size: 0.1rem;font-family: SimSun;height: 10%;width: 98%;margin-left: 1%;border-bottom:1px solid gray;">
+							<span style="margin-left: 1%;margin-top:10px;display: inline-block;">各厂场址分布情况</span> 
+						</div>
+						<div id="bar10" style="width: 100%;height: 90%;">
+							<div id="" style="height:96%;width: 10%;float: left;">
+								
+							</div>
+							<div id="" style="float: left;height:96%;width: 50%;background-image: url(img/map_s.png);background-repeat: no-repeat;background-size: 100% 100%;">
+								
+							</div>
+							<div id="" style="height:96%;width: 40%;float: left;font-size: 0.15rem;">
+								<ul style="width: 100%;text-align: center;">
+									<li style="margin-top: 30%;">包头热电 <img src="img/fold.png"/></li>
+									<li style="margin-top: 10%;">河西电厂 <img src="img/fold.png"/></li>
+									<li style="margin-top: 10%;">卓资发电 <img src="img/fold.png"/></li>
+									<li style="margin-top: 10%;">乌达热电 <img src="img/fold.png"/></li>
+								</ul>
+							</div> 
+						</div>
 					</div>
+				</div>
+			</div>
+			<div id="right3" style="display: block;">
+				<div id="tree" style="width: 9%;height: 98%;background: white;float: left;margin-left: 0.5%;margin-top: 0.5%;border-radius: 5px;">
+					
+				</div>
+				<div id="treeTab" style="width: 89.5%;height: 98%;background: white;float: left;margin-left: 0.5%;margin-top: 0.5%;border-radius: 5px;">
+					
 				</div>
 			</div>
 		</div>
 	</body>
 	<script type="text/javascript" src="js/echarts.min.js"></script>
-	<script type="text/javascript">
-		
-		
-		
-		var myChart1 = echarts.init(document.getElementById("bar1"));
-		var myChart2 = echarts.init(document.getElementById("bar2"));
-		var myChart3 = echarts.init(document.getElementById("bar3"));
-		var option = {
-		    xAxis: {
-		        type: 'category',
-		        data: ['包头热电', '河西电厂', '卓资发电', '乌达热电']
-		    },
-		    yAxis: {
-		        type: 'value',
-		        name: '单位：吨',
-		    },
-		    series: [{
-		            name: '华电蒙能',
-		            type: 'bar',
-		            data: [500, 168, 295, 763],
-		            //设置柱子的宽度
-		            barWidth : 30,
-		            //配置样式
-		            itemStyle: {   
-		                //通常情况下：
-		                normal:{  
-		　　　　　　　　　　　　//每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
-		                    color: function (params){
-		                        var colorList = ['#6278FF','#239FFF','#AD77FF','#D36AFF'];
-		                        return colorList[params.dataIndex];
-		                    },
-		                    //以下为是否显示，显示位置和显示格式的设置了
-	                        label: {
-					            show: true,
-					            position: 'top',
-					            textStyle: {
-					            color: '#4D4D4D'
-					          }
-						    }
-		                },
-		                
-		            },
-		    }],
-		};   
-		
-
-		 myChart1.setOption(option);
-		 myChart2.setOption(option);
-		 myChart3.setOption(option);
-		 
-		 
-		 
-		var myChart4 = echarts.init(document.getElementById("yuan"));
-		var total1 = {
-            name: '总收入',
-            value: 1156
-        };
-        myChart4.setOption({
-            title: [{
-                text: total1.name,
-                left: '49%',
-                top: '50%',
-                textAlign: 'center',
-                textBaseline: 'middle',
-                textStyle: {
-                    color: '#7A758C',
-                    fontWeight: 'normal',
-                    fontSize: 20
-                }
-            }, {
-                text: total1.value,
-                left: '49%',
-                top: '62%',
-                textAlign: 'center',
-                textBaseline: 'middle',
-                textStyle: {
-                    color: 'black',
-                    fontWeight: 'normal',
-                    fontSize: 20
-                }
-            }],
-            tooltip: {
-                trigger: 'item',
-                
-            },
-            legend: {
-		        //orient: 'vertical',垂直排列
-		        x: 'center',
-		        itemGap: 5,
-		        top: '5%',
-		        selectedMode: false, //取消点击事件
-		        data:['包头热电', '河西电厂', '卓资发电', '乌达热电']
-		    },
-
-            color: ['#6278FF','#239FFF','#AD77FF','#D36AFF'],
-            series: [{
-                name: '1#卸船机KB',
-                type: 'pie',
-                radius: ['45%', '65%'], //饼图的大小
-                center: ['50%', '60%'], //饼图的位置 
-                avoidLabelOverlap: false,
-//				roseType: 'radius',
-                itemStyle: {
-                    normal: {
-	                    borderWidth: 5, //设置border的宽度有多大
-	                    borderColor: 'white',
-						label: {        //此处为指示线文字
-	                        show: true,
-//	                        position: 'inner', //标签的位置
-	                        textStyle: {
-	                            fontWeight: 200,
-	                            fontSize: 10    //文字的字体大小
-	                        },
-	                        formatter: '{d}'
-	                    },
-	                    labelLine: {    //指示线状态
-	                        show: true,
-	                        smooth: 0.2,
-	                        length: 10,
-	                        length2: 20
-	                    }
-                    },
-
-                },
-                data:[
-	                {name:'包头热电', value:335},
-	                {value:310, name:'河西电厂'},
-	                {value:234, name:'卓资发电'},
-	                {value:135, name:'乌达热电'},
-	            ]
-            }],
-        });
- 		
- 		
- 		
- 		var myChart5 = echarts.init(document.getElementById("yuan1"));
-		
- 		myChart5.setOption({
-            title: "",
-            tooltip: {
-                trigger: 'item',
-            },
-            legend: {
-		        //orient: 'vertical',垂直排列
-		        x: 'center',
-		        itemGap: 5,
-		        top: '4%',
-		        selectedMode: false, //取消点击事件
-		        data:['包头热电', '河西电厂', '卓资发电', '乌达热电']
-		    },
-		   
-            color: ['#6278FF','#239FFF','#AD77FF','#D36AFF'],
-            series: [{
-                name: '1#卸船机KB',
-                type: 'pie',
-                avoidLabelOverlap: false,
-				roseType: 'radius',
-                itemStyle: {
-                    normal: {
-	                    borderWidth: 0, //设置border的宽度有多大
-	                    borderColor: 'white',
-						label: {        //此处为指示线文字
-	                        show: true,
-//	                        position: 'inner', //标签的位置
-	                        textStyle: {
-	                            fontWeight: 200,
-	                            fontSize: 10    //文字的字体大小
-	                        },
-	                        formatter: '{d}'
-	                    },
-	                    labelLine: {    //指示线状态
-	                        show: true,
-	                        smooth: 0.2,
-	                        length: 5,
-	                        length2: 10
-	                    }
-                    },
-
-                },
-                data:[
-	                {name:'包头热电', value:335},
-	                {value:310, name:'河西电厂'},
-	                {value:234, name:'卓资发电'},
-	                {value:135, name:'乌达热电'},
-	            ]
-            }],
-        });
- 		
- 		
- 		
- 		
- 		
-	</script>
+	<script type="text/javascript" src="js/myJs.js"></script>
 </html>
