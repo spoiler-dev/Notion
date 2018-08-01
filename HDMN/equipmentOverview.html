@@ -6,173 +6,212 @@
     <title>华电蒙能</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-    <link rel="stylesheet" type="text/css" href="css/index.css"/>
-    <link rel="stylesheet" href="css/layui.css"  media="all">
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" href="css/layui.css" media="all">
     <link rel="stylesheet" href="js/theme/default/laydate.css">
     <style type="text/css">
-    #panel-content {
-        height: calc(100% - 60px);
-        overflow-y: scroll;
-    }
-    #panel {
-        font-size: 0.14rem;
-        height: 40px;
-        border-radius: 5px;
-        background: #FFFFFF;
-        margin-bottom: 20px;
-        line-height: 40px;
-        color: #7A758C;
-        font-family:SimSun;
-        padding-left: 20px;
-        box-shadow: 0px 0px 10px 2px rgba(0,92,255,0.15);
-    }
-    #panel-content .panel-section {
-        height: 320px;
-        position: relative;
-        z-index: 999;
-        box-shadow: 0px 0px 10px 5px rgba(0,92,255,0.15);
-        box-sizing: border-box;
-        margin: 0 1px 20px 1px;
-        padding: 0 9px;
-    }
-    #panel-content .panel-section .panel-table {
-        width: 60%;
-        height: 100%;
-        margin-right: 20px;
-    }
-    #panel-content .panel-section .panel-chart {
-        width: calc(40% - 20px);
-        height: 100%;
-    }
-    #panel-content .panel-section .panel-table .panel-title {
-        border-bottom: 1px solid #CCCADF;
-    }
-    .panel-title {
-        background:rgba(233,234,244,1);
-        height: 30px;
-        font-size: 0.14rem;
-        color: #4D4D4D;
-        text-align: center;
-        line-height: 30px;
-    }
-    #table1,#table2,#table3 {
-        width: 100%;
-        height: 100%;
-        border-collapse: collapse;
-    }
-    #table1 .tr1 {
-        color: #494C56;
-        height: 50px;
-        box-shadow:0px 3px 5px rgba(0,92,255,0.15);
-        font-size: 0.14rem;
-        text-align: center;
-        background: none !important;
-        position: relative;
-        z-index: 999;
-    }
-    #table1 tr,#table3 tr {
-        height: 50px;
-    }
-    #table1 tr td, #table2 tr td, #table3 tr td {
-        color: #4D4D4D;
-        font-size: 0.12rem;
-        text-align: center;
-        box-sizing: border-box;
-    }
-    #table1 tr:nth-child(odd) {
-        background: #E9EAF4;
-    }
-    #bar-chart1,#bar-chart2 {
-        width: 100%;
-        height: calc(100% - 30px);
-    }
-    #table2 .tr1{
-        height: 40px;
-        box-shadow:0px 3px 5px rgba(0,92,255,0.15);
-        color: #494C56;
-        font-size: 0.14rem;
-        text-align: center;
-        background: none !important;
-        position: relative;
-        z-index: 999;
-    }
-    #table2 tr {
-        height: 30px;
-    }
-    #table2 tr td {
-        border-bottom: 1px solid #D9E2F8;
-    }
-    #table2 tr:nth-child(2n) td:first-child {
-        border-right: 1px solid #D9E2F8;
-        border-bottom: 1px solid #E9EAF4 !important;
-    }
-    #table2 tr:nth-child(4),#table2 tr:nth-child(5),#table2 tr:nth-child(8),#table2 tr:nth-child(9){
-        background: #E9EAF4;
-    }
-    .footer-section {
-        height:374px;
-        background:rgba(255,255,255,1);
-        border-radius:5px;
-        position: relative;
-        z-index: 999;
-        box-shadow: 0px 0px 10px 5px rgba(0,92,255,0.15);
-        box-sizing: border-box;
-        margin: 0 1px 10px 1px;
-        padding: 0 9px;
-    }
-    .footer-table {
-        width: 100%;
-        height: 100%;
-    }
-    .footer-table .panel-search {
-        height: 50px;
-        line-height: 50px;
-    }
-    th {
-        color: #494C56;
-        font-size: 0.14rem;
-        font-weight:normal;
-    }
-    #table3 {
-        border-top: 1px solid #CCCADF;
-    }
-    #table3 tr:first-child th:not(:first-child) {
-        border-bottom: 1px solid #D9E2F8;
-    }
-    #table3 .tr1 {
-        box-shadow:0px 3px 5px rgba(0,92,255,0.15);
-        background: #FFFFFF !important;
-        height: 30px;
-    }
-    #table3 .tr2 {
-        height: 30px;
-    }
-    #table3 tr:nth-child(2n) {
-        background: #E9EAF4;
-    }
-    /* lay-UI */
-    .layui-form-label {
-        color: #666666;
-        padding: 15px 15px !important;
-    }
-    .layui-input {
-        width: 120px;
-        height: 26px;
-        border: 1px solid #A29BC0 !important;
-        color: #4D4D4D;
-        font-size: 0.12rem;
-        box-sizing: border-box;
-    }
-    .group-search-button {
-        width:100px;
-        height:26px;
-        background:rgba(122,117,140,1);
-        border-radius:13px;
-        font-size: 0.14rem;
-        color: #FFFFFF;
-        border: none;
-        margin: 0 30px;
-    }
+        #panel-content {
+            height: calc(100% - 60px);
+            overflow-y: scroll;
+        }
+
+        #panel {
+            font-size: 0.14rem;
+            height: 40px;
+            border-radius: 5px;
+            background: #FFFFFF;
+            margin-bottom: 20px;
+            line-height: 40px;
+            color: #7A758C;
+            font-family: SimSun;
+            padding-left: 20px;
+            box-shadow: 0px 0px 10px 2px rgba(0, 92, 255, 0.15);
+        }
+
+        #panel-content .panel-section {
+            height: 320px;
+            position: relative;
+            z-index: 999;
+            box-shadow: 0px 0px 10px 5px rgba(0, 92, 255, 0.15);
+            box-sizing: border-box;
+            margin: 0 1px 20px 1px;
+            padding: 0 9px;
+        }
+
+        #panel-content .panel-section .panel-table {
+            width: 60%;
+            height: 100%;
+            margin-right: 20px;
+        }
+
+        #panel-content .panel-section .panel-chart {
+            width: calc(40% - 20px);
+            height: 100%;
+        }
+
+        #panel-content .panel-section .panel-table .panel-title {
+            border-bottom: 1px solid #CCCADF;
+        }
+
+        .panel-title {
+            background: rgba(233, 234, 244, 1);
+            height: 30px;
+            font-size: 0.14rem;
+            color: #4D4D4D;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        #table1,
+        #table2,
+        #table3 {
+            width: 100%;
+            height: 100%;
+            border-collapse: collapse;
+        }
+
+        #table1 .tr1 {
+            color: #494C56;
+            height: 50px;
+            box-shadow: 0px 3px 5px rgba(0, 92, 255, 0.15);
+            font-size: 0.14rem;
+            text-align: center;
+            background: none !important;
+            position: relative;
+            z-index: 999;
+        }
+
+        #table1 tr,
+        #table3 tr {
+            height: 50px;
+        }
+
+        #table1 tr td,
+        #table2 tr td,
+        #table3 tr td {
+            color: #4D4D4D;
+            font-size: 0.12rem;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        #table1 tr:nth-child(odd) {
+            background: #E9EAF4;
+        }
+
+        #bar-chart1,
+        #bar-chart2 {
+            width: 100%;
+            height: calc(100% - 30px);
+        }
+
+        #table2 .tr1 {
+            height: 40px;
+            box-shadow: 0px 3px 5px rgba(0, 92, 255, 0.15);
+            color: #494C56;
+            font-size: 0.14rem;
+            text-align: center;
+            background: none !important;
+            position: relative;
+            z-index: 999;
+        }
+
+        #table2 tr {
+            height: 30px;
+        }
+
+        #table2 tr td {
+            border-bottom: 1px solid #D9E2F8;
+        }
+
+        #table2 tr:nth-child(2n) td:first-child {
+            border-right: 1px solid #D9E2F8;
+            border-bottom: 1px solid #E9EAF4 !important;
+        }
+
+        #table2 tr:nth-child(4),
+        #table2 tr:nth-child(5),
+        #table2 tr:nth-child(8),
+        #table2 tr:nth-child(9) {
+            background: #E9EAF4;
+        }
+
+        .footer-section {
+            height: 374px;
+            background: rgba(255, 255, 255, 1);
+            border-radius: 5px;
+            position: relative;
+            z-index: 999;
+            box-shadow: 0px 0px 10px 5px rgba(0, 92, 255, 0.15);
+            box-sizing: border-box;
+            margin: 0 1px 10px 1px;
+            padding: 0 9px;
+        }
+
+        .footer-table {
+            width: 100%;
+            height: 100%;
+        }
+
+        .footer-table .panel-search {
+            height: 50px;
+            line-height: 50px;
+        }
+
+        th {
+            color: #494C56;
+            font-size: 0.14rem;
+            font-weight: normal;
+        }
+
+        #table3 {
+            border-top: 1px solid #CCCADF;
+        }
+
+        #table3 tr:first-child th:not(:first-child) {
+            border-bottom: 1px solid #D9E2F8;
+        }
+
+        #table3 .tr1 {
+            box-shadow: 0px 3px 5px rgba(0, 92, 255, 0.15);
+            background: #FFFFFF !important;
+            height: 30px;
+        }
+
+        #table3 .tr2 {
+            height: 30px;
+        }
+
+        #table3 tr:nth-child(2n) {
+            background: #E9EAF4;
+        }
+
+        /* lay-UI */
+
+        .layui-form-label {
+            color: #666666;
+            padding: 15px 15px !important;
+        }
+
+        .layui-input {
+            width: 120px;
+            height: 26px;
+            border: 1px solid #A29BC0 !important;
+            color: #4D4D4D;
+            font-size: 0.12rem;
+            box-sizing: border-box;
+        }
+
+        .group-search-button {
+            width: 100px;
+            height: 26px;
+            background: rgba(122, 117, 140, 1);
+            border-radius: 13px;
+            font-size: 0.14rem;
+            color: #FFFFFF;
+            border: none;
+            margin: 0 30px;
+        }
     </style>
 </head>
 
@@ -898,6 +937,7 @@
             // 使用刚指定的配置项和数据显示图表。
             app.setOption(option);
         }
+
     })();
     </script>
 </body>
