@@ -11,9 +11,8 @@
     <link rel="stylesheet" href="js/theme/default/laydate.css">
     <style type="text/css">
     #panel-content {
-        height: calc(100% - 50px);
+        height: calc(100% - 60px);
         overflow-y: scroll;
-        background: #FFFFFF;
     }
     #panel {
         font-size: 0.14rem;
@@ -32,9 +31,9 @@
         position: relative;
         z-index: 999;
         box-shadow: 0px 0px 10px 5px rgba(0,92,255,0.15);
-        padding: 10px;
         box-sizing: border-box;
-        margin-bottom: 20px;
+        margin: 0 1px 20px 1px;
+        padding: 0 9px;
     }
     #panel-content .panel-section .panel-table {
         width: 60%;
@@ -64,17 +63,17 @@
     #table1 .tr1 {
         color: #494C56;
         height: 50px;
-        box-shadow:0px 0px 5px rgba(0,92,255,0.15);
+        box-shadow:0px 3px 5px rgba(0,92,255,0.15);
         font-size: 0.14rem;
         text-align: center;
         background: none !important;
         position: relative;
         z-index: 999;
     }
-    #table1 tr {
+    #table1 tr,#table3 tr {
         height: 50px;
     }
-    #table1 tr td {
+    #table1 tr td, #table2 tr td, #table3 tr td {
         color: #4D4D4D;
         font-size: 0.12rem;
         text-align: center;
@@ -89,7 +88,7 @@
     }
     #table2 .tr1{
         height: 40px;
-        box-shadow:0px 0px 5px rgba(0,92,255,0.15);
+        box-shadow:0px 3px 5px rgba(0,92,255,0.15);
         color: #494C56;
         font-size: 0.14rem;
         text-align: center;
@@ -99,12 +98,6 @@
     }
     #table2 tr {
         height: 30px;
-    }
-    #table2 tr td {
-        color: #4D4D4D;
-        font-size: 0.12rem;
-        text-align: center;
-        box-sizing: border-box;
     }
     #table2 tr td {
         border-bottom: 1px solid #D9E2F8;
@@ -117,25 +110,50 @@
         background: #E9EAF4;
     }
     .footer-section {
-        width: 100%;
         height:374px;
         background:rgba(255,255,255,1);
         border-radius:5px;
         position: relative;
         z-index: 999;
         box-shadow: 0px 0px 10px 5px rgba(0,92,255,0.15);
-        padding: 10px;
         box-sizing: border-box;
+        margin: 0 1px 10px 1px;
+        padding: 0 9px;
     }
     .footer-table {
         width: 100%;
         height: 100%;
     }
-
+    .footer-table .panel-search {
+        height: 50px;
+        line-height: 50px;
+    }
+    th {
+        color: #494C56;
+        font-size: 0.14rem;
+        font-weight:normal;
+    }
+    #table3 {
+        border-top: 1px solid #CCCADF;
+    }
+    #table3 tr:first-child th:not(:first-child) {
+        border-bottom: 1px solid #D9E2F8;
+    }
+    #table3 .tr1 {
+        box-shadow:0px 3px 5px rgba(0,92,255,0.15);
+        background: #FFFFFF !important;
+        height: 30px;
+    }
+    #table3 .tr2 {
+        height: 30px;
+    }
+    #table3 tr:nth-child(2n) {
+        background: #E9EAF4;
+    }
     /* lay-UI */
     .layui-form-label {
         color: #666666;
-        padding: 4px 15px !important;
+        padding: 15px 15px !important;
     }
     .layui-input {
         width: 120px;
@@ -427,21 +445,71 @@
                 <div class="footer-section">
                     <div class="footer-table">
                         <p class="panel-title">机组可靠性分析</p>
-                        <div class="panel-search"></div>
+                        <div class="panel-search">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">开始时间</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" id="startTime">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">截止时间</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" id="endTime">
+                                </div>
+                            </div>
+                            <button class="group-search-button">查询</button>
+                        </div>
                         <div>
                             <table id="table3">
-                                <tr>
+                                <tr class="tr2">
                                     <th rowspan="2">单位名称</th>
                                     <th colspan="3">主要设备</th>
                                     <th colspan="3">重要辅机</th>
                                 </tr>
-                                <tr>
+                                <tr class="tr1">
                                     <th>停运次数</th>
                                     <th>停运时间(H)</th>
                                     <th>非计划停机比例(%)</th>
                                     <th>停运次数</th>
                                     <th>停运时间(H)</th>
                                     <th>非计划停运比例(%)</th>
+                                </tr>
+                                <tr>
+                                    <td>包头热电</td>
+                                    <td>7</td>
+                                    <td>51.6</td>
+                                    <td>28.57</td>
+                                    <td>56</td>
+                                    <td>156.4</td>
+                                    <td>16.62</td>
+                                </tr>
+                                <tr>
+                                    <td>河西电厂</td>
+                                    <td>8</td>
+                                    <td>23.4</td>
+                                    <td>37.5</td>
+                                    <td>47</td>
+                                    <td>124.5</td>
+                                    <td>19.28</td>
+                                </tr>
+                                <tr>
+                                    <td>卓资发电</td>
+                                    <td>6</td>
+                                    <td>45.8</td>
+                                    <td>33.33</td>
+                                    <td>52</td>
+                                    <td>140.6</td>
+                                    <td>19.2</td>
+                                </tr>
+                                <tr>
+                                    <td>乌达热电</td>
+                                    <td>9</td>
+                                    <td>56.7</td>
+                                    <td>22.22</td>
+                                    <td>68</td>
+                                    <td>176.4</td>
+                                    <td>16.44</td>
                                 </tr>
                             </table>
                         </div>
@@ -471,7 +539,7 @@
             rem()
             currentTime()
             sidebar()
-            // lay()
+            lay()
             for (let i = 0,l = chartPlugin.bar.length;i < l ;i++) {
                 barChart(echarts.init(chartPlugin.bar[i]))
             }
@@ -593,14 +661,6 @@
             laydate.render({
                 elem: '#endTime',
                 type: 'month'
-            });
-            laydate.render({
-                elem: '#pickMonth',
-                type: 'month'
-            });
-            laydate.render({
-                elem: '#pickDate',
-                type: 'date'
             });
         }
 
@@ -791,7 +851,7 @@
                                 position: 'inside',
                                 formatter: '{c} %',
                                 textStyle: {
-                                    fontSize: 8
+                                    fontSize: 12
                                 },
                             }
                         },
@@ -808,7 +868,7 @@
                                 position: 'inside',
                                 formatter: '{c} %',
                                 textStyle: {
-                                    fontSize: 8
+                                    fontSize: 12
                                 },
                             }
                         },
@@ -825,7 +885,7 @@
                                 position: 'inside',
                                 formatter: '{c} %',
                                 textStyle: {
-                                    fontSize: 8
+                                    fontSize: 12
                                 },
                             }
                         },

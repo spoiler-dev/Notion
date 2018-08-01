@@ -695,6 +695,12 @@
                                 color: "#666666"
                             }
                         },
+                        axisLine:{
+                            lineStyle:{
+                                color:'#D5DAE6',
+                                width:1,//这里是为了突出显示加上的
+                            }
+                        },
                         data: ['2018-01','2018-02','2018-03','2018-04','2018-05','2018-06','2018-07','2018-08','2018-09','2018-10','2018-11','2018-12']
                     },
                     yAxis: {
@@ -703,10 +709,10 @@
                         nameTextStyle: {
                             color: "#7A758C" // y轴单位标签颜色
                         },
-                        axisLabel: {
-                            show: true,
-                            textStyle: {
-                                color: "#7A758C" // y轴单位坐标文字颜色
+                        axisLine:{
+                            lineStyle:{
+                                color:'#D5DAE6',
+                                width:1,//这里是为了突出显示加上的
                             }
                         },
                         max: 100,
@@ -714,8 +720,11 @@
                         axisLabel: {
                             show: true,
                             interval: 'auto',
-                            formatter: '{value} %'
-                            },
+                            formatter: '{value} %',
+                            textStyle: {
+                                color: "#7A758C" // y轴单位坐标文字颜色
+                            }
+                        },
                         show: true,
                         splitLine: {
                             // 网格线
@@ -846,7 +855,19 @@
                     xAxis : [
                         {
                             type : 'category',
-                            data : ['日历进度', '实际进度']
+                            data : ['日历进度', '实际进度'],
+                            axisLine:{
+                                lineStyle:{
+                                    color:'#D5DAE6',
+                                    width:1,//这里是为了突出显示加上的
+                                }
+                            },
+                            axisLabel: {
+                                show: true,
+                                textStyle: {
+                                    color: "#7A758C" // y轴单位坐标文字颜色
+                                }
+                            },
                         }
                     ],
                     yAxis : [
@@ -859,10 +880,10 @@
                             nameTextStyle: {
                                 color: "#7A758C" // y轴单位标签颜色
                             },
-                            axisLabel: {
-                                show: true,
-                                textStyle: {
-                                    color: "#7A758C" // y轴单位坐标文字颜色
+                            axisLine:{
+                                lineStyle:{
+                                    color:'#D5DAE6',
+                                    width:1,//这里是为了突出显示加上的
                                 }
                             },
                             max: 100,
@@ -870,8 +891,11 @@
                             axisLabel: {
                                 show: true,
                                 interval: 'auto',
-                                formatter: '{value} %'
-                                },
+                                formatter: '{value} %',
+                                textStyle: {
+                                    color: "#7A758C" // y轴单位坐标文字颜色
+                                }
+                            },
                             show: true,
                             splitLine: {
                                 // 网格线
