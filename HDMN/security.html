@@ -35,13 +35,14 @@
             box-shadow: 0px 0px 10px 5px rgba(0, 92, 255, 0.15);
             box-sizing: border-box;
             margin: 0 1px 20px 1px;
-            padding: 0 9px;
+            padding: 10px 9px 0 9px;
             border-radius: 5px;
+            background: #FFFFFF;
         }
 
         #panel-content #panel-section1 .panel-chart {
             height: 100%;
-            width: calc((100% - 30px)/4);
+            width: calc(25% - 7.5px);
             margin-right: 10px;
             box-sizing: border-box;
         }
@@ -61,7 +62,7 @@
             font-size: 0.14rem;
             color: #4D4D4D;
             text-align: center;
-            line-height: 30px;
+            line-height: 40px;
             font-family: SimSun;
         }
 
@@ -74,6 +75,7 @@
             margin: 0 1px 20px 1px;
             padding: 0 9px;
             border-radius: 5px;
+            background: #FFFFFF;
         }
 
         #panel-content #panel-section2 .panel-title-c{
@@ -84,15 +86,85 @@
             font-size: 0.14rem;
             color: #4C4C4C;
             font-family: SimSun;
+            box-sizing: border-box;
+        }
+
+        #panel-info {
+            width: 100%;
+            height: calc(100% - 40px);
+            padding: 15px 40px 5px 40px;
+            box-sizing: border-box;
+        }
+
+        #panel-info .panel-part {
+            box-sizing: border-box;
+            width: calc(50% - 15px);
+            height: 110px;
+            background:rgba(233,234,244,1);
+            border-radius:10px;
+            float: left;
+            margin-right: 30px;
+        }
+
+        #panel-info .panel-part:nth-child(2n) {
+            margin-right: 0 !important;
+            margin-bottom: 10px;
         }
 
         .panel-section2-left {
-            width: calc((100% - 20px)/2);
+            width: calc(50% - 10px);
             height: 100%;
         }
 
+        .panel-img {
+            width: 50%;
+            height: 100%;
+            float: left;
+        }
+
+        .panel-img-1 {
+            background: url(img/SO2-1.png) no-repeat center center;
+        }
+
+        .panel-img-2 {
+            background: url(img/SO2-2.png) no-repeat center center;
+        }
+
+        .panel-img-3 {
+            background: url(img/NOX-1.png) no-repeat center center;
+        }
+
+        .panel-img-4 {
+            background: url(img/NOX-2.png) no-repeat center center;
+        }
+
+        .panel-text {
+            width: 50%;
+            height: 100%;
+            float: right;
+        }
+
+        .panel-text .panel-number .num {
+            color: #333333;
+            font-size: 0.3rem !important;
+        }
+
+        .panel-text .panel-number {
+            color: #333333;
+            font-size: 0.14rem;
+        }
+
+        .panel-introduction {
+            height: 63px;
+            line-height: 63px;
+            font-size: 0.14rem;
+            color: #7A758C;
+        }
+
+
+
         .panel-section2-right {
-            width: calc((100% - 20px)/2);
+            width: calc(50% - 10px);
             height: 100%;
         }
 
@@ -259,7 +331,36 @@
                 <div id="panel-section2">
                     <div class="panel-section2-left fl">
                         <p class="panel-title-c">排放监控</p>
-                        <div id="panel-info"></div>
+                        <div id="panel-info">
+                            <div class="panel-part">
+                                <div class="panel-img panel-img-1"></div>
+                                <div class="panel-text">
+                                    <p class="panel-introduction">二氧化硫排放量</p>
+                                    <p class="panel-number"><span class="num">87.9</span>万吨</p>
+                                </div>
+                            </div>
+                            <div class="panel-part">
+                                <div class="panel-img panel-img-2"></div>
+                                <div class="panel-text">
+                                    <p class="panel-introduction">氮氧化物排放量</p>
+                                    <p class="panel-number"><span class="num">37.7</span>万吨</p>
+                                </div>
+                            </div>
+                            <div class="panel-part">
+                                <div class="panel-img panel-img-3"></div>
+                                <div class="panel-text">
+                                    <p class="panel-introduction">二氧化硫排放浓度</p>
+                                    <p class="panel-number"><span class="num">37.9</span>mg/m3</p>
+                                </div>
+                            </div>
+                            <div class="panel-part">
+                                <div class="panel-img panel-img-4"></div>
+                                <div class="panel-text">
+                                    <p class="panel-introduction">氮氧化物排放浓度</p>
+                                    <p class="panel-number"><span class="num">45.2</span>mg/m3</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="panel-section2-right fr">
                         <p class="panel-title-c">环保成本分析</p>
@@ -357,25 +458,35 @@
         // echarts 配置项
         let chartPlugin = {
             bar     : [document.getElementById('bar-chart1')],
-            pie     : [document.getElementById('pie-chart1'),document.getElementById('pie-chart2'),document.getElementById('pie-chart3')],
+            pie     : [document.getElementById('pie-chart1'),document.getElementById('pie-chart2'),document.getElementById('pie-chart3'),document.getElementById('pie-chart4')],
             pieData : [
                 {
                     "percentage" : "99%",
                     "name"       : ['湿法脱硫','干法脱硫','其他型式'],
                     "num"        : ['79.5','10.4','10.1'],
-                    "color"      : ['#6278FF','#239FFF','#AD77FF','#FFFFFF']
+                    "color"      : ['#6278FF','#239FFF','#AD77FF','#FFFFFF'],
+                    "flag"       : "0"
                 },
                 {
                     "percentage" : "90%",
                     "name"       : ['静电除尘','水幕除尘'],
                     "num"        : ['25.5','74.5'],
-                    "color"      : ['#6278FF','#AD77FF','#FFFFFF']
+                    "color"      : ['#6278FF','#AD77FF','#FFFFFF'],
+                    "flag"       : "0"
                 },
                 {
                     "percentage" : "92%",
                     "name"       : ['物理法','化学法','生物法'],
                     "num"        : ['25.5','60.4','15.1'],
-                    "color"      : ['#6278FF','#239FFF','#AD77FF','#FFFFFF']
+                    "color"      : ['#6278FF','#239FFF','#AD77FF','#FFFFFF'],
+                    "flag"       : "0"
+                },
+                {
+                    "percentage" : "环保资金总投入406万元",
+                    "name"       : ['脱硫资金投入：189（万元）  单位脱硫成本：0.36（元/千瓦时）','除尘资金投入：102（万元）  单位除尘成本：0.62（元/千瓦时）','废水资金处理：115(万元)  单位废水治理成本：0.083（元/千瓦时）'],
+                    "num"        : ['25.5','60.4','15.1'],
+                    "color"      : ['#6278FF','#239FFF','#AD77FF','#FFFFFF'],
+                    "flag"       : "1"
                 }
             ]
         }
@@ -635,16 +746,20 @@
                 q,
                 k,
                 r
-            for (let i = 0,l = unicorn.name.length;i < l;i++) {
-                q = `${unicorn.name[i]}: ${unicorn.num[i]}%`
-                p = {value: unicorn.num[i], name: q}
-                arr.push(p)
-                title.push(q)
+            if (unicorn.flag == "0") {
+                for (let i = 0,l = unicorn.name.length;i < l;i++) {
+                    q = `${unicorn.name[i]}: ${unicorn.num[i]}%`
+                    p = {value: unicorn.num[i], name: q}
+                    arr.push(p)
+                    title.push(q)
+                }
+                r = 100 - parseInt(unicorn.percentage)
+                k = {value: r.toString(),name: '1233'}
+                arr.push(k)
+            } else {
+                
             }
-            debugger
-            r = 100 - parseInt(unicorn.percentage)
-            k = {value: r.toString(),name: '1233'}
-            arr.push(k)
+
             let option = {
                 title: {
                     x: "23%",
