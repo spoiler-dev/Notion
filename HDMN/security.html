@@ -28,167 +28,72 @@
             box-shadow: 0px 0px 10px 2px rgba(0, 92, 255, 0.15);
         }
 
-        #panel-content .panel-section {
-            height: 320px;
+        #panel-content #panel-section1 {
+            height: 200px;
             position: relative;
             z-index: 999;
             box-shadow: 0px 0px 10px 5px rgba(0, 92, 255, 0.15);
             box-sizing: border-box;
             margin: 0 1px 20px 1px;
             padding: 0 9px;
+            border-radius: 5px;
         }
 
-        #panel-content .panel-section .panel-table {
-            width: 60%;
+        #panel-content #panel-section1 .panel-chart {
             height: 100%;
-            margin-right: 20px;
+            width: calc((100% - 30px)/4);
+            margin-right: 10px;
+            box-sizing: border-box;
         }
 
-        #panel-content .panel-section .panel-chart {
-            width: calc(40% - 20px);
-            height: 100%;
+        #panel-content #panel-section1 .panel-chart:last-child {
+            margin-right: 0 !important;
         }
 
-        #panel-content .panel-section .panel-table .panel-title {
-            border-bottom: 1px solid #CCCADF;
+        .pie-chart {
+            width: 100%;
+            height: calc(100% - 40px)
         }
 
         .panel-title {
             background: rgba(233, 234, 244, 1);
-            height: 30px;
+            height: 40px;
             font-size: 0.14rem;
             color: #4D4D4D;
             text-align: center;
             line-height: 30px;
+            font-family: SimSun;
         }
 
-        #table1,
-        #table2,
-        #table3 {
-            width: 100%;
-            height: 100%;
-            border-collapse: collapse;
-        }
-
-        #table1 .tr1 {
-            color: #494C56;
-            height: 50px;
-            box-shadow: 0px 3px 5px rgba(0, 92, 255, 0.15);
-            font-size: 0.14rem;
-            text-align: center;
-            background: none !important;
-            position: relative;
-            z-index: 999;
-        }
-
-        #table1 tr,
-        #table3 tr {
-            height: 50px;
-        }
-
-        #table1 tr td,
-        #table2 tr td,
-        #table3 tr td {
-            color: #4D4D4D;
-            font-size: 0.12rem;
-            text-align: center;
-            box-sizing: border-box;
-        }
-
-        #table1 tr:nth-child(odd) {
-            background: #E9EAF4;
-        }
-
-        #bar-chart1,
-        #bar-chart2 {
-            width: 100%;
-            height: calc(100% - 30px);
-        }
-
-        #table2 .tr1 {
-            height: 40px;
-            box-shadow: 0px 3px 5px rgba(0, 92, 255, 0.15);
-            color: #494C56;
-            font-size: 0.14rem;
-            text-align: center;
-            background: none !important;
-            position: relative;
-            z-index: 999;
-        }
-
-        #table2 tr {
-            height: 30px;
-        }
-
-        #table2 tr td {
-            border-bottom: 1px solid #D9E2F8;
-        }
-
-        #table2 tr:nth-child(2n) td:first-child {
-            border-right: 1px solid #D9E2F8;
-            border-bottom: 1px solid #E9EAF4 !important;
-        }
-
-        #table2 tr:nth-child(4),
-        #table2 tr:nth-child(5),
-        #table2 tr:nth-child(8),
-        #table2 tr:nth-child(9) {
-            background: #E9EAF4;
-        }
-
-        .footer-section {
-            height: 374px;
-            background: rgba(255, 255, 255, 1);
-            border-radius: 5px;
+        #panel-content #panel-section2 {
+            height: 300px;
             position: relative;
             z-index: 999;
             box-shadow: 0px 0px 10px 5px rgba(0, 92, 255, 0.15);
             box-sizing: border-box;
-            margin: 0 1px 10px 1px;
+            margin: 0 1px 20px 1px;
             padding: 0 9px;
+            border-radius: 5px;
         }
 
-        .footer-table {
-            width: 100%;
+        #panel-content #panel-section2 .panel-title-c{
+            text-align: left !important;
+            border-bottom: 1px solid #D9E2F8;
+            height: 40px;
+            line-height: 40px;
+            font-size: 0.14rem;
+            color: #4C4C4C;
+            font-family: SimSun;
+        }
+
+        .panel-section2-left {
+            width: calc((100% - 20px)/2);
             height: 100%;
         }
 
-        .footer-table .panel-search {
-            height: 50px;
-            line-height: 50px;
-        }
-
-        th {
-            color: #494C56;
-            font-size: 0.14rem;
-            font-weight: normal;
-        }
-
-        #table3 {
-            border-top: 1px solid #CCCADF;
-        }
-
-        #table3 tr:first-child th:not(:first-child) {
-            border-bottom: 1px solid #D9E2F8;
-        }
-
-        #table3 .tr1 {
-            box-shadow: 0px 3px 5px rgba(0, 92, 255, 0.15);
-            background: #FFFFFF !important;
-            height: 30px;
-        }
-
-        #table3 .tr2 {
-            height: 30px;
-        }
-
-        #table3 .tr1 th:nth-child(4),
-        #table3 .tr2 th:nth-child(2) {
-            border-right: 1px solid #D9E2F8;
-        }
-
-        #table3 tr:nth-child(2n) {
-            background: #E9EAF4;
+        .panel-section2-right {
+            width: calc((100% - 20px)/2);
+            height: 100%;
         }
 
         /* lay-UI */
@@ -329,160 +234,36 @@
         </div>
         <div id="right">
             <div id="panel">
-                设备总览
+                安监环保
             </div>
             <div id="panel-content">
-                <div class="panel-section">
-                    <div class="panel-table fl">
-                        <p class="panel-title">设备评级及完好率</p>
-                        <div>
-                            <table id="table1">
-                                <tr class="tr1">
-                                    <th>单位名称</th>
-                                    <th>设备总数</th>
-                                    <th>一类设备数</th>
-                                    <th>二类设备数</th>
-                                    <th>一类设备比例%</th>
-                                    <th>设备完好率</th>
-                                </tr>
-                                <tr>
-                                    <td>包头热电</td>
-                                    <td>3206</td>
-                                    <td>2651</td>
-                                    <td>251</td>
-                                    <td>82.69%</td>
-                                    <td>97.12</td>
-                                </tr>
-                                <tr>
-                                    <td>河西电厂</td>
-                                    <td>2873</td>
-                                    <td>2416</td>
-                                    <td>198</td>
-                                    <td>84.09%</td>
-                                    <td>95.17</td>
-                                </tr>
-                                <tr>
-                                    <td>卓资发电</td>
-                                    <td>2652</td>
-                                    <td>2254</td>
-                                    <td>205</td>
-                                    <td>84.99%</td>
-                                    <td>96.54</td>
-                                </tr>
-                                <tr>
-                                    <td>乌达热电</td>
-                                    <td>3108</td>
-                                    <td>2864</td>
-                                    <td>219</td>
-                                    <td>92.5%</td>
-                                    <td>98.11</td>
-                                </tr>
-                            </table>
-                        </div>
+                <div id="panel-section1">
+                    <div class="panel-chart fl">
+                        <p class="panel-title">脱硫装备率</p>
+                        <div id="pie-chart1" class="pie-chart"></div>
                     </div>
-                    <div class="panel-chart fr">
-                        <p class="panel-title">设备故障率</p>
-                        <div id="bar-chart1"></div>
+                    <div class="panel-chart fl">
+                        <p class="panel-title">除尘装备率</p>
+                        <div id="pie-chart2" class="pie-chart"></div>
+                    </div>
+                    <div class="panel-chart fl">
+                        <p class="panel-title">工业废水装备率</p>
+                        <div id="pie-chart3" class="pie-chart"></div>
+                    </div>
+                    <div class="panel-chart fl">
+                        <p class="panel-title">脱硫系统投入率</p>
+                        <div id="bar-chart1" class="pie-chart"></div>
                     </div>
                 </div>
 
-                <div class="panel-section">
-                    <div class="panel-table fl">
-                        <p class="panel-title">缺陷统计</p>
-                        <div>
-                            <table id="table2">
-                                <tr class="tr1">
-                                    <th>单位名称</th>
-                                    <th>机组</th>
-                                    <th>锅炉设备</th>
-                                    <th>汽轮机设备</th>
-                                    <th>电气设备</th>
-                                    <th>热控设备</th>
-                                    <th>其他设备</th>
-                                    <th>合计</th>
-                                </tr>
-                                <tr>
-                                    <td rowspan="2">包头热电</td>
-                                    <td>1#机组</td>
-                                    <td>4</td>
-                                    <td>2</td>
-                                    <td>3</td>
-                                    <td>2</td>
-                                    <td>0</td>
-                                    <td>11</td>
-                                </tr>
-                                <tr>
-                                    <td>2#机组</td>
-                                    <td>4</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>0</td>
-                                    <td>8</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan="2">河西电厂</td>
-                                    <td>1#机组</td>
-                                    <td>6</td>
-                                    <td>6</td>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>0</td>
-                                    <td>13</td>
-                                </tr>
-                                <tr>
-                                    <td>2#机组</td>
-                                    <td>6</td>
-                                    <td>4</td>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>0</td>
-                                    <td>13</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan="2">卓资发电</td>
-                                    <td>1#机组</td>
-                                    <td>3</td>
-                                    <td>0</td>
-                                    <td>1</td>
-                                    <td>0</td>
-                                    <td>6</td>
-                                    <td>10</td>
-                                </tr>
-                                <tr>
-                                    <td>2#机组</td>
-                                    <td>3</td>
-                                    <td>0</td>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>0</td>
-                                    <td>9</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan="2">乌达热电</td>
-                                    <td>1#机组</td>
-                                    <td>2</td>
-                                    <td>5</td>
-                                    <td>2</td>
-                                    <td>1</td>
-                                    <td>0</td>
-                                    <td>10</td>
-                                </tr>
-                                <tr>
-                                    <td>2#机组</td>
-                                    <td>4</td>
-                                    <td>6</td>
-                                    <td>4</td>
-                                    <td>2</td>
-                                    <td>2</td>
-                                    <td>18</td>
-                                </tr>
-                            </table>
-                        </div>
+                <div id="panel-section2">
+                    <div class="panel-section2-left fl">
+                        <p class="panel-title-c">排放监控</p>
+                        <div id="panel-info"></div>
                     </div>
-                    <div class="panel-chart fr">
-                        <p class="panel-title">缺陷监控</p>
-                        <div id="bar-chart2"></div>
+                    <div class="panel-section2-right fr">
+                        <p class="panel-title-c">环保成本分析</p>
+                        <div id="pie-chart4" class="pie-chart"></div>
                     </div>
                 </div>
 
@@ -576,20 +357,43 @@
         // echarts 配置项
         let chartPlugin = {
             bar     : [document.getElementById('bar-chart1')],
-            pileBar : [document.getElementById('bar-chart2')]
+            pie     : [document.getElementById('pie-chart1'),document.getElementById('pie-chart2'),document.getElementById('pie-chart3')],
+            pieData : [
+                {
+                    "percentage" : "99%",
+                    "name"       : ['湿法脱硫','干法脱硫','其他型式'],
+                    "num"        : ['79.5','10.4','10.1'],
+                    "color"      : ['#6278FF','#239FFF','#AD77FF','#FFFFFF']
+                },
+                {
+                    "percentage" : "90%",
+                    "name"       : ['静电除尘','水幕除尘'],
+                    "num"        : ['25.5','74.5'],
+                    "color"      : ['#6278FF','#AD77FF','#FFFFFF']
+                },
+                {
+                    "percentage" : "92%",
+                    "name"       : ['物理法','化学法','生物法'],
+                    "num"        : ['25.5','60.4','15.1'],
+                    "color"      : ['#6278FF','#239FFF','#AD77FF','#FFFFFF']
+                }
+            ]
         }
 
         window.onload = () => {
             rem()
             currentTime()
             sidebar()
-            lay()
+            // lay()
+            for (let i = 0,l = chartPlugin.pie.length;i < l ;i++) {
+                pieChart(echarts.init(chartPlugin.pie[i]),chartPlugin.pieData[i])
+            }
             for (let i = 0,l = chartPlugin.bar.length;i < l ;i++) {
                 barChart(echarts.init(chartPlugin.bar[i]))
             }
-            for (let i = 0,l = chartPlugin.pileBar.length;i < l ;i++) {
-                pileBarChart(echarts.init(chartPlugin.pileBar[i]))
-            }
+            // for (let i = 0,l = chartPlugin.pileBar.length;i < l ;i++) {
+            //     pileBarChart(echarts.init(chartPlugin.pileBar[i]))
+            // }
         }
 
         window.onresize = () => {
@@ -597,12 +401,15 @@
             // 这个函数是为了解决，当进行浏览器窗口大小操作时，rem还是之前的值，如果想要看到效果，需要进行一次手动刷新
             // 所以，为了解决不手动刷新我们需要在浏览器窗口变化的时候，进行监听，如果浏览器窗口变化了，就进行rem的重新计算
             rem()
+            for (let i = 0,l = chartPlugin.pieData.length;i < l ;i++) {
+                echarts.init(chartPlugin.pieData[i]).resize()
+            }
             for (let i = 0,l = chartPlugin.bar.length;i < l ;i++) {
                 echarts.init(chartPlugin.bar[i]).resize()
             }
-            for (let i = 0,l = chartPlugin.pileBar.length;i < l ;i++) {
-                echarts.init(chartPlugin.pileBar[i]).resize()
-            }
+            // for (let i = 0,l = chartPlugin.pileBar.length;i < l ;i++) {
+            //     echarts.init(chartPlugin.pileBar[i]).resize()
+            // }
         }
 
         // 进行rem的计算 因为是已1920px为基准进行计算的，所以为了方便，把1rem等于100px
@@ -711,6 +518,16 @@
         // bar-chart
         let barChart = (app) => {
             let option = {
+                    title: {
+                        x: "40%",
+                        y: "10%",
+                        text: '同比上升16.4%',
+                        textStyle: {
+                            fontWeight: 'normal',
+                            fontSize: 12,
+                            color: "#4D4D4D"
+                        },
+                    },
                     tooltip : {
                         trigger: 'axis',
                         axisPointer : {            // 坐标轴指示器，坐标轴触发有效
@@ -726,7 +543,7 @@
                     xAxis : [
                         {
                             type : 'category',
-                            data : ['包头热电', '河西电厂','卓资发电','乌达热电'],
+                            data : ['同期', '本期'],
                             axisLine:{
 		                        lineStyle:{
 		                            color:'#D5DAE6',
@@ -736,7 +553,7 @@
                             axisLabel: {
                                 show: true,
                                 textStyle: {
-                                    color: "#7A758C" // y轴单位坐标文字颜色
+                                    color: "#4D4D4D" // y轴单位坐标文字颜色
                                 }
                             },
                         }
@@ -747,11 +564,11 @@
                             axisTick: {
                                 show: false
                             },
-                            name: "单位：%",
                             nameTextStyle: {
                                 color: "#7A758C" // y轴单位标签颜色
                             },
                             axisLine:{
+                                show: false,
 		                        lineStyle:{
 		                            color:'#D5DAE6',
 		                            width:1,//这里是为了突出显示加上的
@@ -760,7 +577,7 @@
                             max: 100,
                             min: 0,
                             axisLabel: {
-                                show: true,
+                                show: false,
                                 interval: 'auto',
                                 formatter: '{value} %',
                                 textStyle: {
@@ -770,7 +587,7 @@
                             show: true,
                             splitLine: {
                                 // 网格线
-                                show: true,
+                                show: false,
                                 lineStyle: {
                                     width: 1,
                                     color: "#D5DAE6"
@@ -787,21 +604,21 @@
             　　　　　　　　　　　　　　//好，这里就是重头戏了，定义一个list，然后根据所以取得不同的值，这样就实现了，
                                     color: function(params) {
                                         // build a color map as your need.
-                                        var colorList = ['#6278FF','#239FFF','#AD77FF','#D36AFF'];
+                                        var colorList = ['#6278FF','#AD77FF'];
                                         return colorList[params.dataIndex]
                                     },
             　　　　　　　　　　　　　//以下为是否显示，显示位置和显示格式的设置了
                                     label: {
                                         show: true,
-                                        position: 'top',
-                                        formatter: '{c}',
+                                        position: 'inside',
+                                        formatter: '{c}%',
                                         textStyle: {
-                                            color: "#4D4D4D" // y轴单位坐标文字颜色
+                                            color: "#FFFFFF" // y轴单位坐标文字颜色
                                         }
                                     }
                                 }
                             },
-                            data:[18.23,21.54,28.16,42.12]
+                            data:[81.3,99.5]
                         }
                     ]
                 };
@@ -810,135 +627,70 @@
             app.setOption(option);
         }
 
-        // bar-pile
-        let pileBarChart = (app) => {
+        // pie-chart
+        let pieChart = (app,unicorn) => {
+            let arr   = [],
+                title = [],
+                p,
+                q,
+                k,
+                r
+            for (let i = 0,l = unicorn.name.length;i < l;i++) {
+                q = `${unicorn.name[i]}: ${unicorn.num[i]}%`
+                p = {value: unicorn.num[i], name: q}
+                arr.push(p)
+                title.push(q)
+            }
+            debugger
+            r = 100 - parseInt(unicorn.percentage)
+            k = {value: r.toString(),name: '1233'}
+            arr.push(k)
             let option = {
-                tooltip : {
-                    trigger: 'axis',
-                    axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-                        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-                    }
+                title: {
+                    x: "23%",
+                    y: "40%",
+                    text: unicorn.percentage,
+                    textStyle: {
+                        fontWeight: 'normal',
+                        fontSize: 28,
+                        color: "#4D4D4D"
+                    },
                 },
-                color: ['#6278FF','#239FFF','#AD77FF'],
                 legend: {
-                    data:['消缺率','完成率','延时率']
+                    orient: 'vertical',
+                    x: '60%',
+                    y: 'middle',
+                    data: title
                 },
-                grid: {
-                    left: '3%',
-                    right: '4%',
-                    bottom: '3%',
-                    containLabel: true
-                },
-                xAxis : [
+                color: unicorn.color,
+                series: [
                     {
-                        type : 'category',
-                        data:['包头热电','河西电厂','卓资发电','乌达热电'],
-                        axisLine:{
-                            lineStyle:{
-                                color:'#D5DAE6',
-                                width:1,//这里是为了突出显示加上的
+                        name:'脱硫装备率',
+                        type:'pie',
+                        center: ['30%', '50%'],
+                        radius: ['60%', '80%'],
+                        avoidLabelOverlap: false,
+                        label: {
+                            normal: {
+                                show: false,
+                                position: 'center'
+                            },
+                            emphasis: {
+                                show: false,
+                                textStyle: {
+                                    fontSize: '16',
+                                }
                             }
                         },
-                        axisLabel: {
-                            show: true,
-                            textStyle: {
-                                color: "#7A758C" // y轴单位坐标文字颜色
+                        labelLine: {
+                            normal: {
+                                show: false
                             }
                         },
+                        data:arr
                     }
-                ],
-                yAxis : [
-                    {
-                        type : 'value',
-                        axisTick: {
-                            show: false
-                        },
-                        name: "单位：%",
-                        nameTextStyle: {
-                            color: "#7A758C" // y轴单位标签颜色
-                        },
-                        axisLine:{
-                            lineStyle:{
-                                color:'#D5DAE6',
-                                width:1,//这里是为了突出显示加上的
-                            }
-                        },
-                        max: 100,
-                        min: 0,
-                        axisLabel: {
-                            show: true,
-                            interval: 'auto',
-                            formatter: '{value} %',
-                            textStyle: {
-                                color: "#7A758C" // y轴单位坐标文字颜色
-                            }
-                        },
-                        show: true,
-                        splitLine: {
-                            // 网格线
-                            show: true,
-                            lineStyle: {
-                                width: 1,
-                                color: "#D5DAE6"
-                            }
-                        }
-                    }
-                ],
-                series : [
-                    {
-                        name:'消缺率',
-                        type:'bar',
-                        barWidth: '30%',
-                        label: {
-                            normal: {
-                                show: true,
-                                position: 'inside',
-                                formatter: '{c} %',
-                                textStyle: {
-                                    fontSize: 12
-                                },
-                            }
-                        },
-                        stack: 'all',
-                        data:[32, 28, 17, 42]
-                    },
-                    {
-                        name:'完成率',
-                        type:'bar',
-                        barWidth: '30%',
-                        label: {
-                            normal: {
-                                show: true,
-                                position: 'inside',
-                                formatter: '{c} %',
-                                textStyle: {
-                                    fontSize: 12
-                                },
-                            }
-                        },
-                        stack: 'all',
-                        data:[34, 44, 31, 17]
-                    },
-                    {
-                        name:'延时率',
-                        type:'bar',
-                        barWidth: '30%',
-                        label: {
-                            normal: {
-                                show: true,
-                                position: 'inside',
-                                formatter: '{c} %',
-                                textStyle: {
-                                    fontSize: 12
-                                },
-                            }
-                        },
-                        stack: 'all',
-                        data:[34, 28, 52, 41]
-                    },
                 ]
             };
-
             // 使用刚指定的配置项和数据显示图表。
             app.setOption(option);
         }
