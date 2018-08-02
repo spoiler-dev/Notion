@@ -13,6 +13,7 @@
         #panel-content {
             height: calc(100% - 60px);
             overflow-y: scroll;
+            font-family: SimSun;
         }
 
         #panel {
@@ -23,7 +24,6 @@
             margin-bottom: 20px;
             line-height: 40px;
             color: #7A758C;
-            font-family: SimSun;
             padding-left: 20px;
             box-shadow: 0px 0px 10px 2px rgba(0, 92, 255, 0.15);
         }
@@ -63,7 +63,6 @@
             color: #4D4D4D;
             text-align: center;
             line-height: 40px;
-            font-family: SimSun;
         }
 
         #panel-content #panel-section2 {
@@ -85,7 +84,6 @@
             line-height: 40px;
             font-size: 0.14rem;
             color: #4C4C4C;
-            font-family: SimSun;
             box-sizing: border-box;
         }
 
@@ -152,6 +150,7 @@
         .panel-text .panel-number {
             color: #333333;
             font-size: 0.14rem;
+            font-family: 'Microsoft YaHei';
         }
 
         .panel-introduction {
@@ -161,13 +160,76 @@
             color: #7A758C;
         }
 
-
-
         .panel-section2-right {
             width: calc(50% - 10px);
             height: 100%;
         }
 
+        .footer-section {
+            height: 395px;
+            background: rgba(255, 255, 255, 1);
+            border-radius: 5px;
+            position: relative;
+            z-index: 999;
+            box-shadow: 0px 0px 10px 5px rgba(0, 92, 255, 0.15);
+            box-sizing: border-box;
+            margin: 0 1px 10px 1px;
+            padding: 10px 9px 0 9px;
+        }
+
+        .footer-table {
+            width: 100%;
+            height: 100%;
+        }
+
+        th {
+            color: #494C56;
+            font-size: 0.14rem;
+            font-weight: normal;
+        }
+
+        #table1 {
+            border-top: 1px solid #CCCADF;
+            width: 100%;
+            height: 100%;
+            border-collapse: collapse;
+        }
+
+        #table1 tr td {
+            color: #4D4D4D;
+            font-size: 0.12rem;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        #table1 tr {
+            height: 30px;
+        }
+
+        #table1 .tr3 {
+            box-shadow:0px 3px 2px rgba(0,92,255,0.15);
+            position: relative;
+            z-index: 999;
+        }
+
+        #table1 tr th {
+            border-top: 1px solid #CCCADF;
+            border-right: 1px solid #CCCADF;
+            border-left: 1px solid #CCCADF;
+        }
+
+        #table1 tr:first-child th:first-child,#table1 tr:first-child th:last-child {
+            border: none !important;
+        }
+
+        #table1 tr:nth-child(5),#table1 tr:nth-child(7) {
+            background: #E9EAF4;
+        }
+
+        #table1 tr td {
+            height: 50px;
+            text-align: center;
+        }
         /* lay-UI */
 
         .layui-form-label {
@@ -284,6 +346,12 @@
                             <span class="arrow arrowbg1"></span>
                         </a>
                         <ul id="coalManagement" class="sidebar-ul hide">
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    厂级监管
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li class="sidebar sidebar-header">
@@ -370,72 +438,184 @@
 
                 <div class="footer-section">
                     <div class="footer-table">
-                        <p class="panel-title">机组可靠性分析</p>
-                        <div class="panel-search">
-                            <div class="layui-inline">
-                                <label class="layui-form-label">开始时间</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" class="layui-input" id="startTime">
-                                </div>
-                            </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">截止时间</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" class="layui-input" id="endTime">
-                                </div>
-                            </div>
-                            <button class="group-search-button">查询</button>
-                        </div>
+                        <p class="panel-title">机组运行情况</p>
                         <div>
-                            <table id="table3">
-                                <tr class="tr2">
-                                    <th rowspan="2">单位名称</th>
-                                    <th colspan="4">主要设备</th>
-                                    <th colspan="2">重要辅机</th>
-                                </tr>
+                            <table id="table1">
                                 <tr class="tr1">
-                                    <th>停运次数</th>
-                                    <th>停运时间(H)</th>
-                                    <th>非计划停机比例(%)</th>
-                                    <th>停运次数</th>
-                                    <th>停运时间(H)</th>
-                                    <th>非计划停运比例(%)</th>
+                                    <th rowspan="3">单位名称</th>
+                                    <th colspan="6">合计</th>
+                                    <th colspan="4">锅炉</th>
+                                    <th colspan="4">汽、水、燃气轮机</th>
+                                    <th colspan="4">电气</th>
+                                    <th colspan="4">其他</th>
+                                    <th rowspan="3">年内创安全周 期数 （个）</th>
+                                </tr>
+                                <tr class="tr2">
+                                    <th colspan="2">事故</th>
+                                    <th colspan="2">其中特大</th>
+                                    <th colspan="2">障碍</th>
+                                    <th colspan="2">事故</th>
+                                    <th colspan="2">障碍</th>
+                                    <th colspan="2">事故</th>
+                                    <th colspan="2">障碍</th>
+                                    <th colspan="2">事故</th>
+                                    <th colspan="2">障碍</th>
+                                    <th colspan="2">事故</th>
+                                    <th colspan="2">障碍</th>
+                                </tr>
+                                <tr class="tr3">
+                                    <th>本月</th>
+                                    <th>本年</th>
+                                    <th>本月</th>
+                                    <th>本年</th>
+                                    <th>本月</th>
+                                    <th>本年</th>
+                                    <th>本月</th>
+                                    <th>本年</th>
+                                    <th>本月</th>
+                                    <th>本年</th>
+                                    <th>本月</th>
+                                    <th>本年</th>
+                                    <th>本月</th>
+                                    <th>本年</th>
+                                    <th>本月</th>
+                                    <th>本年</th>
+                                    <th>本月</th>
+                                    <th>本年</th>
+                                    <th>本月</th>
+                                    <th>本年</th>
+                                    <th>本月</th>
+                                    <th>本年</th>
                                 </tr>
                                 <tr>
                                     <td>包头热电</td>
-                                    <td>7</td>
-                                    <td>51.6</td>
-                                    <td>28.57</td>
-                                    <td>56</td>
-                                    <td>156.4</td>
-                                    <td>16.62</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>1</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>1</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>2</td>
                                 </tr>
                                 <tr>
                                     <td>河西电厂</td>
-                                    <td>8</td>
-                                    <td>23.4</td>
-                                    <td>37.5</td>
-                                    <td>47</td>
-                                    <td>124.5</td>
-                                    <td>19.28</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
                                 </tr>
                                 <tr>
                                     <td>卓资发电</td>
-                                    <td>6</td>
-                                    <td>45.8</td>
-                                    <td>33.33</td>
-                                    <td>52</td>
-                                    <td>140.6</td>
-                                    <td>19.2</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>4</td>
                                 </tr>
                                 <tr>
                                     <td>乌达热电</td>
-                                    <td>9</td>
-                                    <td>56.7</td>
-                                    <td>22.22</td>
-                                    <td>68</td>
-                                    <td>176.4</td>
-                                    <td>16.44</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>1</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>合计</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>1</td>
+                                    <td>3</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>1</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>7</td>
                                 </tr>
                             </table>
                         </div>
@@ -465,28 +645,33 @@
                     "name"       : ['湿法脱硫','干法脱硫','其他型式'],
                     "num"        : ['79.5','10.4','10.1'],
                     "color"      : ['#6278FF','#239FFF','#AD77FF','#FFFFFF'],
-                    "flag"       : "0"
+                    "flag"       : "0",
+                    "pick"       : false
                 },
                 {
                     "percentage" : "90%",
                     "name"       : ['静电除尘','水幕除尘'],
                     "num"        : ['25.5','74.5'],
                     "color"      : ['#6278FF','#AD77FF','#FFFFFF'],
-                    "flag"       : "0"
+                    "flag"       : "0",
+                    "pick"       : false
                 },
                 {
                     "percentage" : "92%",
                     "name"       : ['物理法','化学法','生物法'],
                     "num"        : ['25.5','60.4','15.1'],
                     "color"      : ['#6278FF','#239FFF','#AD77FF','#FFFFFF'],
-                    "flag"       : "0"
+                    "flag"       : "0",
+                    "pick"       : false
                 },
                 {
-                    "percentage" : "环保资金总投入406万元",
+                    "percentage" : "406万元",
                     "name"       : ['脱硫资金投入：189（万元）  单位脱硫成本：0.36（元/千瓦时）','除尘资金投入：102（万元）  单位除尘成本：0.62（元/千瓦时）','废水资金处理：115(万元)  单位废水治理成本：0.083（元/千瓦时）'],
                     "num"        : ['25.5','60.4','15.1'],
                     "color"      : ['#6278FF','#239FFF','#AD77FF','#FFFFFF'],
-                    "flag"       : "1"
+                    "flag"       : "1",
+                    "pick"       : true,
+                    "label"      : [false,false,true]
                 }
             ]
         }
@@ -495,16 +680,13 @@
             rem()
             currentTime()
             sidebar()
-            // lay()
             for (let i = 0,l = chartPlugin.pie.length;i < l ;i++) {
                 pieChart(echarts.init(chartPlugin.pie[i]),chartPlugin.pieData[i])
             }
             for (let i = 0,l = chartPlugin.bar.length;i < l ;i++) {
                 barChart(echarts.init(chartPlugin.bar[i]))
             }
-            // for (let i = 0,l = chartPlugin.pileBar.length;i < l ;i++) {
-            //     pileBarChart(echarts.init(chartPlugin.pileBar[i]))
-            // }
+
         }
 
         window.onresize = () => {
@@ -518,9 +700,6 @@
             for (let i = 0,l = chartPlugin.bar.length;i < l ;i++) {
                 echarts.init(chartPlugin.bar[i]).resize()
             }
-            // for (let i = 0,l = chartPlugin.pileBar.length;i < l ;i++) {
-            //     echarts.init(chartPlugin.pileBar[i]).resize()
-            // }
         }
 
         // 进行rem的计算 因为是已1920px为基准进行计算的，所以为了方便，把1rem等于100px
@@ -612,18 +791,6 @@
                     }
                 },false)
             }
-        }
-
-        //  layUI
-        let lay = () => {
-            laydate.render({
-                elem: '#startTime',
-                type: 'month'
-            });
-            laydate.render({
-                elem: '#endTime',
-                type: 'month'
-            });
         }
 
         // bar-chart
@@ -746,34 +913,69 @@
                 q,
                 k,
                 r
-            if (unicorn.flag == "0") {
+            if (unicorn.flag == 0) {
                 for (let i = 0,l = unicorn.name.length;i < l;i++) {
                     q = `${unicorn.name[i]}: ${unicorn.num[i]}%`
-                    p = {value: unicorn.num[i], name: q}
+                    p = {
+                        value: unicorn.num[i],
+                        name: q,
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'center',
+                                formatter: unicorn.percentage,
+                                textStyle: {
+                                    fontSize: '28',
+                                    color: '#7A758C'
+                                }
+                            }
+                        },
+                    }
                     arr.push(p)
                     title.push(q)
                 }
                 r = 100 - parseInt(unicorn.percentage)
-                k = {value: r.toString(),name: '1233'}
+                k = {value: r.toString(),name: '占位'}
                 arr.push(k)
             } else {
-                
+                for (let i = 0,l = unicorn.name.length;i < l;i++) {
+                    debugger
+                    q = unicorn.name[i]
+                    p = {
+                            value: unicorn.num[i],
+                            name: q ,
+                            label: {
+                                normal: {
+                                    show: unicorn.label[i],
+                                    position: 'center',
+                                    formatter: unicorn.percentage,
+                                    textStyle: {
+                                        fontSize: '20',
+                                        color: '#7A758C'
+                                    }
+                                }
+                            },
+                        }
+                    arr.push(p)
+                    title.push(q)
+                }
             }
 
             let option = {
                 title: {
-                    x: "23%",
-                    y: "40%",
-                    text: unicorn.percentage,
+                    show: unicorn.pick,
+                    x: "13.5%",
+                    y: "32%",
+                    text: '环保资金总投入',
                     textStyle: {
                         fontWeight: 'normal',
-                        fontSize: 28,
+                        fontSize: 14,
                         color: "#4D4D4D"
                     },
                 },
                 legend: {
                     orient: 'vertical',
-                    x: '60%',
+                    x: '50%',
                     y: 'middle',
                     data: title
                 },
@@ -782,7 +984,7 @@
                     {
                         name:'脱硫装备率',
                         type:'pie',
-                        center: ['30%', '50%'],
+                        center: ['20%', '50%'],
                         radius: ['60%', '80%'],
                         avoidLabelOverlap: false,
                         label: {
