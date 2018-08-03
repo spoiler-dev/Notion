@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>华电蒙能</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" href="css/layui.css" media="all">
+    <link rel="stylesheet" href="js/theme/default/laydate.css">
+    <style type="text/css">
+        body {
+            font-family: SimSun;
+        }
+
+        #panel-left {
+            width: 10%;
+            height:100%;
+            background: #FFFFFF;
+            border-radius:5px;
+            box-shadow:6px 0px 10px rgba(0,92,255,0.15);
+            box-sizing: border-box;
+        }
+
+        #panel-left p {
+            height: 30px;
+            text-align: center;
+            border-bottom: 1px solid #D9E2F8;
+            font-size: 0.14rem;
+            color: #4C4C4C;
+            line-height: 30px;
+        }
+
+        #panel-right {
+            width: calc(90% - 10px);
+            height: 100%;
+            box-shadow:6px 0px 10px rgba(0,92,255,0.15);
+            box-sizing: border-box;
+        }
+
+        #panel-tab {
+            height: 40px;
+            width: 100%;
+            background:rgba(255,255,255,1);
+            box-shadow:0px 0px 5px rgba(0,92,255,0.15);
+            line-height: 40px;
+        }
+
+        #panel-tab ul li {
+            width: 100px;
+            height: 100%;
+            color: #8286A6;
+            font-size: 0.14rem;
+            text-align: center;
+        }
+
+        #panel-tab ul li.active {
+            color: #494C56;
+            border-bottom: 2px solid #3B82FF;
+        }
+
+        #panel-content {
+            width: 100%;
+            height: calc(100% - 40px);
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        #panel-content-title {
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            color: #4D4D4D;
+            font-family: 'MicrosoftYaHei';
+            font-size: 0.16rem;
+            border-bottom: 1px solid #D9E2F8;
+        }
+
+        #panel-content-img {
+            width: 100%;
+            height: calc(100% - 170px);
+            background: url(img/system.png) no-repeat center center;
+            background-size: contain;
+            margin-bottom: 10px;
+        }
+
+        #panel-content-block {
+            width: calc(100% + 30px);
+            height: 100px;
+            padding: 10px 15px;
+            box-sizing: border-box;
+            box-shadow:0px 0px 5px rgba(0,92,255,0.15);
+            box-sizing: border-box;
+            margin-left: -15px;
+        }
+
+        #panel-content-block ul {
+            width: 100%;
+            height: 100%;
+        }
+
+        #panel-content-block ul li {
+            width: 7%;
+            height: 80px;
+            background: #E5EBF7;
+            margin-right: calc(16%/11);
+        }
+
+        #panel-content-block ul li:last-child {
+            margin-right: 0 !important;
+        }
+
+        .block-label {
+            width: 100%;
+            height: 12px;
+            margin: 17px 0;
+            color: #7A758C;
+            font-size: 0.12rem;
+            text-align: center;
+        }
+
+        .block-num {
+            width: 100%;
+            height: 18px;
+            color: #333333;
+            font-size: 0.12rem;
+            text-align: center;
+            font-family: 'Microsoft YaHei';
+        }
+
+        .block-num-strong {
+            font-size: 0.18rem !important;
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav id="nav">
+        <div class="nav-left">
+            <div class="nav-img">
+            </div>
+        </div>
+        <div class="nav-bar fl">
+            <div class="nav-title fl">电力板块生产与经营管控平台</div>
+            <div class="nav-status fr">
+                <div class="nav-date fl" id="nav-date"></div>
+                <div class="nav-weather fl">
+                    <div id="nav-iframe">
+                        <iframe scrolling="no" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=34&icon=1&num=3"></iframe>
+                    </div>
+                </div>
+                <div class="nav-message fl">
+                    <img src="./img/messages.png" alt="">
+                </div>
+                <div class="nav-notify fl">
+                    <img src="./img/notice.png" alt="">
+                </div>
+                <div class="nav-user fl">超级管理员
+                    <span>
+                        <img src="./img/combo_l.png" alt="">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="box">
+        <div id="left">
+            <div class="sidebarMenu">
+                <ul>
+                    <li class="sidebar sidebar-header">
+                        <a href="#" class="header-click">
+                            <span class="ring active"></span>
+                            首页
+                            <span class="arrow arrowbg1"></span>
+                        </a>
+                        <ul id="home" class="sidebar-ul hide"></ul>
+                    </li>
+                    <li class="sidebar sidebar-header">
+                        <a href="productionManagement" class="header-click active">
+                            <span class="ring"></span>
+                            生产管理
+                            <span class="arrow arrowbg1"></span>
+                        </a>
+                        <ul id="productionManagement" class="sidebar-ul hide">
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    设备台账
+                                </a>
+                            </li>
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    设备总览
+                                </a>
+                            </li>
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    运行总览
+                                </a>
+                            </li>
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    实时监控
+                                </a>
+                            </li>
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    安监环保
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar sidebar-header">
+                        <a href="coalManagement" class="header-click">
+                            <span class="ring"></span>
+                            燃煤管理
+                            <span class="arrow arrowbg1"></span>
+                        </a>
+                        <ul id="coalManagement" class="sidebar-ul hide">
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    厂级监管
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar sidebar-header">
+                        <a href="marketing" class="header-click">
+                            <span class="ring"></span>
+                            市场营销
+                            <span class="arrow arrowbg1"></span>
+                        </a>
+                        <ul id="marketing" class="sidebar-ul hide">
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    指标管理
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="right">
+            <div id="panel-left" class="fl">
+                <p>筛选面板</p>
+                <div id="tree"></div>
+            </div>
+            <div id="panel-right"  class="fr">
+                <div id="panel-tab">
+                    <ul>
+                        <li class="fl active">风烟系统</li>
+                        <li class="fl">环保系统</li>
+                        <li class="fl">汽水系统</li>
+                    </ul>
+                </div>
+                <div id="panel-content">
+                    <p id="panel-content-title">包头热电厂1#机组风烟系统</p>
+                    <div id="panel-content-img">
+
+                    </div>
+                    <div id="panel-content-block">
+                        <ul>
+                            <li class="fl">
+                                <p class="block-label">功 率</p>
+                                <p class="block-num"><span class="block-num-strong"></span>MW</p>
+                            </li>
+                            <li class="fl">
+                                <p class="block-label">主蒸汽压力</p>
+                                <p class="block-num"><span class="block-num-strong">16.29</span>MPa</p>
+                            </li>
+                            <li class="fl">
+                                <p class="block-label">主蒸汽温度</p>
+                                <p class="block-num"><span class="block-num-strong"></span>°C</p>
+                            </li>
+                            <li class="fl">
+                                <p class="block-label">再热蒸汽压力</p>
+                                <p class="block-num"><span class="block-num-strong"></span>MPa</p>
+                            </li>
+                            <li class="fl">
+                                <p class="block-label">再热蒸汽温度</p>
+                                <p class="block-num"><span class="block-num-strong">520.14</span>°C</p>
+                            </li>
+                            <li class="fl">
+                                <p class="block-label">主蒸汽流量</p>
+                                <p class="block-num"><span class="block-num-strong">963.72</span>t/h</p>
+                            </li>
+                            <li class="fl">
+                                <p class="block-label">给水温度</p>
+                                <p class="block-num"><span class="block-num-strong">736.38</span>℃</p>
+                            </li>
+                            <li class="fl">
+                                <p class="block-label">总煤量</p>
+                                <p class="block-num"><span class="block-num-strong">0.0</span>t/h</p>
+                            </li>
+                            <li class="fl">
+                                <p class="block-label">总风量</p>
+                                <p class="block-num"><span class="block-num-strong">335.08</span>t/h</p>
+                            </li>
+                            <li class="fl">
+                                <p class="block-label">氧量</p>
+                                <p class="block-num"><span class="block-num-strong"></span>%</p>
+                            </li>
+                            <li class="fl">
+                                <p class="block-label">炉壁负压</p>
+                                <p class="block-num"><span class="block-num-strong">-0.08</span>Pa</p>
+                            </li>
+                            <li class="fl">
+                                <p class="block-label">真空度</p>
+                                <p class="block-num"><span class="block-num-strong">0.0</span>%</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <!-- laydate 非模块化 -->
+    <script src="js/layui.all.js" charset="utf-8"></script>
+    <script src="js/laydate.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/echarts.min.js"></script>
+    <script type="text/javascript">
+
+    (function () {
+        'use strict'
+
+        window.onload = () => {
+            rem()
+            currentTime()
+            sidebar()
+            laybar()
+        }
+
+        window.onresize = () => {
+            // 实现弹性布局
+            // 这个函数是为了解决，当进行浏览器窗口大小操作时，rem还是之前的值，如果想要看到效果，需要进行一次手动刷新
+            // 所以，为了解决不手动刷新我们需要在浏览器窗口变化的时候，进行监听，如果浏览器窗口变化了，就进行rem的重新计算
+            rem()
+        }
+
+        // 进行rem的计算 因为是已1920px为基准进行计算的，所以为了方便，把1rem等于100px
+        let rem = () => {
+            let width = document.body.clientWidth
+            let fontSize = document.getElementsByTagName('html')[0].style.fontSize = width / 19.2 + "px"
+        }
+
+        // 当前时间
+        let currentTime = () => {
+            let myDate    = new Date(),
+                year      = myDate.getFullYear(),
+                month     = myDate.getMonth()+1,    /* 因为月份的计算是从 0 开始的 */
+                date      = myDate.getDate(),
+                day       = myDate.getDay(),
+                hour      = myDate.getHours(),
+                minutes   = myDate.getMinutes(),
+                seconds   = myDate.getSeconds(),
+                week,
+                now
+            const seperator = ':'
+            minutes < 10 && (minutes = `0${minutes}`)
+            seconds < 10 && (seconds = `0${seconds}`)
+            day == 1 && (week = '一')
+            day == 2 && (week = '二')
+            day == 3 && (week = '三')
+            day == 4 && (week = '四')
+            day == 5 && (week = '五')
+            day == 6 && (week = '六')
+            day == 7 && (week = '日')
+            now = document.getElementById('nav-date')
+            now.innerText =  `${year}年${month}月${date}日  ${hour}${seperator}${minutes}${seperator}${seconds}  星期${week}`
+            setTimeout( () => {currentTime()},1000)
+        }
+
+        // 侧边栏
+        let sidebar = () => {
+            let headerClick = document.getElementsByClassName('header-click'),
+                listClick = document.getElementsByClassName('list-click'),
+                sideNode = document.getElementsByClassName('sidebar'),
+                listNode = document.getElementsByClassName('sidebar-ul'),
+                ring = document.getElementsByClassName('ring'),
+                arrow = document.getElementsByClassName('arrow')
+            for (let i = 0,l = headerClick.length;i < l;i++) {
+                headerClick[i].addEventListener('click',function(e) {
+                    e.preventDefault()
+                    if (!this.classList.contains('active')) {
+                        for (let j = 0,k = sideNode.length;j < k;j++) {
+                            sideNode[j].children[0] && (sideNode[j].children[0].classList.remove('active'))
+                        }
+                        for (let a = 0,b = ring.length;a < b;a++) {
+                            ring[a].classList.remove('active')
+                        }
+                        this.classList.add('active')
+                        this.children[0].classList.add("active")
+                    }
+                    if (this.parentNode.children[1].children.length) {
+                        if (this.children[1].classList.contains('arrowbg2')) {
+                            this.children[1].classList.remove('arrowbg2')
+                        } else {
+                            for (let c = 0,d = arrow.length;c < d;c++) {
+                                arrow[c].classList.remove('arrowbg2')
+                            }
+                            this.children[1].classList.add('arrowbg2')
+                        }
+                    }
+                    if (this.parentNode.children[1].classList.contains('hide')) {
+                        for (let m = 0,n = listNode.length;m < n;m++) {
+                            listNode[m].classList.add('hide')
+                        }
+                        this.parentNode.children[1].classList.remove('hide')
+                    } else {
+                        this.parentNode.children[1].classList.add('hide')
+                    }
+                },false)
+            }
+            for (let i = 0,l = listClick.length;i<l;i++) {
+                listClick[i].addEventListener('click',function(e) {
+                    e.preventDefault()
+                    if (!this.classList.contains('active')) {
+                        for (let j = 0,k = sideNode.length;j < k;j++) {
+                            sideNode[j].children[0] && (sideNode[j].children[0].classList.remove('active'))
+                        }
+                        for (let a = 0,b = ring.length;a < b;a++) {
+                            ring[a].classList.remove('active')
+                        }
+                        this.classList.add('active')
+                        this.children[0].classList.add("active");
+                    }
+                },false)
+            }
+        }
+
+        // layUI 侧边栏
+        let laybar = () => {
+            //树节点的定义
+            layui.tree({
+                elem: '#tree', //传入元素选择器
+                //icon: {        //三种图标样式，更改几个都可以，用的是layui的图标
+                //         open: "",      //节点打开的图标
+                //         close: "",    //节点关闭的图标
+                //         end: "",      //末尾节点的图标
+                //},
+                nodes: [{ //节点数据
+                    name: '华电蒙能',
+                    checkbox: true, //默认不显示CheckBox
+                    spread: true,
+                    children: [{
+                        name: '包头热电',
+                        checkbox: true, //默认不显示CheckBox
+                        spread:true,//是否全部展开
+                        children: [{
+                            name: '1#机组',
+                        }, {
+                            name: '2#机组',
+                        }]
+                    }, {
+                        name: '河西电厂',
+                        spread:true,//是否全部展开
+                        children: [{
+                            name: '1#机组',
+                        }, {
+                            name: '2#机组',
+                        }]
+                    }, {
+                        name: '卓资发电',
+                        spread:true,//是否全部展开
+                        children: [{
+                            name: '1#机组',
+                        }, {
+                            name: '2#机组',
+                        }]
+                    }, {
+                        name: '乌达热电',
+                        spread:true,//是否全部展开
+                        children: [{
+                            name: '1#机组',
+                        }, {
+                            name: '2#机组',
+                        }]
+                    }]
+                }],
+                click: function(node) {
+                    console.log(node) //node即为当前点击的节点数据
+                }
+            });
+        }
+
+    })();
+    </script>
+</body>
+
+</html>

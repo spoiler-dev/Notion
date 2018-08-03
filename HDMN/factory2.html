@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>华电蒙能</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="js/theme/default/laydate.css"/>
+	<link rel="stylesheet" href="css/layui.css"  media="all">
+	<script src="js/jquery-3.3.1.min.js"></script>
+	
+	<script src="js/laydate.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/layui.all.js" charset="utf-8"></script>
+	<script src="js/table.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/tree.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script type="text/javascript">
+		$(window).resize(function (){// 绑定到窗口的这个事件中
+			  var whdef = (100/1920); //表示1920的设计图,使用100PX的默认值
+			  var wH = window.innerHeight;// 当前窗口的高度
+			  var wW = window.innerWidth;// 当前窗口的宽度
+			  var rem = wW * whdef;// 以默认比例值乘以当前窗口宽度,得到该宽度下的相应FONT-SIZE值
+			  //console.log(whdef);console.log(wW);console.log(rem)
+			  $('html').css('font-size', rem + "px");
+		});
+	</script>
+    <style type="text/css">
+    	ul li{list-style-type:none;}
+		#ulList li{float: left;width: 15%;margin-left: 1.45%;height: 100%;border-radius: 5px;}
+    #panel-content {
+        height: calc(100% - 50px);
+        overflow-y: scroll;
+    }
+    #panel {
+        font-size: 0.14rem;
+        height: 40px;
+        border-radius: 5px;
+        background: #FFFFFF;
+        margin-bottom: 20px;
+        line-height: 40px;
+        color: #7A758C;
+        font-family:SimSun;
+        padding-left: 20px;
+        box-shadow: 0px 0px 10px 2px rgba(0,92,255,0.15);
+    }
+    #tab {
+        height: 130px;
+        margin-bottom: 20px;
+    }
+    #app-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        flex-direction: column;
+        height: 870px;
+    }
+    #app-title {
+        font-size: 0.14rem;
+        text-align: center;
+        height: 40px;
+        line-height: 40px;
+        width: 100%;
+    }
+    #workflow {
+        width: 70%;
+        height: 100%;
+        background:rgba(255,255,255,1);
+        border-radius:5px;
+        box-shadow: 0px 0px 10px 5px rgba(0,92,255,0.15);
+        padding: 0 10px;
+        margin: 0 20px 10px 0;
+        position: relative;
+        z-index: 999;
+    }
+    #workflow .group-line {
+        height: 275px;
+    }
+    #workflow .group-line .group-title {
+        font-size: 0.14rem;
+        height: 30px;
+        line-height: 30px;
+        background: #E9EAF4;
+        color: #4D4D4D;
+    }
+    #workflow .group-line .group-panel {
+        height: 245px;
+    }
+    #workflow .group-line .group-panel .group-search {
+        height: 26px;
+        width: 100%;
+        line-height: 26px;
+    }
+    #workflow .group-line .group-panel .group-search .group-search-img {
+        width: 30px;
+        height: 10px;
+        margin: 8px 6px 8px 30px;
+    }
+    #workflow .group-line .group-panel .group-search-icon span {
+        display: block;
+        float: left;
+        color: #4D4D4D;
+    }
+    #workflow .group-line .group-panel .group-search .group-search-icon1 {
+        background: url(./img/legend1.png) no-repeat center center;
+        margin-left: 20px !important;
+    }
+    #workflow .group-line .group-panel .group-search .group-search-icon2 {
+        background: url(./img/legend2.png) no-repeat center center;
+    }
+    #workflow .group-line .group-panel .group-search .group-search-icon3 {
+        background: url(./img/legend3.png) no-repeat center center;
+    }
+    #workflow .group-line .group-panel .group-search .group-search-icon-title {
+        font-size: 0.12rem;
+    }
+    
+    #tab #tab-left {
+        background: url(./img/previouspage.png) no-repeat center center;
+        width: 50px;
+        height: 130px;
+        border-radius:5px;
+        box-shadow: 0px 0px 10px 5px rgba(0,92,255,0.15);
+    }
+    #tab #tab-right {
+        background: url(./img/nextpage.png) no-repeat center center;
+        width: 50px;
+        height: 130px;
+        border-radius:5px;
+        box-shadow: 0px 0px 10px 5px rgba(0,92,255,0.15);
+    }
+    #tab #tab-content {
+        width: calc(100% - 100px);
+        height: 130px;
+        padding: 0 20px;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+    #tab #tab-content .tab-list {
+
+    }
+    #tab #tab-content .tab-item {
+        display: block;
+        float: left;
+        width: 15%;
+        height: 130px;
+        margin-right: 2%;
+        border-radius:5px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+    }
+    #tab #tab-content .tab-item:last-child {
+        margin-right: 0;
+    }
+    #tab #tab-content .tab-item .tab-item-title {
+        width: 100%;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        font-size: 0.14rem;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+    .tab-item-panel {
+        width: 100%;
+        height: 90px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+    .tab-item-number {
+        font-family: ArialMT;
+        font-size: 0.3rem;
+        width: 100%;
+        height: 65px;
+        text-align: center;
+        line-height: 65px;
+    }
+    .tab-item-info {
+        font-size: 0.14rem;
+        width: 100%;
+        height: 25px;
+        text-align: center;
+        font-family: MicrosoftYaHei;
+    }
+    </style>
+</head>
+
+<body>
+    <nav id="nav">
+        <div class="nav-left">
+            <div class="nav-img">
+            </div>
+        </div>
+        <div class="nav-bar fl">
+            <div class="nav-title fl">电力板块生产与经营管控平台</div>
+            <div class="nav-status fr">
+                <div class="nav-date fl" id="nav-date"></div>
+                <div class="nav-weather fl">
+                    <div id="nav-iframe">
+                        <iframe scrolling="no" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=34&icon=1&num=3"></iframe>
+                    </div>
+                </div>
+                <div class="nav-message fl">
+                    <img src="./img/messages.png" alt="">
+                </div>
+                <div class="nav-notify fl">
+                    <img src="./img/notice.png" alt="">
+                </div>
+                <div class="nav-user fl">超级管理员
+                    <span>
+                        <img src="./img/combo_l.png" alt="">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="box">
+        <div id="left">
+            <div class="sidebarMenu">
+                <ul>
+                    <li class="sidebar sidebar-header">
+                        <a href="#" class="header-click">
+                            <span class="ring active"></span>
+                            首页
+                            <span class="arrow arrowbg1"></span>
+                        </a>
+                        <ul id="home" class="sidebar-ul hide"></ul>
+                    </li>
+                    <li class="sidebar sidebar-header">
+                        <a href="productionManagement" class="header-click active">
+                            <span class="ring"></span>
+                            生产管理
+                            <span class="arrow arrowbg1"></span>
+                        </a>
+                        <ul id="productionManagement" class="sidebar-ul hide">
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    设备台账
+                                </a>
+                            </li>
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    设备总览
+                                </a>
+                            </li>
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    运行总览
+                                </a>
+                            </li>
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    实时监控
+                                </a>
+                            </li>
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    安监环保
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar sidebar-header">
+                        <a href="coalManagement" class="header-click">
+                            <span class="ring"></span>
+                            燃煤管理
+                            <span class="arrow arrowbg1"></span>
+                        </a>
+                        <ul id="coalManagement" class="sidebar-ul hide">
+                        </ul>
+                    </li>
+                    <li class="sidebar sidebar-header">
+                        <a href="marketing" class="header-click">
+                            <span class="ring"></span>
+                            市场营销
+                            <span class="arrow arrowbg1"></span>
+                        </a>
+                        <ul id="marketing" class="sidebar-ul hide">
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    指标管理
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="right2" style="display: block;"> 
+				<div id="" style="font-family: simsun;width: 99%;height: 4%;background: white;border-radius: 5px;font-size: 0.15rem;margin-left: 0.5%;margin-top: 0.5%;">
+					<p style="padding: 0.5%;">&nbsp;生产管理</p>
+				</div>
+				<div id="" style="width: 99%;height: 14%;margin-left: 0.5%;margin-top: 0.5%;">
+					<div id="" style="float: left;width: 3%;height: 100%;background:white;border-radius: 5px;">
+						<div id="" style="width: 100%;height: 100%;background: url(img/previouspage.png) no-repeat center center;">
+							
+						</div>
+					</div>
+					<ul id="ulList"  style="float: left;font-size: 0.15rem;width: 94%;height: 100%;font-family: SimSun;">
+						<li>
+							<p style="height:30%;background:#1882ff;width: 100%;text-align: center;line-height: 40px;border-top-left-radius:5px;border-top-right-radius:5px;">装机容量(万千瓦时)</p>
+							<div id=""  style="height:70%;background:rgba(35,159,255,1);border-bottom-left-radius:5px;border-bottom-right-radius:5px;">
+								<br />
+								<p style="width: 100%;text-align: center;font-size: 0.3rem;color: white;">1560.5</p>
+								<p style="width: 100%;text-align: center;color: white;margin-top: 3%;">本月: 1560.5   本年: 1560.5</p>
+							</div>
+						</li>
+						<li>
+							<p style="height:30%;background:#4485ff;width: 100%;text-align: center;line-height: 40px;border-top-left-radius:5px;border-top-right-radius:5px;">今日发电量(万千瓦时)</p>
+							<div id=""  style="height:70%;background:rgba(98,161,255,1);border-bottom-left-radius:5px;border-bottom-right-radius:5px;">
+								<br />
+								<p style="width: 100%;text-align: center;font-size: 0.3rem;color: white;">26540</p>
+								<p style="width: 100%;text-align: center;color: white;margin-top: 3%;">本月: 573452     本年: 1711253</p>
+							</div>
+						</li>
+						<li>
+							<p style="height:30%;background:#4454ff;width: 100%;text-align: center;line-height: 40px;border-top-left-radius:5px;border-top-right-radius:5px;">上网电量(万千瓦时)</p>
+							<div id=""  style="height:70%;background:#6278FF;border-bottom-left-radius:5px;border-bottom-right-radius:5px;">
+								<br />
+								<p style="width: 100%;text-align: center;font-size: 0.3rem;color: white;">25187</p>
+								<p style="width: 100%;text-align: center;color: white;margin-top: 3%;">本月: 52132     本年: 165236</p>
+							</div>
+						</li>
+						<li>
+							<p style="height:30%;background:#5444ff;width: 100%;text-align: center;line-height: 40px;border-top-left-radius:5px;border-top-right-radius:5px;">利用小时(小时)</p>
+							<div id=""  style="height:70%;background:#7862FF;border-bottom-left-radius:5px;border-bottom-right-radius:5px;">
+								<br />
+								<p style="width: 100%;text-align: center;font-size: 0.3rem;color: white;">351</p>
+								<p style="width: 100%;text-align: center;color: white;margin-top: 3%;">本月: 13257     本年: 1648231</p>
+							</div>
+						</li>
+						<li>
+							<p style="height:30%;background:#9453ff;width: 100%;text-align: center;line-height: 40px;border-top-left-radius:5px;border-top-right-radius:5px;">综合厂用电率(%)</p>
+							<div id=""  style="height:70%;background:#AD77FF;border-bottom-left-radius:5px;border-bottom-right-radius:5px;">
+								<br />
+								<p style="width: 100%;text-align: center;font-size: 0.3rem;color: white;">3.2%</p>
+								<p style="width: 100%;text-align: center;color: white;margin-top: 3%;">本月: 3.6%     本年: 2.8%</p>
+							</div>
+						</li>
+						<li>
+							<p style="height:30%;background:#bf51ef;width: 100%;text-align: center;line-height: 40px;border-top-left-radius:5px;border-top-right-radius:5px;">供电煤耗(g/qwh)</p>
+							<div id=""  style="height:70%;background:#CE74F3;border-bottom-left-radius:5px;border-bottom-right-radius:5px;">
+								<br />
+								<p style="width: 100%;text-align: center;font-size: 0.3rem;color: white;">490</p>
+								<p style="width: 100%;text-align: center;color: white;margin-top: 3%;">本月: 7135     本年: 165700</p>
+							</div>
+						</li>
+					</ul>
+					<div id="" style="float: left;width: 3%;height: 100%;background: white;border-radius: 5px;">
+						<div id="" style="width: 100%;height: 100%;background: url(img/nextpage.png) no-repeat center center;">
+							
+						</div>
+					</div>
+				</div>
+				<div id="" style="width: 100%;height: 40%;">
+					<div id="" style="width: 49%;height: 99%;background: white;border-radius: 5px;margin-left: 0.5%;margin-top: 0.5%;float: left;">
+						<div style="font-size: 0.1rem;font-family: SimSun;height: 10%;width: 98%;margin-left: 1%;border-bottom:1px solid gray;">
+							<span style="margin-left: 1%;margin-top:10px;display: inline-block;">各单位发电量完成进度情况</span> 
+							<img style="float:right;margin-right: 0%;display: inline-block;margin-top: 8px;" src="img/forward.png"/>
+						</div>
+						<div id="bar6" style="width: 100%;height: 90%;">
+							
+						</div>
+					</div>
+					<div id="" style="width: 49%;height: 99%;background: white;border-radius: 5px;margin-left: 1%;margin-top: 0.5%;float: left;">
+						<div style="font-size: 0.1rem;font-family: SimSun;height: 10%;width: 98%;margin-left: 1%;border-bottom:1px solid gray;">
+							<span style="margin-left: 1%;margin-top:10px;display: inline-block;">各单位发电量完成情况</span> 
+							<img style="float:right;margin-right: 0%;display: inline-block;margin-top: 8px;" src="img/forward.png"/>
+						</div>
+						<div id="" style="width: 100%;height: 10%;font-size: 0.1rem;text-align: center;padding-top: 3px;">
+							<input type="radio" name="radio" value="1">与计划比
+							<input type="radio" name="radio" value="2" checked>同期环比
+							开始时间：<input type="text" id="time1" style="width: 100px;"  value="" />
+							结束时间：<input type="text" id="time2" style="width: 100px;" value="" />
+							
+							<input type="button" id="" value="查询" style="width: 100px;height: 20px;border-radius: 15px;background: #7A758C;border:0px;line-height: 20px;"/>
+						</div>
+						<div id="bar7" style="width: 100%;height: 80%;">
+							
+						</div>
+					</div>
+				</div>
+				<div id="" style="width: 100%;height: 38%;overflow: hidden;">
+					<div id="" style="width: 59%;height: 99%;background: white;border-radius: 5px;margin-left: 0.5%;margin-top: 0.5%;float: left;">
+						<div style="font-size: 0.1rem;font-family: SimSun;height: 10%;width: 98%;margin-left: 1%;border-bottom:1px solid gray;">
+							<span style="margin-left: 1%;margin-top:10px;display: inline-block;">各厂装机运行情况(装机容量的单位: 万千瓦)</span> 
+							<img style="float:right;margin-right: 0%;display: inline-block;margin-top: 8px;" src="img/forward.png"/>
+						</div>
+						<div id="" style="width: 100%;height: 90%;">
+							<div id="" style="width: 100%;height: 10%;text-align: center;overflow: auto;">
+								<!--<img  style="display: inline-block;margin-top: 0;" src="img/legend.png"/>-->
+								<ul style="font-size: 0.1rem;width: 100%;">
+									<li style="float: left;font-size: 0.1rem; margin-left: 30%;">
+										<div id="" style="width: 20px;height: 10px;background: #6278FF;float: left;margin-top: 5%;"></div>
+										<p style="float: left;">&nbsp;包头热电</p>
+									</li>
+									<li style="float: left;font-size: 0.1rem; margin-left: 5%;">
+										<div id="" style="width: 20px;height: 10px;background: #239FFF;float: left;margin-top: 5%;"></div>
+										<p style="float: left;">&nbsp;河西电厂</p>
+									</li>
+									<li style="float: left;font-size: 0.1rem; margin-left: 5%;">
+										<div id="" style="width: 20px;height: 10px;background: #AD77FF;float: left;margin-top: 5%;"></div>
+										<p style="float: left;">&nbsp;卓资发电</p>
+									</li>
+									<li style="float: left;font-size: 0.1rem; margin-left: 5%;">
+										<div id="" style="width: 20px;height: 10px;background: #D36AFF;float: left;margin-top: 5%;"></div>
+										<p style="float: left;">&nbsp;乌达热电</p>
+									</li>
+								</ul>
+							</div>
+							<div id="bar9"  style="width: 40%;height: 80%;float: left;">
+								
+							</div>
+							<div id=" " style="width: 20%;height: 80%;float: left;">
+								<ul style="text-align: center;width: 100%;height: 100%;font-size: 0.15rem;">
+									<li style="width: 100%;margin-top: 20%;">包头热电: 2716.91</li>
+									<li style="width: 100%;margin-top: 15%;">河西电厂: 1694.00</li>
+									<li style="width: 100%;margin-top: 15%;">卓资发电: 698.24</li>
+									<li style="width: 100%;margin-top: 15%;">乌达热电: 305.57</li>
+								</ul>
+								
+							</div>
+							<div id="bar8" style="width: 40%;height: 80%;float: left;">
+								
+							</div>
+							<div id="" style="width: 100%;height: 10%;float: left;font-size: 0.15rem;">
+								<div id="" style="width: 33.3%;text-align: center;float: left;">
+									各厂负荷容量占比
+								</div>
+								<div id="" style="width: 33.3%;text-align: center;float: left;">
+									各厂装机总量
+								</div>
+								<div id=""  style="width: 33.3%;text-align: center;float: left;">
+									各厂运行容量占比
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="" style="width: 39%;height: 99%;background: white;border-radius: 5px;margin-left: 1%;margin-top: 0.5%;float: left;">
+						<div style="font-size: 0.1rem;font-family: SimSun;height: 10%;width: 98%;margin-left: 1%;border-bottom:1px solid gray;">
+							<span style="margin-left: 1%;margin-top:10px;display: inline-block;">各厂场址分布情况</span> 
+						</div>
+						<div id="bar10" style="width: 100%;height: 90%;">
+							<div id="" style="height:96%;width: 10%;float: left;">
+								
+							</div>
+							<div id="" style="float: left;height:96%;width: 50%;background-image: url(img/map_s.png);background-repeat: no-repeat;background-size: 100% 100%;">
+								
+							</div>
+							<div id="" style="height:96%;width: 40%;float: left;font-size: 0.15rem;">
+								<ul style="width: 100%;text-align: center;">
+									<li style="margin-top: 30%;">包头热电 <img src="img/fold.png"/></li>
+									<li style="margin-top: 10%;">河西电厂 <img src="img/fold.png"/></li>
+									<li style="margin-top: 10%;">卓资发电 <img src="img/fold.png"/></li>
+									<li style="margin-top: 10%;">乌达热电 <img src="img/fold.png"/></li>
+								</ul>
+							</div> 
+						</div>
+					</div>
+				</div>
+			</div>
+    </div>
+    </body>
+    <script type="text/javascript" src="js/echarts.min.js"></script>
+    <script type="text/javascript" src="js/myJs1.js"></script>
+    <script type="text/javascript">
+    (function () {
+        //'use strict'
+        // echarts 配置项
+        
+        // tab 页配置项
+        let tabPlugin = {
+            titleColor : ['#1882ff','#4485ff','#4454ff','#5444ff','#9453ff','#bf51ef'],
+            panelColor : ['#239FFF','#62A1FF','#6278FF','#7862FF','#AD77FF','#CE74F3']
+        }
+
+        window.onload = () => {
+            rem()
+            currentTime()
+            sidebar()
+            tab(tabPlugin.titleColor,tabPlugin.panelColor)
+            
+        }
+
+        window.onresize = () => {
+            // 实现弹性布局
+            // 这个函数是为了解决，当进行浏览器窗口大小操作时，rem还是之前的值，如果想要看到效果，需要进行一次手动刷新
+            // 所以，为了解决不手动刷新我们需要在浏览器窗口变化的时候，进行监听，如果浏览器窗口变化了，就进行rem的重新计算
+            rem()
+            
+        }
+
+        // 进行rem的计算 因为是已1920px为基准进行计算的，所以为了方便，把1rem等于100px
+        let rem = () => {
+            let width = document.body.clientWidth
+            let fontSize = document.getElementsByTagName('html')[0].style.fontSize = width / 19.2 + "px"
+        }
+
+        // 当前时间
+        let currentTime = () => {
+            let myDate    = new Date(),
+                year      = myDate.getFullYear(),
+                month     = myDate.getMonth()+1,    /* 因为月份的计算是从 0 开始的 */
+                date      = myDate.getDate(),
+                day       = myDate.getDay(),
+                hour      = myDate.getHours(),
+                minutes   = myDate.getMinutes(),
+                seconds   = myDate.getSeconds(),
+                week,
+                now
+            const seperator = ':'
+            minutes < 10 && (minutes = `0${minutes}`)
+            seconds < 10 && (seconds = `0${seconds}`)
+            day == 1 && (week = '一')
+            day == 2 && (week = '二')
+            day == 3 && (week = '三')
+            day == 4 && (week = '四')
+            day == 5 && (week = '五')
+            day == 6 && (week = '六')
+            day == 7 && (week = '日')
+            now = document.getElementById('nav-date')
+            now.innerText =  `${year}年${month}月${date}日  ${hour}${seperator}${minutes}${seperator}${seconds}  星期${week}`
+            setTimeout( () => {currentTime()},1000)
+        }
+
+        // 侧边栏
+        let sidebar = () => {
+            let headerClick = document.getElementsByClassName('header-click'),
+                listClick = document.getElementsByClassName('list-click'),
+                sideNode = document.getElementsByClassName('sidebar'),
+                listNode = document.getElementsByClassName('sidebar-ul'),
+                ring = document.getElementsByClassName('ring'),
+                arrow = document.getElementsByClassName('arrow')
+            for (let i = 0,l = headerClick.length;i < l;i++) {
+                headerClick[i].addEventListener('click',function(e) {
+                    e.preventDefault()
+                    if (!this.classList.contains('active')) {
+                        for (let j = 0,k = sideNode.length;j < k;j++) {
+                            sideNode[j].children[0] && (sideNode[j].children[0].classList.remove('active'))
+                        }
+                        for (let a = 0,b = ring.length;a < b;a++) {
+                            ring[a].classList.remove('active')
+                        }
+                        this.classList.add('active')
+                        this.children[0].classList.add("active")
+                    }
+                    if (this.parentNode.children[1].children.length) {
+                        if (this.children[1].classList.contains('arrowbg2')) {
+                            this.children[1].classList.remove('arrowbg2')
+                        } else {
+                            for (let c = 0,d = arrow.length;c < d;c++) {
+                                arrow[c].classList.remove('arrowbg2')
+                            }
+                            this.children[1].classList.add('arrowbg2')
+                        }
+                    }
+                    if (this.parentNode.children[1].classList.contains('hide')) {
+                        for (let m = 0,n = listNode.length;m < n;m++) {
+                            listNode[m].classList.add('hide')
+                        }
+                        this.parentNode.children[1].classList.remove('hide')
+                    } else {
+                        this.parentNode.children[1].classList.add('hide')
+                    }
+                },false)
+            }
+            for (let i = 0,l = listClick.length;i<l;i++) {
+                listClick[i].addEventListener('click',function(e) {
+                    e.preventDefault()
+                    if (!this.classList.contains('active')) {
+                        for (let j = 0,k = sideNode.length;j < k;j++) {
+                            sideNode[j].children[0] && (sideNode[j].children[0].classList.remove('active'))
+                        }
+                        for (let a = 0,b = ring.length;a < b;a++) {
+                            ring[a].classList.remove('active')
+                        }
+                        this.classList.add('active')
+                        this.children[0].classList.add("active");
+                    }
+                },false)
+            }
+        }
+
+        // tab
+        let tab = (titleColor,panelColor) => {
+            let title = document.getElementsByClassName('tab-item-title'),
+                panel = document.getElementsByClassName('tab-item-panel')
+            for (let i = 0,l = title.length;i < l;i++) {
+                title[i].style.backgroundColor = titleColor[i]
+                panel[i].style.backgroundColor = panelColor[i]
+            }
+        }
+
+       
+
+    })();
+    </script>
+
+</html>

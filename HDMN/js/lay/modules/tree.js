@@ -213,6 +213,3 @@ layui.define('jquery', function(exports){
     tree.init(elem);
   });
 });
-
-
-

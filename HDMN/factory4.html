@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>华电蒙能</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="js/theme/default/laydate.css"/>
+	<link rel="stylesheet" href="css/layui.css"  media="all">
+	<script src="js/jquery-3.3.1.min.js"></script>
+	
+	<script src="js/laydate.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/layui.all.js" charset="utf-8"></script>
+	<script src="js/table.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/tree.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script type="text/javascript">
+		$(window).resize(function (){// 绑定到窗口的这个事件中
+			  var whdef = (100/1920); //表示1920的设计图,使用100PX的默认值
+			  var wH = window.innerHeight;// 当前窗口的高度
+			  var wW = window.innerWidth;// 当前窗口的宽度
+			  var rem = wW * whdef;// 以默认比例值乘以当前窗口宽度,得到该宽度下的相应FONT-SIZE值
+			  //console.log(whdef);console.log(wW);console.log(rem)
+			  $('html').css('font-size', rem + "px");
+		});
+	</script>
+    <style type="text/css">
+    	ul li{list-style-type:none;}
+		#ulList li{float: left;width: 15%;margin-left: 1.45%;height: 100%;border-radius: 5px;}
+    #panel-content {
+        height: calc(100% - 50px);
+        overflow-y: scroll;
+    }
+    #panel {
+        font-size: 0.14rem;
+        height: 40px;
+        border-radius: 5px;
+        background: #FFFFFF;
+        margin-bottom: 20px;
+        line-height: 40px;
+        color: #7A758C;
+        font-family:SimSun;
+        padding-left: 20px;
+        box-shadow: 0px 0px 10px 2px rgba(0,92,255,0.15);
+    }
+    #tab {
+        height: 130px;
+        margin-bottom: 20px;
+    }
+    #app-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        flex-direction: column;
+        height: 870px;
+    }
+    #app-title {
+        font-size: 0.14rem;
+        text-align: center;
+        height: 40px;
+        line-height: 40px;
+        width: 100%;
+    }
+    #workflow {
+        width: 70%;
+        height: 100%;
+        background:rgba(255,255,255,1);
+        border-radius:5px;
+        box-shadow: 0px 0px 10px 5px rgba(0,92,255,0.15);
+        padding: 0 10px;
+        margin: 0 20px 10px 0;
+        position: relative;
+        z-index: 999;
+    }
+    #workflow .group-line {
+        height: 275px;
+    }
+    #workflow .group-line .group-title {
+        font-size: 0.14rem;
+        height: 30px;
+        line-height: 30px;
+        background: #E9EAF4;
+        color: #4D4D4D;
+    }
+    #workflow .group-line .group-panel {
+        height: 245px;
+    }
+    #workflow .group-line .group-panel .group-search {
+        height: 26px;
+        width: 100%;
+        line-height: 26px;
+    }
+    #workflow .group-line .group-panel .group-search .group-search-img {
+        width: 30px;
+        height: 10px;
+        margin: 8px 6px 8px 30px;
+    }
+    #workflow .group-line .group-panel .group-search-icon span {
+        display: block;
+        float: left;
+        color: #4D4D4D;
+    }
+    #workflow .group-line .group-panel .group-search .group-search-icon1 {
+        background: url(./img/legend1.png) no-repeat center center;
+        margin-left: 20px !important;
+    }
+    #workflow .group-line .group-panel .group-search .group-search-icon2 {
+        background: url(./img/legend2.png) no-repeat center center;
+    }
+    #workflow .group-line .group-panel .group-search .group-search-icon3 {
+        background: url(./img/legend3.png) no-repeat center center;
+    }
+    #workflow .group-line .group-panel .group-search .group-search-icon-title {
+        font-size: 0.12rem;
+    }
+    
+    #tab #tab-left {
+        background: url(./img/previouspage.png) no-repeat center center;
+        width: 50px;
+        height: 130px;
+        border-radius:5px;
+        box-shadow: 0px 0px 10px 5px rgba(0,92,255,0.15);
+    }
+    #tab #tab-right {
+        background: url(./img/nextpage.png) no-repeat center center;
+        width: 50px;
+        height: 130px;
+        border-radius:5px;
+        box-shadow: 0px 0px 10px 5px rgba(0,92,255,0.15);
+    }
+    #tab #tab-content {
+        width: calc(100% - 100px);
+        height: 130px;
+        padding: 0 20px;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+    #tab #tab-content .tab-list {
+
+    }
+    #tab #tab-content .tab-item {
+        display: block;
+        float: left;
+        width: 15%;
+        height: 130px;
+        margin-right: 2%;
+        border-radius:5px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+    }
+    #tab #tab-content .tab-item:last-child {
+        margin-right: 0;
+    }
+    #tab #tab-content .tab-item .tab-item-title {
+        width: 100%;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        font-size: 0.14rem;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+    .tab-item-panel {
+        width: 100%;
+        height: 90px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+    .tab-item-number {
+        font-family: ArialMT;
+        font-size: 0.3rem;
+        width: 100%;
+        height: 65px;
+        text-align: center;
+        line-height: 65px;
+    }
+    .tab-item-info {
+        font-size: 0.14rem;
+        width: 100%;
+        height: 25px;
+        text-align: center;
+        font-family: MicrosoftYaHei;
+    }
+    </style>
+</head>
+
+<body>
+    <nav id="nav">
+        <div class="nav-left">
+            <div class="nav-img">
+            </div>
+        </div>
+        <div class="nav-bar fl">
+            <div class="nav-title fl">电力板块生产与经营管控平台</div>
+            <div class="nav-status fr">
+                <div class="nav-date fl" id="nav-date"></div>
+                <div class="nav-weather fl">
+                    <div id="nav-iframe">
+                        <iframe scrolling="no" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=34&icon=1&num=3"></iframe>
+                    </div>
+                </div>
+                <div class="nav-message fl">
+                    <img src="./img/messages.png" alt="">
+                </div>
+                <div class="nav-notify fl">
+                    <img src="./img/notice.png" alt="">
+                </div>
+                <div class="nav-user fl">超级管理员
+                    <span>
+                        <img src="./img/combo_l.png" alt="">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="box">
+        <div id="left">
+            <div class="sidebarMenu">
+                <ul>
+                    <li class="sidebar sidebar-header">
+                        <a href="#" class="header-click">
+                            <span class="ring active"></span>
+                            首页
+                            <span class="arrow arrowbg1"></span>
+                        </a>
+                        <ul id="home" class="sidebar-ul hide"></ul>
+                    </li>
+                    <li class="sidebar sidebar-header">
+                        <a href="productionManagement" class="header-click active">
+                            <span class="ring"></span>
+                            生产管理
+                            <span class="arrow arrowbg1"></span>
+                        </a>
+                        <ul id="productionManagement" class="sidebar-ul hide">
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    设备台账
+                                </a>
+                            </li>
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    设备总览
+                                </a>
+                            </li>
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    运行总览
+                                </a>
+                            </li>
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    实时监控
+                                </a>
+                            </li>
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    安监环保
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar sidebar-header">
+                        <a href="coalManagement" class="header-click">
+                            <span class="ring"></span>
+                            燃煤管理
+                            <span class="arrow arrowbg1"></span>
+                        </a>
+                        <ul id="coalManagement" class="sidebar-ul hide">
+                        </ul>
+                    </li>
+                    <li class="sidebar sidebar-header">
+                        <a href="marketing" class="header-click">
+                            <span class="ring"></span>
+                            市场营销
+                            <span class="arrow arrowbg1"></span>
+                        </a>
+                        <ul id="marketing" class="sidebar-ul hide">
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    指标管理
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div  id="right4" style="width: 90%; float: left; background: #dfe6f8; height: calc(100vh - 70px);">
+				<div id="" style="width: 99%;height: 4%;background: white;border-radius: 5px;font-size: 0.15rem;margin-left: 0.5%;margin-top: 0.5%;">
+					<p style="padding-top: 0.4%;">&nbsp;&nbsp;运行总览</p>
+				</div>
+				<div id="" style="width: 99%;height: 94%;font-size: 0.1rem;margin-left: 0.5%;margin-top: 0.5%;">
+					<ul style="width: 100%;height: 33%;">
+						<li style="height: 100%;width: 24.5%;background: white;border-radius: 5px;float: left;">
+							<p style="width: 100%;height: 10%;border-bottom: 1px solid #D9E2F8;font-family: simsun;padding-top:3%;">&nbsp;&nbsp;安全运行天数：189天</p>
+							<div id="pieDay"style="width: 100%;height: 89.9%;text-align: center;">
+								<img style="display: inline-block;margin-top: 6%;" src="img/pie.png"/>
+							</div>
+						</li>
+						<li style="height: 100%;width: 24.5%;background: white;border-radius: 5px;float: left;margin-left: 0.6%;">
+							<p style="width: 100%;height: 10%;border-bottom: 1px solid #D9E2F8;font-family: simsun;padding-top:3%;">&nbsp;&nbsp;机组总体容量：360万千瓦</p>
+							<div id="pieMach"  style="height: 89.9%;width: 100%;">
+								
+							</div>
+						</li>
+						<li style="height: 100%;width: 24.5%;background: white;border-radius: 5px;float: left;margin-left: 0.6%;">
+							<p style="width: 100%;height: 10%;border-bottom: 1px solid #D9E2F8;font-family: simsun;padding-top:3%;">&nbsp;&nbsp;发电量：189亿千瓦时</p>
+							<div id="barCreat" style="height: 89.9%;width: 100%;">
+								
+							</div>
+						</li>
+						<li style="height: 100%;width: 24.5%;background: white;border-radius: 5px;float: left;margin-left: 0.6%;">
+							<p style="width: 100%;height: 10%;border-bottom: 1px solid #D9E2F8;font-family: simsun;padding-top:3%;">&nbsp;&nbsp;上网电量： 164亿千瓦时</p>
+							<div id="barElec"  style="height: 89.9%;width: 100%;">
+								
+							</div>
+						</li>
+					</ul>
+					<ul style="width: 100%;height: 33%;margin-top: 0.5%;">
+						<li style="height: 100%;width: 24.5%;background: white;border-radius: 5px;float: left;">
+							<p style="width: 100%;height: 10%;border-bottom: 1px solid #D9E2F8;font-family: simsun;padding-top:3%;">&nbsp;&nbsp;实时负荷：221万千瓦</p>
+							<div id="barTime"style="width: 100%;height: 89.9%;">
+								
+							</div>
+						</li>
+						<li style="height: 100%;width: 24.5%;background: white;border-radius: 5px;float: left;margin-left: 0.6%;">
+							<p style="width: 100%;height: 10%;border-bottom: 1px solid #D9E2F8;font-family: simsun;padding-top:3%;">&nbsp;&nbsp;利用小时： 1434小时</p>
+							<div id="barHour"  style="height: 89.9%;width: 100%;">
+								
+							</div>
+						</li>
+						<li style="height: 100%;width: 24.5%;background: white;border-radius: 5px;float: left;margin-left: 0.6%;">
+							<p style="width: 100%;height: 10%;border-bottom: 1px solid #D9E2F8;font-family: simsun;padding-top:3%;">&nbsp;&nbsp;综合厂用电率：6%</p>
+							<div id="barAll" style="height: 89.9%;width: 100%;">
+								
+							</div>
+						</li>
+						<li style="height: 100%;width: 24.5%;background: white;border-radius: 5px;float: left;margin-left: 0.6%;">
+							<p style="width: 100%;height: 10%;border-bottom: 1px solid #D9E2F8;font-family: simsun;padding-top:3%;">&nbsp;&nbsp;供电煤耗：313.5g/kwh</p>
+							<div id="barFire" style="height: 89.9%;width: 100%;">
+								
+							</div>
+						</li>
+					</ul>
+					<div id=""  style="width: 100%;height: 31%;margin-top: 0.5%;background: white;border-radius: 5px;">
+						<div id="" style="width: 64%;height: 100%;float: left;">
+							<table id="demo1" lay-filter="test1">
+						
+					    	</table>
+						</div>
+						<div id="" style="width: 35%;height: 100%;float: left;margin-left: 1%;">
+							<table id="demo2" lay-filter="test2">
+						
+					    	</table>
+						</div>
+					    
+					</div>
+				</div>
+			</div>
+    </div>
+    </body>
+    <script type="text/javascript" src="js/echarts.min.js"></script>
+    <script type="text/javascript" src="js/myJs4.js"></script>
+    <script type="text/javascript">
+    (function () {
+        //'use strict'
+        // echarts 配置项
+        
+        // tab 页配置项
+        let tabPlugin = {
+            titleColor : ['#1882ff','#4485ff','#4454ff','#5444ff','#9453ff','#bf51ef'],
+            panelColor : ['#239FFF','#62A1FF','#6278FF','#7862FF','#AD77FF','#CE74F3']
+        }
+
+        window.onload = () => {
+            rem()
+            currentTime()
+            sidebar()
+            tab(tabPlugin.titleColor,tabPlugin.panelColor)
+            
+        }
+
+        window.onresize = () => {
+            // 实现弹性布局
+            // 这个函数是为了解决，当进行浏览器窗口大小操作时，rem还是之前的值，如果想要看到效果，需要进行一次手动刷新
+            // 所以，为了解决不手动刷新我们需要在浏览器窗口变化的时候，进行监听，如果浏览器窗口变化了，就进行rem的重新计算
+            rem()
+            
+        }
+
+        // 进行rem的计算 因为是已1920px为基准进行计算的，所以为了方便，把1rem等于100px
+        let rem = () => {
+            let width = document.body.clientWidth
+            let fontSize = document.getElementsByTagName('html')[0].style.fontSize = width / 19.2 + "px"
+        }
+
+        // 当前时间
+        let currentTime = () => {
+            let myDate    = new Date(),
+                year      = myDate.getFullYear(),
+                month     = myDate.getMonth()+1,    /* 因为月份的计算是从 0 开始的 */
+                date      = myDate.getDate(),
+                day       = myDate.getDay(),
+                hour      = myDate.getHours(),
+                minutes   = myDate.getMinutes(),
+                seconds   = myDate.getSeconds(),
+                week,
+                now
+            const seperator = ':'
+            minutes < 10 && (minutes = `0${minutes}`)
+            seconds < 10 && (seconds = `0${seconds}`)
+            day == 1 && (week = '一')
+            day == 2 && (week = '二')
+            day == 3 && (week = '三')
+            day == 4 && (week = '四')
+            day == 5 && (week = '五')
+            day == 6 && (week = '六')
+            day == 7 && (week = '日')
+            now = document.getElementById('nav-date')
+            now.innerText =  `${year}年${month}月${date}日  ${hour}${seperator}${minutes}${seperator}${seconds}  星期${week}`
+            setTimeout( () => {currentTime()},1000)
+        }
+
+        // 侧边栏
+        let sidebar = () => {
+            let headerClick = document.getElementsByClassName('header-click'),
+                listClick = document.getElementsByClassName('list-click'),
+                sideNode = document.getElementsByClassName('sidebar'),
+                listNode = document.getElementsByClassName('sidebar-ul'),
+                ring = document.getElementsByClassName('ring'),
+                arrow = document.getElementsByClassName('arrow')
+            for (let i = 0,l = headerClick.length;i < l;i++) {
+                headerClick[i].addEventListener('click',function(e) {
+                    e.preventDefault()
+                    if (!this.classList.contains('active')) {
+                        for (let j = 0,k = sideNode.length;j < k;j++) {
+                            sideNode[j].children[0] && (sideNode[j].children[0].classList.remove('active'))
+                        }
+                        for (let a = 0,b = ring.length;a < b;a++) {
+                            ring[a].classList.remove('active')
+                        }
+                        this.classList.add('active')
+                        this.children[0].classList.add("active")
+                    }
+                    if (this.parentNode.children[1].children.length) {
+                        if (this.children[1].classList.contains('arrowbg2')) {
+                            this.children[1].classList.remove('arrowbg2')
+                        } else {
+                            for (let c = 0,d = arrow.length;c < d;c++) {
+                                arrow[c].classList.remove('arrowbg2')
+                            }
+                            this.children[1].classList.add('arrowbg2')
+                        }
+                    }
+                    if (this.parentNode.children[1].classList.contains('hide')) {
+                        for (let m = 0,n = listNode.length;m < n;m++) {
+                            listNode[m].classList.add('hide')
+                        }
+                        this.parentNode.children[1].classList.remove('hide')
+                    } else {
+                        this.parentNode.children[1].classList.add('hide')
+                    }
+                },false)
+            }
+            for (let i = 0,l = listClick.length;i<l;i++) {
+                listClick[i].addEventListener('click',function(e) {
+                    e.preventDefault()
+                    if (!this.classList.contains('active')) {
+                        for (let j = 0,k = sideNode.length;j < k;j++) {
+                            sideNode[j].children[0] && (sideNode[j].children[0].classList.remove('active'))
+                        }
+                        for (let a = 0,b = ring.length;a < b;a++) {
+                            ring[a].classList.remove('active')
+                        }
+                        this.classList.add('active')
+                        this.children[0].classList.add("active");
+                    }
+                },false)
+            }
+        }
+
+        // tab
+        let tab = (titleColor,panelColor) => {
+            let title = document.getElementsByClassName('tab-item-title'),
+                panel = document.getElementsByClassName('tab-item-panel')
+            for (let i = 0,l = title.length;i < l;i++) {
+                title[i].style.backgroundColor = titleColor[i]
+                panel[i].style.backgroundColor = panelColor[i]
+            }
+        }
+
+       
+
+    })();
+    
+    
+    
+    
+    
+    
+    
+
+    </script>
+
+</html>

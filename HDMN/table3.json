@@ -1,0 +1,64 @@
+{
+	"code": 0,
+	"msg": "",
+	"count": 100,
+	"data": [
+		{
+			"num": "包头热电",
+			"num1":"120",
+			"username1": "2",
+			"num2":"0",
+			"username2": "0",
+			"num3":"0",
+			"username3": "0",
+			"num4":"0",
+			"username4": "0",
+			"num5":"60",
+			"username5": "1",
+			"num6":"0",
+			"username6": "0"
+		},{
+			"num": "河西电厂",
+			"num1":"120",
+			"username1": "2",
+			"num2":"0",
+			"username2": "0",
+			"num3":"0",
+			"username3": "0",
+			"num4":"0",
+			"username4": "0",
+			"num5":"0",
+			"username5": "0",
+			"num6":"0",
+			"username6": "0"
+		}, {
+			"num": "卓资发电",
+			"num1":"60",
+			"username1": "2",
+			"num2":"0",
+			"username2": "0",
+			"num3":"0",
+			"username3": "0",
+			"num4":"0",
+			"username4": "0",
+			"num5":"0",
+			"username5": "0",
+			"num6":"0",
+			"username6": "0"
+		}, {
+			"num": "乌达热电",
+			"num1":"60",
+			"username1": "2",
+			"num2":"0",
+			"username2": "0",
+			"num3":"0",
+			"username3": "0",
+			"num4":"0",
+			"username4": "0",
+			"num5":"0",
+			"username5": "0",
+			"num6":"0",
+			"username6": "0"
+		}
+	]
+}

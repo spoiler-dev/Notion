@@ -10,6 +10,7 @@
 		<script src="js/jquery-3.3.1.min.js"></script>
 		<script src="js/laydate.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/layui.js" charset="utf-8"></script>
+		<script src="js/table.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/tree.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			$(window).resize(function (){// 绑定到窗口的这个事件中
@@ -296,14 +297,147 @@
 					</div>
 				</div>
 			</div>
-			<div id="right3" style="display: block;">
-				<div id="tree" style="width: 9%;height: 98%;background: white;float: left;margin-left: 0.5%;margin-top: 0.5%;border-radius: 5px;">
+			<div id="right3" style="display: none;">
+				<div id="" style="width: 99%;height: 4%;background: white;border-radius: 5px;font-size: 0.15rem;margin-left: 0.5%;margin-top: 0.5%;">
+					<p style="padding-top: 0.3%;">&nbsp;&nbsp;生产管理</p>
+				</div>
+				<div id="tree" style="width: 9%;height: 93%;background: white;float: left;margin-left: 0.5%;margin-top: 0.5%;border-radius: 5px;">
+					<div id="" style="text-align: center;border-bottom: 1px solid #D9E2F8;">
+						筛选面板
+					</div>
+					<div id="">
+						
+					</div>
+				</div>
+				<div id="treeTab" style="width: 89.5%;height: 93%;background: white;float: left;margin-left: 0.5%;margin-top: 0.5%;border-radius: 5px;">
+					<div id="" style="width: 100%;height: 50px;">
+						<ul style="width: 100%;height: 100%;border-bottom: 1px solid #D9E2F8;">
+							<li style="border-bottom: 2px solid #3B82FF;float: left;width:100px;height: 50px;line-height: 50px;text-align: center;font-family: SimSun;">机组信息</li>
+							<li style="float: left;width:100px;height: 50px;line-height: 50px;text-align: center;font-family: SimSun;">锅炉系统</li>
+							<li style="float: left;width:100px;height: 50px;line-height: 50px;text-align: center;font-family: SimSun;">汽机系统</li>
+							<li style="float: left;width:100px;height: 50px;line-height: 50px;text-align: center;font-family: SimSun;">发电机</li>
+							<li style="float: left;width:100px;height: 50px;line-height: 50px;text-align: center;font-family: SimSun;">环保节水</li>
+						</ul>
+					</div>
+					<table id="demo" lay-filter="test">
+						
+					</table>
+				</div>
+			</div>
+			<div  id="right4" style="width: 90%; float: left; background: #dfe6f8; height: calc(100vh - 70px);display: none;">
+				<div id="" style="width: 99%;height: 4%;background: white;border-radius: 5px;font-size: 0.15rem;margin-left: 0.5%;margin-top: 0.5%;">
+					<p style="padding-top: 0.4%;">&nbsp;&nbsp;运行总览</p>
+				</div>
+				<div id="" style="width: 99%;height: 94%;font-size: 0.1rem;margin-left: 0.5%;margin-top: 0.5%;">
+					<ul style="width: 100%;height: 33%;">
+						<li style="height: 100%;width: 24.5%;background: white;border-radius: 5px;float: left;">
+							<p style="width: 100%;height: 10%;border-bottom: 1px solid #D9E2F8;font-family: simsun;padding-top:3%;">&nbsp;&nbsp;安全运行天数：189天</p>
+							<div id="pieDay"style="width: 100%;height: 90%;">
+								
+							</div>
+						</li>
+						<li style="height: 100%;width: 24.5%;background: white;border-radius: 5px;float: left;margin-left: 0.6%;">
+							<p style="width: 100%;height: 10%;border-bottom: 1px solid #D9E2F8;font-family: simsun;padding-top:3%;">&nbsp;&nbsp;机组总体容量：360万千瓦</p>
+							<div id="pieMach">
+								
+							</div>
+						</li>
+						<li style="height: 100%;width: 24.5%;background: white;border-radius: 5px;float: left;margin-left: 0.6%;">
+							<p style="width: 100%;height: 10%;border-bottom: 1px solid #D9E2F8;font-family: simsun;padding-top:3%;">&nbsp;&nbsp;发电量：189亿千瓦时</p>
+							<div id="barCreat">
+								
+							</div>
+						</li>
+						<li style="height: 100%;width: 24.5%;background: white;border-radius: 5px;float: left;margin-left: 0.6%;">
+							<p style="width: 100%;height: 10%;border-bottom: 1px solid #D9E2F8;font-family: simsun;padding-top:3%;">&nbsp;&nbsp;上网电量： 164亿千瓦时</p>
+							<div id="barElec">
+								
+							</div>
+						</li>
+					</ul>
+					<ul style="width: 100%;height: 33%;margin-top: 0.5%;">
+						<li style="height: 100%;width: 24.5%;background: white;border-radius: 5px;float: left;">
+							<p style="width: 100%;height: 10%;border-bottom: 1px solid #D9E2F8;font-family: simsun;padding-top:3%;">&nbsp;&nbsp;实时负荷：221万千瓦</p>
+							<div id="pieDay"style="width: 100%;height: 90%;">
+								
+							</div>
+						</li>
+						<li style="height: 100%;width: 24.5%;background: white;border-radius: 5px;float: left;margin-left: 0.6%;">
+							<p style="width: 100%;height: 10%;border-bottom: 1px solid #D9E2F8;font-family: simsun;padding-top:3%;">&nbsp;&nbsp;利用小时： 1434小时</p>
+							<div id="pieMach">
+								
+							</div>
+						</li>
+						<li style="height: 100%;width: 24.5%;background: white;border-radius: 5px;float: left;margin-left: 0.6%;">
+							<p style="width: 100%;height: 10%;border-bottom: 1px solid #D9E2F8;font-family: simsun;padding-top:3%;">&nbsp;&nbsp;综合厂用电率：6%</p>
+							<div id="barCreat">
+								
+							</div>
+						</li>
+						<li style="height: 100%;width: 24.5%;background: white;border-radius: 5px;float: left;margin-left: 0.6%;">
+							<p style="width: 100%;height: 10%;border-bottom: 1px solid #D9E2F8;font-family: simsun;padding-top:3%;">&nbsp;&nbsp;供电煤耗：313.5g/kwh</p>
+							<div id="barElec">
+								
+							</div>
+						</li>
+					</ul>
+					<div id=""  style="width: 100%;height: 31%;margin-top: 0.5%;background: white;border-radius: 5px;">
+						<div id="" style="width: 64%;height: 100%;float: left;">
+							<table id="demo1" lay-filter="test1">
+						
+					    	</table>
+						</div>
+						<div id="" style="width: 35%;height: 100%;float: left;margin-left: 1%;">
+							<table id="demo2" lay-filter="test2">
+						
+					    	</table>
+						</div>
+					    
+					</div>
+				</div>
+			</div>
+			<div id="right5"   style="display: block;width: 90%; float: left; background: #dfe6f8; height: calc(100vh - 70px);">
+				
+				<div id="map" style="background-image: url(img/map_l.png);background-repeat: no-repeat;background-size:100% 100%;width: 64%;height:64%;float: left;border-radius: 5px;margin-left: 0.5%;margin-top: 0.5%;">
+					<ul>
+						<li style="text-align: center;font-size: 0.15rem;width: 12%;height: 20%;background:rgba(0,84,255,0.75);padding: 0.15rem;border-radius: 10px;float: left;margin-left: 0.15rem;margin-top: 0.15rem;">
+							<span>实时耗煤量（吨）</span>
+							<span>810</span>
+						</li>
+						<li style="text-align: center;font-size: 0.15rem;width: 12%;height: 20%;background:rgba(0,84,255,0.75);padding: 0.15rem;border-radius: 10px;float: left;margin-left: 0.15rem;margin-top: 0.15rem;">
+							<span>日累计耗煤量(吨)</span>
+							<span>11200</span>
+						</li>
+						<li style="text-align: center;font-size: 0.15rem;width: 12%;height: 20%;background:rgba(0,84,255,0.75);padding: 0.15rem;border-radius: 10px;float: left;margin-left: 0.15rem;margin-top: 0.15rem;">
+							<span>日来煤(吨)</span><br />
+							<span>24510</span>
+						</li>
+					</ul>
+				</div>
+				<div id="map-right" style="width: 34.5%;height: 64%;float: left;border-radius: 5px;margin-left: 0.5%;margin-top: 0.5%;font-size: 0.15rem;">
+					<div id=""  style="width: 100%;height: 48.5%;border-radius: 5px;background: white;">
+						<p style="width: 93.5%;height: 14%;margin-left: 2%;border-bottom: 1px solid gray;font-family: SimSun;line-height: 40px;padding-left: 5px;">装机容量构成(单位:万千瓦)</p>
+						<div id="yuan1" style="width: 100%;height: 86%;">
+							
+						</div>
+					</div>
+					<div id="" style="width: 100%;height: 49%;border-radius: 5px;margin-top: 2%;background: white;">
+						<p style="width: 93.5%;height: 14%;margin-left: 2%;border-bottom: 1px solid gray;font-family: SimSun;line-height: 40px;padding-left: 5px;">发电完成情况</p>
+						<div id="" style="width: 100%;height: 86%;text-align: center;">
+							
+						</div>
+					</div>
+				</div>
+				
+				<div id="footer" style="width: 64%;height:33%;float: left;border-radius: 5px;background: white;margin-left: 0.5%;margin-top: 0.5%;font-size: 0.15rem;">
 					
 				</div>
-				<div id="treeTab" style="width: 89.5%;height: 98%;background: white;float: left;margin-left: 0.5%;margin-top: 0.5%;border-radius: 5px;">
+				<div id="footer-cir"  style="width: 34.5%;height: 33%;float: left;border-radius: 5px;background: white;margin-left: 0.5%;margin-top: 0.5%;font-size: 0.15rem;">
 					
 				</div>
 			</div>
+			
+			
 		</div>
 	</body>
 	<script type="text/javascript" src="js/echarts.min.js"></script>
