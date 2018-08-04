@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>华电蒙能</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" href="css/layui.css" media="all">
+    <link rel="stylesheet" href="js/theme/default/laydate.css">
+    <style type="text/css">
+        #panel-content {
+            height: calc(100% - 60px);
+            overflow-y: scroll;
+            font-family:SimSun;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        #panel {
+            font-size: 0.14rem;
+            height: 40px;
+            border-radius: 5px;
+            background: #FFFFFF;
+            margin-bottom: 20px;
+            line-height: 40px;
+            color: #7A758C;
+            font-family: SimSun;
+            padding-left: 20px;
+            box-shadow: 0px 0px 10px 2px rgba(0, 92, 255, 0.15);
+        }
+
+        .panel-chart {
+            width: 32%;
+            height: 320px;
+            background: rgba(255,255,255,1);
+            border-radius: 5px;
+            box-shadow: 6px 0px 10px rgba(0,92,255,0.15);
+            box-sizing: border-box;
+            padding: 0 10px;
+            margin-bottom: 2%;
+            position: relative;
+            z-index: 999;
+        }
+
+        .panel-table {
+            width: 66%;
+            height: 320px;
+            background: rgba(255,255,255,1);
+            border-radius: 5px;
+            box-shadow: 6px 0px 10px rgba(0,92,255,0.15);
+            box-sizing: border-box;
+            padding: 10px;
+            position: relative;
+            z-index: 999;
+        }
+
+        .panel-chart-title {
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            border-bottom: 1px solid #D9E2F8;
+            font-size: 0.14rem;
+            color: #4D4D4D;
+            padding-left: 5px;
+        }
+
+        .panel-chart-view {
+            width: 100%;
+            height: calc(100% - 40px);
+        }
+
+        .panel-table-title {
+            width: 100%;
+            height: 30px;
+            background: #E9EAF4;
+            text-align: center;
+            line-height: 30px;
+            color: #4D4D4D;
+            font-size: 0.14rem;
+            border-bottom: 1px solid #CCCADF;
+        }
+
+        .tr1 {
+            height: 60px !important;
+            line-height: 60px;
+            color: #494C56 !important;
+            font-size: 0.14rem !important;
+            box-shadow:0px 0px 5px rgba(0,92,255,0.15);
+            position: relative;
+            z-index: 999;
+        }
+
+        .tr1 th{
+            border-right: 1px solid #D9E2F8;
+            font-weight: normal !important;
+        }
+
+        .tr1 th:last-child {
+            border-right: 0 !important;
+        }
+
+        #panel-table-view {
+            width: 100%;
+            height: calc(100% - 60px);
+        }
+
+        #panel-table-view tr th, #panel-table-view tr td {
+            text-align: center;
+        }
+
+        #panel-table-view tr {
+            height: 50px;
+        }
+
+        #panel-table-view tr:nth-child(3),#panel-table-view tr:nth-child(5) {
+            background: #E9EAF4;
+        }
+
+
+        #panel-table-view tr td {
+            font-size: 0.12rem;
+            color: #4D4D4D;
+            font-family: 'Microsoft YaHei';
+        }
+
+        .red {
+            color: #FF3543 !important;
+        }
+
+        .green {
+            color: #0FDC6A !important;
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="nav">
+        <div class="nav-left">
+            <div class="nav-img">
+            </div>
+        </div>
+        <div class="nav-bar fl">
+            <div class="nav-title fl">电力板块生产与经营管控平台</div>
+            <div class="nav-status fr">
+                <div class="nav-date fl" id="nav-date"></div>
+                <div class="nav-weather fl">
+                    <div id="nav-iframe">
+                        <iframe scrolling="no" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=34&icon=1&num=3"></iframe>
+                    </div>
+                </div>
+                <div class="nav-message fl">
+                    <img src="./img/messages.png" alt="">
+                </div>
+                <div class="nav-notify fl">
+                    <img src="./img/notice.png" alt="">
+                </div>
+                <div class="nav-user fl">超级管理员
+                    <span>
+                        <img src="./img/combo_l.png" alt="">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="box">
+        <div id="left">
+            <div class="sidebarMenu">
+                <ul>
+                    <li class="sidebar sidebar-header">
+                        <a href="#" class="header-click">
+                            <span class="ring active"></span>
+                            首页
+                            <span class="arrow arrowbg1"></span>
+                        </a>
+                        <ul id="home" class="sidebar-ul hide"></ul>
+                    </li>
+                    <li class="sidebar sidebar-header">
+                        <a href="productionManagement" class="header-click active">
+                            <span class="ring"></span>
+                            生产管理
+                            <span class="arrow arrowbg1"></span>
+                        </a>
+                        <ul id="productionManagement" class="sidebar-ul hide">
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    设备台账
+                                </a>
+                            </li>
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    设备总览
+                                </a>
+                            </li>
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    运行总览
+                                </a>
+                            </li>
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    实时监控
+                                </a>
+                            </li>
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    安监环保
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar sidebar-header">
+                        <a href="coalManagement" class="header-click">
+                            <span class="ring"></span>
+                            燃煤管理
+                            <span class="arrow arrowbg1"></span>
+                        </a>
+                        <ul id="coalManagement" class="sidebar-ul hide">
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    厂级监管
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar sidebar-header">
+                        <a href="marketing" class="header-click">
+                            <span class="ring"></span>
+                            市场营销
+                            <span class="arrow arrowbg1"></span>
+                        </a>
+                        <ul id="marketing" class="sidebar-ul hide">
+                            <li class="sidebar sidebar-list">
+                                <a href="#" class="list-click">
+                                    <span class="ring"></span>
+                                    指标管理
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="right">
+            <div id="panel">
+                指标管理
+            </div>
+            <div id="panel-content">
+                <div class="panel-chart">
+                    <p class="panel-chart-title">发电量完成进度（%）</p>
+                    <div id="bar-chart1" class="panel-chart-view"></div>
+                </div>
+                <div class="panel-chart">
+                    <p class="panel-chart-title">设备利用小时（小时）</p>
+                    <div id="bar-chart2" class="panel-chart-view"></div>
+                </div>
+                <div class="panel-chart">
+                    <p class="panel-chart-title">利润总额（亿元）</p>
+                    <div id="bar-chart3" class="panel-chart-view"></div>
+                </div>
+                <div class="panel-chart">
+                    <p class="panel-chart-title">营业成本（亿元）</p>
+                    <div id="bar-chart4" class="panel-chart-view"></div>
+                </div>
+                <div class="panel-chart">
+                    <p class="panel-chart-title">标煤单价（元）</p>
+                    <div id="bar-chart5" class="panel-chart-view"></div>
+                </div>
+                <div class="panel-chart">
+                    <p class="panel-chart-title">热值差（兆焦/千克）</p>
+                    <div id="bar-chart6" class="panel-chart-view"></div>
+                </div>
+                <div class="panel-chart">
+                    <p class="panel-chart-title">供电煤耗（克/千瓦时）</p>
+                    <div id="bar-chart7" class="panel-chart-view"></div>
+                </div>
+                <div class="panel-table">
+                    <p class="panel-table-title">二氧化硫排放量（克/千瓦时）</p>
+                    <table id="panel-table-view">
+                        <tr class="tr1">
+                            <th>单位名称</th>
+                            <th>本期值</th>
+                            <th>同期值</th>
+                            <th>同比</th>
+                            <th>本年累计</th>
+                            <th>同期累计</th>
+                            <th>累计同比</th>
+                        </tr>
+                        <tr>
+                            <td>包头热电</td>
+                            <td>0.0577</td>
+                            <td>0.0400</td>
+                            <td class="red">44.50%</td>
+                            <td>0.0743</td>
+                            <td>0.0755</td>
+                            <td class="green">-1.59%</td>
+                        </tr>
+                        <tr>
+                            <td>河西电厂</td>
+                            <td>0.0586</td>
+                            <td>0.5753</td>
+                            <td class="red">-89.81%</td>
+                            <td>0.0554</td>
+                            <td>0.0623</td>
+                            <td class="green">-11.08%</td>
+                        </tr>
+                        <tr>
+                            <td>卓资发电</td>
+                            <td>0.0807</td>
+                            <td>0.7797</td>
+                            <td class="red">-89.65%</td>
+                            <td>0.0732</td>
+                            <td>0.0761</td>
+                            <td class="green">-3.96%</td>
+                        </tr>
+                        <tr>
+                            <td>乌达热电</td>
+                            <td>0.1960</td>
+                            <td>0.1956</td>
+                            <td class="green">0.22%</td>
+                            <td>0.2027</td>
+                            <td>0.1122</td>
+                            <td class="red">80.86%</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <!-- laydate 非模块化 -->
+    <script type="text/javascript" src="js/echarts.min.js"></script>
+    <script type="text/javascript">
+
+    (function () {
+        'use strict'
+        // echarts 配置项
+        let chartPlugin = {
+            bar     : [document.getElementById('bar-chart1'),document.getElementById('bar-chart2'),document.getElementById('bar-chart3'),document.getElementById('bar-chart4'),document.getElementById('bar-chart5'),document.getElementById('bar-chart6'),document.getElementById('bar-chart7')],
+            data   : [
+                {
+                    'value': [25.19,22.86,21.32,22.66],
+                    'unit' : '单位： %'
+                },
+                {
+                    'value': [1281,1124,1050,1079],
+                    'unit' : '单位：小时'
+                },
+                {
+                    'value': [2.25,1.31,0.78,1.13],
+                    'unit' : '单位：亿元'
+                },
+                {
+                    'value': [0.02,0.03,0.04,0.02],
+                    'unit' : '单位：亿元'
+                },
+                {
+                    'value': [345,337,339,342],
+                    'unit' : '单位：元'
+                },
+                {
+                    'value': [-0.2,-0.7,0.3,0.2],
+                    'unit' : '单位：兆焦/千克'
+                },
+                {
+                    'value': [341,337,339,332],
+                    'unit' : '单位：克/千瓦时'
+                },
+            ]
+        }
+
+        window.onload = () => {
+            rem()
+            currentTime()
+            sidebar()
+            for (let i = 0,l = chartPlugin.bar.length;i < l ;i++) {
+                barChart(echarts.init(chartPlugin.bar[i]),chartPlugin.data[i])
+            }
+        }
+
+        window.onresize = () => {
+            // 实现弹性布局
+            // 这个函数是为了解决，当进行浏览器窗口大小操作时，rem还是之前的值，如果想要看到效果，需要进行一次手动刷新
+            // 所以，为了解决不手动刷新我们需要在浏览器窗口变化的时候，进行监听，如果浏览器窗口变化了，就进行rem的重新计算
+            rem()
+            for (let i = 0,l = chartPlugin.bar.length;i < l ;i++) {
+                echarts.init(chartPlugin.bar[i]).resize()
+            }
+        }
+
+        // 进行rem的计算 因为是已1920px为基准进行计算的，所以为了方便，把1rem等于100px
+        let rem = () => {
+            let width = document.body.clientWidth
+            let fontSize = document.getElementsByTagName('html')[0].style.fontSize = width / 19.2 + "px"
+        }
+
+        // 当前时间
+        let currentTime = () => {
+            let myDate    = new Date(),
+                year      = myDate.getFullYear(),
+                month     = myDate.getMonth()+1,    /* 因为月份的计算是从 0 开始的 */
+                date      = myDate.getDate(),
+                day       = myDate.getDay(),
+                hour      = myDate.getHours(),
+                minutes   = myDate.getMinutes(),
+                seconds   = myDate.getSeconds(),
+                week,
+                now
+            const seperator = ':'
+            minutes < 10 && (minutes = `0${minutes}`)
+            seconds < 10 && (seconds = `0${seconds}`)
+            day == 1 && (week = '一')
+            day == 2 && (week = '二')
+            day == 3 && (week = '三')
+            day == 4 && (week = '四')
+            day == 5 && (week = '五')
+            day == 6 && (week = '六')
+            day == 7 && (week = '日')
+            now = document.getElementById('nav-date')
+            now.innerText =  `${year}年${month}月${date}日  ${hour}${seperator}${minutes}${seperator}${seconds}  星期${week}`
+            setTimeout( () => {currentTime()},1000)
+        }
+
+        // 侧边栏
+        let sidebar = () => {
+            let headerClick = document.getElementsByClassName('header-click'),
+                listClick = document.getElementsByClassName('list-click'),
+                sideNode = document.getElementsByClassName('sidebar'),
+                listNode = document.getElementsByClassName('sidebar-ul'),
+                ring = document.getElementsByClassName('ring'),
+                arrow = document.getElementsByClassName('arrow')
+            for (let i = 0,l = headerClick.length;i < l;i++) {
+                headerClick[i].addEventListener('click',function(e) {
+                    e.preventDefault()
+                    if (!this.classList.contains('active')) {
+                        for (let j = 0,k = sideNode.length;j < k;j++) {
+                            sideNode[j].children[0] && (sideNode[j].children[0].classList.remove('active'))
+                        }
+                        for (let a = 0,b = ring.length;a < b;a++) {
+                            ring[a].classList.remove('active')
+                        }
+                        this.classList.add('active')
+                        this.children[0].classList.add("active")
+                    }
+                    if (this.parentNode.children[1].children.length) {
+                        if (this.children[1].classList.contains('arrowbg2')) {
+                            this.children[1].classList.remove('arrowbg2')
+                        } else {
+                            for (let c = 0,d = arrow.length;c < d;c++) {
+                                arrow[c].classList.remove('arrowbg2')
+                            }
+                            this.children[1].classList.add('arrowbg2')
+                        }
+                    }
+                    if (this.parentNode.children[1].classList.contains('hide')) {
+                        for (let m = 0,n = listNode.length;m < n;m++) {
+                            listNode[m].classList.add('hide')
+                        }
+                        this.parentNode.children[1].classList.remove('hide')
+                    } else {
+                        this.parentNode.children[1].classList.add('hide')
+                    }
+                },false)
+            }
+            for (let i = 0,l = listClick.length;i<l;i++) {
+                listClick[i].addEventListener('click',function(e) {
+                    e.preventDefault()
+                    if (!this.classList.contains('active')) {
+                        for (let j = 0,k = sideNode.length;j < k;j++) {
+                            sideNode[j].children[0] && (sideNode[j].children[0].classList.remove('active'))
+                        }
+                        for (let a = 0,b = ring.length;a < b;a++) {
+                            ring[a].classList.remove('active')
+                        }
+                        this.classList.add('active')
+                        this.children[0].classList.add("active");
+                    }
+                },false)
+            }
+        }
+
+        // bar-chart
+        let barChart = (app,unicron) => {
+            let option = {
+                    tooltip : {
+                        trigger: 'axis',
+                        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        },
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis : [
+                        {
+                            type : 'category',
+                            data : ['包头热电', '河西电厂','卓资发电','乌达热电'],
+                            axisLine:{
+		                        lineStyle:{
+		                            color:'#D5DAE6',
+		                            width:1,//这里是为了突出显示加上的
+		                        }
+		                    },
+                            axisLabel: {
+                                show: true,
+                                textStyle: {
+                                    color: "#7A758C" // y轴单位坐标文字颜色
+                                }
+                            },
+                        }
+                    ],
+                    yAxis : [
+                        {
+                            type : 'value',
+                            axisTick: {
+                                show: false
+                            },
+                            name: unicron.unit,
+                            nameTextStyle: {
+                                fontSize: '8',
+                                color: "#7A758C" // y轴单位标签颜色
+                            },
+                            axisLine:{
+		                        lineStyle:{
+		                            color:'#D5DAE6',
+		                            width:1,//这里是为了突出显示加上的
+		                        }
+		                    },
+                            axisLabel: {
+                                show: true,
+                                interval: 'auto',
+                                textStyle: {
+                                    color: "#7A758C" // y轴单位坐标文字颜色
+                                }
+                            },
+                            show: true,
+                            splitLine: {
+                                // 网格线
+                                show: true,
+                                lineStyle: {
+                                    width: 1,
+                                    color: "#D5DAE6"
+                                }
+                            }
+                        }
+                    ],
+                    series : [
+                        {
+                            type:'bar',
+                            barWidth: '40%',
+                            itemStyle: {
+                                normal: {
+            　　　　　　　　　　　　　　//好，这里就是重头戏了，定义一个list，然后根据所以取得不同的值，这样就实现了，
+                                    color: function(params) {
+                                        // build a color map as your need.
+                                        var colorList = ['#6278FF','#239FFF','#AD77FF','#D36AFF'];
+                                        return colorList[params.dataIndex]
+                                    },
+            　　　　　　　　　　　　　//以下为是否显示，显示位置和显示格式的设置了
+                                    label: {
+                                        show: true,
+                                        position: 'top',
+                                        formatter: '{c}',
+                                        textStyle: {
+                                            color: "#4D4D4D" // y轴单位坐标文字颜色
+                                        }
+                                    }
+                                }
+                            },
+                            data: unicron.value
+                        }
+                    ]
+                };
+
+            // 使用刚指定的配置项和数据显示图表。
+            app.setOption(option);
+        }
+
+    })();
+    </script>
+</body>
+
+</html>
